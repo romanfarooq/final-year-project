@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(
                       screenWidth * 0.02,
                       screenHeight * 0.01,
-                      screenWidth * 0.02,
+                      screenWidth * 0.04,
                       screenHeight * 0.01,
                     ),
                     child: SvgPicture.asset(
@@ -97,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(
                       screenWidth * 0.02,
                       screenHeight * 0.01,
-                      screenWidth * 0.02,
+                      screenWidth * 0.04,
                       screenHeight * 0.01,
                     ),
                     child: SvgPicture.asset(
@@ -148,16 +148,13 @@ class LoginScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Opacity(
-                        opacity: 0.4,
-                        child: Text(
-                          "Don’t have an account?",
-                          style: TextStyle(
-                            color: const Color(0XFF040415).withOpacity(0.49),
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
+                      Text(
+                        "Don’t have an account?",
+                        style: TextStyle(
+                          color: const Color(0XFF040415).withOpacity(0.4),
+                          fontSize: 14,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       Padding(
