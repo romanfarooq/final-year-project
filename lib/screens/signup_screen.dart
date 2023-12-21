@@ -8,7 +8,7 @@ import '../widgets/custom_icon_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+  SignUpScreen({super.key});
 
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -69,7 +69,7 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.03),
                 _buildSignUpButton(context),
                 SizedBox(height: screenHeight * 0.02),
-                _buildThirty(context, screenWidth, screenHeight),
+                _buildLine(context, screenWidth, screenHeight),
                 SizedBox(height: screenHeight * 0.02),
                 const Text(
                   "Sign Up with",
@@ -305,7 +305,7 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildThirty(
+  Widget _buildLine(
       BuildContext context, double screenWidth, double screenHeight) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
