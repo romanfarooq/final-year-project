@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 SizedBox(height: screenHeight * 0.01),
                 Image.asset(
-                  ImageConstant.imgCarcare2,
+                  ImageConstant.carcare2,
                   height: screenHeight * 0.2,
                   width: screenWidth * 0.4,
                   alignment: Alignment.center,
@@ -78,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                       screenHeight * 0.01,
                     ),
                     child: SvgPicture.asset(
-                      ImageConstant.imgProfile,
+                      ImageConstant.profile,
                       height: screenHeight * 0.03,
                       width: screenWidth * 0.06,
                     ),
@@ -101,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                       screenHeight * 0.01,
                     ),
                     child: SvgPicture.asset(
-                      ImageConstant.imgLockpasswordline,
+                      ImageConstant.lockpasswordline,
                       fit: BoxFit.cover,
                       height: screenHeight * 0.03,
                       width: screenWidth * 0.06,
@@ -180,7 +180,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 Image.asset(
-                  ImageConstant.imgCarcare1,
+                  ImageConstant.carcare1,
                   height: screenHeight * 0.15,
                   width: screenWidth * 0.3,
                   alignment: Alignment.center,

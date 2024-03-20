@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_elevated_button.dart';
-import '../widgets/custom_icon_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -85,27 +84,24 @@ class SignUpScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SvgPicture.asset(
-                      ImageConstant.imgFacebook,
+                      ImageConstant.facebook,
                       height: screenHeight * 0.03,
                       width: screenWidth * 0.06,
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: screenWidth * 0.12),
                       child: SvgPicture.asset(
-                        ImageConstant.imgInstagram,
+                        ImageConstant.instagram,
                         height: screenHeight * 0.03,
                         width: screenWidth * 0.06,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: screenWidth * 0.12),
-                      child: CustomIconButton(
-                        height: screenHeight * 0.03,
-                        width: screenWidth * 0.06,
-                        padding: EdgeInsets.all(screenWidth * 0.01),
-                        child: SvgPicture.asset(
-                          ImageConstant.imgVector,
-                        ),
+                      child: SvgPicture.asset(
+                        ImageConstant.youtube,
+                        height: screenHeight * 0.025,
+                        width: screenWidth * 0.05,
                       ),
                     ),
                   ],
@@ -171,7 +167,7 @@ class SignUpScreen extends StatelessWidget {
             screenHeight * 0.01,
           ),
           child: SvgPicture.asset(
-            ImageConstant.imgProfile,
+            ImageConstant.profile,
             height: screenHeight * 0.03,
             width: screenWidth * 0.06,
           ),
@@ -204,7 +200,7 @@ class SignUpScreen extends StatelessWidget {
             screenHeight * 0.01,
           ),
           child: Image.asset(
-            ImageConstant.imgImage1,
+            ImageConstant.email,
             height: screenHeight * 0.03,
             width: screenWidth * 0.06,
           ),
@@ -237,7 +233,7 @@ class SignUpScreen extends StatelessWidget {
             screenHeight * 0.01,
           ),
           child: Image.asset(
-            ImageConstant.imgImage2,
+            ImageConstant.phone,
             height: screenHeight * 0.03,
             width: screenWidth * 0.06,
           ),
@@ -271,7 +267,7 @@ class SignUpScreen extends StatelessWidget {
             screenHeight * 0.01,
           ),
           child: SvgPicture.asset(
-            ImageConstant.imgLockpasswordline,
+            ImageConstant.lockpasswordline,
             height: screenHeight * 0.03,
             width: screenWidth * 0.06,
           ),

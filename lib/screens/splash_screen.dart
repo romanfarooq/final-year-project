@@ -25,17 +25,17 @@ class SplashScreen extends StatelessWidget {
                 children: [
                   const Spacer(flex: 3),
                   _buildImage(
-                    ImageConstant.imgLogo11,
+                    ImageConstant.logo,
                     height: constraints.maxHeight * 0.25,
                   ),
                   SizedBox(height: constraints.maxHeight * 0.04),
                   _buildImage(
-                    ImageConstant.imgLoading1,
+                    ImageConstant.loading,
                     height: constraints.maxHeight * 0.09,
                   ),
                   const Spacer(flex: 5),
                   _buildImage(
-                    ImageConstant.imgCarcare1,
+                    ImageConstant.carcare1,
                     height: constraints.maxHeight * 0.028,
                   ),
                 ],
