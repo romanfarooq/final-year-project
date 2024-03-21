@@ -36,7 +36,7 @@ class SelectUserScreen extends StatelessWidget {
                       alignment: Alignment.topLeft,
                       margin: EdgeInsets.only(right: screenWidth * 0.25),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color.fromRGBO(236, 236, 236, 0.77),
                         borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(25),
                           bottomRight: Radius.circular(25),
@@ -89,7 +89,7 @@ class SelectUserScreen extends StatelessWidget {
                       alignment: Alignment.bottomRight,
                       margin: EdgeInsets.only(left: screenWidth * 0.25),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color.fromRGBO(236, 236, 236, 0.77),
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(25),
                           bottomLeft: Radius.circular(25),
