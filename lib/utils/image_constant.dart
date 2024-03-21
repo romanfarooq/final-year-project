@@ -22,4 +22,9 @@ class ImageConstant {
   static String profile = '$imagePath/profile.svg';
   static String imageNotFound = '$imagePath/image_not_found.png';
   static String lockpasswordline = '$imagePath/lockpasswordline.svg';
+
+  // Login 001 images
+  static String background = '$imagePath/background.png';
+  static String carOnwer = '$imagePath/car_owner.png';
+  static String workshop = '$imagePath/workshop.png';
 }

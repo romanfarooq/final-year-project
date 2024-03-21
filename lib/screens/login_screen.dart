@@ -141,6 +141,10 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushReplacementNamed(AppRoutes.selectUserScreen);
+                  },
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 Padding(

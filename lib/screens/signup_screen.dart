@@ -298,6 +298,9 @@ class SignUpScreen extends StatelessWidget {
           ],
         ),
       ),
+      onPressed: () {
+        Navigator.of(context).pushReplacementNamed(AppRoutes.selectUserScreen);
+      },
     );
   }
 

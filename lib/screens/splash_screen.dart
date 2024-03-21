@@ -13,36 +13,38 @@ class SplashScreen extends StatelessWidget {
     });
 
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SafeArea(
-            child: Container(
-              width: double.infinity,
-              padding:
-                  EdgeInsets.symmetric(vertical: constraints.maxHeight * 0.07),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Spacer(flex: 3),
-                  _buildImage(
-                    ImageConstant.logo,
-                    height: constraints.maxHeight * 0.25,
-                  ),
-                  SizedBox(height: constraints.maxHeight * 0.04),
-                  _buildImage(
-                    ImageConstant.loading,
-                    height: constraints.maxHeight * 0.09,
-                  ),
-                  const Spacer(flex: 5),
-                  _buildImage(
-                    ImageConstant.carcare1,
-                    height: constraints.maxHeight * 0.028,
-                  ),
-                ],
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SafeArea(
+              child: Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(
+                    vertical: constraints.maxHeight * 0.07),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Spacer(flex: 3),
+                    _buildImage(
+                      ImageConstant.logo,
+                      height: constraints.maxHeight * 0.25,
+                    ),
+                    SizedBox(height: constraints.maxHeight * 0.04),
+                    _buildImage(
+                      ImageConstant.loading,
+                      height: constraints.maxHeight * 0.09,
+                    ),
+                    const Spacer(flex: 5),
+                    _buildImage(
+                      ImageConstant.carcare1,
+                      height: constraints.maxHeight * 0.028,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
