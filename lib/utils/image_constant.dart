@@ -9,7 +9,7 @@ class ImageConstant {
 
   // Login images
   static String carcare2 = '$imagePath/carcare_2.png';
-  // static String carcare1 = '$imagePath/carcare_1.png';
+  //static String carcare1 = '$imagePath/carcare_1.png';
 
   // Sign Up images
   static String email = '$imagePath/email.png';
