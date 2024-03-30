@@ -4,19 +4,29 @@ double figmaSpaceToPercentage(double figmaSpace, BuildContext context) {
   double screenHeight = MediaQuery.of(context).size.height;
 
   // Calculate the percentage of the screen height occupied by the Figma space
-  double spacePercentage = (figmaSpace / screenHeight) * 100;
+  double spacePercentage = (figmaSpace / 932) * screenHeight; // Assuming Figma space is based on a 812px height design (iPhone X)
 
-  // Calculate the equivalent space in Flutter using MediaQuery
-  return (MediaQuery.of(context).size.height * spacePercentage) / 100;
+  // Return the calculated spacePercentage
+  return spacePercentage;
 }
+// double figmaSpaceToPercentageWidth(double figmaSpace, BuildContext context) {
+//   // Measure the width of the device screen
+//   double screenWidth = MediaQuery.of(context).size.width;
+//
+//   // Calculate the percentage of the screen width occupied by the Figma space
+//   double spacePercentageWidth = (figmaSpace / screenWidth) * 100;
+//
+//   // Calculate the equivalent space in Flutter using MediaQuery for width
+//   return (MediaQuery.of(context).size.width * spacePercentageWidth) / 100;
+// }
 
 double figmaSpaceToPercentageWidth(double figmaSpace, BuildContext context) {
   // Measure the width of the device screen
   double screenWidth = MediaQuery.of(context).size.width;
 
   // Calculate the percentage of the screen width occupied by the Figma space
-  double spacePercentageWidth = (figmaSpace / screenWidth) * 100;
+  double spacePercentageWidth = (figmaSpace / 430) * screenWidth; // Assuming Figma space is based on a 375px width design
 
-  // Calculate the equivalent space in Flutter using MediaQuery for width
-  return (MediaQuery.of(context).size.width * spacePercentageWidth) / 100;
+  // Return the calculated spacePercentageWidth
+  return spacePercentageWidth;
 }

@@ -46,7 +46,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ),
                  ),
                  SizedBox(
-                 height:  figmaSpaceToPercentage(50, context),
+                 height:  figmaSpaceToPercentage(64, context),
                  ),
                  Row(
                      children: [
@@ -149,7 +149,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                        Container(
                          width: figmaSpaceToPercentageWidth(352, context),
                          height: figmaSpaceToPercentage(40, context),
-                         padding: EdgeInsets.only(left:figmaSpaceToPercentage(26, context),top:figmaSpaceToPercentage(10, context)),
+                         padding: EdgeInsets.only(left:figmaSpaceToPercentageWidth(26, context),top:figmaSpaceToPercentage(10, context)),
 
                          decoration: BoxDecoration(
                            color:  Color.fromRGBO(66, 84, 164, 0.49),
@@ -486,7 +486,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                        ],
                      ),
                          SizedBox(
-                   height: figmaSpaceToPercentage(40, context),
+                   height: figmaSpaceToPercentage(70, context),
 
                  ),
 
@@ -530,12 +530,12 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
         ),
       ),
         Positioned(
-          bottom: 10,
-          right: 20,
+          bottom: 0,
+          right: 0,
           child: Image.asset(
             ImageConstant.wrenchtool,
-            height: figmaSpaceToPercentage(140, context),
-            width: figmaSpaceToPercentageWidth(250, context),
+            height: figmaSpaceToPercentage(240, context),
+            width: figmaSpaceToPercentageWidth(300, context),
             fit: BoxFit.cover,
           ),
         ),
