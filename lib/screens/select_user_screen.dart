@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
 import '../widgets/select_user_item.dart';
 
@@ -35,18 +36,41 @@ class SelectUserScreen extends StatelessWidget {
                     SelectUserItem(
                       userType: 'Car Owner',
                       quarterTurns: 1,
-                      screenWidth: screenWidth,
-                      screenHeight: screenHeight,
                       offset: const Offset(1, 4),
-                      onTap: () {},
+                      alignment: Alignment.topLeft,
+                      imageHeight: screenHeight * 0.2,
+                      textPadding: EdgeInsets.only(right: screenWidth * 0.1),
+                      inkWellPadding: EdgeInsets.only(
+                        top: screenHeight * 0.05,
+                        bottom: screenHeight * 0.05,
+                      ),
+                      margin: EdgeInsets.only(right: screenWidth * 0.25),
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(25),
+                        bottomRight: Radius.circular(25),
+                      ),
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.addingCar1Screen);
+                      },
                     ),
                     const Spacer(),
                     SelectUserItem(
                       userType: 'Workshop',
                       quarterTurns: 3,
-                      screenWidth: screenWidth,
-                      screenHeight: screenHeight,
                       offset: const Offset(-1, 4),
+                      alignment: Alignment.bottomRight,
+                      imageHeight: screenHeight * 0.2,
+                      textPadding: EdgeInsets.only(left: screenWidth * 0.1),
+                      inkWellPadding: EdgeInsets.only(
+                        top: screenHeight * 0.05,
+                        bottom: screenHeight * 0.05,
+                      ),
+                      margin: EdgeInsets.only(left: screenWidth * 0.25),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(25),
+                        bottomLeft: Radius.circular(25),
+                      ),
                       onTap: () {},
                     ),
                   ],
