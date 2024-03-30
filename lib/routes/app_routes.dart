@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/adding_car_1_screen.dart';
 import '../screens/login_screen.dart';
 import '../screens/select_user_screen.dart';
 import '../screens/signup_screen.dart';
@@ -10,11 +11,13 @@ class AppRoutes {
   static const String loginScreen = '/login_screen';
   static const String signUpScreen = '/sign_up_screen';
   static const String selectUserScreen = '/select_user_screen';
+  static const String addingCar1Screen = '/adding_car_1';
 
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (context) => const SplashScreen(),
     loginScreen: (context) => LoginScreen(),
     signUpScreen: (context) => SignUpScreen(),
     selectUserScreen: (context) => const SelectUserScreen(),
+    addingCar1Screen: (context) => const AddingCar1Screen()
   };
 }

@@ -38,24 +38,14 @@ class SignUpScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: screenHeight * 0.08),
-                const Text(
+                Text(
                   "Sign Up",
-                  style: TextStyle(
-                    color: Color(0XFF040415),
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(height: screenHeight * 0.01),
-                const Text(
+                Text(
                   "Find your dream car!",
-                  style: TextStyle(
-                    color: Color(0XFF000000),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 _buildFullName(context, screenWidth, screenHeight),
@@ -70,14 +60,9 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.02),
                 _buildLine(context, screenWidth, screenHeight),
                 SizedBox(height: screenHeight * 0.02),
-                const Text(
+                Text(
                   "Sign Up with",
-                  style: TextStyle(
-                    color: Color(0XFF040415),
-                    fontSize: 14,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Row(
@@ -112,12 +97,9 @@ class SignUpScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Already have an account?",
-                      style: TextStyle(
-                        color: const Color(0XFF040415).withOpacity(0.4),
-                        fontSize: 14,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            color: const Color(0XFF040415).withOpacity(0.4),
+                          ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: screenWidth * 0.02),
@@ -126,14 +108,12 @@ class SignUpScreen extends StatelessWidget {
                           Navigator.of(context)
                               .pushReplacementNamed(AppRoutes.loginScreen);
                         },
-                        child: const Text(
+                        child: Text(
                           "Sign In",
-                          style: TextStyle(
-                            color: Color(0XFFFF5B00),
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(color: const Color(0XFFFF5B00)),
                         ),
                       ),
                     ),
@@ -325,12 +305,10 @@ class SignUpScreen extends StatelessWidget {
             padding: EdgeInsets.only(left: screenWidth * 0.015),
             child: Text(
               "Or",
-              style: TextStyle(
-                fontSize: 14,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-                color: const Color(0XFF040415).withOpacity(0.4),
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall!
+                  .copyWith(color: const Color(0XFF040415).withOpacity(0.4)),
             ),
           ),
           SizedBox(

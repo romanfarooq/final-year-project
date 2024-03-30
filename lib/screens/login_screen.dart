@@ -43,27 +43,20 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.01),
                 Padding(
                   padding: EdgeInsets.only(left: screenWidth * 0.05),
-                  child: const Text(
+                  child: Text(
                     "Login ",
-                    style: TextStyle(
-                      color: Color(0XFF040415),
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Padding(
                   padding: EdgeInsets.only(left: screenWidth * 0.02),
-                  child: const Text(
+                  child: Text(
                     "Welcome to Car Car Pro",
-                    style: TextStyle(
-                      color: Color(0XFF000000),
-                      fontSize: 12,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(fontSize: 12),
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.02),
@@ -113,14 +106,9 @@ class LoginScreen extends StatelessWidget {
                   obscureText: true,
                 ),
                 SizedBox(height: screenHeight * 0.03),
-                const Text(
+                Text(
                   "Forgot Password?",
-                  style: TextStyle(
-                    color: Color(0XFF040415),
-                    fontSize: 14,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 CustomElevatedButton(
@@ -154,12 +142,9 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Don’t have an account?",
-                        style: TextStyle(
-                          color: const Color(0XFF040415).withOpacity(0.4),
-                          fontSize: 14,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                              color: const Color(0XFF040415).withOpacity(0.4),
+                            ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: screenWidth * 0.02),
@@ -168,14 +153,14 @@ class LoginScreen extends StatelessWidget {
                             Navigator.of(context)
                                 .pushReplacementNamed(AppRoutes.signUpScreen);
                           },
-                          child: const Text(
+                          child: Text(
                             "Sign Up",
-                            style: TextStyle(
-                              color: Color(0XFFFF5B00),
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                  color: const Color(0XFFFF5B00),
+                                ),
                           ),
                         ),
                       ),
