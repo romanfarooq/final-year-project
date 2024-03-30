@@ -482,13 +482,45 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                          ),
                        ),
 
-
-                       // SizedBox(
-               //   height: 10,
-               //
-               // ),
                      ],
-                   )
+                   ),
+                       SizedBox(
+                 height: figmaSpaceToPercentage(40, context),
+
+               ),
+                 
+                       Row(
+                         children:[
+
+                           SizedBox(
+                             width: figmaSpaceToPercentageWidth(20, context),
+
+                           ),
+                           ElevatedButton(
+                           onPressed: () {
+                             // Add your onPressed logic here
+                           },
+                           style: ElevatedButton.styleFrom(
+                             backgroundColor: Color.fromRGBO(96, 189, 52, 1), // Change the button's background color
+                             shape: RoundedRectangleBorder(
+                               borderRadius: BorderRadius.circular(25), // Adjust the radius as needed
+                             ),
+                             minimumSize: Size(figmaSpaceToPercentageWidth(93, context), figmaSpaceToPercentage(40, context)), // Set the button's width and height
+                           ),
+                           child: Text(
+                             "Next",
+                             textAlign: TextAlign.center, // Align the text in the center
+                             style: TextStyle(fontSize: 16,
+                               color: Colors.white,
+                             ), // Change the font size of the button text
+                           ),
+                         ),
+      ]
+                       ),
+
+
+
+
              ],
 
           ),
