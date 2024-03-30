@@ -5,7 +5,6 @@ import '../models/selection_popup_model.dart';
 class CustomDropDown extends StatelessWidget {
   const CustomDropDown({
     super.key,
-    this.alignment,
     this.width,
     this.focusNode,
     this.icon,
@@ -26,7 +25,6 @@ class CustomDropDown extends StatelessWidget {
     this.onChanged,
   });
 
-  final Alignment? alignment;
   final double? width;
   final FocusNode? focusNode;
   final Widget? icon;
@@ -48,38 +46,31 @@ class CustomDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return alignment != null
-        ? Align(
-            alignment: alignment ?? Alignment.center,
-            child: dropDownWidget,
-          )
-        : dropDownWidget;
+    return SizedBox(
+      width: width ?? double.maxFinite,
+      child: DropdownButtonFormField<SelectionPopupModel>(
+        focusNode: focusNode ?? FocusNode(),
+        icon: icon,
+        autofocus: autofocus!,
+        style: textStyle ?? defaultTextStyle,
+        items: items?.map((SelectionPopupModel item) {
+          return DropdownMenuItem<SelectionPopupModel>(
+            value: item,
+            child: Text(
+              item.title,
+              overflow: TextOverflow.ellipsis,
+              style: hintStyle ?? defaultTextStyle,
+            ),
+          );
+        }).toList(),
+        decoration: decoration,
+        validator: validator,
+        onChanged: (value) {
+          onChanged!(value!);
+        },
+      ),
+    );
   }
-
-  Widget get dropDownWidget => SizedBox(
-        width: width ?? double.maxFinite,
-        child: DropdownButtonFormField<SelectionPopupModel>(
-          focusNode: focusNode ?? FocusNode(),
-          icon: icon,
-          autofocus: autofocus!,
-          style: textStyle ?? defaultTextStyle,
-          items: items?.map((SelectionPopupModel item) {
-            return DropdownMenuItem<SelectionPopupModel>(
-              value: item,
-              child: Text(
-                item.title,
-                overflow: TextOverflow.ellipsis,
-                style: hintStyle ?? defaultTextStyle,
-              ),
-            );
-          }).toList(),
-          decoration: decoration,
-          validator: validator,
-          onChanged: (value) {
-            onChanged!(value!);
-          },
-        ),
-      );
 
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",

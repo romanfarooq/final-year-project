@@ -9,7 +9,6 @@ class CustomElevatedButton extends StatelessWidget {
     this.margin,
     this.onPressed,
     this.buttonStyle,
-    this.alignment,
     this.buttonTextStyle,
     this.isDisabled,
     this.height,
@@ -23,7 +22,6 @@ class CustomElevatedButton extends StatelessWidget {
   final EdgeInsets? margin;
   final VoidCallback? onPressed;
   final ButtonStyle? buttonStyle;
-  final Alignment? alignment;
   final TextStyle? buttonTextStyle;
   final bool? isDisabled;
   final double? height;
@@ -32,15 +30,6 @@ class CustomElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return alignment != null
-        ? Align(
-            alignment: alignment ?? Alignment.center,
-            child: buildElevatedButtonWidget(context),
-          )
-        : buildElevatedButtonWidget(context);
-  }
-
-  Widget buildElevatedButtonWidget(BuildContext context) {
     return SizedBox(
       height: height ?? 55,
       width: width ?? double.maxFinite,

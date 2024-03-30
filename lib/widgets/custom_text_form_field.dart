@@ -50,68 +50,61 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return alignment != null
-        ? Align(
-            alignment: alignment ?? Alignment.center,
-            child: textFormFieldWidget,
-          )
-        : textFormFieldWidget;
-  }
-
-  Widget get textFormFieldWidget => Container(
-        width: width ?? double.maxFinite,
-        decoration: BoxDecoration(
-          borderRadius:
-              BorderRadius.circular(10), // Adjust border radius as needed
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1), // Shadow color
-              spreadRadius: 2, // Spread radius
-              blurRadius: 4, // Blur radius
-              offset: const Offset(0, 1), // Offset in x and y directions
-            ),
-          ],
-        ),
-        child: TextFormField(
-          controller: controller,
-          focusNode: focusNode ?? FocusNode(),
-          autofocus: false,
-          style: textStyle ?? const TextStyle(color: Color(0XFFA8AEB8)),
-          obscureText: obscureText!,
-          textInputAction: textInputAction!,
-          keyboardType: textInputType!,
-          maxLines: maxLines ?? 1,
-          decoration: InputDecoration(
-            hintText: hintText ?? "",
-            prefixIcon: prefix,
-            prefixIconConstraints: prefixConstraints,
-            suffix: suffix,
-            suffixIconConstraints: suffixConstraints,
-            isDense: true,
-            contentPadding: const EdgeInsets.only(
-              top: 20,
-              right: 20,
-              bottom: 20,
-            ),
-            fillColor: fillColor ?? const Color.fromARGB(255, 255, 255, 255),
-            filled: filled,
-            border: borderDecoration ??
-                OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide.none,
-                ),
-            enabledBorder: borderDecoration ??
-                OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide.none,
-                ),
-            focusedBorder: borderDecoration ??
-                OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide.none,
-                ),
+    return Container(
+      width: width ?? double.maxFinite,
+      decoration: BoxDecoration(
+        borderRadius:
+            BorderRadius.circular(10), // Adjust border radius as needed
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1), // Shadow color
+            spreadRadius: 2, // Spread radius
+            blurRadius: 4, // Blur radius
+            offset: const Offset(0, 1), // Offset in x and y directions
           ),
-          validator: validator,
+        ],
+      ),
+      child: TextFormField(
+        controller: controller,
+        focusNode: focusNode,
+        autofocus: false,
+        style: textStyle ?? const TextStyle(color: Color(0XFFA8AEB8)),
+        obscureText: obscureText!,
+        textInputAction: textInputAction!,
+        keyboardType: textInputType!,
+        maxLines: maxLines ?? 1,
+        decoration: InputDecoration(
+          hintText: hintText ?? "",
+          prefixIcon: prefix,
+          prefixIconConstraints: prefixConstraints,
+          suffix: suffix,
+          suffixIconConstraints: suffixConstraints,
+          isDense: true,
+          contentPadding: const EdgeInsets.only(
+            top: 20,
+            right: 20,
+            bottom: 20,
+          ),
+          fillColor: fillColor ?? const Color.fromARGB(255, 255, 255, 255),
+          filled: filled,
+          border: borderDecoration ??
+              OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+              ),
+          enabledBorder: borderDecoration ??
+              OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+              ),
+          focusedBorder: borderDecoration ??
+              OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+              ),
         ),
-      );
+        validator: validator,
+      ),
+    );
+  }
 }
