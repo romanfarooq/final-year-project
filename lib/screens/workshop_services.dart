@@ -74,8 +74,8 @@ class _WorkshopservicesState extends State<Workshopservices> {
                         ),
                             child:Image.asset(
                                 ImageConstant.electricalrepairs,
-                                height: 150,
-                                width: 159,
+                                height: figmaSpaceToPercentage(150, context),
+                                width: figmaSpaceToPercentageWidth(159, context),
 
                               ),
 
@@ -138,8 +138,8 @@ class _WorkshopservicesState extends State<Workshopservices> {
                             ),
                             child:Image.asset(
                               ImageConstant.mechanical,
-                              height: 150,
-                              width: 159,
+                              height: figmaSpaceToPercentage(150, context),
+                              width: figmaSpaceToPercentageWidth(159, context),
 
                             ),
 
@@ -202,8 +202,8 @@ class _WorkshopservicesState extends State<Workshopservices> {
                             ),
                             child:Image.asset(
                               ImageConstant.dentingNpainting,
-                              height: 150,
-                              width: 159,
+                              height: figmaSpaceToPercentage(150, context),
+                              width: figmaSpaceToPercentageWidth(159, context),
 
                             ),
 
@@ -267,8 +267,8 @@ class _WorkshopservicesState extends State<Workshopservices> {
                             ),
                             child:Image.asset(
                               ImageConstant.tireservices,
-                              height: 150,
-                              width: 159,
+                              height: figmaSpaceToPercentage(150, context),
+                              width: figmaSpaceToPercentageWidth(159, context),
 
                             ),
 
