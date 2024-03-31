@@ -40,7 +40,7 @@ class _WorkshopservicesState extends State<Workshopservices> {
                   ),
                   InkWell(
                     onTap: () {
-                      print('hi');
+                      // print('hi');
                     },
                     child: Row(
                       children:[
@@ -104,7 +104,7 @@ class _WorkshopservicesState extends State<Workshopservices> {
 
                   InkWell(
                     onTap: () {
-                      print('hi');
+                      // print('hi');
                     },
                     child: Row(
                         children:[
@@ -168,7 +168,7 @@ class _WorkshopservicesState extends State<Workshopservices> {
 
                   InkWell(
                     onTap: () {
-                      print('hi');
+                      // print('hi');
                     },
                     child: Row(
                         children:[
@@ -233,7 +233,7 @@ class _WorkshopservicesState extends State<Workshopservices> {
 
                   InkWell(
                     onTap: () {
-                      print('hi');
+                      // print('hi');
                     },
                     child: Row(
                         children:[
