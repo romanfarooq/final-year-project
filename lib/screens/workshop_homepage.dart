@@ -242,8 +242,9 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(25)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
+                          ),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.5),
@@ -273,8 +274,9 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(25)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
+                          ),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.5),
@@ -311,8 +313,9 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(25)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
+                          ),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.5),
@@ -342,8 +345,9 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(25)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
+                          ),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.5),

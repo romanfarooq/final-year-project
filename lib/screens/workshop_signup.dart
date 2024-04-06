@@ -206,8 +206,9 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.only(
-                            left: figmaSpaceToPercentage(26, context),
-                            top: figmaSpaceToPercentage(10, context)),
+                          left: figmaSpaceToPercentage(26, context),
+                          top: figmaSpaceToPercentage(10, context),
+                        ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
                           borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -267,8 +268,9 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.only(
-                            left: figmaSpaceToPercentage(26, context),
-                            top: figmaSpaceToPercentage(10, context)),
+                          left: figmaSpaceToPercentage(26, context),
+                          top: figmaSpaceToPercentage(10, context),
+                        ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
                           borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -393,8 +395,9 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(25)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
+                          ),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.5),
