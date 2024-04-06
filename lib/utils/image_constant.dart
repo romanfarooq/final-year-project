@@ -28,6 +28,15 @@ class ImageConstant {
   static String carOnwer = '$imagePath/car_owner.png';
   static String workshop = '$imagePath/workshop.png';
 
-  // workshop_signup
+  // Workshop Signup images
   static String wrenchtool = '$imagePath/wrenchtool.png';
+
+  // Workshop Services images
+  static String electricalrepairs = '$imagePath/electricalrepairs.png';
+  static String mechanical = '$imagePath/mechanical.png';
+  static String dentingNpainting = '$imagePath/dentingNpainting.png';
+  static String tireservices = '$imagePath/tireservices.png';
+
+  // Workshop HomePage images
+  static String setting = '$imagePath/setting.png';
 }
