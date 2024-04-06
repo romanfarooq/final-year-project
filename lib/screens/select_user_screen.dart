@@ -10,7 +10,9 @@ class SelectUserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
+    final paddingTop = MediaQuery.of(context).padding.top;
+    final screenHeight = height - paddingTop;
 
     return Scaffold(
       body: SafeArea(
@@ -33,6 +35,7 @@ class SelectUserScreen extends StatelessWidget {
               Expanded(
                 child: Column(
                   children: [
+                    const Spacer(),
                     SelectUserItem(
                       userType: 'Car Owner',
                       quarterTurns: 1,
@@ -54,7 +57,7 @@ class SelectUserScreen extends StatelessWidget {
                             .pushNamed(AppRoutes.addingCar1Screen);
                       },
                     ),
-                    const Spacer(),
+                    const Spacer(flex: 5),
                     SelectUserItem(
                       userType: 'Workshop',
                       quarterTurns: 3,
@@ -73,6 +76,7 @@ class SelectUserScreen extends StatelessWidget {
                       ),
                       onTap: () {},
                     ),
+                    const Spacer(),
                   ],
                 ),
               ),

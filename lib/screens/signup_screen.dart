@@ -32,108 +32,112 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
+    final paddingTop = MediaQuery.of(context).padding.top;
+    final screenHeight = height - paddingTop;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Form(
-          key: _formKey,
+        child: SingleChildScrollView(
           child: Container(
             width: screenWidth,
+            height: screenHeight,
             padding: EdgeInsets.fromLTRB(
               screenWidth * 0.05,
               screenHeight * 0.01,
               screenWidth * 0.05,
               0,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: screenHeight * 0.08),
-                Text(
-                  "Sign Up",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                SizedBox(height: screenHeight * 0.01),
-                Text(
-                  "Find your dream car!",
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                SizedBox(height: screenHeight * 0.02),
-                _buildFullName(context, screenWidth, screenHeight),
-                SizedBox(height: screenHeight * 0.02),
-                _buildEmail(context, screenWidth, screenHeight),
-                SizedBox(height: screenHeight * 0.02),
-                _buildPhoneNumber(context, screenWidth, screenHeight),
-                SizedBox(height: screenHeight * 0.02),
-                _buildPassword(context, screenWidth, screenHeight),
-                SizedBox(height: screenHeight * 0.03),
-                _buildSignUpButton(context),
-                SizedBox(height: screenHeight * 0.02),
-                _buildLine(context, screenWidth, screenHeight),
-                SizedBox(height: screenHeight * 0.02),
-                Text(
-                  "Sign Up with",
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                SizedBox(height: screenHeight * 0.01),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      ImageConstant.facebook,
-                      height: screenHeight * 0.03,
-                      width: screenWidth * 0.06,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: screenWidth * 0.12),
-                      child: SvgPicture.asset(
-                        ImageConstant.instagram,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: screenHeight * 0.09),
+                  Text(
+                    "Sign Up",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  SizedBox(height: screenHeight * 0.01),
+                  Text(
+                    "Find your dream car!",
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  _buildFullName(context, screenWidth, screenHeight),
+                  SizedBox(height: screenHeight * 0.02),
+                  _buildEmail(context, screenWidth, screenHeight),
+                  SizedBox(height: screenHeight * 0.02),
+                  _buildPhoneNumber(context, screenWidth, screenHeight),
+                  SizedBox(height: screenHeight * 0.02),
+                  _buildPassword(context, screenWidth, screenHeight),
+                  SizedBox(height: screenHeight * 0.03),
+                  _buildSignUpButton(context),
+                  SizedBox(height: screenHeight * 0.02),
+                  _buildLine(context, screenWidth, screenHeight),
+                  SizedBox(height: screenHeight * 0.02),
+                  Text(
+                    "Sign Up with",
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  SizedBox(height: screenHeight * 0.01),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        ImageConstant.facebook,
                         height: screenHeight * 0.03,
                         width: screenWidth * 0.06,
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: screenWidth * 0.12),
-                      child: SvgPicture.asset(
-                        ImageConstant.youtube,
-                        height: screenHeight * 0.025,
-                        width: screenWidth * 0.05,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: screenHeight * 0.02),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account?",
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            color: const Color(0XFF040415).withOpacity(0.4),
-                          ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: screenWidth * 0.02),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushReplacementNamed(AppRoutes.loginScreen);
-                        },
-                        child: Text(
-                          "Sign In",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
-                              .copyWith(color: const Color(0XFFFF5B00)),
+                      Padding(
+                        padding: EdgeInsets.only(left: screenWidth * 0.12),
+                        child: SvgPicture.asset(
+                          ImageConstant.instagram,
+                          height: screenHeight * 0.03,
+                          width: screenWidth * 0.06,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      Padding(
+                        padding: EdgeInsets.only(left: screenWidth * 0.12),
+                        child: SvgPicture.asset(
+                          ImageConstant.youtube,
+                          height: screenHeight * 0.025,
+                          width: screenWidth * 0.05,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already have an account?",
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                              color: const Color(0XFF040415).withOpacity(0.4),
+                            ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: screenWidth * 0.02),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushReplacementNamed(AppRoutes.loginScreen);
+                          },
+                          child: Text(
+                            "Sign In",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(color: const Color(0XFFFF5B00)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
