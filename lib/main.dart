@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/workshop_signup.dart';
+import './screens/workshop_signup.dart';
 import './routes/app_routes.dart';
 
 void main() {
