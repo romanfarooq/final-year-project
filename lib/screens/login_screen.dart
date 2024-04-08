@@ -29,8 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    final paddingTop = MediaQuery.of(context).padding.top;
-    final screenHeight = height - paddingTop;
+    final padding = MediaQuery.of(context).padding;
+    final screenHeight = height - padding.top - padding.bottom;
 
     return Scaffold(
       body: SafeArea(
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Container(
             width: screenWidth,
             height: screenHeight,
-            padding: EdgeInsets.symmetric(
+            margin: EdgeInsets.symmetric(
               horizontal: screenWidth * 0.05,
               vertical: screenHeight * 0.01,
             ),
@@ -129,8 +129,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomElevatedButton(
                     text: "Login",
                     buttonStyle: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.transparent),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.transparent,
+                      ),
                       elevation: MaterialStateProperty.all<double>(0),
                     ),
                     decoration: BoxDecoration(

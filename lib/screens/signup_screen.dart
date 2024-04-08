@@ -33,8 +33,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    final paddingTop = MediaQuery.of(context).padding.top;
-    final screenHeight = height - paddingTop;
+    final padding = MediaQuery.of(context).padding;
+    final screenHeight = height - padding.top - padding.bottom;
 
     return Scaffold(
       body: SafeArea(
@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Container(
             width: screenWidth,
             height: screenHeight,
-            padding: EdgeInsets.fromLTRB(
+            margin: EdgeInsets.fromLTRB(
               screenWidth * 0.05,
               screenHeight * 0.01,
               screenWidth * 0.05,
@@ -146,7 +146,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildFullName(
-      BuildContext context, double screenWidth, double screenHeight) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -178,7 +181,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildEmail(
-      BuildContext context, double screenWidth, double screenHeight) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -211,7 +217,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildPhoneNumber(
-      BuildContext context, double screenWidth, double screenHeight) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -244,7 +253,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildPassword(
-      BuildContext context, double screenWidth, double screenHeight) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -303,7 +315,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildLine(
-      BuildContext context, double screenWidth, double screenHeight) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
