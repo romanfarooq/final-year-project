@@ -9,8 +9,8 @@ class AddingCar1Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final paddingTop = MediaQuery.of(context).padding.top;
-    final screenHeight = height - paddingTop;
+    final padding = MediaQuery.of(context).padding;
+    final screenHeight = height - padding.top - padding.bottom;
     // final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(

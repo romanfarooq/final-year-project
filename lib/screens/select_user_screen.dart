@@ -11,8 +11,8 @@ class SelectUserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    final paddingTop = MediaQuery.of(context).padding.top;
-    final screenHeight = height - paddingTop;
+    final padding = MediaQuery.of(context).padding;
+    final screenHeight = height - padding.top - padding.bottom;
 
     return Scaffold(
       body: SafeArea(

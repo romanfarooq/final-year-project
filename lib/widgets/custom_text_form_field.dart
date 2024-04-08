@@ -53,8 +53,9 @@ class CustomTextFormField extends StatelessWidget {
     return Container(
       width: width ?? double.maxFinite,
       decoration: BoxDecoration(
-        borderRadius:
-            BorderRadius.circular(10), // Adjust border radius as needed
+        borderRadius: const BorderRadius.all(
+          Radius.circular(10),
+        ), // Adjust border radius as needed
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.1), // Shadow color
@@ -68,13 +69,14 @@ class CustomTextFormField extends StatelessWidget {
         controller: controller,
         focusNode: focusNode,
         autofocus: false,
-        style: textStyle ?? const TextStyle(color: Color(0XFFA8AEB8)),
+        style: textStyle ?? const TextStyle(color: Color(0X7E040415)),
         obscureText: obscureText!,
         textInputAction: textInputAction!,
         keyboardType: textInputType!,
         maxLines: maxLines ?? 1,
         decoration: InputDecoration(
           hintText: hintText ?? "",
+          hintStyle: hintStyle ?? const TextStyle(color: Color(0XFFA8AEB8)),
           prefixIcon: prefix,
           prefixIconConstraints: prefixConstraints,
           suffix: suffix,
@@ -88,18 +90,18 @@ class CustomTextFormField extends StatelessWidget {
           fillColor: fillColor ?? const Color.fromARGB(255, 255, 255, 255),
           filled: filled,
           border: borderDecoration ??
-              OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+              const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
                 borderSide: BorderSide.none,
               ),
           enabledBorder: borderDecoration ??
-              OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+              const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
                 borderSide: BorderSide.none,
               ),
           focusedBorder: borderDecoration ??
-              OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+              const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
                 borderSide: BorderSide.none,
               ),
         ),
