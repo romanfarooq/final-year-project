@@ -35,7 +35,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  flutter_svg: ^2.0.9
+  flutter_svg: ^2.0.10+1
   flutter_inset_box_shadow: ^1.0.8
 
 dev_dependencies:
@@ -64,6 +64,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/carlogo/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

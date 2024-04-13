@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import './screens/car_user_main_page.dart';
 import './routes/app_routes.dart';
 import './screens/splash_screen.dart';
 
@@ -17,10 +17,11 @@ class MyApp extends StatelessWidget {
       title: 'Car Care Pro',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Poppins',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: CarUserMain(),
       routes: AppRoutes.routes,
     );
   }
