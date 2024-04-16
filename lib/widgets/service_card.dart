@@ -5,7 +5,7 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 class ServiceRecordWidget extends StatelessWidget {
   final String text;
 
-  const ServiceRecordWidget({Key? key, required this.text}) : super(key: key);
+  const ServiceRecordWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
