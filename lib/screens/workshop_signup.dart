@@ -32,12 +32,12 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
@@ -87,12 +87,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
                         ),
                         child: TextField(
                           controller: _workshopnameController,
@@ -154,12 +149,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
                         ),
                         child: TextField(
                           controller: _locationController,
@@ -216,16 +206,12 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.only(
-                            left: figmaSpaceToPercentage(26, context),
-                            top: figmaSpaceToPercentage(10, context)),
+                          left: figmaSpaceToPercentage(26, context),
+                          top: figmaSpaceToPercentage(10, context),
+                        ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
                         ),
                         child: TextField(
                           controller: _contactController,
@@ -282,16 +268,12 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.only(
-                            left: figmaSpaceToPercentage(26, context),
-                            top: figmaSpaceToPercentage(10, context)),
+                          left: figmaSpaceToPercentage(26, context),
+                          top: figmaSpaceToPercentage(10, context),
+                        ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
                         ),
                         child: TextField(
                           controller: _websiteController,
@@ -353,12 +335,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
                         ),
                         child: TextField(
                           controller: _openinghoursController,
@@ -418,11 +395,8 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -500,20 +474,20 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                   ),
                 ],
               ),
-            ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Image.asset(
+                  ImageConstant.wrenchtool,
+                  height: figmaSpaceToPercentage(240, context),
+                  width: figmaSpaceToPercentageWidth(300, context),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ],
           ),
         ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Image.asset(
-            ImageConstant.wrenchtool,
-            height: figmaSpaceToPercentage(240, context),
-            width: figmaSpaceToPercentageWidth(300, context),
-            fit: BoxFit.cover,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

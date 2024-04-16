@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 
@@ -13,14 +14,15 @@ class WorkshopHomepage extends StatefulWidget {
 
 class _WorkshopHomepageState extends State<WorkshopHomepage> {
   double _rating = 3.5;
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          backgroundColor: Colors.white,
-          body: SafeArea(
-            child: Column(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
@@ -44,48 +46,37 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       height: figmaSpaceToPercentage(40, context),
                       padding: const EdgeInsets.only(left: 1),
                       margin: const EdgeInsets.only(left: 1),
-                      decoration: BoxDecoration(
-                        color: const Color.fromRGBO(217, 217, 217, 1),
-                        borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(25),
-                          bottomRight: Radius.circular(25),
-                          topLeft: Radius.circular(25),
-                          bottomLeft: Radius.circular(25),
-                        ),
-
-
+                      decoration: const BoxDecoration(
+                        color: Color.fromRGBO(217, 217, 217, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(25)),
                       ),
-                      child:Image.asset(
+                      child: Image.asset(
                         ImageConstant.setting,
                         height: figmaSpaceToPercentage(23, context),
                         width: figmaSpaceToPercentageWidth(25, context),
                         alignment: Alignment.center,
-
                       ),
-
                     ),
                   ],
                 ),
                 SizedBox(
                   height: figmaSpaceToPercentage(6, context),
                 ),
-
                 Row(
                   children: [
                     SizedBox(
                       width: figmaSpaceToPercentageWidth(45, context),
                     ),
-
                     Text(
-                    "WAQAR AUTOS",
-                    style: TextStyle(
-                      color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(14, context),
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
+                      "WAQAR AUTOS",
+                      style: TextStyle(
+                        color: const Color.fromRGBO(0, 0, 0, 1),
+                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
-          ]
+                  ],
                 ),
                 SizedBox(
                   height: figmaSpaceToPercentage(7, context),
@@ -150,17 +141,15 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                     SizedBox(
                       width: figmaSpaceToPercentageWidth(4, context),
                     ),
-                     Text(
-                        "(+92) 123-6957495",
-                        style: TextStyle(
-                          color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(14, context),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                        ),
-
+                    Text(
+                      "(+92) 123-6957495",
+                      style: TextStyle(
+                        color: const Color.fromRGBO(0, 0, 0, 1),
+                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
                       ),
-
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -191,44 +180,40 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                       ),
-
                     ),
-
                   ],
                 ),
-                  SizedBox(
-                    height: figmaSpaceToPercentage(5, context),
-                  ),
-
-                  Row(
-                    children:[ 
-                      
-                      SizedBox(
-                        width: figmaSpaceToPercentageWidth(45, context),
-                      ),
-                      RatingBar.builder(
-                    initialRating: _rating,
-                    minRating: 0,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemSize: figmaSpaceToPercentage(20, context),
-                     itemBuilder: (context, _) => Icon(
-                      Icons.star,
-                      color: Colors.amber,
+                SizedBox(
+                  height: figmaSpaceToPercentage(5, context),
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: figmaSpaceToPercentageWidth(45, context),
                     ),
-                    onRatingUpdate: (rating) {
-                      setState(() {
-                        _rating = rating;
-                      });
-                    },
-                    glowColor: Colors.amber, // Specify the glow color here
-                                    ),
-          ]
-                  ),
-                 SizedBox(
-                   height: figmaSpaceToPercentage(77, context),
-                 ),
+                    RatingBar.builder(
+                      initialRating: _rating,
+                      minRating: 0,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemSize: figmaSpaceToPercentage(20, context),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        setState(() {
+                          _rating = rating;
+                        });
+                      },
+                      glowColor: Colors.amber, // Specify the glow color here
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: figmaSpaceToPercentage(77, context),
+                ),
                 Center(
                   child: Text(
                     "SERVICES",
@@ -238,7 +223,6 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
-
                   ),
                 ),
                 SizedBox(
@@ -250,10 +234,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       width: figmaSpaceToPercentageWidth(45, context),
                     ),
                     InkWell(
-                      onTap: ()
-                      {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
                         height: figmaSpaceToPercentage(150, context),
@@ -261,11 +242,8 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -277,24 +255,18 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             ),
                           ],
                         ),
-                        child:Image.asset(
+                        child: Image.asset(
                           ImageConstant.electricalrepairs,
                           height: figmaSpaceToPercentage(150, context),
                           width: figmaSpaceToPercentageWidth(159, context),
-
                         ),
-
                       ),
                     ),
-                    
                     SizedBox(
                       width: figmaSpaceToPercentageWidth(20, context),
                     ),
                     InkWell(
-                      onTap: ()
-                      {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
                         height: figmaSpaceToPercentage(150, context),
@@ -302,11 +274,8 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -318,16 +287,13 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             ),
                           ],
                         ),
-                        child:Image.asset(
+                        child: Image.asset(
                           ImageConstant.mechanical,
                           height: figmaSpaceToPercentage(150, context),
                           width: figmaSpaceToPercentageWidth(159, context),
-
                         ),
-
                       ),
                     ),
-
                   ],
                 ),
                 SizedBox(
@@ -339,10 +305,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       width: figmaSpaceToPercentageWidth(45, context),
                     ),
                     InkWell(
-                      onTap: ()
-                      {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
                         height: figmaSpaceToPercentage(150, context),
@@ -350,11 +313,8 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -366,24 +326,18 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             ),
                           ],
                         ),
-                        child:Image.asset(
+                        child: Image.asset(
                           ImageConstant.dentingNpainting,
                           height: figmaSpaceToPercentage(150, context),
                           width: figmaSpaceToPercentageWidth(159, context),
-
                         ),
-
                       ),
                     ),
-
                     SizedBox(
                       width: figmaSpaceToPercentageWidth(20, context),
                     ),
                     InkWell(
-                      onTap: ()
-                      {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
                         height: figmaSpaceToPercentage(150, context),
@@ -391,11 +345,8 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(236, 236, 236, 0.77),
-                          borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(25),
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -407,35 +358,30 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             ),
                           ],
                         ),
-                        child:Image.asset(
+                        child: Image.asset(
                           ImageConstant.tireservices,
                           height: figmaSpaceToPercentage(150, context),
                           width: figmaSpaceToPercentageWidth(159, context),
-
                         ),
-
                       ),
                     ),
-
                   ],
                 )
-
               ],
             ),
-          ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Image.asset(
+                ImageConstant.wrenchtool,
+                height: figmaSpaceToPercentage(240, context),
+                width: figmaSpaceToPercentageWidth(300, context),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ],
         ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Image.asset(
-            ImageConstant.wrenchtool,
-            height: figmaSpaceToPercentage(240, context),
-            width: figmaSpaceToPercentageWidth(300, context),
-            fit: BoxFit.cover,
-          ),
-        ),
-
-      ],
+      ),
     );
   }
 }
