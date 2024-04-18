@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import './screens/car_user_explor.dart';
 import './screens/car_user_main_page.dart';
 import './routes/app_routes.dart';
-import './screens/splash_screen.dart';
+//import './screens/splash_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: CarUserMain(),
+      home: Explore(),
       routes: AppRoutes.routes,
     );
   }

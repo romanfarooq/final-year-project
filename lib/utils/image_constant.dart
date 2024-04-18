@@ -27,4 +27,7 @@ class ImageConstant {
   static String background = '$imagePath/background.png';
   static String carOnwer = '$imagePath/car_owner.png';
   static String workshop = '$imagePath/workshop.png';
+
+  // Profile images
+  static String profile1 = '$imagePath/profile.png';
 }
