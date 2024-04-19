@@ -3,15 +3,14 @@ import 'package:car_care/widgets/text_container_carusermain.dart';
 import 'package:flutter/material.dart';
 //import 'package:car_care/widgets/stateful/bottom_tabs.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 import '../widgets/car_display.dart';
 import '../models/car_info.dart';
-
 
 LatLng sampleLoc = const LatLng(31.4469, 74.2682);
 
 class CarUserMain extends StatelessWidget {
   CarUserMain({super.key});
-  final temp = UserCarsInfo();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +18,7 @@ class CarUserMain extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            car_detailes(temp: temp),
+            car_detailes(),
             const TextContainer(text: 'Map'),
             const SizedBox(height: 10),
             const googleMap(),
@@ -27,6 +26,7 @@ class CarUserMain extends StatelessWidget {
             const EmergencyRoadsideAssistanceTextDisply(),
             const SizedBox(height: 10),
             const EmergencyRoadsideAssistanceButton(),
+
             ///KM DRIVEN
             const SizedBox(height: 10),
             const TextContainer(text: 'KM Driven'),
@@ -42,7 +42,6 @@ class CarUserMain extends StatelessWidget {
           ],
         ),
       ),
-      //bottomNavigationBar:const BottomTabs(),
     );
   }
 
@@ -88,7 +87,7 @@ class CarUserMain extends StatelessWidget {
               width: 60,
               height: 38,
               child: IconButton(
-                icon: const Icon(Icons.notifications),
+                icon: const Icon(Icons.messenger_rounded),
                 onPressed: () {},
               ),
             ),
@@ -285,17 +284,13 @@ class googleMap extends StatelessWidget {
 class car_detailes extends StatelessWidget {
   const car_detailes({
     super.key,
-    required this.temp,
   });
-
-  final UserCarsInfo temp;
-
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 20.0),
       height: 200.0,
-      child: Listview(temp: temp),
+      child: Listview(),
     );
   }
 }
@@ -303,16 +298,13 @@ class car_detailes extends StatelessWidget {
 class Listview extends StatelessWidget {
   const Listview({
     super.key,
-    required this.temp,
   });
-
-  final UserCarsInfo temp;
-
   @override
   Widget build(BuildContext context) {
+    final carinfo = context.read<UserCarsInfo>();
     return ListView(
       scrollDirection: Axis.horizontal,
-      children: temp.userCars
+      children: carinfo.getcars
           .map((item) => CarDisplay(
                 name: item.name,
                 imgPath: item.imgPath,

@@ -50,7 +50,7 @@ class _BottomTabsState extends State<BottomTabs> {
             label: ''
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(_selectedIndex == 3 ? 'assets/icons/video-play-bold.svg' : 'assets/icons/video-play-outline.svg'),
+            icon: Icon(_selectedIndex == 3 ? Icons.sell : Icons.sell_outlined),
             label: ''
           ),
           BottomNavigationBarItem(
