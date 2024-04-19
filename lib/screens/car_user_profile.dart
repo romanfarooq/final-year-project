@@ -1,8 +1,6 @@
-//import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-//import 'package:flutter/widgets.dart';
-//import 'package:car_care/widgets/service_history.dart';
 import 'package:car_care/widgets/custom_container_profile.dart';
+import 'package:flutter/material.dart';
+
 import '../data/service_history_data.dart';
 
 class CarOwnerProfile extends StatelessWidget {
@@ -12,8 +10,7 @@ class CarOwnerProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbar(),
-      body: 
-      SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -34,7 +31,7 @@ class CarOwnerProfile extends StatelessWidget {
             ),
             const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: first_row(),
+              child: FirstRow(),
             ),
             //2nd row
             const SizedBox(
@@ -42,30 +39,30 @@ class CarOwnerProfile extends StatelessWidget {
             ),
             const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: secound_row(),
+              child: SecondRow(),
               //3rd row
             ),
             const SizedBox(
               height: 10,
             ),
-            const third_row(),
-            const driven_con(),
-            km_con(),
+            const ThirdRow(),
+            const DrivenCon(),
+            kmCon(),
             const SizedBox(
               height: 10,
             ),
-            service_history_con(context),
+            serviceHistoryCon(context),
             const SizedBox(
               height: 10,
             ),
-            ...service_history_data.map((widgetFactory) => widgetFactory),
+            ...serviceHistoryData.map((widgetFactory) => widgetFactory),
           ],
         ),
       ),
     );
   }
 
-  Container service_history_con(BuildContext context) {
+  Container serviceHistoryCon(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 20),
       width: MediaQuery.of(context).size.width,
@@ -87,7 +84,7 @@ class CarOwnerProfile extends StatelessWidget {
     );
   }
 
-  Container km_con() {
+  Container kmCon() {
     return Container(
       margin: const EdgeInsets.only(top: 10, left: 20),
       child: const Text(
@@ -134,10 +131,8 @@ class CarOwnerProfile extends StatelessWidget {
   }
 }
 
-class driven_con extends StatelessWidget {
-  const driven_con({
-    super.key,
-  });
+class DrivenCon extends StatelessWidget {
+  const DrivenCon({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -157,10 +152,8 @@ class driven_con extends StatelessWidget {
   }
 }
 
-class third_row extends StatelessWidget {
-  const third_row({
-    super.key,
-  });
+class ThirdRow extends StatelessWidget {
+  const ThirdRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -178,10 +171,8 @@ class third_row extends StatelessWidget {
   }
 }
 
-class secound_row extends StatelessWidget {
-  const secound_row({
-    super.key,
-  });
+class SecondRow extends StatelessWidget {
+  const SecondRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -218,10 +209,8 @@ class secound_row extends StatelessWidget {
   }
 }
 
-class first_row extends StatelessWidget {
-  const first_row({
-    super.key,
-  });
+class FirstRow extends StatelessWidget {
+  const FirstRow({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,44 +1,44 @@
 import 'package:car_care/widgets/graph_km_driven.dart';
 import 'package:car_care/widgets/text_container_carusermain.dart';
 import 'package:flutter/material.dart';
-//import 'package:car_care/widgets/stateful/bottom_tabs.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import '../widgets/car_display.dart';
+
 import '../models/car_info.dart';
+import '../widgets/car_display.dart';
 
 LatLng sampleLoc = const LatLng(31.4469, 74.2682);
 
 class CarUserMain extends StatelessWidget {
-  CarUserMain({super.key});
+  const CarUserMain({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
-            car_detailes(),
-            const TextContainer(text: 'Map'),
-            const SizedBox(height: 10),
-            const googleMap(),
-            const SizedBox(height: 10),
-            const EmergencyRoadsideAssistanceTextDisply(),
-            const SizedBox(height: 10),
-            const EmergencyRoadsideAssistanceButton(),
+            CarDetailes(),
+            TextContainer(text: 'Map'),
+            SizedBox(height: 10),
+            GoogleMap(),
+            SizedBox(height: 10),
+            EmergencyRoadsideAssistanceTextDisply(),
+            SizedBox(height: 10),
+            EmergencyRoadsideAssistanceButton(),
 
             ///KM DRIVEN
-            const SizedBox(height: 10),
-            const TextContainer(text: 'KM Driven'),
-            const LineChartCard(),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
+            TextContainer(text: 'KM Driven'),
+            LineChartCard(),
+            SizedBox(height: 10),
 
             ///OIL CHANGE
-            const SizedBox(height: 10),
-            const TextContainer(text: 'Oil Change'),
-            const SizedBox(height: 10),
-            const OilChangeKM(),
-            const SizedBox(height: 20),
+            SizedBox(height: 10),
+            TextContainer(text: 'Oil Change'),
+            SizedBox(height: 10),
+            OilChangeKM(),
+            SizedBox(height: 20),
           ],
         ),
       ),
@@ -205,16 +205,18 @@ class OilChangeKM extends StatelessWidget {
 }
 
 class EmergencyRoadsideAssistanceButton extends StatelessWidget {
-  const EmergencyRoadsideAssistanceButton({
-    super.key,
-  });
+  const EmergencyRoadsideAssistanceButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor:
-            const Color.fromARGB(255, 243, 243, 243), // Button color
+        backgroundColor: const Color.fromARGB(
+          255,
+          243,
+          243,
+          243,
+        ), // Button color
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(48), // Rounded corners
         ),
@@ -234,9 +236,7 @@ class EmergencyRoadsideAssistanceButton extends StatelessWidget {
 }
 
 class EmergencyRoadsideAssistanceTextDisply extends StatelessWidget {
-  const EmergencyRoadsideAssistanceTextDisply({
-    super.key,
-  });
+  const EmergencyRoadsideAssistanceTextDisply({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -255,10 +255,8 @@ class EmergencyRoadsideAssistanceTextDisply extends StatelessWidget {
   }
 }
 
-class googleMap extends StatelessWidget {
-  const googleMap({
-    super.key,
-  });
+class GoogleMap extends StatelessWidget {
+  const GoogleMap({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +264,7 @@ class googleMap extends StatelessWidget {
       width: 365,
       height: 210,
       decoration: ShapeDecoration(
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage('assets/images/map.png'),
           fit: BoxFit.fill,
         ),
@@ -281,30 +279,26 @@ class googleMap extends StatelessWidget {
   }
 }
 
-class car_detailes extends StatelessWidget {
-  const car_detailes({
-    super.key,
-  });
+class CarDetailes extends StatelessWidget {
+  const CarDetailes({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 20.0),
       height: 200.0,
-      child: Listview(),
+      child: const ListviewWiget(),
     );
   }
 }
 
-class Listview extends StatelessWidget {
-  const Listview({
-    super.key,
-  });
+class ListviewWiget extends StatelessWidget {
+  const ListviewWiget({super.key});
   @override
   Widget build(BuildContext context) {
     final carinfo = context.read<UserCarsInfo>();
     return ListView(
       scrollDirection: Axis.horizontal,
-      children: carinfo.getcars
+      children: carinfo.getCars
           .map((item) => CarDisplay(
                 name: item.name,
                 imgPath: item.imgPath,

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './screens/car_user_explor.dart';
-import './screens/car_user_main_page.dart';
-import './screens/car_user_profile.dart';
-import './screens/tab_screen.dart';
+
+import './models/car_info.dart';
 import './routes/app_routes.dart';
-import './screens/carusersetting.dart';
-//import './screens/splash_screen.dart';
-import '../models/car_info.dart';
+import './screens/tab_screen.dart';
 
 void main() {
   MultiProvider(
@@ -32,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: BottomTabs(),
+      home: const BottomTabs(),
       routes: AppRoutes.routes,
     );
   }

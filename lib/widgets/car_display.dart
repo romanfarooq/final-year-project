@@ -37,41 +37,41 @@ class CarDisplay extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-              Positioned(
-                left: 0,
-                top: 0,
-                child: Container(
-                  height: 21,
-                  decoration: ShapeDecoration(
-                    color: Colors.black.withOpacity(0.800000011920929),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    shadows: const [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
+            Positioned(
+              left: 0,
+              top: 0,
+              child: Container(
+                height: 21,
+                decoration: ShapeDecoration(
+                  color: Colors.black.withOpacity(0.800000011920929),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Container(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Text(
-                      name,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      textAlign: TextAlign.center,
+                  shadows: const [
+                    BoxShadow(
+                      color: Color(0x3F000000),
+                      blurRadius: 4,
+                      offset: Offset(0, 4),
+                      spreadRadius: 0,
+                    )
+                  ],
+                ),
+                child: Container(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
                     ),
-                  )
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
       ),
     );
   }

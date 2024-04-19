@@ -1,4 +1,4 @@
-import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart';
 
 class CarInfo {
   String name;
@@ -20,38 +20,50 @@ class UserCarsInfo with ChangeNotifier {
       imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
     ),
     CarInfo(
-      name: "BNW",
+      name: "BMW",
       licensePlate: "4321",
       imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
     ),
   ];
 
-  get getCars => _userCars;
+  List<CarInfo> get getCars => _userCars.toList();
 
-  set addCar(CarInfo car) {
+  void addCar(CarInfo car) {
     _userCars.add(car);
     notifyListeners();
   }
 
   void removeCar(CarInfo car) {
-    _userCars.removeWhere((element) => element.licensePlate == car.licensePlate);
+    _userCars.removeWhere(
+      (element) => element.licensePlate == car.licensePlate,
+    );
+    notifyListeners();
   }
 
-  set updateCar(CarInfo car) {
-    _userCars.removeWhere((element) => element.licensePlate == car.licensePlate);
-    _userCars.add(car);
+  void updateCar(CarInfo car) {
+    int index = _userCars.indexWhere(
+      (element) => element.licensePlate == car.licensePlate,
+    );
+    if (index != -1) {
+      _userCars[index] = car;
+      notifyListeners();
+    }
   }
 
   CarInfo getCarByLicensePlate(String licensePlate) {
-    return _userCars
-        .firstWhere((element) => element.licensePlate == licensePlate);
+    return _userCars.firstWhere(
+      (element) => element.licensePlate == licensePlate,
+    );
   }
 
   bool isCarExist(String licensePlate) {
-    return _userCars.any((element) => element.licensePlate == licensePlate);
+    return _userCars.any(
+      (element) => element.licensePlate == licensePlate,
+    );
   }
 
   void removeAllCars() {
     _userCars.clear();
+    notifyListeners();
   }
 }

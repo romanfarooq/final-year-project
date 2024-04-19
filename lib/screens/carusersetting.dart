@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
+  const AccountSettingsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +71,7 @@ class AccountSettingsScreen extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: const Text(
                 'version 1.0.0',
                 style: TextStyle(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ServiceHistory extends StatelessWidget {
   final String text;
 
-  const ServiceHistory({Key? key, required this.text}) : super(key: key);
+  const ServiceHistory({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ServiceHistory extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(35),
         shape: BoxShape.rectangle,
-        color: Color.fromARGB(255, 228, 228, 228),
+        color: const Color.fromARGB(255, 228, 228, 228),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -38,15 +38,15 @@ class ServiceHistory extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     // Define the action when the button is tapped
-                    print('Button tapped');
+                    // print('Button tapped');
                   },
                   child: Container(
-                    padding: EdgeInsets.all(2),
+                    padding: const EdgeInsets.all(2),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(220, 221, 221, 221),
+                      color: const Color.fromARGB(220, 221, 221, 221),
                       borderRadius: BorderRadius.circular(35),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.info,
                       color: Colors.black,
                       size: 30,

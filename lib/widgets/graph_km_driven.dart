@@ -1,8 +1,9 @@
-import '../const/constant.dart';
-import '../data/line_chart_data.dart';
-import 'custom_card_widget.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+
+import '../const/constant.dart';
+import '../data/line_chart_data.dart';
+import './custom_card_widget.dart';
 
 class LineChartCard extends StatelessWidget {
   const LineChartCard({super.key});
@@ -15,24 +16,27 @@ class LineChartCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "",
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
           ),
           const SizedBox(height: 20),
           AspectRatio(
             aspectRatio: 16 / 6,
             child: LineChart(
               LineChartData(
-                lineTouchData: LineTouchData(
+                lineTouchData: const LineTouchData(
                   handleBuiltInTouches: true,
                 ),
-                gridData: FlGridData(show: false),
+                gridData: const FlGridData(show: false),
                 titlesData: FlTitlesData(
-                  rightTitles: AxisTitles(
+                  rightTitles: const AxisTitles(
                     sideTitles: SideTitles(showTitles: false),
                   ),
-                  topTitles: AxisTitles(
+                  topTitles: const AxisTitles(
                     sideTitles: SideTitles(showTitles: false),
                   ),
                   bottomTitles: AxisTitles(
@@ -43,9 +47,12 @@ class LineChartCard extends StatelessWidget {
                             ? SideTitleWidget(
                                 axisSide: meta.axisSide,
                                 child: Text(
-                                    data.bottomTitle[value.toInt()].toString(),
-                                    style: TextStyle(
-                                        fontSize: 12, color: const Color.fromARGB(255, 0, 0, 0))),
+                                  data.bottomTitle[value.toInt()].toString(),
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                  ),
+                                ),
                               )
                             : const SizedBox();
                       },
@@ -55,9 +62,13 @@ class LineChartCard extends StatelessWidget {
                     sideTitles: SideTitles(
                       getTitlesWidget: (double value, TitleMeta meta) {
                         return data.leftTitle[value.toInt()] != null
-                            ? Text(data.leftTitle[value.toInt()].toString(),
-                                style: TextStyle(
-                                    fontSize: 12, color: const Color.fromARGB(255, 0, 0, 0)))
+                            ? Text(
+                                data.leftTitle[value.toInt()].toString(),
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              )
                             : const SizedBox();
                       },
                       showTitles: true,
@@ -77,12 +88,12 @@ class LineChartCard extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         colors: [
                           selectionColor.withOpacity(0.5),
-                          Color.fromARGB(0, 255, 255, 255)
+                          const Color.fromARGB(0, 255, 255, 255)
                         ],
                       ),
                       show: true,
                     ),
-                    dotData: FlDotData(show: false),
+                    dotData: const FlDotData(show: false),
                     spots: data.spots,
                   )
                 ],

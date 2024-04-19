@@ -1,6 +1,6 @@
 import '../widgets/service_history.dart';
 
-List<ServiceHistory> service_history_data = [
+List<ServiceHistory> serviceHistoryData = [
   const ServiceHistory(text: 'Tire Replace'),
   const ServiceHistory(text: 'Oil Change'),
   const ServiceHistory(text: 'Wheel balancing'),
