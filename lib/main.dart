@@ -1,6 +1,7 @@
 
 import 'package:car_care/screens/car_care_requests.dart';
 import 'package:car_care/screens/vehicle_service_record.dart';
+import 'package:car_care/screens/workshop_clients.dart';
 import 'package:car_care/screens/workshop_homepage.dart';
 import 'package:car_care/screens/workshop_services.dart';
 import 'package:car_care/screens/workshop_signup.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CarCareRequests(),
+      home: const WorkshopClients(),
       routes: AppRoutes.routes,
     );
   }

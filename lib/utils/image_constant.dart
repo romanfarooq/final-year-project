@@ -54,6 +54,10 @@ class ImageConstant {
 // Car Care Requests
   static String Cross = '$imagePath/cross.png';
 
+  // Workshop Clients
+  static String waqar = '$imagePath/waqar.png';
+
+
 
 
 }
