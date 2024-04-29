@@ -23,6 +23,7 @@ class CustomDropDown extends StatelessWidget {
     this.filled = true,
     this.validator,
     this.onChanged,
+    this.alignment,
   });
 
   final double? width;
@@ -43,34 +44,42 @@ class CustomDropDown extends StatelessWidget {
   final bool? filled;
   final FormFieldValidator<SelectionPopupModel>? validator;
   final Function(SelectionPopupModel)? onChanged;
+  final Alignment? alignment;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width ?? double.maxFinite,
-      child: DropdownButtonFormField<SelectionPopupModel>(
-        focusNode: focusNode ?? FocusNode(),
-        icon: icon,
-        autofocus: autofocus!,
-        style: textStyle ?? defaultTextStyle,
-        items: items?.map((SelectionPopupModel item) {
-          return DropdownMenuItem<SelectionPopupModel>(
-            value: item,
-            child: Text(
-              item.title,
-              overflow: TextOverflow.ellipsis,
-              style: hintStyle ?? defaultTextStyle,
-            ),
-          );
-        }).toList(),
-        decoration: decoration,
-        validator: validator,
-        onChanged: (value) {
-          onChanged!(value!);
-        },
-      ),
-    );
+    return alignment != null
+        ? Align(
+            alignment: alignment ?? Alignment.center,
+            child: dropDownWidget,
+          )
+        : dropDownWidget;
   }
+
+  Widget get dropDownWidget => SizedBox(
+        width: width ?? double.maxFinite,
+        child: DropdownButtonFormField<SelectionPopupModel>(
+          focusNode: focusNode ?? FocusNode(),
+          icon: icon,
+          autofocus: autofocus!,
+          style: textStyle ?? defaultTextStyle,
+          items: items?.map((SelectionPopupModel item) {
+            return DropdownMenuItem<SelectionPopupModel>(
+              value: item,
+              child: Text(
+                item.title,
+                overflow: TextOverflow.ellipsis,
+                style: hintStyle ?? defaultTextStyle,
+              ),
+            );
+          }).toList(),
+          decoration: decoration,
+          validator: validator,
+          onChanged: (value) {
+            onChanged!(value!);
+          },
+        ),
+      );
 
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
