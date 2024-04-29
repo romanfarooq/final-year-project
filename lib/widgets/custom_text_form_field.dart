@@ -50,6 +50,15 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return alignment == null
+        ? buildTextFormField(context)
+        : Align(
+            alignment: alignment!,
+            child: buildTextFormField(context),
+          );
+  }
+
+  Widget buildTextFormField(BuildContext context) {
     return Container(
       width: width ?? double.maxFinite,
       decoration: BoxDecoration(
