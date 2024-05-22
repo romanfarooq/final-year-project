@@ -1,5 +1,9 @@
 
 import 'package:car_care/screens/car_care_requests.dart';
+import 'package:car_care/screens/denting_n_painting_services_vault.dart';
+import 'package:car_care/screens/electrical_services_vault.dart';
+import 'package:car_care/screens/mechanical_services_vault.dart';
+import 'package:car_care/screens/tire_services_vault.dart';
 import 'package:car_care/screens/vehicle_service_record.dart';
 import 'package:car_care/screens/workshop_clients.dart';
 import 'package:car_care/screens/workshop_homepage.dart';
@@ -28,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const WorkshopClients(),
+      home: const ElectricalServiceVault(),
       routes: AppRoutes.routes,
     );
   }
