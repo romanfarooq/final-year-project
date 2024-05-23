@@ -56,8 +56,9 @@ class ImageConstant {
 
   // Workshop Clients
   static String waqar = '$imagePath/waqar.png';
-
-
-
+  static String city = '$imagePath/city.png';
+  static String carwheel = '$imagePath/carwheel.png';
+  static String engineoil = '$imagePath/engineoil.png';
+  static String caruser = '$imagePath/caruser.png';
 
 }

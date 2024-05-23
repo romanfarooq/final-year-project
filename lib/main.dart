@@ -9,6 +9,7 @@ import 'package:car_care/screens/workshop_clients.dart';
 import 'package:car_care/screens/workshop_homepage.dart';
 import 'package:car_care/screens/workshop_services.dart';
 import 'package:car_care/screens/workshop_signup.dart';
+import 'package:car_care/screens/user_homescreen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ElectricalServiceVault(),
+      home: const UserHomeScreen(),
       routes: AppRoutes.routes,
     );
   }
