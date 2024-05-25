@@ -325,12 +325,18 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
               // ),
 
 
-                  Column(
+                  Row(
                     children: [
+                      SizedBox(width: figmaSpaceToPercentageWidth(30, context)),
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: figmaSpaceToPercentage(10, context), horizontal: figmaSpaceToPercentageWidth(86, context)), // Adjust padding as needed
-                        child: Row(
+                        height: figmaSpaceToPercentage(150, context),
+                        width: figmaSpaceToPercentageWidth(200, context),
+                        color: Colors.transparent,
+                        child:Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(height: figmaSpaceToPercentage(15, context)),
                             Text(
                               "XyZ Part",
                               style: TextStyle(
@@ -340,10 +346,10 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
                             ),
-                            SizedBox(width: figmaSpaceToPercentageWidth(5, context)
+                            SizedBox(height: figmaSpaceToPercentage(1, context)
                             ),
                             Text(
-                              "|",
+                              "Service Charges",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(23, context),
@@ -351,35 +357,42 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
                             ),
-                            SizedBox(width: figmaSpaceToPercentageWidth(8, context)), // Adjust space between '|' and 'rs50' as needed
+                             SizedBox(height: figmaSpaceToPercentage(1, context)), // Adjust space between '|' and 'rs50' as needed
                             Text(
-                              "Rs 2400",
+                              "Total",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
+                                  fontSize: figmaSpaceToPercentage(24, context),
                                   fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                   decoration: TextDecoration.none),
                             ),
                           ],
                         ),
+                      ),
+                      SizedBox(
+                        width: figmaSpaceToPercentageWidth(20, context),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: figmaSpaceToPercentage(10, context), horizontal:figmaSpaceToPercentageWidth(86, context)), // Adjust padding as needed
-                        child: Row(
-                          children: [
-                            Text(
-                              "Labour",
-                              style: TextStyle(
-                                  color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w500,
-                                  decoration: TextDecoration.none),
-                            ),
+                        width: 1, // Width of the vertical line
+                        height: figmaSpaceToPercentage(120, context), // Height of the vertical line
+                        color: Colors.black, // Color of the vertical line
+                      ),
 
+                      SizedBox(
+                        width: figmaSpaceToPercentageWidth(20, context),
+                      ),
+                      Container(
+                        height: figmaSpaceToPercentage(150, context),
+                        width: figmaSpaceToPercentageWidth(150, context),
+                        color: Colors.transparent,
+                        child:Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: figmaSpaceToPercentage(15, context)),
                             Text(
-                              "|",
+                              "Rs. 9500",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(23, context),
@@ -387,19 +400,34 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
                             ),
-                            SizedBox(width: 8), // Adjust space between '|' and 'rs 350' as needed
+                            SizedBox(height: figmaSpaceToPercentage(1, context)
+                            ),
                             Text(
-                              "Rs 500",
+                              "Rs. 1500",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(23, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.none),
+                            ),
+                            SizedBox(height: figmaSpaceToPercentage(1, context)), // Adjust space between '|' and 'rs50' as needed
+                            Text(
+                              "Rs. 11000",
+                              style: TextStyle(
+                                  color: const Color.fromRGBO(0, 0, 0, 1),
+                                  fontSize: figmaSpaceToPercentage(24, context),
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
                                   decoration: TextDecoration.none),
                             ),
                           ],
                         ),
                       ),
+
+
+
+
                     ],
                   ),
 
