@@ -64,13 +64,14 @@ class _DentingNpaintingServiceVaultState extends State<DentingNpaintingServiceVa
                   TextWithCheckbox(text: 'Collision Repairs'),
                   TextWithCheckbox(text: 'Custom Paint Jobs'),
                   TextWithCheckbox(text: 'Surface Preparation'),
-                  TextWithCheckbox(text: 'Panel Replacement'),
+                  TextWithCheckbox(text: 'Panel Replacement/Repair'),
                   TextWithCheckbox(text: 'Vehicle Wrapping'),
                   TextWithCheckbox(text: 'Paint Protection Film (PPF) Installation'),
+                  TextWithCheckbox(text: 'Ceramic Coating'),
                   TextWithCheckbox(text: 'Custom Graphics'),
                   TextWithCheckbox(text: 'Clear Coat Application'),
                   TextWithCheckbox(text: 'Detailing'),
-                  TextWithCheckbox(text: 'Paint Polishing and Buffing'),
+                  TextWithCheckbox(text: 'Paint Polishing/Compound and Buffing'),
                   TextWithCheckbox(text: 'Weather Damage Repairs'),
 
 

@@ -3,6 +3,7 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:car_care/widgets/service_card.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
+import 'dart:ffi';
 
 class VehicleServicRecord extends StatefulWidget {
   const VehicleServicRecord({Key? key}) : super(key: key);
@@ -128,12 +129,13 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                       width: figmaSpaceToPercentageWidth(33, context),
                     ),
                     Text(
-                      "Mechanical Repairs",
+                      "Mechanical Service",
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentage(21, context),
                         fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.none
                       ),
                     ),
                   ],
@@ -146,7 +148,9 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                     itemCount: mechanicalItems.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ServiceRecordWidget(
+                        categoryName: "Mechanical",
                         text: mechanicalItems[index],
+
                       );
                     },
                     controller: _mechanicalController,
@@ -161,12 +165,12 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                       width: figmaSpaceToPercentageWidth(33, context),
                     ),
                     Text(
-                      "Electrical Repairs",
+                      "Electrical Service",
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentage(21, context),
                         fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
@@ -179,7 +183,9 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                     itemCount: electricalItems.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ServiceRecordWidget(
+
                         text: electricalItems[index],
+                        categoryName: "Electrical",
                       );
                     },
                     controller: _electricalController,
@@ -194,12 +200,12 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                       width: figmaSpaceToPercentageWidth(33, context),
                     ),
                     Text(
-                      "Denting & Painting",
+                      "Denting & Painting Service",
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentage(21, context),
                         fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
@@ -213,6 +219,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                     itemBuilder: (BuildContext context, int index) {
                       return ServiceRecordWidget(
                         text: dentingItems[index],
+                          categoryName: "Denting & Painting"
                       );
                     },
                     controller: _dentingController,
@@ -227,12 +234,12 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                       width: figmaSpaceToPercentageWidth(33, context),
                     ),
                     Text(
-                      "Tire Services",
+                      "Tire Service",
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentage(21, context),
                         fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
@@ -246,6 +253,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                     itemBuilder: (BuildContext context, int index) {
                       return ServiceRecordWidget(
                         text: tiresItems[index],
+                          categoryName: "Tire"
                       );
                     },
                     controller: _tiresController,

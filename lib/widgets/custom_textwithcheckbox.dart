@@ -23,14 +23,17 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
-                    widget.text,
-                    style: TextStyle(
-                      color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(16, context),
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none
+                  Flexible(
+                    flex: 1,
+                    child: Text(
+                      widget.text,
+                      style: TextStyle(
+                        color: const Color.fromRGBO(0, 0, 0, 1),
+                        fontSize: figmaSpaceToPercentage(16, context),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        decoration: TextDecoration.none
+                      ),
                     ),
                   ),
                   Material(
