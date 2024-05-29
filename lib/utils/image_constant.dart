@@ -61,6 +61,6 @@ class ImageConstant {
   static String engineoil = '$imagePath/engineoil.png';
   static String caruser = '$imagePath/caruser.png';
   static String oilchange = '$imagePath/oilchange.png';
-
-
+  static String edit = '$imagePath/edit.png';
+  static String information = '$imagePath/Information.png';
 }

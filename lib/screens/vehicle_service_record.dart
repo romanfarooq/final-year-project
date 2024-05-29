@@ -3,7 +3,7 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:car_care/widgets/service_card.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
-import 'dart:ffi';
+
 
 class VehicleServicRecord extends StatefulWidget {
   const VehicleServicRecord({Key? key}) : super(key: key);
@@ -17,6 +17,25 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
   late ScrollController _electricalController;
   late ScrollController _dentingController;
   late ScrollController _tiresController;
+
+  @override
+  void initState() {
+    super.initState();
+    _mechanicalController = ScrollController();
+    _electricalController = ScrollController();
+    _dentingController = ScrollController();
+    _tiresController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _mechanicalController.dispose();
+    _electricalController.dispose();
+    _dentingController.dispose();
+    _tiresController.dispose();
+    super.dispose();
+  }
+
 
   List<String> mechanicalItems = [
     "HONDA CIVIC (LHR-9856)",
@@ -52,14 +71,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
 
   int currentIndex = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    _mechanicalController = ScrollController();
-    _electricalController = ScrollController();
-    _dentingController = ScrollController();
-    _tiresController = ScrollController();
-  }
+
 
   @override
   Widget build(BuildContext context) {

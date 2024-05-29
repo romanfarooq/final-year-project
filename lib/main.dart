@@ -1,4 +1,5 @@
 
+import 'package:car_care/screens/billing_screen.dart';
 import 'package:car_care/screens/car_care_requests.dart';
 import 'package:car_care/screens/denting_n_painting_repair.dart';
 import 'package:car_care/screens/denting_n_painting_services_vault.dart';
@@ -11,6 +12,7 @@ import 'package:car_care/screens/service_history.dart';
 import 'package:car_care/screens/tire_repair.dart';
 import 'package:car_care/screens/tire_services_vault.dart';
 import 'package:car_care/screens/vehicle_service_record.dart';
+import 'package:car_care/screens/vehicle_service_record_repaired.dart';
 import 'package:car_care/screens/workshop_clients.dart';
 import 'package:car_care/screens/workshop_homepage.dart';
 import 'package:car_care/screens/workshop_services.dart';
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  VehicleServicRecord(),
+      home:  WorkshopHomepage(),
       routes: AppRoutes.routes,
     );
   }
