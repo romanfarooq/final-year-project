@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import './models/car_info.dart';
 import './routes/app_routes.dart';
 import './screens/tab_screen.dart';
 
 void main() {
-  MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => UserCarsInfo()),
-    ],
-    child: const MyApp(),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => UserCarsInfo(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 
