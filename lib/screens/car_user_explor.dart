@@ -327,47 +327,40 @@ class FirstTwoRow extends StatelessWidget {
 ////
 AppBar appBar() {
   return AppBar(
-    title: const Positioned(
-      left: 44,
-      top: 67,
-      child: Text(
-        'Explore',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w400,
-          height: 0,
-          letterSpacing: -1,
-        ),
+    title: const Text(
+      'Explore',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontFamily: 'Poppins',
+        fontWeight: FontWeight.w400,
+        height: 0,
+        letterSpacing: -1,
       ),
     ),
     actions: [
-      Column(
-        children: [
-          const Padding(
-              padding: EdgeInsets.only(
-            right: 80,
-            left: 20,
-            top: 5,
-          )),
-          Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(217, 217, 217, 0.5),
-              borderRadius: BorderRadius.circular(48),
-              shape: BoxShape.rectangle,
-            ),
-            margin: const EdgeInsets.only(right: 5, top: 5, left: 10),
-            width: 60,
-            height: 38,
-            child: IconButton(
-              icon: const Icon(Icons.notifications),
-              onPressed: () {},
-            ),
+      Padding(
+        padding: const EdgeInsets.only(
+          right: 20,
+          left: 20,
+          top: 5,
+        ),
+        child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(217, 217, 217, 0.5),
+            borderRadius: BorderRadius.circular(48),
+            shape: BoxShape.rectangle,
           ),
-        ],
+          margin: const EdgeInsets.only(right: 5, top: 5, left: 10),
+          width: 60,
+          height: 38,
+          child: IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () {},
+          ),
+        ),
       ),
     ],
   );

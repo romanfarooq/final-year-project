@@ -300,7 +300,7 @@ class ListviewWiget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       children: carinfo.getCars
           .map((item) => CarDisplay(
-                name: item.name,
+                name: item.manufacture,
                 imgPath: item.imgPath,
               ))
           .toList(),
