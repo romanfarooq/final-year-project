@@ -1,0 +1,5 @@
+alert
+Copy the secret token "CarCarePro" now. For your security, you will not be able to see it again after leaving this page.
+
+
+sk.eyJ1Ijoib21lcnVzbWFuIiwiYSI6ImNseGJzN2ticTBnY2YyanMzNWkxcWdjdGMifQ.21Pdyy25t48Lm4jmDrgLTw

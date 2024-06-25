@@ -3,14 +3,19 @@ import 'package:provider/provider.dart';
 
 import './models/adding_car_1.dart';
 import './routes/app_routes.dart';
-import './screens/splash_screen.dart';
+// import './screens/splash_screen.dart';
 import './utils/theme.dart';
+import './models/car_info.dart';
+import './screens/tab_screen.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AddingCar1()),
+        ChangeNotifierProvider(
+          create: (_) => AddingCar1(),
+          create: (_) => UserCarsInfo(),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -27,7 +32,8 @@ class MyApp extends StatelessWidget {
       title: 'Car Care Pro',
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      home: const BottomTabs(),
       routes: AppRoutes.routes,
     );
   }
