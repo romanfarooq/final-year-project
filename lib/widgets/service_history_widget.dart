@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:car_care/screens/service_history_details.dart';
+
+import '../screens/service_history_details.dart';
 import '../utils/figma_space_to_percentage.dart';
-import '../utils/image_constant.dart';
 
 class ServiceHistoryWidget extends StatelessWidget {
   final String date;
@@ -11,14 +11,14 @@ class ServiceHistoryWidget extends StatelessWidget {
   final String serviceType;
   //final VoidCallback onTap;
 
-  ServiceHistoryWidget({
-    Key? key,
+  const ServiceHistoryWidget({
+    super.key,
     required this.date,
     required this.month,
     required this.year,
     required this.serviceType,
-   // required this.onTap,
-  }): super(key: key);
+    // required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,128 +40,118 @@ class ServiceHistoryWidget extends StatelessWidget {
     }
 
     return Material(
-           color: Colors.white,
-          child: InkWell(
-                onTap: (){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(
-                      builder: (context) => ServiceHistoryDetail(
-                      date: date,
-                      month: month,
-                      year: year,
-                      serviceType: serviceType)
-                      )
-                  );
-                },
-
-            child: Column(
+      color: Colors.white,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ServiceHistoryDetail(
+                  date: date,
+                  month: month,
+                  year: year,
+                  serviceType: serviceType)));
+        },
+        child: Column(
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(30, context),
-                    ),
-                    Text(
-                      month,
-                      style: TextStyle(
-                        color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(23, context),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(5, context),
-                    ),
-                    Text(
-                      year,
-                      style: TextStyle(
-                        color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(23, context),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
-                  ],
+                SizedBox(
+                  width: figmaSpaceToPercentageWidth(30, context),
+                ),
+                Text(
+                  month,
+                  style: TextStyle(
+                    color: const Color.fromRGBO(0, 0, 0, 1),
+                    fontSize: figmaSpaceToPercentage(23, context),
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.none,
+                  ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(15, context),
+                  width: figmaSpaceToPercentageWidth(5, context),
+                ),
+                Text(
+                  year,
+                  style: TextStyle(
+                    color: const Color.fromRGBO(0, 0, 0, 1),
+                    fontSize: figmaSpaceToPercentage(23, context),
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: figmaSpaceToPercentage(15, context),
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: figmaSpaceToPercentageWidth(44, context),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(44, context),
+                    Text(
+                      date,
+                      style: TextStyle(
+                        color: const Color.fromRGBO(0, 0, 0, 1),
+                        fontSize: figmaSpaceToPercentage(96, context),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.none,
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(height: 0),
                         Text(
-                          date,
+                          'Th',
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(96, context),
+                            fontSize: figmaSpaceToPercentage(43, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.none,
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 0),
-                            Text(
-                              'Th',
-                              style: TextStyle(
-                                color: const Color.fromRGBO(0, 0, 0, 1),
-                                fontSize: figmaSpaceToPercentage(43, context),
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                                decoration: TextDecoration.none,
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(4, context),
-                    ),
-
-                      Flexible(
-                        flex: 1,
-                        child: Container(
-                          height: figmaSpaceToPercentage(142, context),
-                          width: figmaSpaceToPercentageWidth(213, context),
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(217, 217, 217, 1),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(71),
-                              bottomLeft: Radius.circular(71),
-                            ),
-                          ),
-                          child: Center(
-                            child: Image.asset(
-                              getImagePath(serviceType),
-                              height: figmaSpaceToPercentage(140, context),
-                              width: figmaSpaceToPercentageWidth(160, context),
-                              alignment: Alignment.center,
-                            ),
-                          ),
-                        ),
-                      ),
-
                   ],
+                ),
+                SizedBox(
+                  width: figmaSpaceToPercentageWidth(4, context),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    height: figmaSpaceToPercentage(142, context),
+                    width: figmaSpaceToPercentageWidth(213, context),
+                    decoration: const BoxDecoration(
+                      color: Color.fromRGBO(217, 217, 217, 1),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(71),
+                        bottomLeft: Radius.circular(71),
+                      ),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        getImagePath(serviceType),
+                        height: figmaSpaceToPercentage(140, context),
+                        width: figmaSpaceToPercentageWidth(160, context),
+                        alignment: Alignment.center,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
-          ),
-        );
-
+          ],
+        ),
+      ),
+    );
   }
 }
-
-
-

@@ -1,8 +1,8 @@
-import 'package:car_care/screens/service_card_dtail_repair.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import '../utils/figma_space_to_percentage.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:car_care/screens/service_card_detail.dart';
+
+import '../screens/service_card_dtail_repair.dart';
+import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 
 class ServiceRecordWidgetRepair extends StatelessWidget {
@@ -27,7 +27,7 @@ class ServiceRecordWidgetRepair extends StatelessWidget {
             children: [
               Material(
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     // Navigator.push(
                     //   context,
                     //   MaterialPageRoute(
@@ -61,11 +61,12 @@ class ServiceRecordWidgetRepair extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: EdgeInsets.only(left: figmaSpaceToPercentage(21, context)),
+                            padding: EdgeInsets.only(
+                                left: figmaSpaceToPercentage(21, context)),
                             child: Text(
                               text,
                               style: TextStyle(
-                                color: const Color.fromRGBO(255,255,255, 1),
+                                color: const Color.fromRGBO(255, 255, 255, 1),
                                 fontSize: figmaSpaceToPercentage(17, context),
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
@@ -79,37 +80,39 @@ class ServiceRecordWidgetRepair extends StatelessWidget {
                           child: Material(
                             color: Colors.transparent,
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => ServiceCardDetailRepair(text: text, categoryName: categoryName),
-                                          ),
-                                        );
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        ServiceCardDetailRepair(
+                                            text: text,
+                                            categoryName: categoryName),
+                                  ),
+                                );
                               },
                               child: Container(
                                 width: figmaSpaceToPercentageWidth(24, context),
                                 height: figmaSpaceToPercentage(24, context),
-                              
                                 decoration: BoxDecoration(
-                                  color: Colors.transparent,// Background color of the circle
+                                  color: Colors
+                                      .transparent, // Background color of the circle
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color: Colors.white, // Color of the border
                                     width: 2, // Width of the border
                                   ),
                                 ),
-                                child:Center(
+                                child: Center(
                                   child: Image.asset(
                                     ImageConstant.information,
-                              
                                     alignment: Alignment.center,
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                            // Positioned 20 pixels from the right side
+                          // Positioned 20 pixels from the right side
                           // child: IconButton(
                           //   icon: Icon(Icons.info_outline_rounded, size: 30,color: const Color.fromRGBO(0,0,0, 1),), // Change the icon as needed
                           //   onPressed: () {
@@ -122,9 +125,6 @@ class ServiceRecordWidgetRepair extends StatelessWidget {
                           //     );
                           //   },
                           // ),
-
-
-
                         ),
                       ],
                     ),
@@ -132,7 +132,10 @@ class ServiceRecordWidgetRepair extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: figmaSpaceToPercentage(20, context), // Adjust the height as needed
+                height: figmaSpaceToPercentage(
+                  20,
+                  context,
+                ), // Adjust the height as needed
               ),
             ],
           ),

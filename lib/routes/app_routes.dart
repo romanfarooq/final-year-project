@@ -6,6 +6,24 @@ import '../screens/select_user_screen.dart';
 import '../screens/signup_screen.dart';
 import '../screens/splash_screen.dart';
 import '../screens/workshop_signup.dart';
+import '../screens/billing_screen.dart';
+import '../screens/car_care_requests.dart';
+import '../screens/denting_n_painting_repair.dart';
+import '../screens/denting_n_painting_services_vault.dart';
+import '../screens/electrical_repair.dart';
+import '../screens/electrical_services_vault.dart';
+import '../screens/mechanical_repair.dart';
+import '../screens/mechanical_services_vault.dart';
+import '../screens/oil_change.dart';
+import '../screens/service_history.dart';
+import '../screens/tire_repair.dart';
+import '../screens/tire_services_vault.dart';
+import '../screens/vehicle_service_record.dart';
+import '../screens/vehicle_service_record_repaired.dart';
+import '../screens/workshop_clients.dart';
+import '../screens/workshop_homepage.dart';
+import '../screens/workshop_services.dart';
+import '../screens/user_homescreen.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -14,13 +32,51 @@ class AppRoutes {
   static const String selectUserScreen = '/select_user_screen';
   static const String workshopSignupScreen = '/workshop_signup';
   static const String addingCar1Screen = '/adding_car_1';
+  static const String billingScreen = '/billing_screen';
+  static const String carCareRequests = '/car_care_requests';
+  static const String dentingPaintingRepair = '/denting_painting_repair';
+  static const String dentingPaintingServicesVault =
+      '/denting_painting_services_vault';
+  static const String electricalRepair = '/electrical_repair';
+  static const String electricalServicesVault = '/electrical_services_vault';
+  static const String mechanicalRepair = '/mechanical_repair';
+  static const String mechanicalServicesVault = '/mechanical_services_vault';
+  static const String oilChange = '/oil_change';
+  static const String serviceHistory = '/service_history';
+  static const String tireRepair = '/tire_repair';
+  static const String tireServicesVault = '/tire_services_vault';
+  static const String vehicleServiceRecord = '/vehicle_service_record';
+  static const String vehicleServiceRecordRepaired =
+      '/vehicle_service_record_repaired';
+  static const String workshopClients = '/workshop_clients';
+  static const String workshopHomepage = '/workshop_homepage';
+  static const String workshopServices = '/workshop_services';
+  static const String userHomescreen = '/user_homescreen';
 
   static Map<String, WidgetBuilder> routes = {
-    splashScreen: (context) => const SplashScreen(),
-    loginScreen: (context) => const LoginScreen(),
-    signUpScreen: (context) => const SignUpScreen(),
-    selectUserScreen: (context) => const SelectUserScreen(),
-    workshopSignupScreen: (context) => const WorkshopSignup(),
-    addingCar1Screen: (context) => const AddingCar1Screen()
+    splashScreen: (ctx) => const SplashScreen(),
+    loginScreen: (ctx) => const LoginScreen(),
+    signUpScreen: (ctx) => const SignUpScreen(),
+    selectUserScreen: (ctx) => const SelectUserScreen(),
+    workshopSignupScreen: (ctx) => const WorkshopSignup(),
+    addingCar1Screen: (ctx) => const AddingCar1Screen(),
+    billingScreen: (ctx) => const BillingScreen(),
+    carCareRequests: (ctx) => const CarCareRequests(),
+    dentingPaintingRepair: (ctx) => const DentingNpaintingRepair(),
+    dentingPaintingServicesVault: (ctx) => const DentingNpaintingServiceVault(),
+    electricalRepair: (ctx) => const ElectricalRepair(),
+    electricalServicesVault: (ctx) => const ElectricalServiceVault(),
+    mechanicalRepair: (ctx) => const MechanicalRepair(),
+    mechanicalServicesVault: (ctx) => const MechanicalServiceVault(),
+    oilChange: (ctx) => const OilChange(),
+    serviceHistory: (ctx) => const ServiceHistory(),
+    tireRepair: (ctx) => const TireRepair(),
+    tireServicesVault: (ctx) => const TireServiceVault(),
+    vehicleServiceRecord: (ctx) => const VehicleServicRecord(),
+    vehicleServiceRecordRepaired: (ctx) => const VehicleServiceRecordRepaired(),
+    workshopClients: (ctx) => const WorkshopClients(),
+    workshopHomepage: (ctx) => const WorkshopHomepage(),
+    workshopServices: (ctx) => const WorkshopServices(),
+    userHomescreen: (ctx) => const UserHomeScreen(),
   };
 }

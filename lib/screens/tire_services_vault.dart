@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
-import 'package:car_care/widgets/custom_textwithcheckbox.dart';
+import '../widgets/custom_textwithcheckbox.dart';
 
 class TireServiceVault extends StatefulWidget {
   const TireServiceVault({super.key});
@@ -51,7 +52,7 @@ class _TireServiceVaultState extends State<TireServiceVault> {
           SizedBox(
             height: figmaSpaceToPercentage(15, context),
           ),
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -66,7 +67,8 @@ class _TireServiceVaultState extends State<TireServiceVault> {
                   TextWithCheckbox(text: 'Custom Tire and Wheel Packages'),
                   TextWithCheckbox(text: 'Tire Replacement'),
                   TextWithCheckbox(text: 'Tire Pressure Checks'),
-                  TextWithCheckbox(text: 'Tire Pressure Monitoring System(TPMS)'),
+                  TextWithCheckbox(
+                      text: 'Tire Pressure Monitoring System(TPMS)'),
                   TextWithCheckbox(text: 'Flat Tire Repair'),
                   TextWithCheckbox(text: 'Tire Mounting'),
                   TextWithCheckbox(text: 'Tire Inflation Services'),
@@ -75,8 +77,6 @@ class _TireServiceVaultState extends State<TireServiceVault> {
                   TextWithCheckbox(text: 'Performance Tire Upgrades'),
                   TextWithCheckbox(text: 'Seasonal Tire Swapping'),
                   TextWithCheckbox(text: 'Tire Tread Depth Measurement'),
-
-
                 ],
               ),
             ),
@@ -85,34 +85,32 @@ class _TireServiceVaultState extends State<TireServiceVault> {
             height: figmaSpaceToPercentage(44, context),
           ),
           Row(
-
-              children: [
-                SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
-                ElevatedButton(
-                  onPressed: () {
-                    // Add your onPressed logic here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    minimumSize: Size(
-                      figmaSpaceToPercentageWidth(93, context),
-                      figmaSpaceToPercentage(40, context),
-                    ), // Set the button's width and height
+            children: [
+              SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
+              ElevatedButton(
+                onPressed: () {
+                  // Add your onPressed logic here
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
                   ),
-                  child: const Text(
-                    "Done",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ), // Change the font size of the button text
-                  ),
+                  minimumSize: Size(
+                    figmaSpaceToPercentageWidth(93, context),
+                    figmaSpaceToPercentage(40, context),
+                  ), // Set the button's width and height
                 ),
-
-              ]
+                child: const Text(
+                  "Done",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ), // Change the font size of the button text
+                ),
+              ),
+            ],
           ),
           Align(
             alignment: Alignment.bottomRight,
@@ -143,8 +141,6 @@ class _TireServiceVaultState extends State<TireServiceVault> {
               ),
             ),
           ),
-
-
         ],
       ),
     );

@@ -48,9 +48,9 @@ class ImageConstant {
   static String setting = '$imagePath/setting.png';
 
 // Vehicle Serice Record
-  static String Actions = '$imagePath/Actions.png';
+  static String actions = '$imagePath/Actions.png';
 // Car Care Requests
-  static String Cross = '$imagePath/cross.png';
+  static String cross = '$imagePath/cross.png';
 
   // Workshop Clients
   static String waqar = '$imagePath/waqar.png';

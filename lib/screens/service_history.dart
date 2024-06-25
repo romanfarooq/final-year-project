@@ -1,25 +1,24 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import '../widgets/service_history_widget.dart';
+import 'package:flutter/material.dart';
+
 import '../utils/figma_space_to_percentage.dart';
-import '../utils/image_constant.dart';
-import 'service_history_details.dart';
+import '../widgets/service_history_widget.dart';
 
 class ServiceHistory extends StatelessWidget {
+  const ServiceHistory({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return  Expanded(
+    return Expanded(
       child: SingleChildScrollView(
         child: Column(
-            children: [
+          children: [
+            SizedBox(
+              height: figmaSpaceToPercentage(69, context),
+            ),
 
-              SizedBox(
-                height: figmaSpaceToPercentage(69, context),
-              ),
-      
-              Column(
-                children:[
-                  Center(
+            Column(
+              children: [
+                Center(
                   child: Text(
                     'Service History',
                     style: TextStyle(
@@ -30,75 +29,52 @@ class ServiceHistory extends StatelessWidget {
                         decoration: TextDecoration.none),
                   ),
                 ),
-        ]
-              ),
-      
-              SizedBox(
-                height: figmaSpaceToPercentage(25, context),
-              ),
-          //wa
+              ],
+            ),
 
-              Column(
-                  children:[
+            SizedBox(
+              height: figmaSpaceToPercentage(25, context),
+            ),
+            //wa
 
-                    ServiceHistoryWidget(
-                      date: '29',
-                      month: 'June',
-                      year: '2024',
-                     serviceType: 'Mechanical',
-
-                    ),
-
-                    ServiceHistoryWidget(
-                      date: '29',
-                      month: 'June',
-                      year: '2024',
-                      serviceType: 'Electrical',
-
-                    ),
-
-                    ServiceHistoryWidget(
-                      date: '29',
-                      month: 'June',
-                      year: '2024',
-                      serviceType: 'DentingNpainting',
-
-                    ),
-
-
-                    ServiceHistoryWidget(
-                      date: '29',
-                      month: 'June',
-                      year: '2024',
-                      serviceType: 'Tire',
-
-                    ),
-
-
-                    ServiceHistoryWidget(
-                      date: '29',
-                      month: 'June',
-                      year: '2024',
-                      serviceType: 'Mechanical',
-
-                    ),
-
-
-
-
-
-
-
-
-
-
-                  ]
-                  ),
-            ],
-          ),
+            const Column(
+              children: [
+                ServiceHistoryWidget(
+                  date: '29',
+                  month: 'June',
+                  year: '2024',
+                  serviceType: 'Mechanical',
+                ),
+                ServiceHistoryWidget(
+                  date: '29',
+                  month: 'June',
+                  year: '2024',
+                  serviceType: 'Electrical',
+                ),
+                ServiceHistoryWidget(
+                  date: '29',
+                  month: 'June',
+                  year: '2024',
+                  serviceType: 'DentingNpainting',
+                ),
+                ServiceHistoryWidget(
+                  date: '29',
+                  month: 'June',
+                  year: '2024',
+                  serviceType: 'Tire',
+                ),
+                ServiceHistoryWidget(
+                  date: '29',
+                  month: 'June',
+                  year: '2024',
+                  serviceType: 'Mechanical',
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
-
   }
 }
 

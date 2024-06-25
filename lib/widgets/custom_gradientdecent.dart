@@ -5,13 +5,21 @@ class GradientBorder extends StatelessWidget {
   final List<Color> colors;
   final double strokeWidth;
 
-  GradientBorder({required this.child, required this.colors, this.strokeWidth = 3.0});
+  const GradientBorder({
+    super.key,
+    required this.child,
+    required this.colors,
+    this.strokeWidth = 3.0,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ClipOval(
       child: CustomPaint(
-        painter: _GradientBorderPainter(colors: colors, strokeWidth: strokeWidth),
+        painter: _GradientBorderPainter(
+          colors: colors,
+          strokeWidth: strokeWidth,
+        ),
         child: child,
       ),
     );

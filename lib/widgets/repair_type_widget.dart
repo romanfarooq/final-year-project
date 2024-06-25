@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import '../widgets/service_history_widget.dart';
+
+import '../screens/repair_details.dart';
 import '../utils/figma_space_to_percentage.dart';
-import '../utils/image_constant.dart';
-import 'package:car_care/screens/repair_details.dart';
+
 class RepairTypeWidget extends StatelessWidget {
   final String text;
   final String repairType;
 
-  RepairTypeWidget({
+  const RepairTypeWidget({
+    super.key,
     required this.text,
     required this.repairType,
   });
@@ -34,7 +35,7 @@ class RepairTypeWidget extends StatelessWidget {
             child: Container(
               height: figmaSpaceToPercentage(46, context),
               width: figmaSpaceToPercentageWidth(378, context),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromRGBO(217, 217, 217, 1),
                 borderRadius: BorderRadius.all(Radius.circular(71)),
               ),
@@ -62,10 +63,10 @@ class RepairTypeWidget extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: figmaSpaceToPercentage(10, context)), // Space after each container
+        SizedBox(
+          height: figmaSpaceToPercentage(10, context),
+        ), // Space after each container
       ],
     );
   }
-
-
 }

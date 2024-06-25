@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:car_care/screens/vehicle_service_record_repaired.dart';
+
+import '../screens/vehicle_service_record_repaired.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 
@@ -28,7 +29,6 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                 SizedBox(
                   height: figmaSpaceToPercentage(55, context),
                 ),
-
                 Center(
                   child: Image.asset(
                     ImageConstant.carcare1,
@@ -212,36 +212,35 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                     ),
                   ],
                 ),
-
-                SizedBox(height: figmaSpaceToPercentage(15, context),),
-                Row(
-                  children:[
-
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(45, context),
-                    ),
-                    Material(
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => VehicleServiceRecordRepaired(),
-                            ),
-                          );
-                        },
-                        child: Container(
+                SizedBox(
+                  height: figmaSpaceToPercentage(15, context),
+                ),
+                Row(children: [
+                  SizedBox(
+                    width: figmaSpaceToPercentageWidth(45, context),
+                  ),
+                  Material(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const VehicleServiceRecordRepaired(),
+                          ),
+                        );
+                      },
+                      child: Container(
                         width: figmaSpaceToPercentageWidth(121, context),
                         height: figmaSpaceToPercentage(40, context),
                         decoration: ShapeDecoration(
-                          color: Color(0xFFD9D9D9),
+                          color: const Color(0xFFD9D9D9),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(48),
                           ),
                         ),
-
                         child: Center(
-                          child:Text(
+                          child: Text(
                             "History",
                             style: TextStyle(
                               color: const Color.fromRGBO(0, 0, 0, 1),
@@ -251,11 +250,10 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             ),
                           ),
                         ),
-                                          ),
                       ),
                     ),
-      ]
-                ),
+                  ),
+                ]),
                 SizedBox(
                   height: figmaSpaceToPercentage(20, context),
                 ),

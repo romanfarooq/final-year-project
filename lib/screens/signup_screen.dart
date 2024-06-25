@@ -294,8 +294,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return CustomElevatedButton(
       text: "Sign Up",
       buttonStyle: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-        elevation: MaterialStateProperty.all<double>(0),
+        backgroundColor: WidgetStateProperty.all<Color>(Colors.transparent),
+        elevation: WidgetStateProperty.all<double>(0),
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),

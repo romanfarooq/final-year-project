@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
-import 'package:car_care/widgets/custom_textwithcheckbox.dart';
+import '../widgets/custom_textwithcheckbox.dart';
 
 class DentingNpaintingServiceVault extends StatefulWidget {
   const DentingNpaintingServiceVault({super.key});
 
   @override
-  State<DentingNpaintingServiceVault> createState() => _DentingNpaintingServiceVaultState();
+  State<DentingNpaintingServiceVault> createState() =>
+      _DentingNpaintingServiceVaultState();
 }
 
-class _DentingNpaintingServiceVaultState extends State<DentingNpaintingServiceVault> {
+class _DentingNpaintingServiceVaultState
+    extends State<DentingNpaintingServiceVault> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -51,7 +54,7 @@ class _DentingNpaintingServiceVaultState extends State<DentingNpaintingServiceVa
           SizedBox(
             height: figmaSpaceToPercentage(15, context),
           ),
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -66,16 +69,15 @@ class _DentingNpaintingServiceVaultState extends State<DentingNpaintingServiceVa
                   TextWithCheckbox(text: 'Surface Preparation'),
                   TextWithCheckbox(text: 'Panel Replacement/Repair'),
                   TextWithCheckbox(text: 'Vehicle Wrapping'),
-                  TextWithCheckbox(text: 'Paint Protection Film (PPF) Installation'),
+                  TextWithCheckbox(
+                      text: 'Paint Protection Film (PPF) Installation'),
                   TextWithCheckbox(text: 'Ceramic Coating'),
                   TextWithCheckbox(text: 'Custom Graphics'),
                   TextWithCheckbox(text: 'Clear Coat Application'),
                   TextWithCheckbox(text: 'Detailing'),
-                  TextWithCheckbox(text: 'Paint Polishing/Compound and Buffing'),
+                  TextWithCheckbox(
+                      text: 'Paint Polishing/Compound and Buffing'),
                   TextWithCheckbox(text: 'Weather Damage Repairs'),
-
-
-
                 ],
               ),
             ),
@@ -84,34 +86,32 @@ class _DentingNpaintingServiceVaultState extends State<DentingNpaintingServiceVa
             height: figmaSpaceToPercentage(44, context),
           ),
           Row(
-
-              children: [
-                SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
-                ElevatedButton(
-                  onPressed: () {
-                    // Add your onPressed logic here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    minimumSize: Size(
-                      figmaSpaceToPercentageWidth(93, context),
-                      figmaSpaceToPercentage(40, context),
-                    ), // Set the button's width and height
+            children: [
+              SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
+              ElevatedButton(
+                onPressed: () {
+                  // Add your onPressed logic here
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
                   ),
-                  child: const Text(
-                    "Done",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ), // Change the font size of the button text
-                  ),
+                  minimumSize: Size(
+                    figmaSpaceToPercentageWidth(93, context),
+                    figmaSpaceToPercentage(40, context),
+                  ), // Set the button's width and height
                 ),
-
-              ]
+                child: const Text(
+                  "Done",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ), // Change the font size of the button text
+                ),
+              ),
+            ],
           ),
           Align(
             alignment: Alignment.bottomRight,
@@ -142,7 +142,6 @@ class _DentingNpaintingServiceVaultState extends State<DentingNpaintingServiceVa
               ),
             ),
           ),
-
         ],
       ),
     );

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
-import 'package:car_care/widgets/custom_textwithcheckbox.dart';
+import '../widgets/custom_textwithcheckbox.dart';
 
 class ElectricalServiceVault extends StatefulWidget {
-  const ElectricalServiceVault({Key? key}) : super(key: key);
+  const ElectricalServiceVault({super.key});
 
   @override
   State<ElectricalServiceVault> createState() => _ElectricalServiceVaultState();
@@ -34,24 +35,26 @@ class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
           SizedBox(
             height: figmaSpaceToPercentage(80, context),
           ),
-          Row(children: [
-            SizedBox(
-              width: figmaSpaceToPercentageWidth(32, context),
-            ),
-            Text(
-              'Electrical Repairs',
-              style: TextStyle(
-                  color: const Color.fromRGBO(0, 0, 0, 1),
-                  fontSize: figmaSpaceToPercentage(22, context),
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none),
-            ),
-          ]),
+          Row(
+            children: [
+              SizedBox(
+                width: figmaSpaceToPercentageWidth(32, context),
+              ),
+              Text(
+                'Electrical Repairs',
+                style: TextStyle(
+                    color: const Color.fromRGBO(0, 0, 0, 1),
+                    fontSize: figmaSpaceToPercentage(22, context),
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.none),
+              ),
+            ],
+          ),
           SizedBox(
             height: figmaSpaceToPercentage(15, context),
           ),
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -86,7 +89,6 @@ class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
             height: figmaSpaceToPercentage(44, context),
           ),
           Row(
-
             children: [
               SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
               ElevatedButton(
@@ -112,8 +114,7 @@ class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
                   ), // Change the font size of the button text
                 ),
               ),
-
-]
+            ],
           ),
           Align(
             alignment: Alignment.bottomRight,
@@ -144,8 +145,6 @@ class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
               ),
             ),
           ),
-
-
         ],
       ),
     );

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import '../utils/figma_space_to_percentage.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:car_care/screens/service_card_detail.dart';
+
+import '../screens/service_card_detail.dart';
+import '../utils/figma_space_to_percentage.dart';
 
 class ServiceRecordWidget extends StatelessWidget {
   final String text;
@@ -25,7 +26,7 @@ class ServiceRecordWidget extends StatelessWidget {
             children: [
               Material(
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     // Navigator.push(
                     //   context,
                     //   MaterialPageRoute(
@@ -59,7 +60,8 @@ class ServiceRecordWidget extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: EdgeInsets.only(left: figmaSpaceToPercentage(21, context)),
+                            padding: EdgeInsets.only(
+                                left: figmaSpaceToPercentage(21, context)),
                             child: Text(
                               text,
                               style: TextStyle(
@@ -75,13 +77,17 @@ class ServiceRecordWidget extends StatelessWidget {
                           top: 1.5,
                           right: 20, // Positioned 20 pixels from the right side
                           child: IconButton(
-                            icon: Icon(Icons.info_outline_rounded, size: 30), // Change the icon as needed
+                            icon: const Icon(
+                              Icons.info_outline_rounded,
+                              size: 30,
+                            ), // Change the icon as needed
                             onPressed: () {
                               // Navigate to the ServiceCardDetail page with parameters
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ServiceCardDetail(text: text, categoryName: categoryName),
+                                  builder: (context) => ServiceCardDetail(
+                                      text: text, categoryName: categoryName),
                                 ),
                               );
                             },
@@ -93,7 +99,10 @@ class ServiceRecordWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: figmaSpaceToPercentage(20, context), // Adjust the height as needed
+                height: figmaSpaceToPercentage(
+                  20,
+                  context,
+                ), // Adjust the height as needed
               ),
             ],
           ),

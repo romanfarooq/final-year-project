@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import '../widgets/service_history_widget.dart';
+
 import '../utils/figma_space_to_percentage.dart';
-import '../utils/image_constant.dart';
-import '../widgets/repair_type_widget.dart';
+
 class RepairDetails extends StatefulWidget {
   final String text;
   final String repairType;
 
-  RepairDetails({required this.text, required this.repairType});
+  const RepairDetails({
+    super.key,
+    required this.text,
+    required this.repairType,
+  });
 
   @override
-  _RepairDetailsState createState() => _RepairDetailsState();
+  State<RepairDetails> createState() => _RepairDetailsState();
 }
 
 class _RepairDetailsState extends State<RepairDetails> {
@@ -25,7 +28,6 @@ class _RepairDetailsState extends State<RepairDetails> {
 
   @override
   Widget build(BuildContext context) {
-
     String getImagePath(String serviceType) {
       switch (serviceType) {
         case 'Mechanical':
@@ -46,27 +48,26 @@ class _RepairDetailsState extends State<RepairDetails> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           SizedBox(
-
             height: figmaSpaceToPercentage(39, context),
           ),
           Row(
             children: [
-              SizedBox(
-                  width: figmaSpaceToPercentageWidth(27, context)
-              ),
-
+              SizedBox(width: figmaSpaceToPercentageWidth(27, context)),
               Container(
                 height: figmaSpaceToPercentageWidth(50, context),
                 width: figmaSpaceToPercentage(50, context),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(217, 217, 217, 1),
                   borderRadius: BorderRadius.all(Radius.circular(50 / 2)),
                 ),
                 child: Center(
                   child: IconButton(
-                    icon: Icon(Icons.arrow_back_ios_sharp, color: Colors.black,size: 30,),
+                    icon: const Icon(
+                      Icons.arrow_back_ios_sharp,
+                      color: Colors.black,
+                      size: 30,
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -76,7 +77,6 @@ class _RepairDetailsState extends State<RepairDetails> {
             ],
           ),
           SizedBox(
-
             height: figmaSpaceToPercentage(30, context),
           ),
           Row(
@@ -127,7 +127,7 @@ class _RepairDetailsState extends State<RepairDetails> {
               Flexible(
                 flex: 1,
                 child: Text(
-                  "${widget.text}",
+                  widget.text,
                   style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
                     fontSize: figmaSpaceToPercentage(21, context),
@@ -139,11 +139,8 @@ class _RepairDetailsState extends State<RepairDetails> {
               ),
             ],
           ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: 30,
-                 right: 30,
-                  top: 10,bottom: 10 ),
+          const Padding(
+            padding: EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
             child: Row(
               children: [
                 Expanded(
@@ -168,7 +165,7 @@ class _RepairDetailsState extends State<RepairDetails> {
                     padding: const EdgeInsets.only(left: 1),
                     margin: const EdgeInsets.only(left: 1),
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(243, 243, 243, 1),
+                      color: const Color.fromRGBO(243, 243, 243, 1),
                       borderRadius: const BorderRadius.all(Radius.circular(25)),
                       boxShadow: [
                         BoxShadow(
@@ -197,8 +194,7 @@ class _RepairDetailsState extends State<RepairDetails> {
                               fontWeight: FontWeight.w400,
                             ),
                             contentPadding: const EdgeInsets.only(
-                                left: 10,right: 10,
-                            bottom: 10, top:20),
+                                left: 10, right: 10, bottom: 10, top: 20),
                             // Add padding to the hint text
                             border: InputBorder.none,
                           ),
@@ -217,17 +213,14 @@ class _RepairDetailsState extends State<RepairDetails> {
               ),
             ],
           ),
-
           SizedBox(
             height: figmaSpaceToPercentage(35, context),
           ),
-
           Row(
             children: [
               SizedBox(
                 width: figmaSpaceToPercentageWidth(30, context),
               ),
-
               Text(
                 "Start Looking..",
                 style: TextStyle(
@@ -238,84 +231,79 @@ class _RepairDetailsState extends State<RepairDetails> {
                   decoration: TextDecoration.none,
                 ),
               ),
-
               SizedBox(
                 width: figmaSpaceToPercentageWidth(160, context),
               ),
-
               Container(
                 height: figmaSpaceToPercentageWidth(60, context),
                 width: figmaSpaceToPercentage(60, context),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(217, 217, 217, 1),
                   borderRadius: BorderRadius.all(Radius.circular(60 / 2)),
                 ),
                 child: Center(
                   child: IconButton(
-                    icon: Icon(Icons.search_sharp, color: Colors.black,size: 35),
+                    icon: const Icon(
+                      Icons.search_sharp,
+                      color: Colors.black,
+                      size: 35,
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
                 ),
               ),
-
             ],
           ),
-
           SizedBox(
-            height: figmaSpaceToPercentage(15, context) ,
+            height: figmaSpaceToPercentage(15, context),
           ),
-
           Row(
             children: [
               SizedBox(
                 width: figmaSpaceToPercentageWidth(73, context),
               ),
               Container(
-              width: figmaSpaceToPercentageWidth(159, context),
-              height: figmaSpaceToPercentage(150, context),
-              padding: const EdgeInsets.only(left: 1),
-              margin: const EdgeInsets.only(left: 1),
-              decoration: BoxDecoration(
-              color: Color.fromRGBO(255, 255, 254, 0.9),
-              borderRadius: const BorderRadius.all(Radius.circular(25)),
-              boxShadow: [
-              BoxShadow(
-              color: Colors.black.withOpacity(0.5),
-              spreadRadius: 1,
-              blurRadius: 5,
-              inset: true,
-              offset: const Offset(-1, 4),
-      ),
-      ],
-      ),
-              child:Center(
-      child: Image.asset(
-      getImagePath('${widget.repairType}'),
-
-      alignment: Alignment.center,
-      ),
-      ),
-
+                width: figmaSpaceToPercentageWidth(159, context),
+                height: figmaSpaceToPercentage(150, context),
+                padding: const EdgeInsets.only(left: 1),
+                margin: const EdgeInsets.only(left: 1),
+                decoration: BoxDecoration(
+                  color: const Color.fromRGBO(255, 255, 254, 0.9),
+                  borderRadius: const BorderRadius.all(Radius.circular(25)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      inset: true,
+                      offset: const Offset(-1, 4),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Image.asset(
+                    getImagePath(widget.repairType),
+                    alignment: Alignment.center,
+                  ),
+                ),
               ),
               SizedBox(
-                width:figmaSpaceToPercentageWidth(15, context),
+                width: figmaSpaceToPercentageWidth(15, context),
               ),
-
               Column(
                 children: [
                   SizedBox(
                     height: figmaSpaceToPercentage(100, context),
                   ),
-
                   Container(
                     width: figmaSpaceToPercentageWidth(111, context),
                     height: figmaSpaceToPercentage(105, context),
                     padding: const EdgeInsets.only(left: 1),
                     margin: const EdgeInsets.only(left: 1),
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 0.9),
+                      color: const Color.fromRGBO(255, 255, 255, 0.9),
                       borderRadius: const BorderRadius.all(Radius.circular(25)),
                       boxShadow: [
                         BoxShadow(
@@ -327,24 +315,19 @@ class _RepairDetailsState extends State<RepairDetails> {
                         ),
                       ],
                     ),
-                    child:Center(
+                    child: Center(
                       child: Image.asset(
-                        getImagePath('${widget.repairType}'),
-
+                        getImagePath(widget.repairType),
                         alignment: Alignment.center,
                       ),
                     ),
-
                   ),
                 ],
-
               )
             ],
           ),
         ],
       ),
     );
-
-
   }
 }

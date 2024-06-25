@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+
 import '../utils/figma_space_to_percentage.dart';
+
 class TextWithCheckbox extends StatefulWidget {
   final String text;
 
-  const TextWithCheckbox({Key? key, required this.text}) : super(key: key);
+  const TextWithCheckbox({super.key, required this.text});
 
   @override
-  _TextWithCheckboxState createState() => _TextWithCheckboxState();
+  State<TextWithCheckbox> createState() => _TextWithCheckboxState();
 }
 
 class _TextWithCheckboxState extends State<TextWithCheckbox> {
@@ -17,7 +19,9 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return Padding(
-          padding: EdgeInsets.only(left: figmaSpaceToPercentageWidth(42, context), right:figmaSpaceToPercentageWidth(43, context) ),
+          padding: EdgeInsets.only(
+              left: figmaSpaceToPercentageWidth(42, context),
+              right: figmaSpaceToPercentageWidth(43, context)),
           child: Column(
             children: <Widget>[
               Row(
@@ -28,12 +32,11 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
                     child: Text(
                       widget.text,
                       style: TextStyle(
-                        color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(16, context),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
-                        decoration: TextDecoration.none
-                      ),
+                          color: const Color.fromRGBO(0, 0, 0, 1),
+                          fontSize: figmaSpaceToPercentage(16, context),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          decoration: TextDecoration.none),
                     ),
                   ),
                   Material(
@@ -41,7 +44,7 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
                       onTap: () {
                         setState(() {
                           isChecked = !isChecked;
-                          print('$isChecked');
+                          // print('$isChecked');
                         });
                       },
                       child: Container(
@@ -50,17 +53,22 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: isChecked ? Colors.transparent : Colors.black,
+                            color:
+                                isChecked ? Colors.transparent : Colors.black,
                             width: figmaSpaceToPercentageWidth(2, context),
                           ),
-                          color: isChecked ? Color.fromRGBO(96, 189, 52, 1) : Colors.transparent,
+                          color: isChecked
+                              ? const Color.fromRGBO(96, 189, 52, 1)
+                              : Colors.transparent,
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: figmaSpaceToPercentage(8, context)), // Add 10 pixels of height between widgets
+              SizedBox(
+                height: figmaSpaceToPercentage(8, context),
+              ), // Add 10 pixels of height between widgets
             ],
           ),
         );
