@@ -12,10 +12,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => AddingCar1(),
-          create: (_) => UserCarsInfo(),
-        ),
+        ChangeNotifierProvider(create: (_) => AddingCar1()),
+        ChangeNotifierProvider(create: (_) => UserCarsInfo()),
       ],
       child: const MyApp(),
     ),
