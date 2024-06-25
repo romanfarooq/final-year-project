@@ -9,7 +9,7 @@ class ImageConstant {
 
   // Login images
   static String carcare2 = '$imagePath/carcare_2.png';
-  // static String carcare1 = '$imagePath/carcare_1.png';
+  //static String carcare1 = '$imagePath/carcare_1.png';
 
   // Sign Up images
   static String email = '$imagePath/email.png';
@@ -31,4 +31,34 @@ class ImageConstant {
   // Add Car 1 images
   static String audiLogo = '$imagePath/audi_logo.png';
   static String arrowDown = '$imagePath/arrow_down.svg';
+
+  //workshop Services
+
+  // Workshop Signup images
+  static String wrenchtool = '$imagePath/wrenchtool.png';
+
+  // Workshop Services images
+
+  static String electricalrepairs = '$imagePath/electricalrepairs.png';
+  static String mechanical = '$imagePath/mechanical.png';
+  static String dentingNpainting = '$imagePath/dentingNpainting.png';
+  static String tireservices = '$imagePath/tireservices.png';
+
+  //workshop Homepage
+  static String setting = '$imagePath/setting.png';
+
+// Vehicle Serice Record
+  static String Actions = '$imagePath/Actions.png';
+// Car Care Requests
+  static String Cross = '$imagePath/cross.png';
+
+  // Workshop Clients
+  static String waqar = '$imagePath/waqar.png';
+  static String city = '$imagePath/city.png';
+  static String carwheel = '$imagePath/carwheel.png';
+  static String engineoil = '$imagePath/engineoil.png';
+  static String caruser = '$imagePath/caruser.png';
+  static String oilchange = '$imagePath/oilchange.png';
+  static String edit = '$imagePath/edit.png';
+  static String information = '$imagePath/Information.png';
 }
