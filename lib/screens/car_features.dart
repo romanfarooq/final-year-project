@@ -55,7 +55,7 @@ class CarFeatures extends StatelessWidget {
               width: figmaSpaceToPercentageWidth(32, context),
             ),
             Text(
-              'Mechanical Repairs',
+              'Car Features',
               style: TextStyle(
                   color: const Color.fromRGBO(0, 0, 0, 1),
                   fontSize: figmaSpaceToPercentage(22, context),
