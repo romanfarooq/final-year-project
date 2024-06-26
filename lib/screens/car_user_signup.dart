@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
+import '../models/car_data.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
-import '../models/car_data.dart';
 
 class CarUserSignup extends StatefulWidget {
   const CarUserSignup({super.key});
