@@ -62,7 +62,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(352, context),
-                  height: figmaSpaceToPercentage(40, context),
+                  height: figmaSpaceToPercentage(65, context),
                   padding: EdgeInsets.only(
                     left: figmaSpaceToPercentageWidth(26, context),
                     top: figmaSpaceToPercentage(10, context),
@@ -115,7 +115,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(352, context),
-                  height: figmaSpaceToPercentage(40, context),
+                  height: figmaSpaceToPercentage(65, context),
                   padding: EdgeInsets.only(
                     left: figmaSpaceToPercentageWidth(26, context),
                     top: figmaSpaceToPercentage(10, context),
@@ -167,7 +167,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   height: figmaSpaceToPercentage(5, context),
                 ),
                 DropdownMenu<String>(
-                  width: figmaSpaceToPercentageWidth(150, context),
+                  width: figmaSpaceToPercentageWidth(352, context),
                   textStyle: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
                     fontSize: figmaSpaceToPercentage(20, context),
@@ -260,7 +260,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(352, context),
-                  height: figmaSpaceToPercentage(40, context),
+                  height: figmaSpaceToPercentage(65, context),
                   padding: EdgeInsets.only(
                     left: figmaSpaceToPercentageWidth(26, context),
                     top: figmaSpaceToPercentage(10, context),
