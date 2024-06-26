@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class CarInfo {
   String manufacture;
   String model;
@@ -30,26 +31,27 @@ class CarInfo {
     //required this.serviceHistory,
     required this.imgPath,
     Map<String, bool>? carFeatures,
-  }) : carFeatures = carFeatures ?? {
-    "ABS": false,
-    "AM/FM Radio": false,
-    "Air Bags": false,
-    "Air Conditioning": false,
-    "Alloy Rims": false,
-    "CD Player": false,
-    "Cruise Control": false,
-    "DVD Player": false,
-    "Immobilizer Key": false,
-    "Keyless Entry": false,
-    "Navigation System": false,
-    "Power Locks": false,
-    "Power Mirrors": false,
-    "Power Steering": false,
-    "Power Windows": false,
-    "Rear AC Vents": false,
-    "Rear Speakers": false,
-    "Sun Roof": false,
-  };
+  }) : carFeatures = carFeatures ??
+            {
+              "ABS": false,
+              "AM/FM Radio": false,
+              "Air Bags": false,
+              "Air Conditioning": false,
+              "Alloy Rims": false,
+              "CD Player": false,
+              "Cruise Control": false,
+              "DVD Player": false,
+              "Immobilizer Key": false,
+              "Keyless Entry": false,
+              "Navigation System": false,
+              "Power Locks": false,
+              "Power Mirrors": false,
+              "Power Steering": false,
+              "Power Windows": false,
+              "Rear AC Vents": false,
+              "Rear Speakers": false,
+              "Sun Roof": false,
+            };
 }
 
 class UserCarsInfo with ChangeNotifier {
@@ -64,7 +66,7 @@ class UserCarsInfo with ChangeNotifier {
       //mileage: 15km/l,
       distanceTravelled: 10000,
       //vin: "1234567890",
-      lastOilChange: DateTime.utc(2024, 05,25),
+      lastOilChange: DateTime.utc(2024, 05, 25),
       //serviceHistory: [],
       imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
     ),
@@ -78,13 +80,19 @@ class UserCarsInfo with ChangeNotifier {
       //mileage: 10km/l,
       distanceTravelled: 20000,
       //vin: "0987654321",
-      lastOilChange: DateTime.utc(2024, 05,25),
+      lastOilChange: DateTime.utc(2024, 05, 25),
       //serviceHistory: [],
       imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
     ),
   ];
 
   List<CarInfo> get getCars => _userCars.toList();
+
+  // get all manufacturers
+  List<String> get getManufacturers =>
+      _userCars.map((car) => car.manufacture).toSet().toList();
+
+  //
 
   void addCar(CarInfo car) {
     _userCars.add(car);

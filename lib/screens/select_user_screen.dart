@@ -52,7 +52,7 @@ class SelectUserScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context)
-                            .pushNamed(AppRoutes.addingCar1Screen);
+                            .pushNamed(AppRoutes.carUserSignup);
                       },
                     ),
                     const Spacer(flex: 5),

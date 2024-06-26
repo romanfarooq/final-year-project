@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../models/selection_popup_model.dart';
-
 class CustomDropDown extends StatelessWidget {
   const CustomDropDown({
     super.key,
+    this.alignment,
     this.width,
     this.focusNode,
     this.icon,
     this.autofocus = true,
     this.textStyle,
-    this.items,
     this.hintText,
-    this.hintStyle,
+    this.style,
     this.prefix,
     this.prefixConstraints,
     this.suffix,
@@ -23,17 +21,17 @@ class CustomDropDown extends StatelessWidget {
     this.filled = true,
     this.validator,
     this.onChanged,
-    this.alignment,
+    required this.items,
   });
 
+  final Alignment? alignment;
   final double? width;
   final FocusNode? focusNode;
   final Widget? icon;
-  final bool? autofocus;
+  final bool autofocus;
   final TextStyle? textStyle;
-  final List<SelectionPopupModel>? items;
   final String? hintText;
-  final TextStyle? hintStyle;
+  final TextStyle? style;
   final Widget? prefix;
   final BoxConstraints? prefixConstraints;
   final Widget? suffix;
@@ -41,78 +39,74 @@ class CustomDropDown extends StatelessWidget {
   final EdgeInsets? contentPadding;
   final InputBorder? borderDecoration;
   final Color? fillColor;
-  final bool? filled;
-  final FormFieldValidator<SelectionPopupModel>? validator;
-  final Function(SelectionPopupModel)? onChanged;
-  final Alignment? alignment;
+  final bool filled;
+  final FormFieldValidator<String>? validator;
+  final Function(String?)? onChanged;
+  final List<String> items;
 
   @override
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
             alignment: alignment ?? Alignment.center,
-            child: dropDownWidget,
+            child: dropDownWidget(context),
           )
-        : dropDownWidget;
+        : dropDownWidget(context);
   }
 
-  Widget get dropDownWidget => SizedBox(
-        width: width ?? double.maxFinite,
-        child: DropdownButtonFormField<SelectionPopupModel>(
-          focusNode: focusNode ?? FocusNode(),
-          icon: icon,
-          autofocus: autofocus!,
-          style: textStyle ?? defaultTextStyle,
-          items: items?.map((SelectionPopupModel item) {
-            return DropdownMenuItem<SelectionPopupModel>(
+  Widget dropDownWidget(BuildContext context) {
+    return SizedBox(
+      width: width ?? double.infinity,
+      child: DropdownButtonFormField<String>(
+        focusNode: focusNode ?? FocusNode(),
+        icon: icon,
+        autofocus: autofocus,
+        style: textStyle ?? Theme.of(context).textTheme.bodyMedium,
+        items: items.map(
+          (String item) {
+            return DropdownMenuItem<String>(
               value: item,
               child: Text(
-                item.title,
-                overflow: TextOverflow.ellipsis,
-                style: hintStyle ?? defaultTextStyle,
+                item,
+                overflow: TextOverflow.visible,
+                style: style ?? Theme.of(context).textTheme.bodyMedium,
               ),
             );
-          }).toList(),
-          decoration: decoration,
-          validator: validator,
-          onChanged: (value) {
-            onChanged!(value!);
           },
-        ),
-      );
+        ).toList(),
+        decoration: decoration(context),
+        validator: validator,
+        onChanged: onChanged,
+      ),
+    );
+  }
 
-  InputDecoration get decoration => InputDecoration(
+  InputDecoration decoration(BuildContext context) => InputDecoration(
         hintText: hintText ?? "",
-        hintStyle: hintStyle ?? defaultTextStyle,
+        hintStyle: style ?? Theme.of(context).textTheme.bodyMedium,
         prefixIcon: prefix,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
         suffixIconConstraints: suffixConstraints,
         isDense: true,
-        contentPadding: contentPadding ?? const EdgeInsets.all(11),
-        fillColor: fillColor ?? const Color(0xFF5C6BC0),
+        contentPadding: contentPadding ?? const EdgeInsets.all(11.0),
+        fillColor: fillColor ??
+            Theme.of(context).colorScheme.secondary.withOpacity(0.1),
         filled: filled,
         border: borderDecoration ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.0),
               borderSide: BorderSide.none,
             ),
         enabledBorder: borderDecoration ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.0),
               borderSide: BorderSide.none,
             ),
         focusedBorder: borderDecoration ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.0),
               borderSide: BorderSide.none,
             ),
-      );
-
-  TextStyle get defaultTextStyle => const TextStyle(
-        color: Color(0XFF000000),
-        fontSize: 14,
-        fontFamily: 'Inter',
-        fontWeight: FontWeight.w400,
       );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/adding_car_1_screen.dart';
+import '../screens/car_user_signup.dart';
 import '../screens/login_screen.dart';
 import '../screens/select_user_screen.dart';
 import '../screens/signup_screen.dart';
@@ -31,7 +31,7 @@ class AppRoutes {
   static const String signUpScreen = '/sign_up_screen';
   static const String selectUserScreen = '/select_user_screen';
   static const String workshopSignupScreen = '/workshop_signup';
-  static const String addingCar1Screen = '/adding_car_1';
+  static const String carUserSignup = '/car_user_signup';
   static const String billingScreen = '/billing_screen';
   static const String carCareRequests = '/car_care_requests';
   static const String dentingPaintingRepair = '/denting_painting_repair';
@@ -59,7 +59,7 @@ class AppRoutes {
     signUpScreen: (ctx) => const SignUpScreen(),
     selectUserScreen: (ctx) => const SelectUserScreen(),
     workshopSignupScreen: (ctx) => const WorkshopSignup(),
-    addingCar1Screen: (ctx) => const AddingCar1Screen(),
+    carUserSignup: (ctx) => const CarUserSignup(),
     billingScreen: (ctx) => const BillingScreen(),
     carCareRequests: (ctx) => const CarCareRequests(),
     dentingPaintingRepair: (ctx) => const DentingNpaintingRepair(),
