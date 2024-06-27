@@ -15,7 +15,7 @@ class DentingNpaintingServiceVault extends StatefulWidget {
 
 class _DentingNpaintingServiceVaultState
     extends State<DentingNpaintingServiceVault> {
-  final Map<String, bool> _dentingNpaintingServices = const {
+  final Map<String, bool> _dentingNpaintingServices = {
     "Dent Removal": false,
     "Paintwork": false,
     "Scratch Repairs": false,
@@ -83,7 +83,9 @@ class _DentingNpaintingServiceVaultState
                           text: service,
                           isChecked: _dentingNpaintingServices[service]!,
                           onChanged: (newValue) {
-                            _dentingNpaintingServices[service] = newValue;
+                            setState(() {
+                              _dentingNpaintingServices[service] = newValue;
+                            });
                           },
                         ))
                     .toList(),

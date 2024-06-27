@@ -75,20 +75,22 @@ class _CarFeaturesState extends State<CarFeatures> {
           SizedBox(
             height: figmaSpaceToPercentage(80, context),
           ),
-          Row(children: [
-            SizedBox(
-              width: figmaSpaceToPercentageWidth(32, context),
-            ),
-            Text(
-              'Car Features',
-              style: TextStyle(
-                  color: const Color.fromRGBO(0, 0, 0, 1),
-                  fontSize: figmaSpaceToPercentage(22, context),
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none),
-            ),
-          ]),
+          Row(
+            children: [
+              SizedBox(
+                width: figmaSpaceToPercentageWidth(32, context),
+              ),
+              Text(
+                'Car Features',
+                style: TextStyle(
+                    color: const Color.fromRGBO(0, 0, 0, 1),
+                    fontSize: figmaSpaceToPercentage(22, context),
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.none),
+              ),
+            ],
+          ),
           SizedBox(
             height: figmaSpaceToPercentage(15, context),
           ),
