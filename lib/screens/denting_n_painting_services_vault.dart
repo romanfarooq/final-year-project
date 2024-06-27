@@ -15,6 +15,26 @@ class DentingNpaintingServiceVault extends StatefulWidget {
 
 class _DentingNpaintingServiceVaultState
     extends State<DentingNpaintingServiceVault> {
+  final Map<String, bool> _dentingNpaintingServices = const {
+    "Dent Removal": false,
+    "Paintwork": false,
+    "Scratch Repairs": false,
+    "Rust Repairs": false,
+    "Color Matching": false,
+    "Collision Repairs": false,
+    "Custom Paint Jobs": false,
+    "Surface Preparation": false,
+    "Panel Replacement/Repair": false,
+    "Vehicle Wrapping": false,
+    "Paint Protection Film (PPF) Installation": false,
+    "Ceramic Coating": false,
+    "Custom Graphics": false,
+    "Clear Coat Application": false,
+    "Detailing": false,
+    "Paint Polishing/Compound and Buffing": false,
+    "Weather Damage Repairs": false,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,31 +74,19 @@ class _DentingNpaintingServiceVaultState
           SizedBox(
             height: figmaSpaceToPercentage(15, context),
           ),
-          const Expanded(
+          Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  TextWithCheckbox(text: 'Dent Removal'),
-                  TextWithCheckbox(text: 'Paintwork'),
-                  TextWithCheckbox(text: 'Scratch Repairs'),
-                  TextWithCheckbox(text: 'Rust Repairs'),
-                  TextWithCheckbox(text: 'Color Matching'),
-                  TextWithCheckbox(text: 'Collision Repairs'),
-                  TextWithCheckbox(text: 'Custom Paint Jobs'),
-                  TextWithCheckbox(text: 'Surface Preparation'),
-                  TextWithCheckbox(text: 'Panel Replacement/Repair'),
-                  TextWithCheckbox(text: 'Vehicle Wrapping'),
-                  TextWithCheckbox(
-                      text: 'Paint Protection Film (PPF) Installation'),
-                  TextWithCheckbox(text: 'Ceramic Coating'),
-                  TextWithCheckbox(text: 'Custom Graphics'),
-                  TextWithCheckbox(text: 'Clear Coat Application'),
-                  TextWithCheckbox(text: 'Detailing'),
-                  TextWithCheckbox(
-                      text: 'Paint Polishing/Compound and Buffing'),
-                  TextWithCheckbox(text: 'Weather Damage Repairs'),
-                ],
+                children: _dentingNpaintingServices.keys
+                    .map((service) => TextWithCheckbox(
+                          text: service,
+                          isChecked: _dentingNpaintingServices[service]!,
+                          onChanged: (newValue) {
+                            _dentingNpaintingServices[service] = newValue;
+                          },
+                        ))
+                    .toList(),
               ),
             ),
           ),

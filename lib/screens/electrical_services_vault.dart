@@ -13,6 +13,31 @@ class ElectricalServiceVault extends StatefulWidget {
 }
 
 class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
+  final Map<String, bool> _electricalServices = {
+    "Lights": false,
+    "AC": false,
+    "Multimedia": false,
+    "Battery": false,
+    "Starter Motor": false,
+    "Alternator": false,
+    "Ignition System": false,
+    "Power Windows and Locks": false,
+    "Power Seats": false,
+    "Electrical Wiring": false,
+    "Sensors": false,
+    "ECU Diagnostics": false,
+    "Fuse Box and Fuses": false,
+    "Lighting Control Module": false,
+    "Instrument Cluster": false,
+    "Horn": false,
+    "Power Steering": false,
+    "Central Locking System": false,
+    "Cruise Control": false,
+    "Security and Alarm Systems": false,
+    "Communication Systems": false,
+    "Heated Seats and Mirrors": false,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,34 +79,21 @@ class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
           SizedBox(
             height: figmaSpaceToPercentage(15, context),
           ),
-          const Expanded(
+          Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  TextWithCheckbox(text: 'Lights'),
-                  TextWithCheckbox(text: 'AC'),
-                  TextWithCheckbox(text: 'Multimedia'),
-                  TextWithCheckbox(text: 'Battery'),
-                  TextWithCheckbox(text: 'Starter Motor'),
-                  TextWithCheckbox(text: 'Alternator'),
-                  TextWithCheckbox(text: 'Ignition System'),
-                  TextWithCheckbox(text: 'Power Windows and Locks'),
-                  TextWithCheckbox(text: 'Power Seats'),
-                  TextWithCheckbox(text: 'Electrical Wiring'),
-                  TextWithCheckbox(text: 'Sensors'),
-                  TextWithCheckbox(text: 'ECU Diagnostics'),
-                  TextWithCheckbox(text: 'Fuse Box and Fuses'),
-                  TextWithCheckbox(text: 'Lighting Control Module'),
-                  TextWithCheckbox(text: 'Instrument Cluster'),
-                  TextWithCheckbox(text: 'Horn'),
-                  TextWithCheckbox(text: 'Power Steering'),
-                  TextWithCheckbox(text: 'Central Locking System'),
-                  TextWithCheckbox(text: 'Cruise Control'),
-                  TextWithCheckbox(text: 'Security and Alarm Systems'),
-                  TextWithCheckbox(text: 'Communication Systems'),
-                  TextWithCheckbox(text: 'Heated Seats and Mirrors'),
-                ],
+                children: _electricalServices.keys
+                    .map((service) => TextWithCheckbox(
+                          text: service,
+                          isChecked: _electricalServices[service]!,
+                          onChanged: (newValue) {
+                            setState(() {
+                              _electricalServices[service] = newValue;
+                            });
+                          },
+                        ))
+                    .toList(),
               ),
             ),
           ),

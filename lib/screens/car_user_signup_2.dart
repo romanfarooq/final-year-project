@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 
@@ -18,7 +19,28 @@ class _CarUserSignupState extends State<CarUserSignup2> {
   final TextEditingController _mileageController = TextEditingController();
 
   @override
+  void dispose() {
+    _licensePlateController.dispose();
+    _vinController.dispose();
+    _mileageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedFuelType = fuelTypes.first;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final Map args = ModalRoute.of(context)!.settings.arguments as Map;
+    final String carManufacturer = args['manufacturer'];
+    final String carModel = args['model'];
+    final int carYear = args['year'];
+    final Color carColor = args['color'];
+    final String carImage = args['image'];
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -65,7 +87,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   height: figmaSpaceToPercentage(65, context),
                   padding: EdgeInsets.only(
                     left: figmaSpaceToPercentageWidth(26, context),
-                    top: figmaSpaceToPercentage(10, context),
+                    top: figmaSpaceToPercentage(2, context),
                   ),
                   decoration: const BoxDecoration(
                     color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -77,7 +99,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                       hintText: "LEV-8852",
                       hintStyle: TextStyle(
                         color: const Color.fromRGBO(50, 50, 50, 0.6),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentage(20, context),
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                       ),
@@ -85,7 +107,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                     ),
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(14, context),
+                      fontSize: figmaSpaceToPercentage(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                     ),
@@ -118,7 +140,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   height: figmaSpaceToPercentage(65, context),
                   padding: EdgeInsets.only(
                     left: figmaSpaceToPercentageWidth(26, context),
-                    top: figmaSpaceToPercentage(10, context),
+                    top: figmaSpaceToPercentage(2, context),
                   ),
                   decoration: const BoxDecoration(
                     color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -130,7 +152,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                       hintText: "Abc Auto Care",
                       hintStyle: TextStyle(
                         color: const Color.fromRGBO(50, 50, 50, 0.6),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentage(20, context),
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                       ),
@@ -138,7 +160,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                     ),
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(14, context),
+                      fontSize: figmaSpaceToPercentage(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                     ),
@@ -263,7 +285,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   height: figmaSpaceToPercentage(65, context),
                   padding: EdgeInsets.only(
                     left: figmaSpaceToPercentageWidth(26, context),
-                    top: figmaSpaceToPercentage(10, context),
+                    top: figmaSpaceToPercentage(2, context),
                   ),
                   decoration: const BoxDecoration(
                     color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -272,10 +294,10 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   child: TextField(
                     controller: _mileageController,
                     decoration: InputDecoration(
-                      hintText: "12",
+                      hintText: "1L/ 12 km",
                       hintStyle: TextStyle(
                         color: const Color.fromRGBO(50, 50, 50, 0.6),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentage(20, context),
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                       ),
@@ -283,7 +305,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                     ),
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(14, context),
+                      fontSize: figmaSpaceToPercentage(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                     ),
@@ -296,9 +318,34 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (_selectedFuelType != null) {
-                      // add logic here
+                    if (_licensePlateController.text.isEmpty ||
+                        _vinController.text.isEmpty ||
+                        _mileageController.text.isEmpty ||
+                        _selectedFuelType == null) {
+                      return;
                     }
+                    // print(carManufacturer);
+                    // print(carModel);
+                    // print(carYear);
+                    // print(carColor);
+                    // print(_licensePlateController.text);
+                    // print(_vinController.text);
+                    // print(double.tryParse(_mileageController.text));
+                    // print(_selectedFuelType);
+
+                    Navigator.of(context).pushNamed(
+                      AppRoutes.carFeatures,
+                      arguments: {
+                        'manufacturer': carManufacturer,
+                        'model': carModel,
+                        'year': carYear,
+                        'color': carColor,
+                        'licensePlate': _licensePlateController.text,
+                        'vin': _vinController.text,
+                        'mileage': double.tryParse(_mileageController.text),
+                        'fuelType': _selectedFuelType,
+                      },
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
@@ -328,7 +375,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                 ),
                 Center(
                   child: Image.asset(
-                    ImageConstant.audiLogo,
+                    carImage,
                     height: figmaSpaceToPercentage(200, context),
                   ),
                 )

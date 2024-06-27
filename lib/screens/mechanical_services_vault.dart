@@ -13,6 +13,31 @@ class MechanicalServiceVault extends StatefulWidget {
 }
 
 class _MechanicalServiceVaultState extends State<MechanicalServiceVault> {
+  final Map<String, bool> _mechanicalServices = {
+    "Engine Oil": false,
+    "Engine Repairs": false,
+    "Brakes": false,
+    "Transmission Services": false,
+    "Exhaust System": false,
+    "Suspension System": false,
+    "Steering System": false,
+    "Clutch System": false,
+    "Fuel System": false,
+    "Cooling System": false,
+    "Timing Belt/Chain Replacement": false,
+    "Drive Belts and Chains": false,
+    "Engine Overhaul": false,
+    "Fuel Injection System": false,
+    "Air Intake System": false,
+    "Throttle Body": false,
+    "Engine Mounts": false,
+    "Gaskets and Seals": false,
+    "Powertrain Services": false,
+    "Differential Services": false,
+    "CV Joints and Boots": false,
+    "Axle and Drivetrain Services": false,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,34 +77,21 @@ class _MechanicalServiceVaultState extends State<MechanicalServiceVault> {
           SizedBox(
             height: figmaSpaceToPercentage(15, context),
           ),
-          const Expanded(
+          Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  TextWithCheckbox(text: 'Engine Oil'),
-                  TextWithCheckbox(text: 'Engine Repairs'),
-                  TextWithCheckbox(text: 'Brakes'),
-                  TextWithCheckbox(text: 'Transmission Services'),
-                  TextWithCheckbox(text: 'Exhaust System'),
-                  TextWithCheckbox(text: 'Suspension System'),
-                  TextWithCheckbox(text: 'Steering System'),
-                  TextWithCheckbox(text: 'Clutch System'),
-                  TextWithCheckbox(text: 'Fuel System'),
-                  TextWithCheckbox(text: 'Cooling System'),
-                  TextWithCheckbox(text: 'Timing Belt/Chain Replacement'),
-                  TextWithCheckbox(text: 'Drive Belts and Chains'),
-                  TextWithCheckbox(text: 'Engine Overhaul'),
-                  TextWithCheckbox(text: 'Fuel Injection System'),
-                  TextWithCheckbox(text: 'Air Intake System'),
-                  TextWithCheckbox(text: 'Throttle Body'),
-                  TextWithCheckbox(text: 'Engine Mounts'),
-                  TextWithCheckbox(text: 'Gaskets and Seals'),
-                  TextWithCheckbox(text: 'Powertrain Services'),
-                  TextWithCheckbox(text: 'Differential Services'),
-                  TextWithCheckbox(text: 'CV Joints and Boots'),
-                  TextWithCheckbox(text: 'Axle and Drivetrain Services'),
-                ],
+                children: _mechanicalServices.keys
+                    .map((service) => TextWithCheckbox(
+                          text: service,
+                          isChecked: _mechanicalServices[service]!,
+                          onChanged: (newValue) {
+                            setState(() {
+                              _mechanicalServices[service] = newValue;
+                            });
+                          },
+                        ))
+                    .toList(),
               ),
             ),
           ),

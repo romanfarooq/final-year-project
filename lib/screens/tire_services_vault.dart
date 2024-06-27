@@ -13,6 +13,28 @@ class TireServiceVault extends StatefulWidget {
 }
 
 class _TireServiceVaultState extends State<TireServiceVault> {
+  final Map<String, bool> _tireServices = {
+    "Tire Installation": false,
+    "Tire Balancing": false,
+    "Wheel Alignment": false,
+    "Tire Repairs": false,
+    "Tire Rotation": false,
+    "Tire Inspection and Service": false,
+    "Wheel Rim Inspection and Service": false,
+    "Custom Tire and Wheel Packages": false,
+    "Tire Replacement": false,
+    "Tire Pressure Checks": false,
+    "Tire Pressure Monitoring System(TPMS)": false,
+    "Flat Tire Repair": false,
+    "Tire Mounting": false,
+    "Tire Inflation Services": false,
+    "Nitrogen Inflation Services": false,
+    "Tire Sales (New and Used)": false,
+    "Performance Tire Upgrades": false,
+    "Seasonal Tire Swapping": false,
+    "Tire Tread Depth Measurement": false,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,32 +74,21 @@ class _TireServiceVaultState extends State<TireServiceVault> {
           SizedBox(
             height: figmaSpaceToPercentage(15, context),
           ),
-          const Expanded(
+          Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  TextWithCheckbox(text: 'Tire Installation'),
-                  TextWithCheckbox(text: 'Tire Balancing'),
-                  TextWithCheckbox(text: 'Wheel Alignment'),
-                  TextWithCheckbox(text: 'Tire Repairs'),
-                  TextWithCheckbox(text: 'Tire Rotation'),
-                  TextWithCheckbox(text: 'Tire Inspection and Service'),
-                  TextWithCheckbox(text: 'Wheel Rim Inspection and Service'),
-                  TextWithCheckbox(text: 'Custom Tire and Wheel Packages'),
-                  TextWithCheckbox(text: 'Tire Replacement'),
-                  TextWithCheckbox(text: 'Tire Pressure Checks'),
-                  TextWithCheckbox(
-                      text: 'Tire Pressure Monitoring System(TPMS)'),
-                  TextWithCheckbox(text: 'Flat Tire Repair'),
-                  TextWithCheckbox(text: 'Tire Mounting'),
-                  TextWithCheckbox(text: 'Tire Inflation Services'),
-                  TextWithCheckbox(text: 'Nitrogen Inflation Services'),
-                  TextWithCheckbox(text: 'Tire Sales (New and Used)'),
-                  TextWithCheckbox(text: 'Performance Tire Upgrades'),
-                  TextWithCheckbox(text: 'Seasonal Tire Swapping'),
-                  TextWithCheckbox(text: 'Tire Tread Depth Measurement'),
-                ],
+                children: _tireServices.keys
+                    .map((service) => TextWithCheckbox(
+                          text: service,
+                          isChecked: _tireServices[service]!,
+                          onChanged: (newValue) {
+                            setState(() {
+                              _tireServices[service] = newValue;
+                            });
+                          },
+                        ))
+                    .toList(),
               ),
             ),
           ),

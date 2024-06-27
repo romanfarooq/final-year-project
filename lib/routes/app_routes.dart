@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 
-import '../screens/car_user_signup.dart';
-import '../screens/login_screen.dart';
-import '../screens/select_user_screen.dart';
-import '../screens/signup_screen.dart';
-import '../screens/splash_screen.dart';
-import '../screens/workshop_signup.dart';
 import '../screens/billing_screen.dart';
 import '../screens/car_care_requests.dart';
+import '../screens/car_features.dart';
+import '../screens/car_user_signup.dart';
+import '../screens/car_user_signup_2.dart';
 import '../screens/denting_n_painting_repair.dart';
 import '../screens/denting_n_painting_services_vault.dart';
 import '../screens/electrical_repair.dart';
 import '../screens/electrical_services_vault.dart';
+import '../screens/login_screen.dart';
 import '../screens/mechanical_repair.dart';
 import '../screens/mechanical_services_vault.dart';
 import '../screens/oil_change.dart';
+import '../screens/select_user_screen.dart';
 import '../screens/service_history.dart';
+import '../screens/signup_screen.dart';
+import '../screens/splash_screen.dart';
 import '../screens/tire_repair.dart';
 import '../screens/tire_services_vault.dart';
+import '../screens/user_homescreen.dart';
 import '../screens/vehicle_service_record.dart';
 import '../screens/vehicle_service_record_repaired.dart';
 import '../screens/workshop_clients.dart';
 import '../screens/workshop_homepage.dart';
 import '../screens/workshop_services.dart';
-import '../screens/user_homescreen.dart';
+import '../screens/workshop_signup.dart';
+import '../screens/car_user_main_page.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -32,6 +35,8 @@ class AppRoutes {
   static const String selectUserScreen = '/select_user_screen';
   static const String workshopSignupScreen = '/workshop_signup';
   static const String carUserSignup = '/car_user_signup';
+  static const String carUserSignup2 = '/car_user_signup_2';
+  static const String carFeatures = '/car_features';
   static const String billingScreen = '/billing_screen';
   static const String carCareRequests = '/car_care_requests';
   static const String dentingPaintingRepair = '/denting_painting_repair';
@@ -52,6 +57,7 @@ class AppRoutes {
   static const String workshopHomepage = '/workshop_homepage';
   static const String workshopServices = '/workshop_services';
   static const String userHomescreen = '/user_homescreen';
+  static const String carUserMain = '/car_user_main';
 
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (ctx) => const SplashScreen(),
@@ -60,6 +66,8 @@ class AppRoutes {
     selectUserScreen: (ctx) => const SelectUserScreen(),
     workshopSignupScreen: (ctx) => const WorkshopSignup(),
     carUserSignup: (ctx) => const CarUserSignup(),
+    carUserSignup2: (ctx) => const CarUserSignup2(),
+    carFeatures: (ctx) => const CarFeatures(),
     billingScreen: (ctx) => const BillingScreen(),
     carCareRequests: (ctx) => const CarCareRequests(),
     dentingPaintingRepair: (ctx) => const DentingNpaintingRepair(),
@@ -78,5 +86,6 @@ class AppRoutes {
     workshopHomepage: (ctx) => const WorkshopHomepage(),
     workshopServices: (ctx) => const WorkshopServices(),
     userHomescreen: (ctx) => const UserHomeScreen(),
+    carUserMain: (ctx) => const CarUserMain(),
   };
 }

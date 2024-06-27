@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/car_data.dart';
+import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 
@@ -12,18 +13,11 @@ class CarUserSignup extends StatefulWidget {
 }
 
 class _CarUserSignupState extends State<CarUserSignup> {
-  int? _selectedYear;
-  String? _selectedManufacturer;
-  String? _selectedModel;
-  Color? _selectedColor = carColrs['Black'];
+  int _selectedYear = years['2024']!;
+  String _selectedManufacturer = carManufacturers.first;
+  String _selectedModel = carModels[carManufacturers.first]!.first;
+  Color _selectedColor = carColrs['Black']!;
   List<String> _modelNames = carModels[carManufacturers.first] ?? [];
-
-  void updateModelNames(String manufacturer) {
-    setState(() {
-      _selectedModel = null; // Reset selected model when manufacturer changes
-      _modelNames = carModels[manufacturer] ?? [];
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,8 +130,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   ).toList(),
                   onSelected: (String? selectedItem) {
                     setState(() {
-                      _selectedManufacturer = selectedItem;
-                      updateModelNames(selectedItem!);
+                      _selectedManufacturer = selectedItem!;
+                      _modelNames = carModels[selectedItem] ?? [];
                     });
                   },
                 ),
@@ -229,7 +223,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   ).toList(),
                   onSelected: (String? selectedItem) {
                     setState(() {
-                      _selectedModel = selectedItem;
+                      _selectedModel = selectedItem!;
                     });
                   },
                 ),
@@ -321,7 +315,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   ).toList(),
                   onSelected: (int? selectedItem) {
                     setState(() {
-                      _selectedYear = selectedItem;
+                      _selectedYear = selectedItem!;
                     });
                   },
                 ),
@@ -410,7 +404,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   ).toList(),
                   onSelected: (Color? selectedItem) {
                     setState(() {
-                      _selectedColor = selectedItem;
+                      _selectedColor = selectedItem!;
                     });
                   },
                 ),
@@ -419,12 +413,16 @@ class _CarUserSignupState extends State<CarUserSignup> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (_selectedManufacturer != null &&
-                        _selectedModel != null &&
-                        _selectedYear != null &&
-                        _selectedColor != null) {
-                      // Add your logic here
-                    }
+                    Navigator.of(context).pushNamed(
+                      AppRoutes.carUserSignup2,
+                      arguments: {
+                        'manufacturer': _selectedManufacturer,
+                        'model': _selectedModel,
+                        'year': _selectedYear,
+                        'color': _selectedColor,
+                        'image': carManufacturersLogo[_selectedManufacturer],
+                      },
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
@@ -454,9 +452,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                 ),
                 Center(
                   child: Image.asset(
-                    _selectedManufacturer != null
-                        ? carManufacturersLogo[_selectedManufacturer!]!
-                        : ImageConstant.audiLogo,
+                    carManufacturersLogo[_selectedManufacturer]!,
                     height: figmaSpaceToPercentage(200, context),
                   ),
                 )

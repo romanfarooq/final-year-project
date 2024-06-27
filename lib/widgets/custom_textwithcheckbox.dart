@@ -4,15 +4,28 @@ import '../utils/figma_space_to_percentage.dart';
 
 class TextWithCheckbox extends StatefulWidget {
   final String text;
+  final bool isChecked;
+  final Function(bool) onChanged;
 
-  const TextWithCheckbox({super.key, required this.text});
+  const TextWithCheckbox({
+    super.key,
+    required this.text,
+    required this.onChanged,
+    this.isChecked = false,
+  });
 
   @override
   State<TextWithCheckbox> createState() => _TextWithCheckboxState();
 }
 
 class _TextWithCheckboxState extends State<TextWithCheckbox> {
-  bool isChecked = false;
+  late bool _isChecked;
+
+  @override
+  void initState() {
+    super.initState();
+    _isChecked = widget.isChecked;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +56,8 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          isChecked = !isChecked;
-                          // print('$isChecked');
+                          _isChecked = !_isChecked;
+                          widget.onChanged(_isChecked);
                         });
                       },
                       child: Container(
@@ -54,10 +67,10 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
                           shape: BoxShape.circle,
                           border: Border.all(
                             color:
-                                isChecked ? Colors.transparent : Colors.black,
+                                _isChecked ? Colors.transparent : Colors.black,
                             width: figmaSpaceToPercentageWidth(2, context),
                           ),
-                          color: isChecked
+                          color: _isChecked
                               ? const Color.fromRGBO(96, 189, 52, 1)
                               : Colors.transparent,
                         ),

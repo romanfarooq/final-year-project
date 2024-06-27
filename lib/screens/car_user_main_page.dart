@@ -1,11 +1,11 @@
-import 'package:car_care/widgets/graph_km_driven.dart';
-import 'package:car_care/widgets/text_container_carusermain.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../models/car_info.dart';
 import '../widgets/car_display.dart';
+import '../widgets/graph_km_driven.dart';
+import '../widgets/text_container_carusermain.dart';
 
 LatLng sampleLoc = const LatLng(31.4469, 74.2682);
 
