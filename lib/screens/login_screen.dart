@@ -1,5 +1,9 @@
+import 'package:car_care/utils/toast_message.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'signup_screen.dart';
+
 
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
@@ -18,12 +22,25 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+   final _auth = FirebaseAuth.instance;
   @override
   void dispose() {
     _userNameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
+
+
+  void login(){
+
+    _auth.signInWithEmailAndPassword(email: _userNameController.text.toString(), password:  _passwordController.text.toString()).then((value){
+      Navigator.of(context)
+          .pushReplacementNamed(AppRoutes.selectUserScreen);
+    }).onError((error, stackTrace){
+        ToastMessage().toastmessage(error.toString());
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +50,9 @@ class _LoginScreenState extends State<LoginScreen> {
     final screenHeight = height - padding.top - padding.bottom;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
+
         child: SingleChildScrollView(
           child: Container(
             width: screenWidth,
@@ -146,8 +165,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(AppRoutes.selectUserScreen);
+
+                       login();
+
                     },
                   ),
                   SizedBox(height: screenHeight * 0.02),
