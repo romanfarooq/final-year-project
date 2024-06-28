@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import './models/car_info.dart';
 import './routes/app_routes.dart';
-import './screens/car_user_signup.dart';
+import './screens/splash_screen.dart';
 import './utils/theme.dart';
 
 void main() {
@@ -26,8 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Car Care Pro',
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      // home: const SplashScreen(),
-      home: const CarUserSignup(),
+      home: const SplashScreen(),
       routes: AppRoutes.routes,
     );
   }

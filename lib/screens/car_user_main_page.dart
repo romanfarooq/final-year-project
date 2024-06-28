@@ -6,6 +6,7 @@ import '../models/car_info.dart';
 import '../widgets/car_display.dart';
 import '../widgets/graph_km_driven.dart';
 import '../widgets/text_container_carusermain.dart';
+import '../routes/app_routes.dart';
 
 LatLng sampleLoc = const LatLng(31.4469, 74.2682);
 
@@ -299,9 +300,23 @@ class ListviewWiget extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.horizontal,
       children: carinfo.getCars
-          .map((item) => CarDisplay(
-                name: item.manufacture,
-                imgPath: item.imgPath,
+          .map((item) => InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    AppRoutes.userHomeScreen,
+                    arguments: {
+                      'model': item.model,
+                      'year': item.year,
+                      'distanceTravelled': item.distanceTravelled,
+                      'lastOilChangeDistance': item.lastOilChangeDistance,
+                      'imgPath': item.imgPath,
+                    },
+                  );
+                },
+                child: CarDisplay(
+                  name: item.manufacture,
+                  imgPath: item.imgPath,
+                ),
               ))
           .toList(),
     );

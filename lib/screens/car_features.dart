@@ -50,10 +50,11 @@ class _CarFeaturesState extends State<CarFeatures> {
     final String fuelType = args['fuelType'];
 
     // Temporary values
-    const double distanceTravelled = 1000;
+    const double distanceTravelled = 145207;
     const double cc = 1.5;
+    const double lastOilChangeDistance = 377;
     const String imgPath = 'assets/images/carlogo/Honda_CR-V.jpg';
-    DateTime lastOilChange = DateTime.utc(2024, 05, 25);
+    DateTime lastOilChangeDate = DateTime.utc(2024, 05, 25);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -132,7 +133,8 @@ class _CarFeaturesState extends State<CarFeatures> {
                       mileage: mileage,
                       distanceTravelled: distanceTravelled,
                       vin: vin,
-                      lastOilChange: lastOilChange,
+                      lastOilChangeDistance: lastOilChangeDistance,
+                      lastOilChangeDate: lastOilChangeDate,
                       imgPath: imgPath,
                     ),
                   );
@@ -175,7 +177,8 @@ class _CarFeaturesState extends State<CarFeatures> {
                       mileage: mileage,
                       distanceTravelled: distanceTravelled,
                       vin: vin,
-                      lastOilChange: lastOilChange,
+                      lastOilChangeDistance: lastOilChangeDistance,
+                      lastOilChangeDate: lastOilChangeDate,
                       imgPath: imgPath,
                       carFeatures: _carFeatures,
                     ),

@@ -28,9 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-    final padding = MediaQuery.of(context).padding;
-    final screenHeight = height - padding.top - padding.bottom;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: SafeArea(
@@ -56,12 +54,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.center,
                   ),
                   SizedBox(height: screenHeight * 0.03),
-                  Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.05),
-                    child: Text(
-                      "Login ",
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
+                  Text(
+                    "Login ",
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   SizedBox(height: screenHeight * 0.01),
                   Padding(

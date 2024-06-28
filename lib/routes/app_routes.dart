@@ -56,8 +56,8 @@ class AppRoutes {
   static const String workshopClients = '/workshop_clients';
   static const String workshopHomepage = '/workshop_homepage';
   static const String workshopServices = '/workshop_services';
-  static const String userHomescreen = '/user_homescreen';
   static const String carUserMain = '/car_user_main';
+  static const String userHomeScreen = '/user_homescreen';
 
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (ctx) => const SplashScreen(),
@@ -85,7 +85,7 @@ class AppRoutes {
     workshopClients: (ctx) => const WorkshopClients(),
     workshopHomepage: (ctx) => const WorkshopHomepage(),
     workshopServices: (ctx) => const WorkshopServices(),
-    userHomescreen: (ctx) => const UserHomeScreen(),
+    userHomeScreen: (ctx) => const UserHomeScreen(),
     carUserMain: (ctx) => const CarUserMain(),
   };
 }

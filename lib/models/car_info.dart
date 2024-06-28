@@ -11,7 +11,8 @@ class CarInfo {
   double mileage;
   double distanceTravelled;
   String vin;
-  DateTime lastOilChange;
+  DateTime lastOilChangeDate;
+  double lastOilChangeDistance;
   // Service history;
   //Location location;
   Map<String, bool> carFeatures;
@@ -29,7 +30,8 @@ class CarInfo {
     required this.mileage,
     required this.distanceTravelled,
     required this.vin,
-    required this.lastOilChange,
+    required this.lastOilChangeDate,
+    required this.lastOilChangeDistance,
     //required this.serviceHistory,
     required this.imgPath,
     this.carFeatures = const {
@@ -66,9 +68,10 @@ class UserCarsInfo with ChangeNotifier {
       cc: 1.5,
       year: 2019,
       mileage: 15,
-      distanceTravelled: 10000,
+      distanceTravelled: 13464,
       vin: "1234567890",
-      lastOilChange: DateTime.utc(2024, 05, 25),
+      lastOilChangeDistance: 145,
+      lastOilChangeDate: DateTime.utc(2024, 05, 25),
       //serviceHistory: [],
       imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
     ),
@@ -81,9 +84,10 @@ class UserCarsInfo with ChangeNotifier {
       cc: 3.0,
       year: 2020,
       mileage: 10,
-      distanceTravelled: 20000,
+      distanceTravelled: 21953,
       vin: "0987654321",
-      lastOilChange: DateTime.utc(2024, 05, 25),
+      lastOilChangeDistance: 201,
+      lastOilChangeDate: DateTime.utc(2024, 05, 25),
       //serviceHistory: [],
       imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
     ),

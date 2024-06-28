@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:intl/intl.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 
-class UserHomeScreen extends StatefulWidget {
+class UserHomeScreen extends StatelessWidget {
   const UserHomeScreen({super.key});
 
   @override
-  State<UserHomeScreen> createState() => _UserHomeScreenState();
-}
-
-class _UserHomeScreenState extends State<UserHomeScreen> {
-  @override
   Widget build(BuildContext context) {
+    final Map args = ModalRoute.of(context)!.settings.arguments as Map;
+    final String model = args['model'];
+    final int year = args['year'];
+    final double distanceTravelled = args['distanceTravelled'];
+    final double lastOilChangeDistance = args['lastOilChangeDistance'];
+    final String imgPath = args['imgPath'];
+
     return SafeArea(
       child: Stack(
         children: [
@@ -28,7 +31,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 fit: StackFit.expand,
                 children: [
                   Image.asset(
-                    'assets/images/altis.png',
+                    // 'assets/images/altis.png',
+                    imgPath,
                     fit: BoxFit.cover,
                   ),
                 ],
@@ -36,8 +40,10 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
             ),
           ),
           Positioned(
-            top: figmaSpaceToPercentage(350,
-                context), // This value should be less than the height of the first container to overlap
+            top: figmaSpaceToPercentage(
+              350,
+              context,
+            ), // This value should be less than the height of the first container to overlap
             left: 0,
             right: 0,
             child: Container(
@@ -59,7 +65,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                         width: figmaSpaceToPercentageWidth(33, context),
                       ),
                       Text(
-                        'Corolla Altis 1.6',
+                        model,
                         style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
                             fontSize: figmaSpaceToPercentage(24, context),
@@ -83,7 +89,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(217, 217, 217, 1),
                           borderRadius: BorderRadius.circular(
-                              20), // Set border radius for rounded corners
+                            20,
+                          ), // Set border radius for rounded corners
                         ),
                         child: Column(
                           // mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +108,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                               height: figmaSpaceToPercentage(0.1, context),
                             ),
                             Text(
-                              '1,452,07',
+                              NumberFormat.decimalPattern()
+                                  .format(distanceTravelled),
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(19, context),
@@ -149,7 +157,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                               height: figmaSpaceToPercentage(0.1, context),
                             ),
                             Text(
-                              '30,795',
+                              NumberFormat.decimalPattern()
+                                  .format(lastOilChangeDistance),
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(19, context),
@@ -197,7 +206,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                               height: figmaSpaceToPercentage(0.1, context),
                             ),
                             Text(
-                              '2021',
+                              year.toString(),
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(19, context),
