@@ -1,5 +1,5 @@
 import 'package:car_care/utils/toast_message.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' ;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'signup_screen.dart';
@@ -31,15 +31,39 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 
-  void login(){
-
-    _auth.signInWithEmailAndPassword(email: _userNameController.text.toString(), password:  _passwordController.text.toString()).then((value){
-      Navigator.of(context)
-          .pushReplacementNamed(AppRoutes.selectUserScreen);
-    }).onError((error, stackTrace){
-        ToastMessage().toastmessage(error.toString());
-    });
+  void login() async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _userNameController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      // Navigate to the next screen upon successful login
+      Navigator.of(context).pushReplacementNamed(AppRoutes.selectUserScreen);
+      ToastMessage().toastmessage('Login Successful');
+    } catch (error) {
+      // Handle specific Firebase Auth errors
+      String errorMessage = "Login failed. ";
+      if (error is FirebaseAuthException) {
+        switch (error.code) {
+          case 'invalid-email':
+            errorMessage += "Invalid email address.";
+            break;
+          case 'user-not-found':
+          case 'wrong-password':
+            errorMessage += "Invalid email or password.";
+            break;
+          default:
+            errorMessage += "An error occurred (${error.code}).";
+        }
+      } else {
+        // Handle other errors such as network issues, etc.
+        errorMessage += "Unexpected error occurred.";
+      }
+      // Display error message using toast
+      ToastMessage().toastmessage(errorMessage);
+    }
   }
+
 
 
   @override
@@ -166,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     onPressed: () {
 
-                       login();
+                        login();
 
                     },
                   ),

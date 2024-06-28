@@ -1,3 +1,4 @@
+import 'package:car_care/screens/login_screen.dart';
 import 'package:car_care/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +15,7 @@ void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
     MultiProvider(
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: themeData,
       // home: const SplashScreen(),
-      home: const SignUpScreen(),
+      home: const LoginScreen() ,
       routes: AppRoutes.routes,
     );
   }
