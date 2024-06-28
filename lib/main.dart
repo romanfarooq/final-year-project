@@ -1,3 +1,4 @@
+import 'package:car_care/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: themeData,
       // home: const SplashScreen(),
-      home: const CarUserSignup(),
+      home: const SignUpScreen(),
       routes: AppRoutes.routes,
     );
   }
