@@ -19,7 +19,7 @@ import '../screens/signup_screen.dart';
 import '../screens/splash_screen.dart';
 import '../screens/tire_repair.dart';
 import '../screens/tire_services_vault.dart';
-import '../screens/user_homescreen.dart';
+// import '../screens/user_homescreen.dart';
 import '../screens/vehicle_service_record.dart';
 import '../screens/vehicle_service_record_repaired.dart';
 import '../screens/workshop_clients.dart';
@@ -27,6 +27,7 @@ import '../screens/workshop_homepage.dart';
 import '../screens/workshop_services.dart';
 import '../screens/workshop_signup.dart';
 import '../screens/car_user_main_page.dart';
+import '../screens/tab_screen.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -58,6 +59,7 @@ class AppRoutes {
   static const String workshopServices = '/workshop_services';
   static const String carUserMain = '/car_user_main';
   static const String userHomeScreen = '/user_homescreen';
+  static const String bottomTab = '/bottom_tab';
 
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (ctx) => const SplashScreen(),
@@ -85,7 +87,8 @@ class AppRoutes {
     workshopClients: (ctx) => const WorkshopClients(),
     workshopHomepage: (ctx) => const WorkshopHomepage(),
     workshopServices: (ctx) => const WorkshopServices(),
-    userHomeScreen: (ctx) => const UserHomeScreen(),
+    // userHomeScreen: (ctx) => const UserHomeScreen(),
     carUserMain: (ctx) => const CarUserMain(),
+    bottomTab: (ctx) => const BottomTabs(),
   };
 }

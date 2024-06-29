@@ -139,7 +139,7 @@ class _CarFeaturesState extends State<CarFeatures> {
                     ),
                   );
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                    AppRoutes.carUserMain,
+                    AppRoutes.bottomTab,
                     (route) => false,
                   );
                 },
@@ -184,7 +184,7 @@ class _CarFeaturesState extends State<CarFeatures> {
                     ),
                   );
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                    AppRoutes.carUserMain,
+                    AppRoutes.bottomTab,
                     (route) => false,
                   );
                 },

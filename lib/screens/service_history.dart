@@ -8,70 +8,72 @@ class ServiceHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: figmaSpaceToPercentage(69, context),
-            ),
+    return Scaffold(
+      body: Expanded(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: figmaSpaceToPercentage(69, context),
+              ),
 
-            Column(
-              children: [
-                Center(
-                  child: Text(
-                    'Service History',
-                    style: TextStyle(
-                        color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(26, context),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none),
+              Column(
+                children: [
+                  Center(
+                    child: Text(
+                      'Service History',
+                      style: TextStyle(
+                          color: const Color.fromRGBO(0, 0, 0, 1),
+                          fontSize: figmaSpaceToPercentage(26, context),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.none),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
 
-            SizedBox(
-              height: figmaSpaceToPercentage(25, context),
-            ),
-            //wa
+              SizedBox(
+                height: figmaSpaceToPercentage(25, context),
+              ),
+              //wa
 
-            const Column(
-              children: [
-                ServiceHistoryWidget(
-                  date: '29',
-                  month: 'June',
-                  year: '2024',
-                  serviceType: 'Mechanical',
-                ),
-                ServiceHistoryWidget(
-                  date: '29',
-                  month: 'June',
-                  year: '2024',
-                  serviceType: 'Electrical',
-                ),
-                ServiceHistoryWidget(
-                  date: '29',
-                  month: 'June',
-                  year: '2024',
-                  serviceType: 'DentingNpainting',
-                ),
-                ServiceHistoryWidget(
-                  date: '29',
-                  month: 'June',
-                  year: '2024',
-                  serviceType: 'Tire',
-                ),
-                ServiceHistoryWidget(
-                  date: '29',
-                  month: 'June',
-                  year: '2024',
-                  serviceType: 'Mechanical',
-                ),
-              ],
-            ),
-          ],
+              const Column(
+                children: [
+                  ServiceHistoryWidget(
+                    date: '2',
+                    month: 'June',
+                    year: '2024',
+                    serviceType: 'Mechanical',
+                  ),
+                  ServiceHistoryWidget(
+                    date: '15',
+                    month: 'June',
+                    year: '2024',
+                    serviceType: 'Electrical',
+                  ),
+                  ServiceHistoryWidget(
+                    date: '29',
+                    month: 'JULY',
+                    year: '2024',
+                    serviceType: 'DentingNpainting',
+                  ),
+                  ServiceHistoryWidget(
+                    date: '14',
+                    month: 'AUGUST',
+                    year: '2024',
+                    serviceType: 'Tire',
+                  ),
+                  ServiceHistoryWidget(
+                    date: '17',
+                    month: 'DEC',
+                    year: '2024',
+                    serviceType: 'Mechanical',
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

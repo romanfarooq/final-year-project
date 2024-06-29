@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../screens/car_user_signup.dart';
 import './car_user_explor.dart';
 import './car_user_main_page.dart';
-import './car_user_profile.dart';
+import './user_homescreen.dart';
 
 class BottomTabs extends StatefulWidget {
   const BottomTabs({super.key});
@@ -17,13 +18,14 @@ class _BottomTabsState extends State<BottomTabs> {
   final List<Widget> _pages = [
     const CarUserMain(),
     const Explore(),
-    Container(
-      color: Colors.green,
+    const CarUserSignup(),
+    const UserHomeScreen(
+      model: "CR-V",
+      year: 2019,
+      distanceTravelled: 13464,
+      lastOilChangeDistance: 145,
+      imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
     ),
-    Container(
-      color: Colors.purple,
-    ),
-    const CarOwnerProfile(),
   ];
 
   @override
@@ -62,12 +64,6 @@ class _BottomTabsState extends State<BottomTabs> {
               _selectedIndex == 2
                   ? 'assets/icons/add-square-bold.svg'
                   : 'assets/icons/add-square-outline.svg',
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              _selectedIndex == 3 ? Icons.sell : Icons.sell_outlined,
             ),
             label: '',
           ),

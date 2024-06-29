@@ -4,19 +4,26 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
+import '../routes/app_routes.dart';
 
 class UserHomeScreen extends StatelessWidget {
-  const UserHomeScreen({super.key});
+  final String model;
+  final int year;
+  final double distanceTravelled;
+  final double lastOilChangeDistance;
+  final String imgPath;
+
+  const UserHomeScreen({
+    super.key,
+    required this.model,
+    required this.year,
+    required this.distanceTravelled,
+    required this.lastOilChangeDistance,
+    required this.imgPath,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final Map args = ModalRoute.of(context)!.settings.arguments as Map;
-    final String model = args['model'];
-    final int year = args['year'];
-    final double distanceTravelled = args['distanceTravelled'];
-    final double lastOilChangeDistance = args['lastOilChangeDistance'];
-    final String imgPath = args['imgPath'];
-
     return SafeArea(
       child: Stack(
         children: [
@@ -234,7 +241,8 @@ class UserHomeScreen extends StatelessWidget {
                   Material(
                     child: InkWell(
                       onTap: () {
-                        // print('hi');
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.serviceHistory);
                       },
                       child: Container(
                         height: figmaSpaceToPercentage(60, context),
