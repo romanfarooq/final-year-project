@@ -1,4 +1,4 @@
-package com.example.car_care
+package com.example.car_care_pro
 
 import io.flutter.embedding.android.FlutterActivity
 

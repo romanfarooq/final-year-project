@@ -1,9 +1,7 @@
 import 'package:car_care/utils/toast_message.dart';
-import 'package:firebase_auth/firebase_auth.dart' ;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'signup_screen.dart';
-
 
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
@@ -22,14 +20,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-   final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   @override
   void dispose() {
     _userNameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
-
 
   void login() async {
     try {
@@ -64,8 +61,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -74,7 +69,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-
         child: SingleChildScrollView(
           child: Container(
             width: screenWidth,
@@ -184,9 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     onPressed: () {
-
-                        login();
-
+                      login();
                     },
                   ),
                   SizedBox(height: screenHeight * 0.02),
