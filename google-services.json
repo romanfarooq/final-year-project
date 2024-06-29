@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "812183513091",
+    "project_id": "carcarepro-a0193",
+    "storage_bucket": "carcarepro-a0193.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812183513091:android:78cde19eca971d5621c636",
+        "android_client_info": {
+          "package_name": "com.example.car_care"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGFN1uk2BOF_LDwLrj_UM5cDTUK3WRJQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812183513091:android:0c0994f379d0701a21c636",
+        "android_client_info": {
+          "package_name": "com.example.car_care_pro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGFN1uk2BOF_LDwLrj_UM5cDTUK3WRJQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -22,6 +22,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(

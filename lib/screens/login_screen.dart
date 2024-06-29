@@ -1,5 +1,9 @@
+import 'package:car_care/utils/toast_message.dart';
+import 'package:firebase_auth/firebase_auth.dart' ;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'signup_screen.dart';
+
 
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
@@ -18,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+   final _auth = FirebaseAuth.instance;
   @override
   void dispose() {
     _userNameController.dispose();
@@ -25,13 +30,51 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+
+  void login() async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _userNameController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      // Navigate to the next screen upon successful login
+      Navigator.of(context).pushReplacementNamed(AppRoutes.selectUserScreen);
+      ToastMessage().toastmessage('Login Successful');
+    } catch (error) {
+      // Handle specific Firebase Auth errors
+      String errorMessage = "Login failed. ";
+      if (error is FirebaseAuthException) {
+        switch (error.code) {
+          case 'invalid-email':
+            errorMessage += "Invalid email address.";
+            break;
+          case 'user-not-found':
+          case 'wrong-password':
+            errorMessage += "Invalid email or password.";
+            break;
+          default:
+            errorMessage += "An error occurred (${error.code}).";
+        }
+      } else {
+        // Handle other errors such as network issues, etc.
+        errorMessage += "Unexpected error occurred.";
+      }
+      // Display error message using toast
+      ToastMessage().toastmessage(errorMessage);
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
+
         child: SingleChildScrollView(
           child: Container(
             width: screenWidth,
@@ -141,8 +184,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(AppRoutes.selectUserScreen);
+
+                        login();
+
                     },
                   ),
                   SizedBox(height: screenHeight * 0.02),
