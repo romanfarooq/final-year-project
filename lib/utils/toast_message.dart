@@ -8,7 +8,7 @@ void toastmessage(String message){
       msg: message,
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 4,
+      timeInSecForIosWeb: 20,
       backgroundColor: Colors.red,
       textColor: Colors.white,
       fontSize: 16.0

@@ -2,6 +2,8 @@ import 'package:car_care/utils/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
@@ -21,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final _auth = FirebaseAuth.instance;
+
   @override
   void dispose() {
     _userNameController.dispose();
@@ -61,6 +64,61 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  // Future<void> signInWithGoogle() async {
+  //  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  //
+  //  try {
+  //    final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+  //
+  //
+  //    if(googleSignInAccount != null){
+  //       final GoogleSignInAuthentication googleSigninAuthentication = await googleSignInAccount.authentication;
+  //       final AuthCredential credential = GoogleAuthProvider.credential(
+  //         idToken: googleSigninAuthentication.idToken,
+  //         accessToken: googleSigninAuthentication.accessToken,
+  //       );
+  //      // await _firebaseAuth.signInWithCredential(credential);
+  //    }
+  //  }catch(e){
+  //    ToastMessage().toastmessage(e.toString());
+  //  }
+  // }
+  //
+
+  Future<void> signInWithGoogle(BuildContext context) async {
+    try {
+      final GoogleSignIn googleSignIn = GoogleSignIn(
+        clientId: '812183513091-lq3q9surkcqlekrgma3lle9r00i1e3es.apps.googleusercontent.com', // Replace with your Web client ID
+      );
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+      if (googleUser == null || !mounted) {
+        return; // The user canceled the sign-in or the widget is not mounted
+      }
+
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+      if (!mounted) {
+        return; // Check again if the widget is still mounted before updating UI
+      }
+
+      // Navigate to the next screen upon successful login
+      Navigator.of(context).pushReplacementNamed(AppRoutes.selectUserScreen);
+      ToastMessage().toastmessage('Google Sign-In Successful');
+    } catch (error) {
+      if (!mounted) {
+        return; // Check if the widget is still mounted before displaying error message
+      }
+      ToastMessage().toastmessage('Google Sign-In failed: ${error.toString()}');
+      print(error.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -161,10 +219,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomElevatedButton(
                     text: "Login",
                     buttonStyle: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color>(
+                      backgroundColor: MaterialStateProperty.all<Color>(
                         Colors.transparent,
                       ),
-                      elevation: WidgetStateProperty.all<double>(0),
+                      elevation: MaterialStateProperty.all<double>(0),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(screenWidth * 0.05),
@@ -181,6 +239,38 @@ class _LoginScreenState extends State<LoginScreen> {
                       login();
                     },
                   ),
+                  SizedBox(height: screenHeight * 0.01),
+                  CustomElevatedButton(
+                    text: "Sign in with Google",
+                    buttonStyle: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.transparent,
+                      ),
+                      elevation: MaterialStateProperty.all<double>(0),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.0),
+                      gradient: LinearGradient(
+                        begin: const Alignment(0.5, 0),
+                        end: const Alignment(0.5, 1),
+                        colors: [
+                          const Color(0XFF6E7CB9),
+                          Theme.of(context).colorScheme.primary,
+                        ],
+                      ),
+                    ),
+                    leftIcon: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: FaIcon(
+                        FontAwesomeIcons.google,
+                        color: Colors.white,
+                        size: 24,
+                      ),
+                    ),
+                    onPressed: () {
+                      signInWithGoogle(context);
+                    },
+                  ),
                   SizedBox(height: screenHeight * 0.02),
                   Padding(
                     padding: EdgeInsets.only(top: screenHeight * 0.02),
@@ -193,8 +283,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               .textTheme
                               .titleSmall!
                               .copyWith(
-                                color: const Color(0XFF040415).withOpacity(0.4),
-                              ),
+                            color: const Color(0XFF040415).withOpacity(0.4),
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: screenWidth * 0.02),
@@ -209,15 +299,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    color: const Color(0XFFFF5B00),
-                                  ),
+                                color: const Color(0XFFFF5B00),
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const Spacer(),
                   Image.asset(
                     ImageConstant.carcare1,
                     height: screenHeight * 0.15,
