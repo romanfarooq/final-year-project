@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
+enum Role { user, workshop }
+
 class CarInfo {
-  String manufacture;
+  String manufacturer;
   String model;
   String licensePlate;
   String fuelType;
   Color color;
-  double cc;
+  double? cc;
   int year;
   double mileage;
   double distanceTravelled;
   String vin;
-  DateTime lastOilChangeDate;
+  DateTime? lastOilChangeDate;
   double lastOilChangeDistance;
   // Service history;
   //Location location;
@@ -20,18 +22,18 @@ class CarInfo {
 
   //constructor
   CarInfo({
-    required this.manufacture,
+    required this.manufacturer,
     required this.model,
     required this.licensePlate,
     required this.fuelType,
     required this.color,
-    required this.cc,
+    this.cc,
     required this.year,
     required this.mileage,
-    required this.distanceTravelled,
+    this.distanceTravelled = 0,
     required this.vin,
-    required this.lastOilChangeDate,
-    required this.lastOilChangeDistance,
+    lastOilChangeDate,
+    this.lastOilChangeDistance = 0,
     //required this.serviceHistory,
     required this.imgPath,
     this.carFeatures = const {
@@ -54,13 +56,15 @@ class CarInfo {
       "Rear Speakers": false,
       "Sun Roof": false,
     },
-  });
+  }) : lastOilChangeDate = lastOilChangeDate ?? DateTime.now();
 }
 
 class UserCarsInfo with ChangeNotifier {
+  final String _name = "John Doe";
+  final Role _role = Role.user;
   final List<CarInfo> _userCars = [
     CarInfo(
-      manufacture: "Honda",
+      manufacturer: "Honda",
       model: "CR-V",
       licensePlate: "1234",
       fuelType: "Petrol",
@@ -76,7 +80,7 @@ class UserCarsInfo with ChangeNotifier {
       imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
     ),
     CarInfo(
-      manufacture: "BMW",
+      manufacturer: "BMW",
       model: "X5",
       licensePlate: "4321",
       fuelType: "Diesel",
@@ -93,13 +97,47 @@ class UserCarsInfo with ChangeNotifier {
     ),
   ];
 
+  late CarInfo _selectedCar;
+
+  UserCarsInfo() {
+    _selectedCar = _userCars.first;
+  }
+
+  CarInfo get getSelectedCar => _selectedCar;
+
+  void changeSelectedCar(String licensePlate) {
+    _selectedCar = _userCars.firstWhere(
+      (element) => element.licensePlate == licensePlate,
+    );
+    notifyListeners();
+  }
+
+  String get getRole => _role.toString();
+
+  String get getName => _name;
+
   List<CarInfo> get getCars => _userCars.toList();
 
   // get all manufacturers
   List<String> get getManufacturers =>
-      _userCars.map((car) => car.manufacture).toSet().toList();
+      _userCars.map((car) => car.manufacturer).toSet().toList();
 
-  //
+  String getManufacturerByLicensePlate(String licensePlate) {
+    return _userCars
+        .firstWhere(
+          (element) => element.licensePlate == licensePlate,
+        )
+        .manufacturer;
+  }
+
+  // get car features by linecse plate
+  Map<String, bool> getCarFeaturesByLicensePlate(String licensePlate) {
+    return _userCars
+        .firstWhere(
+          (element) => element.licensePlate == licensePlate,
+        )
+        .carFeatures;
+  }
 
   void addCar(CarInfo car) {
     _userCars.add(car);
@@ -119,6 +157,26 @@ class UserCarsInfo with ChangeNotifier {
     );
     if (index != -1) {
       _userCars[index] = car;
+      notifyListeners();
+    }
+  }
+
+  void updateCarDistanceTravelled(String licensePlate, double distance) {
+    int index = _userCars.indexWhere(
+      (element) => element.licensePlate == licensePlate,
+    );
+    if (index != -1) {
+      _userCars[index].distanceTravelled += distance;
+      notifyListeners();
+    }
+  }
+
+  void updateCarLastOilChangeDistance(String licensePlate, double distance) {
+    int index = _userCars.indexWhere(
+      (element) => element.licensePlate == licensePlate,
+    );
+    if (index != -1) {
+      _userCars[index].lastOilChangeDistance = distance;
       notifyListeners();
     }
   }

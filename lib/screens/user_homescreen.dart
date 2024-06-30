@@ -1,29 +1,19 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../routes/app_routes.dart';
+import '../models/car_info.dart';
 
 class UserHomeScreen extends StatelessWidget {
-  final String model;
-  final int year;
-  final double distanceTravelled;
-  final double lastOilChangeDistance;
-  final String imgPath;
-
-  const UserHomeScreen({
-    super.key,
-    required this.model,
-    required this.year,
-    required this.distanceTravelled,
-    required this.lastOilChangeDistance,
-    required this.imgPath,
-  });
-
+  const UserHomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final userInfo = context.read<UserCarsInfo>();
+    final car = userInfo.getSelectedCar;
     return SafeArea(
       child: Stack(
         children: [
@@ -39,7 +29,7 @@ class UserHomeScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     // 'assets/images/altis.png',
-                    imgPath,
+                    car.imgPath,
                     fit: BoxFit.cover,
                   ),
                 ],
@@ -72,7 +62,7 @@ class UserHomeScreen extends StatelessWidget {
                         width: figmaSpaceToPercentageWidth(33, context),
                       ),
                       Text(
-                        model,
+                        car.model,
                         style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
                             fontSize: figmaSpaceToPercentage(24, context),
@@ -115,8 +105,9 @@ class UserHomeScreen extends StatelessWidget {
                               height: figmaSpaceToPercentage(0.1, context),
                             ),
                             Text(
-                              NumberFormat.decimalPattern()
-                                  .format(distanceTravelled),
+                              NumberFormat.decimalPattern().format(
+                                car.distanceTravelled,
+                              ),
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(19, context),
@@ -155,7 +146,7 @@ class UserHomeScreen extends StatelessWidget {
                               height: figmaSpaceToPercentage(5, context),
                             ),
                             Image.asset(
-                              ImageConstant.engineoil,
+                              ImageConstant.oilchange,
                               height: figmaSpaceToPercentage(70, context),
                               width: figmaSpaceToPercentageWidth(100, context),
                               alignment: Alignment.center,
@@ -164,8 +155,9 @@ class UserHomeScreen extends StatelessWidget {
                               height: figmaSpaceToPercentage(0.1, context),
                             ),
                             Text(
-                              NumberFormat.decimalPattern()
-                                  .format(lastOilChangeDistance),
+                              NumberFormat.decimalPattern().format(
+                                car.lastOilChangeDistance,
+                              ),
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(19, context),
@@ -213,7 +205,7 @@ class UserHomeScreen extends StatelessWidget {
                               height: figmaSpaceToPercentage(0.1, context),
                             ),
                             Text(
-                              year.toString(),
+                              car.year.toString(),
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize: figmaSpaceToPercentage(19, context),
@@ -241,8 +233,9 @@ class UserHomeScreen extends StatelessWidget {
                   Material(
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(AppRoutes.serviceHistory);
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.serviceHistory,
+                        );
                       },
                       child: Container(
                         height: figmaSpaceToPercentage(60, context),
@@ -310,39 +303,44 @@ class UserHomeScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  width: figmaSpaceToPercentageWidth(33, context),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: figmaSpaceToPercentageWidth(33, context),
+                  ),
+                  child: Text(
+                    userInfo.getName,
+                    style: TextStyle(
+                        color: const Color.fromRGBO(255, 255, 255, 1),
+                        fontSize: figmaSpaceToPercentage(22, context),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        decoration: TextDecoration.none),
+                  ),
                 ),
-                Text(
-                  'WAQAR HUSSAIN',
-                  style: TextStyle(
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      fontSize: figmaSpaceToPercentage(22, context),
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none),
-                ),
-                SizedBox(
-                  width: figmaSpaceToPercentageWidth(155, context),
-                ),
-                Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {
-                      // print('hi');
-                    },
-                    child: Container(
-                      height: figmaSpaceToPercentage(52, context),
-                      width: figmaSpaceToPercentageWidth(52, context),
-                      decoration: const BoxDecoration(
-                        color: Color.fromRGBO(217, 217, 217, 1),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.settings,
-                        color: Colors.black,
-                        size: figmaSpaceToPercentage(40, context),
+                Padding(
+                  padding: EdgeInsets.only(
+                    right: figmaSpaceToPercentageWidth(33, context),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        // print('hi');
+                      },
+                      child: Container(
+                        height: figmaSpaceToPercentage(52, context),
+                        width: figmaSpaceToPercentageWidth(52, context),
+                        decoration: const BoxDecoration(
+                          color: Color.fromRGBO(217, 217, 217, 1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.settings,
+                          color: Colors.black,
+                          size: figmaSpaceToPercentage(40, context),
+                        ),
                       ),
                     ),
                   ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/billing_screen.dart';
 import '../screens/car_care_requests.dart';
 import '../screens/car_features.dart';
+import '../screens/car_user_main_page.dart';
 import '../screens/car_user_signup.dart';
 import '../screens/car_user_signup_2.dart';
 import '../screens/denting_n_painting_repair.dart';
@@ -17,17 +18,17 @@ import '../screens/select_user_screen.dart';
 import '../screens/service_history.dart';
 import '../screens/signup_screen.dart';
 import '../screens/splash_screen.dart';
+import '../screens/tab_screen.dart';
 import '../screens/tire_repair.dart';
 import '../screens/tire_services_vault.dart';
-// import '../screens/user_homescreen.dart';
+import '../screens/user_homescreen.dart';
 import '../screens/vehicle_service_record.dart';
 import '../screens/vehicle_service_record_repaired.dart';
 import '../screens/workshop_clients.dart';
 import '../screens/workshop_homepage.dart';
 import '../screens/workshop_services.dart';
 import '../screens/workshop_signup.dart';
-import '../screens/car_user_main_page.dart';
-import '../screens/tab_screen.dart';
+import '../screens/old_car_information.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -60,6 +61,7 @@ class AppRoutes {
   static const String carUserMain = '/car_user_main';
   static const String userHomeScreen = '/user_homescreen';
   static const String bottomTab = '/bottom_tab';
+  static const String oldCarInformation = '/old_car_information';
 
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (ctx) => const SplashScreen(),
@@ -87,8 +89,9 @@ class AppRoutes {
     workshopClients: (ctx) => const WorkshopClients(),
     workshopHomepage: (ctx) => const WorkshopHomepage(),
     workshopServices: (ctx) => const WorkshopServices(),
-    // userHomeScreen: (ctx) => const UserHomeScreen(),
+    userHomeScreen: (ctx) => const UserHomeScreen(),
     carUserMain: (ctx) => const CarUserMain(),
     bottomTab: (ctx) => const BottomTabs(),
+    oldCarInformation: (ctx) => const OldCarInformation(),
   };
 }

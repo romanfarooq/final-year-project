@@ -6,7 +6,8 @@ import '../models/car_info.dart';
 import '../widgets/car_display.dart';
 import '../widgets/graph_km_driven.dart';
 import '../widgets/text_container_carusermain.dart';
-import '../screens/user_homescreen.dart';
+import '../utils/image_constant.dart';
+import '../routes/app_routes.dart';
 
 LatLng sampleLoc = const LatLng(31.4469, 74.2682);
 
@@ -51,7 +52,7 @@ class CarUserMain extends StatelessWidget {
       title: Container(
         alignment: Alignment.centerLeft,
         margin: const EdgeInsets.all(10),
-        child: Image.asset('assets/images/carcare_1.png', height: 25),
+        child: Image.asset(ImageConstant.carcare1, height: 25),
       ),
       actions: [
         Column(
@@ -302,20 +303,11 @@ class ListviewWiget extends StatelessWidget {
       children: carinfo.getCars
           .map((item) => InkWell(
                 onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => UserHomeScreen(
-                        model: item.model,
-                        year: item.year,
-                        distanceTravelled: item.distanceTravelled,
-                        lastOilChangeDistance: item.lastOilChangeDistance,
-                        imgPath: item.imgPath,
-                      ),
-                    ),
-                  );
+                  carinfo.changeSelectedCar(item.licensePlate);
+                  Navigator.of(context).pushNamed(AppRoutes.userHomeScreen);
                 },
                 child: CarDisplay(
-                  name: item.manufacture,
+                  name: item.manufacturer,
                   imgPath: item.imgPath,
                 ),
               ))
