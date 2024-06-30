@@ -1,14 +1,13 @@
-import 'package:car_care/screens/forget_screen.dart';
-import 'package:car_care/screens/workshop_signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'firebase_options.dart';
 
 import './models/car_info.dart';
 import './routes/app_routes.dart';
 import './screens/splash_screen.dart';
+import './screens/booking_service.dart';
 import './utils/theme.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +33,8 @@ class MyApp extends StatelessWidget {
       title: 'Car Care Pro',
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      home: const BookingService(),
       routes: AppRoutes.routes,
     );
   }

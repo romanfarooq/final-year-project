@@ -86,6 +86,7 @@ class ServiceHistoryWidget extends StatelessWidget {
               height: figmaSpaceToPercentage(15, context),
             ),
             Row(
+              // mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
                   width: figmaSpaceToPercentageWidth(44, context),
@@ -125,8 +126,9 @@ class ServiceHistoryWidget extends StatelessWidget {
                 SizedBox(
                   width: figmaSpaceToPercentageWidth(4, context),
                 ),
-                Flexible(
-                  flex: 1,
+                Expanded(
+                  // flex: 1,
+                  // fit: FlexFit.tight,
                   child: Container(
                     height: figmaSpaceToPercentage(142, context),
                     width: figmaSpaceToPercentageWidth(213, context),

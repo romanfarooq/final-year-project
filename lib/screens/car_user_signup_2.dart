@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
+import '../models/car_info.dart';
 
 class CarUserSignup2 extends StatefulWidget {
   const CarUserSignup2({super.key});
@@ -12,11 +14,12 @@ class CarUserSignup2 extends StatefulWidget {
 }
 
 class _CarUserSignupState extends State<CarUserSignup2> {
-  String? _selectedFuelType;
+  late String _selectedFuelType;
   final List<String> fuelTypes = ['Petrol', 'Diesel', 'Electric', 'Hybrid'];
   final TextEditingController _licensePlateController = TextEditingController();
   final TextEditingController _vinController = TextEditingController();
   final TextEditingController _mileageController = TextEditingController();
+  bool _isNewCar = true;
 
   @override
   void dispose() {
@@ -34,12 +37,13 @@ class _CarUserSignupState extends State<CarUserSignup2> {
 
   @override
   Widget build(BuildContext context) {
+    final carInfo = context.read<UserCarsInfo>();
     final Map args = ModalRoute.of(context)!.settings.arguments as Map;
-    final String carManufacturer = args['manufacturer'];
-    final String carModel = args['model'];
-    final int carYear = args['year'];
-    final Color carColor = args['color'];
-    final String carImage = args['image'];
+    final String manufacturer = args['manufacturer'];
+    final String model = args['model'];
+    final int year = args['year'];
+    final Color color = args['color'];
+    final String image = args['image'];
 
     return Scaffold(
       body: SafeArea(
@@ -63,7 +67,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(64, context),
+                  height: figmaSpaceToPercentage(50, context),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -149,7 +153,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   child: TextField(
                     controller: _vinController,
                     decoration: InputDecoration(
-                      hintText: "Abc Auto Care",
+                      hintText: "4Y1SL65848Z411439",
                       hintStyle: TextStyle(
                         color: const Color.fromRGBO(50, 50, 50, 0.6),
                         fontSize: figmaSpaceToPercentage(20, context),
@@ -256,7 +260,7 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   ).toList(),
                   onSelected: (String? selectedItem) {
                     setState(() {
-                      _selectedFuelType = selectedItem;
+                      _selectedFuelType = selectedItem!;
                     });
                   },
                 ),
@@ -314,38 +318,62 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentageWidth(20, context),
+                  height: figmaSpaceToPercentageWidth(5, context),
+                ),
+                SwitchListTile(
+                  title: Text(
+                    "Is this a new car?",
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      color: const Color.fromRGBO(0, 0, 0, 1),
+                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  contentPadding: EdgeInsets.only(
+                    left: figmaSpaceToPercentage(10, context),
+                    right: figmaSpaceToPercentage(15, context),
+                  ),
+                  value: _isNewCar,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _isNewCar = value;
+                    });
+                  },
                 ),
                 ElevatedButton(
                   onPressed: () {
                     if (_licensePlateController.text.isEmpty ||
                         _vinController.text.isEmpty ||
-                        _mileageController.text.isEmpty ||
-                        _selectedFuelType == null) {
+                        _mileageController.text.isEmpty) {
                       return;
                     }
-                    // print(carManufacturer);
-                    // print(carModel);
-                    // print(carYear);
-                    // print(carColor);
-                    // print(_licensePlateController.text);
-                    // print(_vinController.text);
-                    // print(double.tryParse(_mileageController.text));
-                    // print(_selectedFuelType);
-
-                    Navigator.of(context).pushNamed(
-                      AppRoutes.carFeatures,
-                      arguments: {
-                        'manufacturer': carManufacturer,
-                        'model': carModel,
-                        'year': carYear,
-                        'color': carColor,
-                        'licensePlate': _licensePlateController.text,
-                        'vin': _vinController.text,
-                        'mileage': double.tryParse(_mileageController.text),
-                        'fuelType': _selectedFuelType,
-                      },
+                    carInfo.addCar(
+                      CarInfo(
+                        manufacturer: manufacturer,
+                        model: model,
+                        licensePlate: _licensePlateController.text.trim(),
+                        fuelType: _selectedFuelType,
+                        color: color,
+                        year: year,
+                        mileage: double.parse(_mileageController.text.trim()),
+                        vin: _vinController.text.trim(),
+                        imgPath: image,
+                        // imgPath: "assets/images/carlogo/Honda_CR-V.jpg",
+                      ),
                     );
+                    if (_isNewCar) {
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.carFeatures,
+                        arguments: _licensePlateController.text.trim(),
+                      );
+                    } else {
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.oldCarInformation,
+                        arguments: _licensePlateController.text.trim(),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
@@ -375,8 +403,8 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                 ),
                 Center(
                   child: Image.asset(
-                    carImage,
-                    height: figmaSpaceToPercentage(200, context),
+                    image,
+                    height: figmaSpaceToPercentage(170, context),
                   ),
                 )
               ],

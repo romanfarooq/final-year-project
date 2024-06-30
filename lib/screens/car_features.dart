@@ -15,47 +15,11 @@ class CarFeatures extends StatefulWidget {
 }
 
 class _CarFeaturesState extends State<CarFeatures> {
-  final Map<String, bool> _carFeatures = {
-    "ABS": false,
-    "AM/FM Radio": false,
-    "Air Bags": false,
-    "Air Conditioning": false,
-    "Alloy Rims": false,
-    "CD Player": false,
-    "Cruise Control": false,
-    "DVD Player": false,
-    "Immobilizer Key": false,
-    "Keyless Entry": false,
-    "Navigation System": false,
-    "Power Locks": false,
-    "Power Mirrors": false,
-    "Power Steering": false,
-    "Power Windows": false,
-    "Rear AC Vents": false,
-    "Rear Speakers": false,
-    "Sun Roof": false,
-  };
-
   @override
   Widget build(BuildContext context) {
-    final carInfo = context.read<UserCarsInfo>();
-    final Map args = ModalRoute.of(context)!.settings.arguments as Map;
-    final String manufacture = args['manufacturer'];
-    final String model = args['model'];
-    final int year = args['year'];
-    final Color color = args['color'];
-    final String licensePlate = args['licensePlate'];
-    final String vin = args['vin'];
-    final double mileage = args['mileage'];
-    final String fuelType = args['fuelType'];
-
-    // Temporary values
-    const double distanceTravelled = 145207;
-    const double cc = 1.5;
-    const double lastOilChangeDistance = 377;
-    const String imgPath = 'assets/images/carlogo/Honda_CR-V.jpg';
-    DateTime lastOilChangeDate = DateTime.utc(2024, 05, 25);
-
+    final carInfo = context.watch<UserCarsInfo>();
+    final licensePlate = ModalRoute.of(context)!.settings.arguments as String;
+    final carFeatures = carInfo.getCarFeaturesByLicensePlate(licensePlate);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -99,14 +63,12 @@ class _CarFeaturesState extends State<CarFeatures> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: _carFeatures.keys
+                children: carFeatures.keys
                     .map((feature) => TextWithCheckbox(
                           text: feature,
-                          isChecked: _carFeatures[feature]!,
+                          isChecked: carFeatures[feature]!,
                           onChanged: (newValue) {
-                            setState(() {
-                              _carFeatures[feature] = newValue;
-                            });
+                            carFeatures[feature] = newValue;
                           },
                         ))
                     .toList(),
@@ -121,23 +83,6 @@ class _CarFeaturesState extends State<CarFeatures> {
               SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
               ElevatedButton(
                 onPressed: () {
-                  carInfo.addCar(
-                    CarInfo(
-                      manufacture: manufacture,
-                      model: model,
-                      licensePlate: licensePlate,
-                      fuelType: fuelType,
-                      color: color,
-                      cc: cc,
-                      year: year,
-                      mileage: mileage,
-                      distanceTravelled: distanceTravelled,
-                      vin: vin,
-                      lastOilChangeDistance: lastOilChangeDistance,
-                      lastOilChangeDate: lastOilChangeDate,
-                      imgPath: imgPath,
-                    ),
-                  );
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     AppRoutes.bottomTab,
                     (route) => false,
@@ -165,24 +110,7 @@ class _CarFeaturesState extends State<CarFeatures> {
               SizedBox(width: figmaSpaceToPercentageWidth(20, context)),
               ElevatedButton(
                 onPressed: () {
-                  carInfo.addCar(
-                    CarInfo(
-                      manufacture: manufacture,
-                      model: model,
-                      licensePlate: licensePlate,
-                      fuelType: fuelType,
-                      color: color,
-                      cc: cc,
-                      year: year,
-                      mileage: mileage,
-                      distanceTravelled: distanceTravelled,
-                      vin: vin,
-                      lastOilChangeDistance: lastOilChangeDistance,
-                      lastOilChangeDate: lastOilChangeDate,
-                      imgPath: imgPath,
-                      carFeatures: _carFeatures,
-                    ),
-                  );
+                  print(carFeatures);
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     AppRoutes.bottomTab,
                     (route) => false,

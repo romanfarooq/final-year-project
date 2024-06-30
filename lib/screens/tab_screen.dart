@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../screens/car_user_signup.dart';
+import '../routes/app_routes.dart';
 import './car_user_explor.dart';
 import './car_user_main_page.dart';
 import './user_homescreen.dart';
@@ -18,14 +18,10 @@ class _BottomTabsState extends State<BottomTabs> {
   final List<Widget> _pages = [
     const CarUserMain(),
     const Explore(),
-    const CarUserSignup(),
-    const UserHomeScreen(
-      model: "CR-V",
-      year: 2019,
-      distanceTravelled: 13464,
-      lastOilChangeDistance: 145,
-      imgPath: 'assets/images/carlogo/Honda_CR-V.jpg',
+    Container(
+      color: Colors.white,
     ),
+    const UserHomeScreen(),
   ];
 
   @override
@@ -38,6 +34,10 @@ class _BottomTabsState extends State<BottomTabs> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: (index) {
+          if (index == 2) {
+            Navigator.of(context).pushNamed(AppRoutes.carUserSignup);
+            return;
+          }
           setState(() {
             _selectedIndex = index;
           });
