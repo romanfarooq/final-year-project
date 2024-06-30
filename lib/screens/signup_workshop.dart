@@ -10,14 +10,14 @@ import '../utils/image_constant.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignUpScreenW extends StatefulWidget {
+  const SignUpScreenW({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignUpScreenW> createState() => _SignUpScreenStateW();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenStateW extends State<SignUpScreenW> {
   bool loading = false;
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -81,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: screenHeight * 0.02),
                   _buildPassword(context, screenWidth, screenHeight),
                   SizedBox(height: screenHeight * 0.03),
-                  _buildSignUpButtonForUser(context),
+                  _buildSignUpButtonForWorkshopOwner(context),
                   SizedBox(height: screenHeight * 0.02),
                   _buildLine(context, screenWidth, screenHeight),
                   SizedBox(height: screenHeight * 0.02),
@@ -123,8 +123,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Text(
                         "Already have an account?",
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              color: const Color(0XFF040415).withOpacity(0.4),
-                            ),
+                          color: const Color(0XFF040415).withOpacity(0.4),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: screenWidth * 0.02),
@@ -154,10 +154,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildFullName(
-    BuildContext context,
-    double screenWidth,
-    double screenHeight,
-  ) {
+      BuildContext context,
+      double screenWidth,
+      double screenHeight,
+      ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -189,10 +189,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildEmail(
-    BuildContext context,
-    double screenWidth,
-    double screenHeight,
-  ) {
+      BuildContext context,
+      double screenWidth,
+      double screenHeight,
+      ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -225,10 +225,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildPhoneNumber(
-    BuildContext context,
-    double screenWidth,
-    double screenHeight,
-  ) {
+      BuildContext context,
+      double screenWidth,
+      double screenHeight,
+      ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -261,10 +261,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildPassword(
-    BuildContext context,
-    double screenWidth,
-    double screenHeight,
-  ) {
+      BuildContext context,
+      double screenWidth,
+      double screenHeight,
+      ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -298,7 +298,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildSignUpButtonForUser(BuildContext context) {
+  Widget _buildSignUpButtonForWorkshopOwner(BuildContext context) {
     return CustomElevatedButton(
       text: "Sign Up",
       buttonStyle: ButtonStyle(
@@ -336,7 +336,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               'phone': _phoneNumberController.text,
               'email': _emailController.text,
               'uid': userCredential.user!.uid,
-              'role': 'user', // Set role as user
+              'role': 'workshop_owner', // Set role as workshop owner
             });
 
             // Log success message
@@ -366,14 +366,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
 
 
-}
+  }
 
 
   Widget _buildLine(
-    BuildContext context,
-    double screenWidth,
-    double screenHeight,
-  ) {
+      BuildContext context,
+      double screenWidth,
+      double screenHeight,
+      ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,

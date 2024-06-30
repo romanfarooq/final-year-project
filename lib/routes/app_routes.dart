@@ -1,4 +1,5 @@
 import 'package:car_care/screens/login_workshop.dart';
+import 'package:car_care/screens/signup_workshop.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/forget_screen.dart';
@@ -37,6 +38,7 @@ class AppRoutes {
   static const String loginScreen = '/login_screen';
   static const String loginScreenW = '/login_workshop';
   static const String signUpScreen = '/sign_up_screen';
+  static const String signUpScreenW = '/signup_workshop';
   static const String selectUserScreen = '/select_user_screen';
   static const String workshopSignupScreen = '/workshop_signup';
   static const String carUserSignup = '/car_user_signup';
@@ -71,6 +73,7 @@ class AppRoutes {
     loginScreen: (ctx) => const LoginScreen(),
     loginScreenW: (ctx) => const LoginScreenW(),
     signUpScreen: (ctx) => const SignUpScreen(),
+    signUpScreenW: (ctx) => const SignUpScreenW(),
     selectUserScreen: (ctx) => const SelectUserScreen(),
     workshopSignupScreen: (ctx) => const WorkshopSignup(),
     carUserSignup: (ctx) => const CarUserSignup(),
