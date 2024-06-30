@@ -10,14 +10,14 @@ import '../utils/image_constant.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreenW extends StatefulWidget {
+  const LoginScreenW({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreenW> createState() => _LoginScreenWState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenWState extends State<LoginScreenW> {
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _passwordController.text.trim(),
       );
       // Navigate to the next screen upon successful login
-      Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
+      Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
       ToastMessage().toastmessage('Login Successful');
     } catch (error) {
       // Handle specific Firebase Auth errors
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       // Navigate to the next screen upon successful login
-      Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
+      Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
       ToastMessage().toastmessage('Google Sign-In Successful');
     } catch (error) {
       if (!mounted) {
@@ -210,15 +210,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: true,
                   ),
                   SizedBox(height: screenHeight * 0.03),
-                   InkWell(
-                     onTap: (){
-                       //Navigator.of(context).pushReplacementNamed(AppRoutes.userHomeScreen);
-                       Navigator.of(context).pushReplacementNamed(AppRoutes.forgetScreen);
-                     },
-                     child: Text(
+                  InkWell(
+                    onTap: (){
+                      //Navigator.of(context).pushReplacementNamed(AppRoutes.userHomeScreen);
+                      Navigator.of(context).pushReplacementNamed(AppRoutes.forgetScreen);
+                    },
+                    child: Text(
                       "Forgot Password?",
                       style: Theme.of(context).textTheme.titleSmall,),
-                   ),
+                  ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomElevatedButton(
                     text: "Login",
