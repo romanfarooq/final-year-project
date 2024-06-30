@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
@@ -9,7 +10,11 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed(AppRoutes.selectUserScreen);
+      if (FirebaseAuth.instance.currentUser != null) {
+        Navigator.of(context).pushReplacementNamed(AppRoutes.bottomTab);
+      } else {
+        Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
+      }
     });
 
     return Scaffold(

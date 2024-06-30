@@ -88,7 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn(
-        clientId: '812183513091-lq3q9surkcqlekrgma3lle9r00i1e3es.apps.googleusercontent.com', // Replace with your Web client ID
+        clientId:
+            '812183513091-lq3q9surkcqlekrgma3lle9r00i1e3es.apps.googleusercontent.com', // Replace with your Web client ID
       );
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
@@ -96,13 +97,15 @@ class _LoginScreenState extends State<LoginScreen> {
         return; // The user canceled the sign-in or the widget is not mounted
       }
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
-      final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
 
       if (!mounted) {
         return; // Check again if the widget is still mounted before updating UI
@@ -119,6 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
       print(error.toString());
     }
   }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -175,7 +179,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         screenWidth * 0.04,
                         screenHeight * 0.01,
                       ),
-                      child: Icon(Icons.email_outlined,
+                      child: Icon(
+                        Icons.email_outlined,
                         size: 25,
                         // height: screenHeight * 0.03,
                         // width: screenWidth * 0.06,
@@ -198,7 +203,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         screenWidth * 0.04,
                         screenHeight * 0.01,
                       ),
-                      child: Icon(Icons.lock_outline_sharp,
+                      child: Icon(
+                        Icons.lock_outline_sharp,
                         size: 25,
                         // height: screenHeight * 0.03,
                         // width: screenWidth * 0.06,
@@ -210,23 +216,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: true,
                   ),
                   SizedBox(height: screenHeight * 0.03),
-                   InkWell(
-                     onTap: (){
-                       //Navigator.of(context).pushReplacementNamed(AppRoutes.userHomeScreen);
-                       Navigator.of(context).pushReplacementNamed(AppRoutes.forgetScreen);
-                     },
-                     child: Text(
+                  InkWell(
+                    onTap: () {
+                      //Navigator.of(context).pushReplacementNamed(AppRoutes.userHomeScreen);
+                      Navigator.of(context).pushReplacementNamed(
+                        AppRoutes.forgetScreen,
+                      );
+                    },
+                    child: Text(
                       "Forgot Password?",
-                      style: Theme.of(context).textTheme.titleSmall,),
-                   ),
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomElevatedButton(
                     text: "Login",
                     buttonStyle: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         Colors.transparent,
                       ),
-                      elevation: MaterialStateProperty.all<double>(0),
+                      elevation: WidgetStateProperty.all<double>(0),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(screenWidth * 0.05),
@@ -239,18 +248,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    onPressed: () {
-                      login();
-                    },
+                    onPressed: login,
                   ),
                   SizedBox(height: screenHeight * 0.01),
                   CustomElevatedButton(
                     text: "Sign in with Google",
                     buttonStyle: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         Colors.transparent,
                       ),
-                      elevation: MaterialStateProperty.all<double>(0),
+                      elevation: WidgetStateProperty.all<double>(0),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16.0),
@@ -263,8 +270,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    leftIcon: Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
+                    leftIcon: const Padding(
+                      padding: EdgeInsets.only(right: 8.0),
                       child: FaIcon(
                         FontAwesomeIcons.google,
                         color: Colors.white,
@@ -287,8 +294,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               .textTheme
                               .titleSmall!
                               .copyWith(
-                            color: const Color(0XFF040415).withOpacity(0.4),
-                          ),
+                                color: const Color(0XFF040415).withOpacity(0.4),
+                              ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: screenWidth * 0.02),
@@ -303,8 +310,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                color: const Color(0XFFFF5B00),
-                              ),
+                                    color: const Color(0XFFFF5B00),
+                                  ),
                             ),
                           ),
                         ),

@@ -110,6 +110,7 @@ class _CarFeaturesState extends State<CarFeatures> {
               SizedBox(width: figmaSpaceToPercentageWidth(20, context)),
               ElevatedButton(
                 onPressed: () {
+                  print(carFeatures);
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     AppRoutes.bottomTab,
                     (route) => false,
