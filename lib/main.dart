@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: themeData,
       // home: const SplashScreen(),
-      home: const BookingService(),
+      home: const SplashScreen(),
       routes: AppRoutes.routes,
     );
   }

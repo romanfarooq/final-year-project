@@ -62,6 +62,7 @@ class _BookingServiceState extends State<BookingService> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: appBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
