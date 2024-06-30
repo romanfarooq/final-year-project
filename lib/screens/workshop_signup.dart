@@ -33,6 +33,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Stack(
@@ -81,36 +82,37 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                       Container(
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
-                        padding: EdgeInsets.only(
-                          left: figmaSpaceToPercentageWidth(26, context),
-                          top: figmaSpaceToPercentage(10, context),
-                        ),
+                        padding: EdgeInsets.symmetric(horizontal: figmaSpaceToPercentageWidth(26, context)),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
                           borderRadius: BorderRadius.all(Radius.circular(25)),
                         ),
-                        child: TextField(
-                          controller: _workshopnameController,
-                          decoration: InputDecoration(
-                            hintText: "Abc Auto Care",
-                            hintStyle: TextStyle(
-                              color: const Color.fromRGBO(50, 50, 50, 0.6),
+                          child: TextField(
+                            controller: _workshopnameController,
+                            decoration: InputDecoration(
+                              hintText: "Abc Auto Care",
+                              hintStyle: TextStyle(
+                                color: const Color.fromRGBO(50, 50, 50, 0.6),
+                                fontSize: figmaSpaceToPercentage(14, context),
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w500,
+                              ),
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.symmetric(vertical: figmaSpaceToPercentage(16, context)), // Adjust vertical padding
+                            ),
+                            style: TextStyle(
+                              color: const Color.fromRGBO(0, 0, 0, 1),
                               fontSize: figmaSpaceToPercentage(14, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
-                            border: InputBorder.none,
+                            textInputAction: TextInputAction.done,
+                            keyboardType: TextInputType.text,
+                            textAlignVertical: TextAlignVertical.center, // Center text vertically within the TextField
                           ),
-                          style: TextStyle(
-                            color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(14, context),
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textInputAction: TextInputAction.done,
-                          keyboardType: TextInputType.text,
-                        ),
+
                       ),
+
                     ],
                   ),
                   SizedBox(
@@ -162,6 +164,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(vertical: figmaSpaceToPercentage(16, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -171,6 +174,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                           ),
                           textInputAction: TextInputAction.done,
                           keyboardType: TextInputType.text,
+                          textAlignVertical: TextAlignVertical.center,
                         ),
                       ),
                     ],
@@ -224,6 +228,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(vertical: figmaSpaceToPercentage(16, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -233,6 +238,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                           ),
                           textInputAction: TextInputAction.done,
                           keyboardType: TextInputType.text,
+                          textAlignVertical: TextAlignVertical.center,
                         ),
                       ),
                     ],
@@ -286,6 +292,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(vertical: figmaSpaceToPercentage(16, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -295,6 +302,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                           ),
                           textInputAction: TextInputAction.done,
                           keyboardType: TextInputType.text,
+                          textAlignVertical: TextAlignVertical.center,
                         ),
                       ),
                     ],
@@ -348,6 +356,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(vertical: figmaSpaceToPercentage(16, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -357,6 +366,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                           ),
                           textInputAction: TextInputAction.done,
                           keyboardType: TextInputType.text,
+                          textAlignVertical: TextAlignVertical.center,
                         ),
                       ),
                     ],
@@ -421,7 +431,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
-                            contentPadding: const EdgeInsets.all(10),
+                            contentPadding: const EdgeInsets.all(15),
                             // Add padding to the hint text
                             border: InputBorder.none,
                           ),
@@ -480,7 +490,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                 child: Image.asset(
                   ImageConstant.wrenchtool,
                   height: figmaSpaceToPercentage(240, context),
-                  width: figmaSpaceToPercentageWidth(300, context),
+                  width: figmaSpaceToPercentageWidth(240, context),
                   fit: BoxFit.cover,
                 ),
               ),

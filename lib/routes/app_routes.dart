@@ -1,5 +1,7 @@
+import 'package:car_care/screens/login_workshop.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/forget_screen.dart';
 import '../screens/billing_screen.dart';
 import '../screens/car_care_requests.dart';
 import '../screens/car_features.dart';
@@ -31,7 +33,9 @@ import '../screens/tab_screen.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
+  static const String forgetScreen = '/forget_screen';
   static const String loginScreen = '/login_screen';
+  static const String loginScreenW = '/login_workshop';
   static const String signUpScreen = '/sign_up_screen';
   static const String selectUserScreen = '/select_user_screen';
   static const String workshopSignupScreen = '/workshop_signup';
@@ -62,8 +66,10 @@ class AppRoutes {
   static const String bottomTab = '/bottom_tab';
 
   static Map<String, WidgetBuilder> routes = {
+    forgetScreen: (ctx) => const ForgetScreen(),
     splashScreen: (ctx) => const SplashScreen(),
     loginScreen: (ctx) => const LoginScreen(),
+    loginScreenW: (ctx) => const LoginScreenW(),
     signUpScreen: (ctx) => const SignUpScreen(),
     selectUserScreen: (ctx) => const SelectUserScreen(),
     workshopSignupScreen: (ctx) => const WorkshopSignup(),
