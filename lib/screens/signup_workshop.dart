@@ -1,12 +1,11 @@
-import 'package:car_care/utils/toast_message.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
@@ -45,7 +44,6 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-
         child: SingleChildScrollView(
           child: Container(
             width: screenWidth,
@@ -123,8 +121,8 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
                       Text(
                         "Already have an account?",
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: const Color(0XFF040415).withOpacity(0.4),
-                        ),
+                              color: const Color(0XFF040415).withOpacity(0.4),
+                            ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: screenWidth * 0.02),
@@ -154,10 +152,10 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
   }
 
   Widget _buildFullName(
-      BuildContext context,
-      double screenWidth,
-      double screenHeight,
-      ) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -189,10 +187,10 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
   }
 
   Widget _buildEmail(
-      BuildContext context,
-      double screenWidth,
-      double screenHeight,
-      ) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -225,10 +223,10 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
   }
 
   Widget _buildPhoneNumber(
-      BuildContext context,
-      double screenWidth,
-      double screenHeight,
-      ) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -261,10 +259,10 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
   }
 
   Widget _buildPassword(
-      BuildContext context,
-      double screenWidth,
-      double screenHeight,
-      ) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,
@@ -302,8 +300,8 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
     return CustomElevatedButton(
       text: "Sign Up",
       buttonStyle: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-        elevation: MaterialStateProperty.all<double>(0),
+        backgroundColor: WidgetStateProperty.all<Color>(Colors.transparent),
+        elevation: WidgetStateProperty.all<double>(0),
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -325,13 +323,17 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
           });
 
           try {
-            UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+            UserCredential userCredential =
+                await _auth.createUserWithEmailAndPassword(
               email: _emailController.text.toString(),
               password: _passwordController.text.toString(),
             );
             Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
             ToastMessage().toastmessage('Signup Successfully');
-            await _firestore.collection('users').doc(userCredential.user!.uid).set({
+            await _firestore
+                .collection('users')
+                .doc(userCredential.user!.uid)
+                .set({
               'fullname': _fullNameController.text,
               'phone': _phoneNumberController.text,
               'email': _emailController.text,
@@ -343,7 +345,10 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
             print('User data added to Firestore');
 
             // Read back data to confirm
-            DocumentSnapshot doc = await _firestore.collection('users').doc(userCredential.user!.uid).get();
+            DocumentSnapshot doc = await _firestore
+                .collection('users')
+                .doc(userCredential.user!.uid)
+                .get();
             if (doc.exists) {
               print('User data from Firestore: ${doc.data()}');
             } else {
@@ -364,16 +369,13 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
         }
       },
     );
-
-
   }
 
-
   Widget _buildLine(
-      BuildContext context,
-      double screenWidth,
-      double screenHeight,
-      ) {
+    BuildContext context,
+    double screenWidth,
+    double screenHeight,
+  ) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         screenWidth * 0.01,

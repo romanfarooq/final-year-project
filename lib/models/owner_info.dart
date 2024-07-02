@@ -1,14 +1,15 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html';
+enum Role { user, workshop }
 
 class OwnerInfo {
   String name;
   int id;
   String email;
   String phone;
-  PasswordCredential password;
+  String password;
+  Role role;
+
   //Car or Workshop
-  
+
   //constructor
   OwnerInfo({
     required this.name,
@@ -16,5 +17,6 @@ class OwnerInfo {
     required this.email,
     required this.phone,
     required this.password,
+    required this.role,
   });
 }

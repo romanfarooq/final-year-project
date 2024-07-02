@@ -1,16 +1,11 @@
-import 'package:car_care/utils/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
-
-
 
 class ForgetScreen extends StatefulWidget {
   const ForgetScreen({super.key});
@@ -24,14 +19,12 @@ class _ForgetScreenState extends State<ForgetScreen> {
   final auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -61,26 +54,23 @@ class _ForgetScreenState extends State<ForgetScreen> {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   SizedBox(height: screenHeight * 0.02),
-
                   SizedBox(height: screenHeight * 0.02),
                   CustomTextFormField(
                     controller: _userNameController,
                     hintText: "   Enter Your Email",
-
                     prefixConstraints: BoxConstraints(
                       maxHeight: screenHeight * 0.1,
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.02),
-
                   SizedBox(height: screenHeight * 0.03),
                   CustomElevatedButton(
                     text: "Send",
                     buttonStyle: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         Colors.transparent,
                       ),
-                      elevation: MaterialStateProperty.all<double>(0),
+                      elevation: WidgetStateProperty.all<double>(0),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(screenWidth * 0.05),
@@ -94,22 +84,21 @@ class _ForgetScreenState extends State<ForgetScreen> {
                       ),
                     ),
                     onPressed: () {
-
-                      auth.sendPasswordResetEmail(email: _userNameController.text.toString()).then((onValue){
-                        Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
-                        ToastMessage().toastmessage('We have sent you email to recover password, please check email');
-                      }).onError((error, stackTrace){
+                      auth
+                          .sendPasswordResetEmail(
+                              email: _userNameController.text.toString())
+                          .then((onValue) {
+                        Navigator.of(context)
+                            .pushReplacementNamed(AppRoutes.loginScreen);
+                        ToastMessage().toastmessage(
+                            'We have sent you email to recover password, please check email');
+                      }).onError((error, stackTrace) {
                         ToastMessage().toastmessage(error.toString());
                       });
-
-
                     },
                   ),
                   SizedBox(height: screenHeight * 0.01),
-
                   SizedBox(height: screenHeight * 0.02),
-
-
                   Image.asset(
                     ImageConstant.carcare1,
                     height: screenHeight * 0.15,

@@ -19,7 +19,8 @@ class _CarFeaturesState extends State<CarFeatures> {
   Widget build(BuildContext context) {
     final carInfo = context.watch<UserCarsInfo>();
     final licensePlate = ModalRoute.of(context)!.settings.arguments as String;
-    final carFeatures = carInfo.getCarFeaturesByLicensePlate(licensePlate);
+    final features = carInfo.getCarFeaturesByLicensePlate(licensePlate);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -63,12 +64,12 @@ class _CarFeaturesState extends State<CarFeatures> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: carFeatures.keys
+                children: features.keys
                     .map((feature) => TextWithCheckbox(
                           text: feature,
-                          isChecked: carFeatures[feature]!,
+                          isChecked: features[feature]!,
                           onChanged: (newValue) {
-                            carFeatures[feature] = newValue;
+                            features[feature] = newValue;
                           },
                         ))
                     .toList(),
@@ -109,12 +110,14 @@ class _CarFeaturesState extends State<CarFeatures> {
               ),
               SizedBox(width: figmaSpaceToPercentageWidth(20, context)),
               ElevatedButton(
-                onPressed: () {
-                  print(carFeatures);
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    AppRoutes.bottomTab,
-                    (route) => false,
-                  );
+                onPressed: () async {
+                  await carInfo.updateCarFeatures(licensePlate, features);
+                  if (context.mounted) {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      AppRoutes.bottomTab,
+                      (route) => false,
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(96, 189, 52, 1),

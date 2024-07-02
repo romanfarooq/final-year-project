@@ -1,13 +1,12 @@
-import 'package:car_care/utils/toast_message.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'forget_screen.dart';
+
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
@@ -41,17 +40,23 @@ class _LoginScreenWState extends State<LoginScreenW> {
       );
 
       // Fetch user role from Firestore
-      DocumentSnapshot doc = await _firestore.collection('users').doc(userCredential.user!.uid).get();
+      DocumentSnapshot doc = await _firestore
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
       if (doc.exists) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-        String role = data?['role'] ?? 'user'; // Default to 'user' if role is not found
+        String role =
+            data?['role'] ?? 'user'; // Default to 'user' if role is not found
 
         // Navigate to different screens based on the role
         if (role == 'user') {
-          ToastMessage().toastmessage('You selected Workshop Owner, but you are not authorized. Redirected to your profile');
+          ToastMessage().toastmessage(
+              'You selected Workshop Owner, but you are not authorized. Redirected to your profile');
           Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
         } else if (role == 'workshop_owner') {
-          Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
+          Navigator.of(context)
+              .pushReplacementNamed(AppRoutes.workshopSignupScreen);
         }
 
         ToastMessage().toastmessage('Login Successful');
@@ -81,7 +86,6 @@ class _LoginScreenWState extends State<LoginScreenW> {
       ToastMessage().toastmessage(errorMessage);
     }
   }
-
 
   // Future<void> signInWithGoogle() async {
   //  final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -139,13 +143,11 @@ class _LoginScreenWState extends State<LoginScreenW> {
   //   }
   // }
 
-
   Future<void> signInWithGoogle(BuildContext context, String role) async {
-
     try {
-
       final GoogleSignIn googleSignIn = GoogleSignIn(
-        clientId: '812183513091-lq3q9surkcqlekrgma3lle9r00i1e3es.apps.googleusercontent.com', // Replace with your Web client ID
+        clientId:
+            '812183513091-lq3q9surkcqlekrgma3lle9r00i1e3es.apps.googleusercontent.com', // Replace with your Web client ID
       );
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
@@ -153,31 +155,38 @@ class _LoginScreenWState extends State<LoginScreenW> {
         return; // The user canceled the sign-in or the widget is not mounted
       }
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
-      final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
 
       if (!mounted) {
         return; // Check again if the widget is still mounted before updating UI
       }
 
       // Fetch user role from Firestore
-      DocumentSnapshot doc = await _firestore.collection('users').doc(userCredential.user!.uid).get();
+      DocumentSnapshot doc = await _firestore
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
       if (doc.exists) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-        String fetchedRole = data?['role'] ?? 'user'; // Default to 'user' if role is not found
+        String fetchedRole =
+            data?['role'] ?? 'user'; // Default to 'user' if role is not found
 
         // Navigate to different screens based on the role fetched from Firestore
         if (fetchedRole == 'user') {
-          ToastMessage().toastmessage('You selected Workshop Owner, but you are not authorized. Redirected to your profile');
+          ToastMessage().toastmessage(
+              'You selected Workshop Owner, but you are not authorized. Redirected to your profile');
           Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
-
         } else if (fetchedRole == 'workshop_owner') {
-          Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
+          Navigator.of(context)
+              .pushReplacementNamed(AppRoutes.workshopSignupScreen);
         }
       } else {
         // If the user document doesn't exist, create it with the role passed as parameter
@@ -190,11 +199,10 @@ class _LoginScreenWState extends State<LoginScreenW> {
 
         // Navigate to the appropriate screen based on the role parameter
         if (role == 'user') {
-
           Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
         } else if (role == 'workshop_owner') {
-          Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
-
+          Navigator.of(context)
+              .pushReplacementNamed(AppRoutes.workshopSignupScreen);
         }
       }
 
@@ -207,14 +215,6 @@ class _LoginScreenWState extends State<LoginScreenW> {
       print(error.toString());
     }
   }
-
-
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -272,7 +272,8 @@ class _LoginScreenWState extends State<LoginScreenW> {
                         screenWidth * 0.04,
                         screenHeight * 0.01,
                       ),
-                      child: Icon(Icons.email_outlined,
+                      child: Icon(
+                        Icons.email_outlined,
                         size: 25,
                         // height: screenHeight * 0.03,
                         // width: screenWidth * 0.06,
@@ -295,7 +296,8 @@ class _LoginScreenWState extends State<LoginScreenW> {
                         screenWidth * 0.04,
                         screenHeight * 0.01,
                       ),
-                      child: Icon(Icons.lock_outline_sharp,
+                      child: Icon(
+                        Icons.lock_outline_sharp,
                         size: 25,
                         // height: screenHeight * 0.03,
                         // width: screenWidth * 0.06,
@@ -308,22 +310,24 @@ class _LoginScreenWState extends State<LoginScreenW> {
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       //Navigator.of(context).pushReplacementNamed(AppRoutes.userHomeScreen);
-                      Navigator.of(context).pushReplacementNamed(AppRoutes.forgetScreen);
+                      Navigator.of(context)
+                          .pushReplacementNamed(AppRoutes.forgetScreen);
                     },
                     child: Text(
                       "Forgot Password?",
-                      style: Theme.of(context).textTheme.titleSmall,),
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomElevatedButton(
                     text: "Login",
                     buttonStyle: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         Colors.transparent,
                       ),
-                      elevation: MaterialStateProperty.all<double>(0),
+                      elevation: WidgetStateProperty.all<double>(0),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(screenWidth * 0.05),
@@ -344,10 +348,10 @@ class _LoginScreenWState extends State<LoginScreenW> {
                   CustomElevatedButton(
                     text: "Sign in with Google",
                     buttonStyle: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         Colors.transparent,
                       ),
-                      elevation: MaterialStateProperty.all<double>(0),
+                      elevation: WidgetStateProperty.all<double>(0),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16.0),
@@ -384,15 +388,15 @@ class _LoginScreenWState extends State<LoginScreenW> {
                               .textTheme
                               .titleSmall!
                               .copyWith(
-                            color: const Color(0XFF040415).withOpacity(0.4),
-                          ),
+                                color: const Color(0XFF040415).withOpacity(0.4),
+                              ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: screenWidth * 0.02),
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context)
-                                  .pushReplacementNamed(AppRoutes.signUpScreenW);
+                              Navigator.of(context).pushReplacementNamed(
+                                  AppRoutes.signUpScreenW);
                             },
                             child: Text(
                               "Sign Up",
@@ -400,8 +404,8 @@ class _LoginScreenWState extends State<LoginScreenW> {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                color: const Color(0XFFFF5B00),
-                              ),
+                                    color: const Color(0XFFFF5B00),
+                                  ),
                             ),
                           ),
                         ),

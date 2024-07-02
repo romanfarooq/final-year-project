@@ -1,5 +1,6 @@
-import 'package:car_care/widgets/custom_positioned_container.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/custom_positioned_container.dart';
 
 class Explore extends StatelessWidget {
   const Explore({super.key});

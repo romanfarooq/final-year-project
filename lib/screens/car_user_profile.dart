@@ -1,7 +1,7 @@
-import 'package:car_care/widgets/custom_container_profile.dart';
 import 'package:flutter/material.dart';
 
 import '../data/service_history_data.dart';
+import '../widgets/custom_container_profile.dart';
 
 class CarOwnerProfile extends StatelessWidget {
   const CarOwnerProfile({super.key});

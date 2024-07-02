@@ -1,15 +1,16 @@
-import 'package:car_care/utils/toast_message.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'forget_screen.dart';
+import 'package:provider/provider.dart';
+
+import '../models/car_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -66,7 +67,6 @@ class _LoginScreenState extends State<LoginScreen> {
   //   }
   // }
 
-
   void login() async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
@@ -75,17 +75,40 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       // Fetch user role from Firestore
-      DocumentSnapshot doc = await _firestore.collection('users').doc(userCredential.user!.uid).get();
+      DocumentSnapshot doc = await _firestore
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
       if (doc.exists) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-        String role = data?['role'] ?? 'user'; // Default to 'user' if role is not found
+        String role = data?['role'] ?? 'user';
 
-        // Navigate to different screens based on the role
         if (role == 'user') {
-          Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
+          final userCarsInfo = context.read<UserCarsInfo>();
+          userCarsInfo.setUserInfo(
+            fullname: data?['fullname'],
+            uid: userCredential.user!.uid,
+            email: data?['email'],
+            phone: data?['phone'],
+            role: role,
+          );
+          await userCarsInfo.fetchUserCars();
+          if (userCarsInfo.getCars.isNotEmpty) {
+            Navigator.of(context).pushReplacementNamed(
+              AppRoutes.bottomTab,
+            );
+          } else {
+            Navigator.of(context).pushReplacementNamed(
+              AppRoutes.carUserSignup,
+            );
+          }
         } else if (role == 'workshop_owner') {
-          ToastMessage().toastmessage('You selected Car Owner, but you are not authorized. Redirected to your profile');
-          Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
+          ToastMessage().toastmessage(
+            'You selected Car Owner, but you are not authorized. Redirected to your profile',
+          );
+          Navigator.of(context).pushReplacementNamed(
+            AppRoutes.workshopSignupScreen,
+          );
         }
 
         ToastMessage().toastmessage('Login Successful');
@@ -172,10 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //   }
   // }
 
-
-
   Future<void> signInWithGoogle(BuildContext context, String role) async {
-
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn(
         clientId:
@@ -202,18 +222,40 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       // Fetch user role from Firestore
-      DocumentSnapshot doc = await _firestore.collection('users').doc(userCredential.user!.uid).get();
+      DocumentSnapshot doc = await _firestore
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
       if (doc.exists) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-        String fetchedRole = data?['role'] ?? 'user'; // Default to 'user' if role is not found
-
+        String fetchedRole = data?['role'] ?? 'user';
         // Navigate to different screens based on the role fetched from Firestore
         if (fetchedRole == 'user') {
-          Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
+          final userCarsInfo = context.read<UserCarsInfo>();
+          userCarsInfo.setUserInfo(
+            fullname: data?['fullname'],
+            uid: userCredential.user!.uid,
+            email: data?['email'],
+            phone: data?['phone'],
+            role: fetchedRole,
+          );
+          await userCarsInfo.fetchUserCars();
+          if (userCarsInfo.getCars.isNotEmpty) {
+            Navigator.of(context).pushReplacementNamed(
+              AppRoutes.bottomTab,
+            );
+          } else {
+            Navigator.of(context).pushReplacementNamed(
+              AppRoutes.carUserSignup,
+            );
+          }
         } else if (fetchedRole == 'workshop_owner') {
-          ToastMessage().toastmessage('You selected Car Owner, but you are not authorized. Redirected to your profile');
-          Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
-
+          ToastMessage().toastmessage(
+            'You selected Car Owner, but you are not authorized. Redirected to your profile',
+          );
+          Navigator.of(context).pushReplacementNamed(
+            AppRoutes.workshopSignupScreen,
+          );
         }
       } else {
         // If the user document doesn't exist, create it with the role passed as parameter
@@ -226,11 +268,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
         // Navigate to the appropriate screen based on the role parameter
         if (role == 'user') {
+          context.read<UserCarsInfo>().setUserInfo(
+                fullname: googleUser.displayName ?? 'User',
+                uid: userCredential.user!.uid,
+                email: googleUser.email,
+                phone: '',
+                role: role,
+              );
           Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
         } else if (role == 'workshop_owner') {
-
-          Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
-
+          Navigator.of(context)
+              .pushReplacementNamed(AppRoutes.workshopSignupScreen);
         }
       }
 
@@ -243,7 +291,6 @@ class _LoginScreenState extends State<LoginScreen> {
       print(error.toString());
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -301,7 +348,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         screenWidth * 0.04,
                         screenHeight * 0.01,
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.email_outlined,
                         size: 25,
                         // height: screenHeight * 0.03,
@@ -325,7 +372,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         screenWidth * 0.04,
                         screenHeight * 0.01,
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.lock_outline_sharp,
                         size: 25,
                         // height: screenHeight * 0.03,
