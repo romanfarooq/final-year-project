@@ -13,7 +13,8 @@ class ElectricalServiceVault extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workshopInfo = context.watch<WorkshopInfo>();
-    final electricalServices = workshopInfo.getElectricalRepairs;
+    final electricalServices =
+        workshopInfo.getElectricalRepairs as Map<String, bool>;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(

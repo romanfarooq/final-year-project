@@ -2,23 +2,18 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:provider/provider.dart';
 
+import '../models/workshop_info.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_textwithcheckbox.dart';
-import '../models/workshop_info.dart';
 
-class TireServiceVault extends StatefulWidget {
+class TireServiceVault extends StatelessWidget {
   const TireServiceVault({super.key});
 
   @override
-  State<TireServiceVault> createState() => _TireServiceVaultState();
-}
-
-class _TireServiceVaultState extends State<TireServiceVault> {
-  @override
   Widget build(BuildContext context) {
     final workshopInfo = context.watch<WorkshopInfo>();
-    final tireServices = workshopInfo.getTireServices;
+    final tireServices = workshopInfo.getTireServices as Map<String, bool>;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(

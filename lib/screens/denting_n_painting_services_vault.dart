@@ -13,7 +13,8 @@ class DentingNpaintingServiceVault extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workshopInfo = context.watch<WorkshopInfo>();
-    final dentingNpaintingServices = workshopInfo.getDentingPaintingServices;
+    final dentingNpaintingServices =
+        workshopInfo.getDentingPaintingServices as Map<String, bool>;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(

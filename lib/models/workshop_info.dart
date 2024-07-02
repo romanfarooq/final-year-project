@@ -194,6 +194,14 @@ class WorkshopInfo with ChangeNotifier {
 
   get getWorkshopName => workshopName;
 
+  get getLocation => location;
+
+  get getPhone => phone;
+
+  get getOpeningHours => openingHours;
+
+  get getRatingStars => ratingStars;
+
   get getElectricalRepairs => electricalRepairs;
 
   get getMechanicalRepairs => mechanicalRepairs;

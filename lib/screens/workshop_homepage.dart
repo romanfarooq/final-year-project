@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:provider/provider.dart';
 
 import '../screens/vehicle_service_record_repaired.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
+import '../models/workshop_info.dart';
 
 class WorkshopHomepage extends StatefulWidget {
   const WorkshopHomepage({super.key});
@@ -14,10 +16,12 @@ class WorkshopHomepage extends StatefulWidget {
 }
 
 class _WorkshopHomepageState extends State<WorkshopHomepage> {
-  double _rating = 3.5;
+  double? _rating;
 
   @override
   Widget build(BuildContext context) {
+    final workshopInfo = context.read<WorkshopInfo>();
+    _rating = workshopInfo.getRatingStars;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -69,7 +73,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       width: figmaSpaceToPercentageWidth(45, context),
                     ),
                     Text(
-                      "WAQAR AUTOS",
+                      workshopInfo.getWorkshopName,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentage(14, context),
@@ -108,7 +112,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             maxWidth: MediaQuery.of(context).size.width * 0.5,
                           ),
                           child: Text(
-                            "53 R Block Rd, Block R Phase 2 Johar Town, Lahore",
+                            workshopInfo.getLocation,
                             style: TextStyle(
                               color: const Color.fromRGBO(0, 0, 0, 1),
                               fontSize: figmaSpaceToPercentage(14, context),
@@ -143,7 +147,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       width: figmaSpaceToPercentageWidth(4, context),
                     ),
                     Text(
-                      "(+92) 123-6957495",
+                      workshopInfo.getPhone,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentage(14, context),
@@ -174,7 +178,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       width: figmaSpaceToPercentageWidth(4, context),
                     ),
                     Text(
-                      "10 am - 10 pm",
+                      workshopInfo.getOpeningHours,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentage(14, context),
@@ -193,7 +197,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       width: figmaSpaceToPercentageWidth(45, context),
                     ),
                     RatingBar.builder(
-                      initialRating: _rating,
+                      initialRating: _rating!,
                       minRating: 0,
                       direction: Axis.horizontal,
                       allowHalfRating: true,

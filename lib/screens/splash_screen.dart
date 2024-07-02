@@ -25,8 +25,6 @@ class SplashScreen extends StatelessWidget {
             .doc(currentUser.uid)
             .get();
 
-        print('User: ${user.exists}');
-        print('Workshop: ${workshop.exists}');
         if (user.exists) {
           final data = user.data() as Map<String, dynamic>;
           if (context.mounted) {
@@ -43,13 +41,12 @@ class SplashScreen extends StatelessWidget {
               );
             }
           }
-        }
-        if (workshop.exists) {
+        } else if (workshop.exists) {
           final data = workshop.data() as Map<String, dynamic>;
           // if (context.mounted) {
           final workshopInfo = context.read<WorkshopInfo>();
           workshopInfo.setWorkshopInfo(data);
-          if (workshopInfo.getWorkshopName == '') {
+          if (data['workshopName'] == null) {
             Navigator.of(context).pushReplacementNamed(
               AppRoutes.workshopSignupScreen,
             );
@@ -57,7 +54,6 @@ class SplashScreen extends StatelessWidget {
             Navigator.of(context).pushReplacementNamed(
               AppRoutes.workshopHomepage,
             );
-            // }
           }
         }
       } else {

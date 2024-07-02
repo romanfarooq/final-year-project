@@ -13,7 +13,8 @@ class MechanicalServiceVault extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workshopInfo = context.watch<WorkshopInfo>();
-    final mechanicalServices = workshopInfo.getMechanicalRepairs;
+    final mechanicalServices =
+        workshopInfo.getMechanicalRepairs as Map<String, bool>;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
