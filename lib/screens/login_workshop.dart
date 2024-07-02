@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
+import '../models/workshop_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
 import '../utils/toast_message.dart';
@@ -32,36 +34,36 @@ class _LoginScreenWState extends State<LoginScreenW> {
     super.dispose();
   }
 
-  void login() async {
+  void login(BuildContext context) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: _userNameController.text.trim(),
         password: _passwordController.text.trim(),
       );
 
-      // Fetch user role from Firestore
       DocumentSnapshot doc = await _firestore
-          .collection('users')
+          .collection('workshops')
           .doc(userCredential.user!.uid)
           .get();
+
       if (doc.exists) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-        String role =
-            data?['role'] ?? 'user'; // Default to 'user' if role is not found
 
-        // Navigate to different screens based on the role
-        if (role == 'user') {
-          ToastMessage().toastmessage(
-              'You selected Workshop Owner, but you are not authorized. Redirected to your profile');
-          Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
-        } else if (role == 'workshop_owner') {
-          Navigator.of(context)
-              .pushReplacementNamed(AppRoutes.workshopSignupScreen);
+        final workshop = context.read<WorkshopInfo>();
+        workshop.setWorkshopInfo(data!);
+
+        if (workshop.getWorkshopName == '') {
+          Navigator.of(context).pushReplacementNamed(
+            AppRoutes.workshopSignupScreen,
+          );
+        } else {
+          Navigator.of(context).pushReplacementNamed(
+            AppRoutes.workshopHomepage,
+          );
+          ToastMessage().toastmessage('Login Successful');
         }
-
-        ToastMessage().toastmessage('Login Successful');
       } else {
-        ToastMessage().toastmessage('No user data found.');
+        ToastMessage().toastmessage('No workshop data found');
       }
     } catch (error) {
       // Handle specific Firebase Auth errors
@@ -87,63 +89,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
     }
   }
 
-  // Future<void> signInWithGoogle() async {
-  //  final GoogleSignIn _googleSignIn = GoogleSignIn();
-  //
-  //  try {
-  //    final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
-  //
-  //
-  //    if(googleSignInAccount != null){
-  //       final GoogleSignInAuthentication googleSigninAuthentication = await googleSignInAccount.authentication;
-  //       final AuthCredential credential = GoogleAuthProvider.credential(
-  //         idToken: googleSigninAuthentication.idToken,
-  //         accessToken: googleSigninAuthentication.accessToken,
-  //       );
-  //      // await _firebaseAuth.signInWithCredential(credential);
-  //    }
-  //  }catch(e){
-  //    ToastMessage().toastmessage(e.toString());
-  //  }
-  // }
-  //
-
-  // Future<void> signInWithGoogle(BuildContext context) async {
-  //   try {
-  //     final GoogleSignIn googleSignIn = GoogleSignIn(
-  //       clientId: '812183513091-lq3q9surkcqlekrgma3lle9r00i1e3es.apps.googleusercontent.com', // Replace with your Web client ID
-  //     );
-  //     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-  //
-  //     if (googleUser == null || !mounted) {
-  //       return; // The user canceled the sign-in or the widget is not mounted
-  //     }
-  //
-  //     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-  //     final AuthCredential credential = GoogleAuthProvider.credential(
-  //       accessToken: googleAuth.accessToken,
-  //       idToken: googleAuth.idToken,
-  //     );
-  //
-  //     final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-  //
-  //     if (!mounted) {
-  //       return; // Check again if the widget is still mounted before updating UI
-  //     }
-  //
-  //     // Navigate to the next screen upon successful login
-  //     Navigator.of(context).pushReplacementNamed(AppRoutes.workshopSignupScreen);
-  //     ToastMessage().toastmessage('Google Sign-In Successful');
-  //   } catch (error) {
-  //     if (!mounted) {
-  //       return; // Check if the widget is still mounted before displaying error message
-  //     }
-  //     ToastMessage().toastmessage('Google Sign-In failed: ${error.toString()}');
-  //     print(error.toString());
-  //   }
-  // }
-
-  Future<void> signInWithGoogle(BuildContext context, String role) async {
+  Future<void> signInWithGoogle(BuildContext context) async {
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn(
         clientId:
@@ -169,41 +115,42 @@ class _LoginScreenWState extends State<LoginScreenW> {
         return; // Check again if the widget is still mounted before updating UI
       }
 
-      // Fetch user role from Firestore
       DocumentSnapshot doc = await _firestore
-          .collection('users')
+          .collection('workshops')
           .doc(userCredential.user!.uid)
           .get();
+
+      final workshop = context.read<WorkshopInfo>();
+
       if (doc.exists) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-        String fetchedRole =
-            data?['role'] ?? 'user'; // Default to 'user' if role is not found
 
-        // Navigate to different screens based on the role fetched from Firestore
-        if (fetchedRole == 'user') {
-          ToastMessage().toastmessage(
-              'You selected Workshop Owner, but you are not authorized. Redirected to your profile');
-          Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
-        } else if (fetchedRole == 'workshop_owner') {
-          Navigator.of(context)
-              .pushReplacementNamed(AppRoutes.workshopSignupScreen);
-        }
+        workshop.setWorkshopInfo(data!);
+
+        Navigator.of(context).pushReplacementNamed(
+          AppRoutes.workshopHomepage,
+        );
       } else {
-        // If the user document doesn't exist, create it with the role passed as parameter
-        await _firestore.collection('users').doc(userCredential.user!.uid).set({
+        workshop.setWorkshopInfo({
           'fullname': googleUser.displayName,
           'email': googleUser.email,
           'uid': userCredential.user!.uid,
-          'role': role, // Use the role passed as parameter
         });
 
-        // Navigate to the appropriate screen based on the role parameter
-        if (role == 'user') {
-          Navigator.of(context).pushReplacementNamed(AppRoutes.carUserSignup);
-        } else if (role == 'workshop_owner') {
-          Navigator.of(context)
-              .pushReplacementNamed(AppRoutes.workshopSignupScreen);
-        }
+        await _firestore
+            .collection('workshops')
+            .doc(userCredential.user!.uid)
+            .set(
+          {
+            'fullname': googleUser.displayName,
+            'email': googleUser.email,
+            'uid': userCredential.user!.uid,
+          },
+        );
+
+        Navigator.of(context).pushReplacementNamed(
+          AppRoutes.workshopSignupScreen,
+        );
       }
 
       ToastMessage().toastmessage('Google Sign-In Successful');
@@ -212,7 +159,6 @@ class _LoginScreenWState extends State<LoginScreenW> {
         return; // Check if the widget is still mounted before displaying error message
       }
       ToastMessage().toastmessage('Google Sign-In failed: ${error.toString()}');
-      print(error.toString());
     }
   }
 
@@ -272,7 +218,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
                         screenWidth * 0.04,
                         screenHeight * 0.01,
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.email_outlined,
                         size: 25,
                         // height: screenHeight * 0.03,
@@ -296,7 +242,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
                         screenWidth * 0.04,
                         screenHeight * 0.01,
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.lock_outline_sharp,
                         size: 25,
                         // height: screenHeight * 0.03,
@@ -341,7 +287,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
                       ),
                     ),
                     onPressed: () {
-                      login();
+                      login(context);
                     },
                   ),
                   SizedBox(height: screenHeight * 0.01),
@@ -364,8 +310,8 @@ class _LoginScreenWState extends State<LoginScreenW> {
                         ],
                       ),
                     ),
-                    leftIcon: Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
+                    leftIcon: const Padding(
+                      padding: EdgeInsets.only(right: 8.0),
                       child: FaIcon(
                         FontAwesomeIcons.google,
                         color: Colors.white,
@@ -373,7 +319,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
                       ),
                     ),
                     onPressed: () {
-                      signInWithGoogle(context, 'workshop_owner');
+                      signInWithGoogle(context);
                     },
                   ),
                   SizedBox(height: screenHeight * 0.02),

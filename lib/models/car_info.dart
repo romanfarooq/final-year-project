@@ -115,25 +115,15 @@ class UserCarsInfo with ChangeNotifier {
   String? _uid;
   String? _email;
   String? _phone;
-  String? _role;
   List<CarInfo> _userCars = [];
 
   late CarInfo _selectedCar;
 
-  void setUserInfo({
-    required String fullname,
-    required String uid,
-    required String email,
-    required String phone,
-    required String role,
-  }) {
-    _fullname = fullname;
-    _uid = uid;
-    _email = email;
-    _phone = phone;
-    _role = role;
-    print('User Info: $_fullname, $_uid, $_email, $_phone, $_role');
-    notifyListeners();
+  void setUserInfo(Map<String, dynamic>? data) {
+    _fullname = data?['fullname'];
+    _uid = data?['uid'];
+    _email = data?['email'];
+    _phone = data?['phone'];
   }
 
   Future<void> fetchUserCars() async {
@@ -170,8 +160,6 @@ class UserCarsInfo with ChangeNotifier {
     );
     notifyListeners();
   }
-
-  String? get getRole => _role;
 
   String? get getName => _fullname;
 

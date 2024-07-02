@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
 import '../models/car_info.dart';
+import '../models/workshop_info.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -19,35 +20,48 @@ class SplashScreen extends StatelessWidget {
             .collection('users')
             .doc(currentUser.uid)
             .get();
+        final workshop = await FirebaseFirestore.instance
+            .collection('workshops')
+            .doc(currentUser.uid)
+            .get();
         if (user.exists) {
           final data = user.data() as Map<String, dynamic>;
-          if (data['role'] == 'user') {
-            print(currentUser.uid);
-            print(data);
-            if (context.mounted) {
-              final userCarsInfo = context.read<UserCarsInfo>();
-              userCarsInfo.setUserInfo(
-                fullname: data['fullname'],
-                uid: currentUser.uid,
-                email: data['email'],
-                phone: data['phone'],
-                role: data['role'],
+          if (context.mounted) {
+            final userCarsInfo = context.read<UserCarsInfo>();
+            userCarsInfo.setUserInfo(data);
+            await userCarsInfo.fetchUserCars();
+            if (userCarsInfo.getCars.isNotEmpty) {
+              Navigator.of(context).pushReplacementNamed(
+                AppRoutes.bottomTab,
               );
-              await userCarsInfo.fetchUserCars();
-              if (userCarsInfo.getCars.isNotEmpty) {
-                Navigator.of(context).pushReplacementNamed(AppRoutes.bottomTab);
-              } else {
-                Navigator.of(context)
-                    .pushReplacementNamed(AppRoutes.carUserSignup);
-              }
+            } else {
+              Navigator.of(context).pushReplacementNamed(
+                AppRoutes.carUserSignup,
+              );
+            }
+          }
+        } else if (workshop.exists) {
+          final data = workshop.data() as Map<String, dynamic>;
+          if (context.mounted) {
+            final workshop = context.read<WorkshopInfo>();
+            workshop.setWorkshopInfo(data);
+            if (workshop.getWorkshopName == '') {
+              Navigator.of(context).pushReplacementNamed(
+                AppRoutes.workshopSignupScreen,
+              );
+            } else {
+              Navigator.of(context).pushReplacementNamed(
+                AppRoutes.workshopHomepage,
+              );
             }
           }
         }
       } else {
         await Future.delayed(const Duration(seconds: 3));
         if (context.mounted) {
-          Navigator.of(context)
-              .pushReplacementNamed(AppRoutes.selectUserScreen);
+          Navigator.of(context).pushReplacementNamed(
+            AppRoutes.selectUserScreen,
+          );
         }
       }
     }

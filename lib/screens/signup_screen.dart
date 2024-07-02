@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -317,7 +317,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       onPressed: () async {
         if (_formKey.currentState!.validate() &&
             _fullNameController.text.isNotEmpty &&
-            _phoneNumberController.text.isNotEmpty) {
+            _phoneNumberController.text.isNotEmpty &&
+            _emailController.text.isNotEmpty &&
+            _passwordController.text.isNotEmpty) {
           setState(() {
             loading = true;
           });
@@ -328,7 +330,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               email: _emailController.text.toString(),
               password: _passwordController.text.toString(),
             );
-            Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
+            if (context.mounted) {
+              Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
+            }
             ToastMessage().toastmessage('Signup Successfully');
             await _firestore
                 .collection('users')
@@ -338,22 +342,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               'phone': _phoneNumberController.text,
               'email': _emailController.text,
               'uid': userCredential.user!.uid,
-              'role': 'user', // Set role as user
             });
-
-            // Log success message
-            print('User data added to Firestore');
-
-            // Read back data to confirm
-            DocumentSnapshot doc = await _firestore
-                .collection('users')
-                .doc(userCredential.user!.uid)
-                .get();
-            if (doc.exists) {
-              print('User data from Firestore: ${doc.data()}');
-            } else {
-              print('No such document!');
-            }
 
             setState(() {
               loading = false;

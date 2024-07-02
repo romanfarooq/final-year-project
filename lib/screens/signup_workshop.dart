@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
+import '../models/workshop_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
 import '../utils/toast_message.dart';
@@ -25,7 +27,7 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -317,7 +319,9 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
       onPressed: () async {
         if (_formKey.currentState!.validate() &&
             _fullNameController.text.isNotEmpty &&
-            _phoneNumberController.text.isNotEmpty) {
+            _phoneNumberController.text.isNotEmpty &&
+            _emailController.text.isNotEmpty &&
+            _passwordController.text.isNotEmpty) {
           setState(() {
             loading = true;
           });
@@ -325,35 +329,30 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
           try {
             UserCredential userCredential =
                 await _auth.createUserWithEmailAndPassword(
-              email: _emailController.text.toString(),
-              password: _passwordController.text.toString(),
+              email: _emailController.text.trim(),
+              password: _passwordController.text.trim(),
             );
+
             Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
             ToastMessage().toastmessage('Signup Successfully');
             await _firestore
-                .collection('users')
+                .collection('workshops')
                 .doc(userCredential.user!.uid)
-                .set({
-              'fullname': _fullNameController.text,
-              'phone': _phoneNumberController.text,
-              'email': _emailController.text,
+                .set(
+              {
+                'uid': userCredential.user!.uid,
+                'fullname': _fullNameController.text.trim(),
+                'phone': _phoneNumberController.text.trim(),
+                'email': _emailController.text.trim(),
+              },
+            );
+            final workshop = context.read<WorkshopInfo>();
+            workshop.setWorkshopInfo({
+              'fullname': _fullNameController.text.trim(),
+              'phone': _phoneNumberController.text.trim(),
+              'email': _emailController.text.trim(),
               'uid': userCredential.user!.uid,
-              'role': 'workshop_owner', // Set role as workshop owner
             });
-
-            // Log success message
-            print('User data added to Firestore');
-
-            // Read back data to confirm
-            DocumentSnapshot doc = await _firestore
-                .collection('users')
-                .doc(userCredential.user!.uid)
-                .get();
-            if (doc.exists) {
-              print('User data from Firestore: ${doc.data()}');
-            } else {
-              print('No such document!');
-            }
 
             setState(() {
               loading = false;
