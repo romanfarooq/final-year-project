@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../models/workshop_info.dart';
+import '../routes/app_routes.dart';
 
 class WorkshopSignup extends StatefulWidget {
   const WorkshopSignup({super.key});
@@ -244,7 +245,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             fontWeight: FontWeight.w500,
                           ),
                           textInputAction: TextInputAction.done,
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.number,
                           textAlignVertical: TextAlignVertical.center,
                         ),
                       ),
@@ -475,6 +476,9 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                                     _openinghoursController.text.trim(),
                                 description: _descriptionController.text.trim(),
                               );
+                          Navigator.of(context).pushReplacementNamed(
+                            AppRoutes.workshopServices,
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromRGBO(96, 189, 52, 1),

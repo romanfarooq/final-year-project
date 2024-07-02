@@ -1,42 +1,19 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:provider/provider.dart';
 
+import '../models/workshop_info.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_textwithcheckbox.dart';
 
-class DentingNpaintingServiceVault extends StatefulWidget {
+class DentingNpaintingServiceVault extends StatelessWidget {
   const DentingNpaintingServiceVault({super.key});
 
   @override
-  State<DentingNpaintingServiceVault> createState() =>
-      _DentingNpaintingServiceVaultState();
-}
-
-class _DentingNpaintingServiceVaultState
-    extends State<DentingNpaintingServiceVault> {
-  final Map<String, bool> _dentingNpaintingServices = {
-    "Dent Removal": false,
-    "Paintwork": false,
-    "Scratch Repairs": false,
-    "Rust Repairs": false,
-    "Color Matching": false,
-    "Collision Repairs": false,
-    "Custom Paint Jobs": false,
-    "Surface Preparation": false,
-    "Panel Replacement/Repair": false,
-    "Vehicle Wrapping": false,
-    "Paint Protection Film (PPF) Installation": false,
-    "Ceramic Coating": false,
-    "Custom Graphics": false,
-    "Clear Coat Application": false,
-    "Detailing": false,
-    "Paint Polishing/Compound and Buffing": false,
-    "Weather Damage Repairs": false,
-  };
-
-  @override
   Widget build(BuildContext context) {
+    final workshopInfo = context.watch<WorkshopInfo>();
+    final dentingNpaintingServices = workshopInfo.getDentingPaintingServices;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -78,14 +55,12 @@ class _DentingNpaintingServiceVaultState
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: _dentingNpaintingServices.keys
+                children: dentingNpaintingServices.keys
                     .map((service) => TextWithCheckbox(
                           text: service,
-                          isChecked: _dentingNpaintingServices[service]!,
+                          isChecked: dentingNpaintingServices[service]!,
                           onChanged: (newValue) {
-                            setState(() {
-                              _dentingNpaintingServices[service] = newValue;
-                            });
+                            dentingNpaintingServices[service] = newValue;
                           },
                         ))
                     .toList(),
@@ -99,8 +74,11 @@ class _DentingNpaintingServiceVaultState
             children: [
               SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
               ElevatedButton(
-                onPressed: () {
-                  // Add your onPressed logic here
+                onPressed: () async {
+                  await workshopInfo.updateDentingPaintingServices(
+                    dentingNpaintingServices,
+                  );
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(96, 189, 52, 1),

@@ -7,14 +7,9 @@ import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_textwithcheckbox.dart';
 
-class CarFeatures extends StatefulWidget {
+class CarFeatures extends StatelessWidget {
   const CarFeatures({super.key});
 
-  @override
-  State<CarFeatures> createState() => _CarFeaturesState();
-}
-
-class _CarFeaturesState extends State<CarFeatures> {
   @override
   Widget build(BuildContext context) {
     final carInfo = context.watch<UserCarsInfo>();

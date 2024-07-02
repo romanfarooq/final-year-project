@@ -24,6 +24,9 @@ class SplashScreen extends StatelessWidget {
             .collection('workshops')
             .doc(currentUser.uid)
             .get();
+
+        print('User: ${user.exists}');
+        print('Workshop: ${workshop.exists}');
         if (user.exists) {
           final data = user.data() as Map<String, dynamic>;
           if (context.mounted) {
@@ -40,20 +43,21 @@ class SplashScreen extends StatelessWidget {
               );
             }
           }
-        } else if (workshop.exists) {
+        }
+        if (workshop.exists) {
           final data = workshop.data() as Map<String, dynamic>;
-          if (context.mounted) {
-            final workshop = context.read<WorkshopInfo>();
-            workshop.setWorkshopInfo(data);
-            if (workshop.getWorkshopName == '') {
-              Navigator.of(context).pushReplacementNamed(
-                AppRoutes.workshopSignupScreen,
-              );
-            } else {
-              Navigator.of(context).pushReplacementNamed(
-                AppRoutes.workshopHomepage,
-              );
-            }
+          // if (context.mounted) {
+          final workshopInfo = context.read<WorkshopInfo>();
+          workshopInfo.setWorkshopInfo(data);
+          if (workshopInfo.getWorkshopName == '') {
+            Navigator.of(context).pushReplacementNamed(
+              AppRoutes.workshopSignupScreen,
+            );
+          } else {
+            Navigator.of(context).pushReplacementNamed(
+              AppRoutes.workshopHomepage,
+            );
+            // }
           }
         }
       } else {

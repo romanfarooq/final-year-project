@@ -1,3 +1,4 @@
+import 'package:car_care/routes/app_routes.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
@@ -19,7 +20,7 @@ class WorkshopServices extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: figmaSpaceToPercentage(55, context),
+                    height: figmaSpaceToPercentage(30, context),
                   ),
                   Center(
                     child: Image.asset(
@@ -34,7 +35,9 @@ class WorkshopServices extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      // print('hi');
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.electricalServicesVault,
+                      );
                     },
                     child: Row(
                       children: [
@@ -88,7 +91,9 @@ class WorkshopServices extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      // print('hi');
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.mechanicalServicesVault,
+                      );
                     },
                     child: Row(
                       children: [
@@ -142,7 +147,9 @@ class WorkshopServices extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      // print('hi');
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.dentingPaintingServicesVault,
+                      );
                     },
                     child: Row(
                       children: [
@@ -196,7 +203,9 @@ class WorkshopServices extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      // print('hi');
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.tireServicesVault,
+                      );
                     },
                     child: Row(
                       children: [
@@ -255,7 +264,9 @@ class WorkshopServices extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          // Add your onPressed logic here
+                          Navigator.of(context).pushNamed(
+                            AppRoutes.workshopHomepage,
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromRGBO(96, 189, 52, 1),

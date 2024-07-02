@@ -151,7 +151,7 @@ class WorkshopInfo with ChangeNotifier {
       location: data['location'],
       openingHours: data['openingHours'],
       website: data['website'],
-      ratingStars: double.tryParse(data['ratingStars']) ?? 0,
+      ratingStars: double.tryParse(data['ratingStars'] ?? 0) ?? 0,
       serviceHistory: (data['serviceHistory'] as List<dynamic>)
           .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
           .toList(),
@@ -185,37 +185,22 @@ class WorkshopInfo with ChangeNotifier {
   void setWorkshopInfo(Map<String, dynamic> data) {
     uid = data['uid'] ?? uid;
     fullname = data['fullname'] ?? fullname;
-    workshopName = data['workshopName'] ?? workshopName;
     email = data['email'] ?? email;
     phone = data['phone'] ?? phone;
-    openingHours = data['openingHours'] ?? openingHours;
-    location = data['location'] ?? location;
-    website = data['website'] ?? website;
-    ratingStars = double.tryParse(data['ratingStars']) ?? ratingStars;
-    if (data['serviceHistory'] != null) {
-      serviceHistory = (data['serviceHistory'] as List<dynamic>)
-          .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
-          .toList();
-    }
-    if (data['electricalRepairs'] != null) {
-      electricalRepairs = Map<String, bool>.from(data['electricalRepairs']);
-    }
-    if (data['mechanicalRepairs'] != null) {
-      mechanicalRepairs = Map<String, bool>.from(data['mechanicalRepairs']);
-    }
-    if (data['dentingPaintingServices'] != null) {
-      dentingPaintingServices =
-          Map<String, bool>.from(data['dentingPaintingServices']);
-    }
-    if (data['tireServices'] != null) {
-      tireServices = Map<String, bool>.from(data['tireServices']);
-    }
     notifyListeners();
   }
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   get getWorkshopName => workshopName;
+
+  get getElectricalRepairs => electricalRepairs;
+
+  get getMechanicalRepairs => mechanicalRepairs;
+
+  get getDentingPaintingServices => dentingPaintingServices;
+
+  get getTireServices => tireServices;
 
   Future<void> updateWorkshopInfo({
     required String workshopName,

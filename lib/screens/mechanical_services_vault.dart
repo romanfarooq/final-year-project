@@ -1,45 +1,19 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_textwithcheckbox.dart';
+import '../models/workshop_info.dart';
 
-class MechanicalServiceVault extends StatefulWidget {
+class MechanicalServiceVault extends StatelessWidget {
   const MechanicalServiceVault({super.key});
 
   @override
-  State<MechanicalServiceVault> createState() => _MechanicalServiceVaultState();
-}
-
-class _MechanicalServiceVaultState extends State<MechanicalServiceVault> {
-  final Map<String, bool> _mechanicalServices = {
-    "Engine Oil": false,
-    "Engine Repairs": false,
-    "Brakes": false,
-    "Transmission Services": false,
-    "Exhaust System": false,
-    "Suspension System": false,
-    "Steering System": false,
-    "Clutch System": false,
-    "Fuel System": false,
-    "Cooling System": false,
-    "Timing Belt/Chain Replacement": false,
-    "Drive Belts and Chains": false,
-    "Engine Overhaul": false,
-    "Fuel Injection System": false,
-    "Air Intake System": false,
-    "Throttle Body": false,
-    "Engine Mounts": false,
-    "Gaskets and Seals": false,
-    "Powertrain Services": false,
-    "Differential Services": false,
-    "CV Joints and Boots": false,
-    "Axle and Drivetrain Services": false,
-  };
-
-  @override
   Widget build(BuildContext context) {
+    final workshopInfo = context.watch<WorkshopInfo>();
+    final mechanicalServices = workshopInfo.getMechanicalRepairs;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -81,14 +55,12 @@ class _MechanicalServiceVaultState extends State<MechanicalServiceVault> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: _mechanicalServices.keys
+                children: mechanicalServices.keys
                     .map((service) => TextWithCheckbox(
                           text: service,
-                          isChecked: _mechanicalServices[service]!,
+                          isChecked: mechanicalServices[service]!,
                           onChanged: (newValue) {
-                            setState(() {
-                              _mechanicalServices[service] = newValue;
-                            });
+                            mechanicalServices[service] = newValue;
                           },
                         ))
                     .toList(),
@@ -102,8 +74,11 @@ class _MechanicalServiceVaultState extends State<MechanicalServiceVault> {
             children: [
               SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
               ElevatedButton(
-                onPressed: () {
-                  // Add your onPressed logic here
+                onPressed: () async {
+                  await workshopInfo.updateMechanicalRepairs(
+                    mechanicalServices,
+                  );
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(96, 189, 52, 1),

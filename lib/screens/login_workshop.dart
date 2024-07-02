@@ -52,7 +52,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
         final workshop = context.read<WorkshopInfo>();
         workshop.setWorkshopInfo(data!);
 
-        if (workshop.getWorkshopName == '') {
+        if (workshop.workshopName == '') {
           Navigator.of(context).pushReplacementNamed(
             AppRoutes.workshopSignupScreen,
           );
@@ -135,6 +135,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
           'fullname': googleUser.displayName,
           'email': googleUser.email,
           'uid': userCredential.user!.uid,
+          'phone': '',
         });
 
         await _firestore

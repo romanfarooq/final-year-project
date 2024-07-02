@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_textwithcheckbox.dart';
+import '../models/workshop_info.dart';
 
 class TireServiceVault extends StatefulWidget {
   const TireServiceVault({super.key});
@@ -13,30 +15,10 @@ class TireServiceVault extends StatefulWidget {
 }
 
 class _TireServiceVaultState extends State<TireServiceVault> {
-  final Map<String, bool> _tireServices = {
-    "Tire Installation": false,
-    "Tire Balancing": false,
-    "Wheel Alignment": false,
-    "Tire Repairs": false,
-    "Tire Rotation": false,
-    "Tire Inspection and Service": false,
-    "Wheel Rim Inspection and Service": false,
-    "Custom Tire and Wheel Packages": false,
-    "Tire Replacement": false,
-    "Tire Pressure Checks": false,
-    "Tire Pressure Monitoring System(TPMS)": false,
-    "Flat Tire Repair": false,
-    "Tire Mounting": false,
-    "Tire Inflation Services": false,
-    "Nitrogen Inflation Services": false,
-    "Tire Sales (New and Used)": false,
-    "Performance Tire Upgrades": false,
-    "Seasonal Tire Swapping": false,
-    "Tire Tread Depth Measurement": false,
-  };
-
   @override
   Widget build(BuildContext context) {
+    final workshopInfo = context.watch<WorkshopInfo>();
+    final tireServices = workshopInfo.getTireServices;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -78,14 +60,12 @@ class _TireServiceVaultState extends State<TireServiceVault> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: _tireServices.keys
+                children: tireServices.keys
                     .map((service) => TextWithCheckbox(
                           text: service,
-                          isChecked: _tireServices[service]!,
+                          isChecked: tireServices[service]!,
                           onChanged: (newValue) {
-                            setState(() {
-                              _tireServices[service] = newValue;
-                            });
+                            tireServices[service] = newValue;
                           },
                         ))
                     .toList(),
@@ -99,8 +79,11 @@ class _TireServiceVaultState extends State<TireServiceVault> {
             children: [
               SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
               ElevatedButton(
-                onPressed: () {
-                  // Add your onPressed logic here
+                onPressed: () async {
+                  await workshopInfo.updateTireServices(
+                    tireServices,
+                  );
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
