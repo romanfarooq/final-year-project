@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 import './models/car_info.dart';
+import './models/workshop_info.dart';
 import './routes/app_routes.dart';
 import './screens/splash_screen.dart';
-import './screens/booking_service.dart';
+import './screens/workshop_signup.dart';
 import './utils/theme.dart';
 
 void main() async {
@@ -18,6 +19,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UserCarsInfo()),
+        ChangeNotifierProvider(create: (_) => WorkshopInfo()),
       ],
       child: const MyApp(),
     ),
@@ -33,8 +35,8 @@ class MyApp extends StatelessWidget {
       title: 'Car Care Pro',
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      // home: const SplashScreen(),
       home: const SplashScreen(),
+      // home: const WorkshopSignup(),
       routes: AppRoutes.routes,
     );
   }

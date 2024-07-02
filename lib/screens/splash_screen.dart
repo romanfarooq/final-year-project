@@ -1,21 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
+import '../models/car_info.dart';
+import '../models/workshop_info.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(secogit nds: 3), () {
-      if (FirebaseAuth.instance.currentUser != null) {
-        Navigator.of(context).pushReplacementNamed(AppRoutes.bottomTab);
+
+
+    Future<void> checkUserStatus() async {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser != null) {
+        final user = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(currentUser.uid)
+            .get();
+        final workshop = await FirebaseFirestore.instance
+            .collection('workshops')
+            .doc(currentUser.uid)
+            .get();
+
+        if (user.exists) {
+          final data = user.data() as Map<String, dynamic>;
+          if (context.mounted) {
+            final userCarsInfo = context.read<UserCarsInfo>();
+            userCarsInfo.setUserInfo(data);
+            await userCarsInfo.fetchUserCars();
+            if (userCarsInfo.getCars.isNotEmpty) {
+              Navigator.of(context).pushReplacementNamed(
+                AppRoutes.bottomTab,
+              );
+            } else {
+              Navigator.of(context).pushReplacementNamed(
+                AppRoutes.carUserSignup,
+              );
+            }
+          }
+        } else if (workshop.exists) {
+          final data = workshop.data() as Map<String, dynamic>;
+          // if (context.mounted) {
+          final workshopInfo = context.read<WorkshopInfo>();
+          workshopInfo.setWorkshopInfo(data);
+          if (data['workshopName'] == null) {
+            Navigator.of(context).pushReplacementNamed(
+              AppRoutes.workshopSignupScreen,
+            );
+          } else {
+            Navigator.of(context).pushReplacementNamed(
+              AppRoutes.workshopHomepage,
+            );
+          }
+        }
+
       } else {
-        Navigator.of(context).pushReplacementNamed(AppRoutes.selectUserScreen);
+        await Future.delayed(const Duration(seconds: 3));
+        if (context.mounted) {
+          Navigator.of(context).pushReplacementNamed(
+            AppRoutes.selectUserScreen,
+          );
+        }
       }
-    });
+    }
+
+    checkUserStatus();
 
     return Scaffold(
       backgroundColor: Colors.white,

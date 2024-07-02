@@ -1,45 +1,20 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_textwithcheckbox.dart';
+import '../models/workshop_info.dart';
 
-class ElectricalServiceVault extends StatefulWidget {
+class ElectricalServiceVault extends StatelessWidget {
   const ElectricalServiceVault({super.key});
 
   @override
-  State<ElectricalServiceVault> createState() => _ElectricalServiceVaultState();
-}
-
-class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
-  final Map<String, bool> _electricalServices = {
-    "Lights": false,
-    "AC": false,
-    "Multimedia": false,
-    "Battery": false,
-    "Starter Motor": false,
-    "Alternator": false,
-    "Ignition System": false,
-    "Power Windows and Locks": false,
-    "Power Seats": false,
-    "Electrical Wiring": false,
-    "Sensors": false,
-    "ECU Diagnostics": false,
-    "Fuse Box and Fuses": false,
-    "Lighting Control Module": false,
-    "Instrument Cluster": false,
-    "Horn": false,
-    "Power Steering": false,
-    "Central Locking System": false,
-    "Cruise Control": false,
-    "Security and Alarm Systems": false,
-    "Communication Systems": false,
-    "Heated Seats and Mirrors": false,
-  };
-
-  @override
   Widget build(BuildContext context) {
+    final workshopInfo = context.watch<WorkshopInfo>();
+    final electricalServices =
+        workshopInfo.getElectricalRepairs as Map<String, bool>;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -83,14 +58,12 @@ class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: _electricalServices.keys
+                children: electricalServices.keys
                     .map((service) => TextWithCheckbox(
                           text: service,
-                          isChecked: _electricalServices[service]!,
+                          isChecked: electricalServices[service]!,
                           onChanged: (newValue) {
-                            setState(() {
-                              _electricalServices[service] = newValue;
-                            });
+                            electricalServices[service] = newValue;
                           },
                         ))
                     .toList(),
@@ -104,8 +77,11 @@ class _ElectricalServiceVaultState extends State<ElectricalServiceVault> {
             children: [
               SizedBox(width: figmaSpaceToPercentageWidth(40, context)),
               ElevatedButton(
-                onPressed: () {
-                  // Add your onPressed logic here
+                onPressed: () async {
+                  await workshopInfo.updateElectricalRepairs(
+                    electricalServices,
+                  );
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(96, 189, 52, 1),

@@ -167,27 +167,26 @@ class _CarUserSignupState extends State<OldCarInformation> {
                   height: figmaSpaceToPercentage(20, context),
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_distanceTravelledController.text.isEmpty ||
                         _lastOilChangeDistanceController.text.isEmpty) {
                       return;
                     }
-                    carInfo.updateCarDistanceTravelled(
+                    await carInfo.updateCarDistanceAndOilChange(
                       licensePlate,
                       double.parse(
                         _distanceTravelledController.text.trim(),
                       ),
-                    );
-                    carInfo.updateCarLastOilChangeDistance(
-                      licensePlate,
                       double.parse(
                         _lastOilChangeDistanceController.text.trim(),
                       ),
                     );
-                    Navigator.of(context).pushNamed(
-                      AppRoutes.carFeatures,
-                      arguments: licensePlate,
-                    );
+                    if (context.mounted) {
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.carFeatures,
+                        arguments: licensePlate,
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(96, 189, 52, 1),

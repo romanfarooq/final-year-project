@@ -1,26 +1,52 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-// ignore_for_file: constant_identifier_names
 enum ServiceType {
-  MechanicalRepair,
-  ElectricalRepair,
-  DentingPainting,
-  WheelRepair,
-  OilChange,
+  mchanicalRepair,
+  electricalRepair,
+  dentingPainting,
+  wheelRepair,
+  oilChange,
+  tireReplace,
+  wheelBalancing,
+  carWash,
 }
+
 class ServiceHistory {
-  final ServiceType serviceType;
-  final DateTime serviceDate;
-  final double serviceCost;
-  final double partCost;
-  final String serviceCenter;
-  final String serviceNote;
+  ServiceType serviceType;
+  DateTime serviceDate;
+  double serviceCost;
+  double partCost;
+  String serviceCenter;
+  String serviceNote;
 
   ServiceHistory({
     required this.serviceType,
-    required this.serviceDate,
     required this.serviceCost,
     required this.partCost,
     required this.serviceCenter,
     required this.serviceNote,
-  });
+    serviceDate,
+  }) : serviceDate = serviceDate ?? DateTime.now();
+
+  factory ServiceHistory.fromMap(Map<String, dynamic> data) {
+    return ServiceHistory(
+      serviceType: ServiceType.values[data['serviceType']],
+      serviceCost: data['serviceCost'],
+      partCost: data['partCost'],
+      serviceCenter: data['serviceCenter'],
+      serviceNote: data['serviceNote'],
+      serviceDate: (data['serviceDate'] as Timestamp).toDate(),
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'serviceType': serviceType.index,
+      'serviceCost': serviceCost,
+      'partCost': partCost,
+      'serviceCenter': serviceCenter,
+      'serviceNote': serviceNote,
+      'serviceDate': serviceDate,
+    };
+  }
 }

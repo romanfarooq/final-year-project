@@ -11,7 +11,7 @@ class TextWithCheckbox extends StatefulWidget {
     super.key,
     required this.text,
     required this.onChanged,
-    this.isChecked = false,
+    required this.isChecked,
   });
 
   @override

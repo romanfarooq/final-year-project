@@ -1,8 +1,5 @@
-import 'package:car_care/screens/login_workshop.dart';
-import 'package:car_care/screens/signup_workshop.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/forget_screen.dart';
 import '../screens/billing_screen.dart';
 import '../screens/car_care_requests.dart';
 import '../screens/car_features.dart';
@@ -13,13 +10,17 @@ import '../screens/denting_n_painting_repair.dart';
 import '../screens/denting_n_painting_services_vault.dart';
 import '../screens/electrical_repair.dart';
 import '../screens/electrical_services_vault.dart';
+import '../screens/forget_screen.dart';
 import '../screens/login_screen.dart';
+import '../screens/login_workshop.dart';
 import '../screens/mechanical_repair.dart';
 import '../screens/mechanical_services_vault.dart';
 import '../screens/oil_change.dart';
+import '../screens/old_car_information.dart';
 import '../screens/select_user_screen.dart';
 import '../screens/service_history.dart';
 import '../screens/signup_screen.dart';
+import '../screens/signup_workshop.dart';
 import '../screens/splash_screen.dart';
 import '../screens/tab_screen.dart';
 import '../screens/tire_repair.dart';
@@ -31,7 +32,6 @@ import '../screens/workshop_clients.dart';
 import '../screens/workshop_homepage.dart';
 import '../screens/workshop_services.dart';
 import '../screens/workshop_signup.dart';
-import '../screens/old_car_information.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';

@@ -343,13 +343,13 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   },
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_licensePlateController.text.isEmpty ||
                         _vinController.text.isEmpty ||
                         _mileageController.text.isEmpty) {
                       return;
                     }
-                    carInfo.addCar(
+                    await carInfo.addCar(
                       CarInfo(
                         manufacturer: manufacturer,
                         model: model,
@@ -359,20 +359,21 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                         year: year,
                         mileage: double.parse(_mileageController.text.trim()),
                         vin: _vinController.text.trim(),
-                        imgPath: image,
-                        // imgPath: "assets/images/carlogo/Honda_CR-V.jpg",
+                        imgPath: "assets/images/carlogo/Honda_CR-V.jpg",
                       ),
                     );
-                    if (_isNewCar) {
-                      Navigator.of(context).pushNamed(
-                        AppRoutes.carFeatures,
-                        arguments: _licensePlateController.text.trim(),
-                      );
-                    } else {
-                      Navigator.of(context).pushNamed(
-                        AppRoutes.oldCarInformation,
-                        arguments: _licensePlateController.text.trim(),
-                      );
+                    if (context.mounted) {
+                      if (_isNewCar) {
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.carFeatures,
+                          arguments: _licensePlateController.text.trim(),
+                        );
+                      } else {
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.oldCarInformation,
+                          arguments: _licensePlateController.text.trim(),
+                        );
+                      }
                     }
                   },
                   style: ElevatedButton.styleFrom(

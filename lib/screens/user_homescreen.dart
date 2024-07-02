@@ -320,7 +320,7 @@ class UserHomeScreen extends StatelessWidget {
                       left: figmaSpaceToPercentageWidth(33, context),
                     ),
                     child: Text(
-                      userInfo.getName,
+                      userInfo.getName ?? '',
                       style: TextStyle(
                           color: const Color.fromRGBO(255, 255, 255, 1),
                           fontSize: figmaSpaceToPercentage(22, context),
