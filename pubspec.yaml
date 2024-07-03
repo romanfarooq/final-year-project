@@ -39,6 +39,7 @@ dependencies:
   firebase_auth: ^5.1.1
   google_sign_in: ^6.2.1
   font_awesome_flutter: ^10.7.0
+  image_picker: ^1.1.2
 
 
 dev_dependencies:

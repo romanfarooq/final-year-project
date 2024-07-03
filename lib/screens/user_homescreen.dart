@@ -2,14 +2,34 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-
+import 'package:image_picker/image_picker.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../routes/app_routes.dart';
 import '../models/car_info.dart';
+import 'dart:io';
 
-class UserHomeScreen extends StatelessWidget {
+class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({super.key});
+
+  @override
+  _UserHomeScreenState createState() => _UserHomeScreenState();
+}
+
+class _UserHomeScreenState extends State<UserHomeScreen> {
+  File? _imageFile;
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final userInfo = context.read<UserCarsInfo>();
@@ -25,16 +45,51 @@ class UserHomeScreen extends StatelessWidget {
               child: SizedBox(
                 height: figmaSpaceToPercentage(450, context),
                 width: double.infinity,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.asset(
-                      // 'assets/images/altis.png',
-                      car.imgPath,
-                      fit: BoxFit.cover,
-                    ),
-                  ],
-                ),
+                // child: Stack(
+                //   fit: StackFit.expand,
+                //   children: [
+                //     // Image.asset(
+                //     //   // 'assets/images/altis.png',
+                //     //   car.imgPath,
+                //     //   fit: BoxFit.cover,
+                //     // ),
+                //
+                //
+                //
+                //       _image == null
+                //           ? Image.asset(
+                //         car.imgPath,
+                //         fit: BoxFit.cover,
+                //       )
+                //           : Image.file(
+                //         _image!,
+                //         fit: BoxFit.cover,
+                //       ),
+                //
+                //   ],
+                // ),
+
+    child: GestureDetector(
+    onTap:() {
+      if (_imageFile == null) {
+        _pickImage();
+      }
+    },
+    child: Stack(
+    fit: StackFit.expand,
+    children: [
+      _imageFile != null
+          ? Image.file(
+        _imageFile!,
+        fit: BoxFit.cover,
+      )
+          : Image.asset(
+        car.imgPath,
+        fit: BoxFit.cover,
+      ),
+    ]
+    ),
+    ),
               ),
             ),
             Positioned(

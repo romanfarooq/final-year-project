@@ -1,4 +1,7 @@
 import 'package:car_care/screens/booking_service.dart';
+import 'package:car_care/screens/car_user_explor.dart';
+import 'package:car_care/screens/car_user_profile.dart';
+import 'package:car_care/screens/user_homescreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,8 +39,8 @@ class MyApp extends StatelessWidget {
       title: 'Car Care Pro',
       debugShowCheckedModeBanner: false,
       theme: themeData,
-     // home: const SplashScreen(),
-        home: const BookingService(),
+      home: const SplashScreen(),
+        //home: const UserHomeScreen(),
       routes: AppRoutes.routes,
     );
   }
