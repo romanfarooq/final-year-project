@@ -69,27 +69,24 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 //   ],
                 // ),
 
-    child: GestureDetector(
-    onTap:() {
-      if (_imageFile == null) {
-        _pickImage();
-      }
-    },
-    child: Stack(
-    fit: StackFit.expand,
-    children: [
-      _imageFile != null
-          ? Image.file(
-        _imageFile!,
-        fit: BoxFit.cover,
-      )
-          : Image.asset(
-        car.imgPath,
-        fit: BoxFit.cover,
-      ),
-    ]
-    ),
-    ),
+                child: GestureDetector(
+                  onTap: () {
+                    if (_imageFile == null) {
+                      _pickImage();
+                    }
+                  },
+                  child: Stack(fit: StackFit.expand, children: [
+                    _imageFile != null
+                        ? Image.file(
+                            _imageFile!,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.asset(
+                            car.imgPath,
+                            fit: BoxFit.cover,
+                          ),
+                  ]),
+                ),
               ),
             ),
             Positioned(
@@ -331,7 +328,9 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                     Material(
                       child: InkWell(
                         onTap: () {
-                          // print('hi');
+                          Navigator.of(context).pushNamed(
+                            AppRoutes.bookingService,
+                          );
                         },
                         child: Container(
                           height: figmaSpaceToPercentage(60, context),

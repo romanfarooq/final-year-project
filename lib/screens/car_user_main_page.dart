@@ -3,11 +3,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../models/car_info.dart';
+import '../routes/app_routes.dart';
+import '../utils/image_constant.dart';
 import '../widgets/car_display.dart';
+import '../widgets/google_map_display.dart';
 import '../widgets/graph_km_driven.dart';
 import '../widgets/text_container_carusermain.dart';
-import '../utils/image_constant.dart';
-import '../routes/app_routes.dart';
 
 LatLng sampleLoc = const LatLng(31.4469, 74.2682);
 
@@ -23,8 +24,8 @@ class CarUserMain extends StatelessWidget {
             CarDetailes(),
             TextContainer(text: 'Map'),
             SizedBox(height: 10),
-            GoogleMap(),
-            SizedBox(height: 10),
+            GoogleMapDisplay(),
+            SizedBox(height: 20),
             EmergencyRoadsideAssistanceTextDisply(),
             SizedBox(height: 10),
             EmergencyRoadsideAssistanceButton(),
@@ -257,36 +258,12 @@ class EmergencyRoadsideAssistanceTextDisply extends StatelessWidget {
   }
 }
 
-class GoogleMap extends StatelessWidget {
-  const GoogleMap({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 365,
-      height: 210,
-      decoration: ShapeDecoration(
-        image: const DecorationImage(
-          image: AssetImage('assets/images/map.png'),
-          fit: BoxFit.fill,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(35),
-        ),
-      ),
-    );
-    //child: GoogleMap(
-    //     initialCameraPosition:CameraPosition(target: sampleLoc, zoom: 15.0) ,
-    // )
-  }
-}
-
 class CarDetailes extends StatelessWidget {
   const CarDetailes({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20.0),
+      margin: const EdgeInsets.only(top: 20.0),
       height: 200.0,
       child: const ListviewWiget(),
     );

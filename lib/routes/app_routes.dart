@@ -32,6 +32,8 @@ import '../screens/workshop_clients.dart';
 import '../screens/workshop_homepage.dart';
 import '../screens/workshop_services.dart';
 import '../screens/workshop_signup.dart';
+import '../screens/booking_service.dart';
+import '../screens/carusersetting.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -68,6 +70,8 @@ class AppRoutes {
   static const String userHomeScreen = '/user_homescreen';
   static const String bottomTab = '/bottom_tab';
   static const String oldCarInformation = '/old_car_information';
+  static const String bookingService = '/booking_service';
+  static const String accountSettings = '/account_settings';
 
   static Map<String, WidgetBuilder> routes = {
     forgetScreen: (ctx) => const ForgetScreen(),
@@ -102,5 +106,7 @@ class AppRoutes {
     carUserMain: (ctx) => const CarUserMain(),
     bottomTab: (ctx) => const BottomTabs(),
     oldCarInformation: (ctx) => const OldCarInformation(),
+    bookingService: (ctx) => const BookingService(),
+    accountSettings: (ctx) => const AccountSettingsScreen(),
   };
 }

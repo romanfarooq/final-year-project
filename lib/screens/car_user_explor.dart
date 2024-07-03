@@ -8,26 +8,29 @@ class Explore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
-            _searchField(),
-            const SizedBox(
-              height: 10,
-            ),
-            const FirstTwoRow(),
-            thirrdRow(),
-            const SizedBox(
-              height: 8,
-            ),
-            const FourthRow(),
+            SearchField(),
+            SizedBox(height: 10),
+            FirstTwoRow(),
+            ThirdRow(),
+            SizedBox(height: 8),
+            FourthRow(),
           ],
         ),
       ),
     );
   }
+}
 
-  Row thirrdRow() {
+class ThirdRow extends StatelessWidget {
+  const ThirdRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,8 +38,8 @@ class Explore extends StatelessWidget {
         Column(
           children: [
             Container(
-              width: 150,
-              height: 150,
+              width: width * 0.42,
+              height: height * 0.2,
               decoration: ShapeDecoration(
                 image: const DecorationImage(
                   image: AssetImage("assets/images/booking.png"),
@@ -63,8 +66,8 @@ class Explore extends StatelessWidget {
         Column(
           children: [
             Container(
-              width: 80,
-              height: 150,
+              width: width * 0.22,
+              height: height * 0.2,
               decoration: ShapeDecoration(
                 image: const DecorationImage(
                   image: AssetImage("assets/images/rims.png"),
@@ -91,8 +94,8 @@ class Explore extends StatelessWidget {
         Column(
           children: [
             Container(
-              width: 80,
-              height: 150,
+              width: width * 0.22,
+              height: height * 0.2,
               decoration: ShapeDecoration(
                 image: const DecorationImage(
                   image: AssetImage("assets/images/Tyres.png"),
@@ -122,12 +125,12 @@ class Explore extends StatelessWidget {
 }
 
 class FourthRow extends StatelessWidget {
-  const FourthRow({
-    super.key,
-  });
+  const FourthRow({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -135,8 +138,9 @@ class FourthRow extends StatelessWidget {
         Column(
           children: [
             Container(
-              width: 205,
-              height: 150,
+              // width: 205,
+              width: width * 0.55,
+              height: height * 0.2,
               decoration: ShapeDecoration(
                 image: const DecorationImage(
                   image: AssetImage("assets/images/paint.png"),
@@ -163,8 +167,8 @@ class FourthRow extends StatelessWidget {
         Column(
           children: [
             Container(
-              width: 150,
-              height: 150,
+              width: width * 0.35,
+              height: height * 0.2,
               decoration: ShapeDecoration(
                 image: const DecorationImage(
                   image: AssetImage("assets/images/denting.png"),
@@ -194,128 +198,109 @@ class FourthRow extends StatelessWidget {
 }
 
 class FirstTwoRow extends StatelessWidget {
-  const FirstTwoRow({
-    super.key,
-  });
+  const FirstTwoRow({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
     return Container(
       alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width * 1,
-      height: MediaQuery.of(context).size.height * 0.355,
+      width: width,
+      height: height * 0.4,
       color: const Color.fromARGB(124, 255, 255, 255),
       child: Stack(
         children: [
           CustomPositionedContainer(
-            left: MediaQuery.of(context).size.width * 0.05,
+            left: width * 0.04,
             top: 0,
-            width: 115,
-            height: 115,
-            imagePath: "assets/images/EngineOil.png",
+            width: width * 0.3,
+            height: height * 0.15,
+            imagePath: "assets/images/engineoil.png",
           ),
-          const CustomPositionedContainer(
-            left: 153,
+          CustomPositionedContainer(
+            left: width * 0.37,
             top: 0,
-            width: 115,
-            height: 115,
+            width: width * 0.3,
+            height: height * 0.15,
             imagePath: "assets/images/ElectricRepair.png",
           ),
           CustomPositionedContainer(
-            left: MediaQuery.of(context).size.width * 0.05,
-            top: 146,
-            width: 248,
-            height: 115,
+            left: width * 0.04,
+            top: height * 0.2,
+            width: width * 0.63,
+            height: height * 0.15,
             imagePath: "assets/images/MechanicalRepairs.png",
           ),
-          const CustomPositionedContainer(
-            left: 280,
+          CustomPositionedContainer(
+            left: width * 0.7,
             top: 0,
-            width: 114,
-            height: 260,
+            width: width * 0.27,
+            height: height * 0.35,
             imagePath: "assets/images/History.png",
           ),
-          const Positioned(
-            // Engine Oil Text
-            left: 19,
-            top: 118,
-            child: SizedBox(
-              width: 125,
-              height: 34,
-              child: Text(
-                'Engine Oil',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                  letterSpacing: -1,
-                ),
+          Positioned(
+            left: width * 0.1,
+            top: height * 0.16,
+            child: const Text(
+              'Engine Oil',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                height: 0,
+                letterSpacing: -1,
               ),
             ),
           ),
-          const Positioned(
-            // Electrical Repairs Text
-            left: 150,
-            top: 118,
-            child: SizedBox(
-              width: 124,
-              height: 34,
-              child: Text(
-                'Electrical Repairs',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                  letterSpacing: -1,
-                ),
+          Positioned(
+            left: width * 0.37,
+            top: height * 0.16,
+            child: const Text(
+              'Electrical Repairs',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                height: 0,
+                letterSpacing: -1,
               ),
             ),
           ),
-          const Positioned(
-            // History Text
-            left: 270,
-            top: 270,
-            child: SizedBox(
-              width: 140,
-              height: 114,
-              child: Text(
-                'History',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                  letterSpacing: -1,
-                ),
+          Positioned(
+            left: width * 0.76,
+            top: height * 0.36,
+            child: const Text(
+              'History',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                height: 0,
+                letterSpacing: -1,
               ),
             ),
           ),
-          const Positioned(
+          Positioned(
             // Mechanical Repairs Text
-            left: 30,
-            top: 270,
-            child: SizedBox(
-              width: 239,
-              height: 114,
-              child: Text(
-                'Mechanical Repairs',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                  letterSpacing: -1,
-                ),
+            left: width * 0.18,
+            top: height * 0.36,
+            child: const Text(
+              'Mechanical Repairs',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                height: 0,
+                letterSpacing: -1,
               ),
             ),
           ),
@@ -325,7 +310,6 @@ class FirstTwoRow extends StatelessWidget {
   }
 }
 
-////
 AppBar appBar() {
   return AppBar(
     title: const Text(
@@ -367,26 +351,31 @@ AppBar appBar() {
   );
 }
 
-Container _searchField() {
-  return Container(
-    margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
-    decoration: BoxDecoration(
-      color: const Color.fromRGBO(217, 217, 217, 0.5),
-      borderRadius: BorderRadius.circular(48),
-      shape: BoxShape.rectangle,
-    ),
-    child: const TextField(
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.search),
-        hintText: 'Search',
-        hintStyle: TextStyle(
-          color: Color.fromRGBO(0, 0, 0, 0.5),
-          fontSize: 14,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w400,
-        ),
-        border: InputBorder.none,
+class SearchField extends StatelessWidget {
+  const SearchField({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(217, 217, 217, 0.5),
+        borderRadius: BorderRadius.circular(48),
+        shape: BoxShape.rectangle,
       ),
-    ),
-  );
+      child: const TextField(
+        decoration: InputDecoration(
+          prefixIcon: Icon(Icons.search),
+          hintText: 'Search',
+          hintStyle: TextStyle(
+            color: Color.fromRGBO(0, 0, 0, 0.5),
+            fontSize: 14,
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w400,
+          ),
+          border: InputBorder.none,
+        ),
+      ),
+    );
+  }
 }
