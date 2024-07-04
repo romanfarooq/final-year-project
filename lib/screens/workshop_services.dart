@@ -265,7 +265,7 @@ class WorkshopServices extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).pushNamed(
-                            AppRoutes.workshopHomepage,
+                            AppRoutes.workhopBottomTab,
                           );
                         },
                         style: ElevatedButton.styleFrom(

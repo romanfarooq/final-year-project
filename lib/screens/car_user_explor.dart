@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../routes/app_routes.dart';
 import '../widgets/custom_positioned_container.dart';
 
 class Explore extends StatelessWidget {
@@ -37,16 +38,21 @@ class ThirdRow extends StatelessWidget {
       children: [
         Column(
           children: [
-            Container(
-              width: width * 0.42,
-              height: height * 0.2,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/booking.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(AppRoutes.bookingService);
+              },
+              child: Container(
+                width: width * 0.42,
+                height: height * 0.2,
+                decoration: ShapeDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/booking.png"),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
               ),
             ),
@@ -65,16 +71,21 @@ class ThirdRow extends StatelessWidget {
         ),
         Column(
           children: [
-            Container(
-              width: width * 0.22,
-              height: height * 0.2,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/rims.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(AppRoutes.tireRepair);
+              },
+              child: Container(
+                width: width * 0.22,
+                height: height * 0.2,
+                decoration: ShapeDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/rims.png"),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
               ),
             ),
@@ -93,16 +104,21 @@ class ThirdRow extends StatelessWidget {
         ),
         Column(
           children: [
-            Container(
-              width: width * 0.22,
-              height: height * 0.2,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/Tyres.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(AppRoutes.tireRepair);
+              },
+              child: Container(
+                width: width * 0.22,
+                height: height * 0.2,
+                decoration: ShapeDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/Tyres.png"),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
               ),
             ),
@@ -137,17 +153,23 @@ class FourthRow extends StatelessWidget {
       children: [
         Column(
           children: [
-            Container(
-              // width: 205,
-              width: width * 0.55,
-              height: height * 0.2,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/paint.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  AppRoutes.dentingPaintingRepair,
+                );
+              },
+              child: Container(
+                width: width * 0.55,
+                height: height * 0.2,
+                decoration: ShapeDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/paint.png"),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
               ),
             ),
@@ -166,16 +188,23 @@ class FourthRow extends StatelessWidget {
         ),
         Column(
           children: [
-            Container(
-              width: width * 0.35,
-              height: height * 0.2,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/denting.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  AppRoutes.dentingPaintingRepair,
+                );
+              },
+              child: Container(
+                width: width * 0.35,
+                height: height * 0.2,
+                decoration: ShapeDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/denting.png"),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
               ),
             ),
@@ -217,6 +246,9 @@ class FirstTwoRow extends StatelessWidget {
             width: width * 0.3,
             height: height * 0.15,
             imagePath: "assets/images/engineoil.png",
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRoutes.oilChange);
+            },
           ),
           CustomPositionedContainer(
             left: width * 0.37,
@@ -224,6 +256,9 @@ class FirstTwoRow extends StatelessWidget {
             width: width * 0.3,
             height: height * 0.15,
             imagePath: "assets/images/ElectricRepair.png",
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRoutes.electricalRepair);
+            },
           ),
           CustomPositionedContainer(
             left: width * 0.04,
@@ -231,6 +266,9 @@ class FirstTwoRow extends StatelessWidget {
             width: width * 0.63,
             height: height * 0.15,
             imagePath: "assets/images/MechanicalRepairs.png",
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRoutes.mechanicalRepair);
+            },
           ),
           CustomPositionedContainer(
             left: width * 0.7,
@@ -238,6 +276,9 @@ class FirstTwoRow extends StatelessWidget {
             width: width * 0.27,
             height: height * 0.35,
             imagePath: "assets/images/History.png",
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRoutes.serviceHistory);
+            },
           ),
           Positioned(
             left: width * 0.1,

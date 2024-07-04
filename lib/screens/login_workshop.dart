@@ -58,7 +58,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
           );
         } else {
           Navigator.of(context).pushReplacementNamed(
-            AppRoutes.workshopHomepage,
+            AppRoutes.workhopBottomTab,
           );
           ToastMessage().toastmessage('Login Successful');
         }
@@ -131,7 +131,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
         workshop.setWorkshopInfo(data!);
 
         Navigator.of(context).pushReplacementNamed(
-          AppRoutes.workshopHomepage,
+          AppRoutes.workhopBottomTab,
         );
       } else {
         workshop.setWorkshopInfo({

@@ -6,6 +6,7 @@ class CustomPositionedContainer extends StatelessWidget {
   final double width;
   final double height;
   final String imagePath;
+  final void Function() onTap;
 
   const CustomPositionedContainer({
     super.key,
@@ -14,6 +15,7 @@ class CustomPositionedContainer extends StatelessWidget {
     required this.width,
     required this.height,
     required this.imagePath,
+    required this.onTap,
   });
 
   @override
@@ -21,14 +23,17 @@ class CustomPositionedContainer extends StatelessWidget {
     return Positioned(
       left: left,
       top: top,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          image: DecorationImage(
-            image: AssetImage(imagePath),
-            fit: BoxFit.fill,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
       ),

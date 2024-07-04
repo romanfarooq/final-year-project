@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../screens/billing_screen.dart';
+import '../screens/booking_service.dart';
 import '../screens/car_care_requests.dart';
 import '../screens/car_features.dart';
 import '../screens/car_user_main_page.dart';
 import '../screens/car_user_signup.dart';
 import '../screens/car_user_signup_2.dart';
+import '../screens/carusersetting.dart';
 import '../screens/denting_n_painting_repair.dart';
 import '../screens/denting_n_painting_services_vault.dart';
 import '../screens/electrical_repair.dart';
@@ -32,8 +34,7 @@ import '../screens/workshop_clients.dart';
 import '../screens/workshop_homepage.dart';
 import '../screens/workshop_services.dart';
 import '../screens/workshop_signup.dart';
-import '../screens/booking_service.dart';
-import '../screens/carusersetting.dart';
+import '../screens/workshop_tab_screen';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -72,6 +73,7 @@ class AppRoutes {
   static const String oldCarInformation = '/old_car_information';
   static const String bookingService = '/booking_service';
   static const String accountSettings = '/account_settings';
+  static const String workhopBottomTab = '/workshop_bottom_tab';
 
   static Map<String, WidgetBuilder> routes = {
     forgetScreen: (ctx) => const ForgetScreen(),
@@ -108,5 +110,6 @@ class AppRoutes {
     oldCarInformation: (ctx) => const OldCarInformation(),
     bookingService: (ctx) => const BookingService(),
     accountSettings: (ctx) => const AccountSettingsScreen(),
+    workhopBottomTab: (ctx) => const WorkshopBottomTabs(),
   };
 }

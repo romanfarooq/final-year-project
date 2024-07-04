@@ -13,8 +13,6 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     Future<void> checkUserStatus() async {
       final currentUser = FirebaseAuth.instance.currentUser;
       if (currentUser != null) {
@@ -54,11 +52,10 @@ class SplashScreen extends StatelessWidget {
             );
           } else {
             Navigator.of(context).pushReplacementNamed(
-              AppRoutes.workshopHomepage,
+              AppRoutes.workhopBottomTab,
             );
           }
         }
-
       } else {
         await Future.delayed(const Duration(seconds: 3));
         if (context.mounted) {
