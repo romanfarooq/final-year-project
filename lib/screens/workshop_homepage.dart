@@ -112,7 +112,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             maxWidth: MediaQuery.of(context).size.width * 0.5,
                           ),
                           child: Text(
-                            workshopInfo.getLocation,
+                            workshopInfo.getAddress,
                             style: TextStyle(
                               color: const Color.fromRGBO(0, 0, 0, 1),
                               fontSize: figmaSpaceToPercentage(14, context),

@@ -63,7 +63,10 @@ class _LoginScreenWState extends State<LoginScreenW> {
           ToastMessage().toastmessage('Login Successful');
         }
       } else {
-        ToastMessage().toastmessage('No workshop data found');
+        Navigator.of(context).pushReplacementNamed(
+          AppRoutes.workshopSignupScreen,
+        );
+        ToastMessage().toastmessage('Login Successful');
       }
     } catch (error) {
       // Handle specific Firebase Auth errors
@@ -146,6 +149,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
             'fullname': googleUser.displayName,
             'email': googleUser.email,
             'uid': userCredential.user!.uid,
+            'phone': '',
           },
         );
 

@@ -1,3 +1,4 @@
+import 'package:car_care/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +7,6 @@ import './firebase_options.dart';
 import './models/car_info.dart';
 import './models/workshop_info.dart';
 import './routes/app_routes.dart';
-import './screens/splash_screen.dart';
 import './utils/theme.dart';
 
 void main() async {
@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: themeData,
       home: const SplashScreen(),
-      // home: const AccountSettingsScreen(),
       routes: AppRoutes.routes,
     );
   }

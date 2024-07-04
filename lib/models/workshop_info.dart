@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import './service_history.dart';
 import '../utils/toast_message.dart';
@@ -10,12 +11,13 @@ class WorkshopInfo with ChangeNotifier {
   String? workshopName;
   String? email;
   String? phone;
-  String? location;
+  String? address;
   double? ratingStars;
   String? description;
   String? openingHours;
   String? website;
   List<ServiceHistory> serviceHistory;
+  LatLng? location;
 
   Map<String, bool> electricalRepairs;
   Map<String, bool> mechanicalRepairs;
@@ -29,11 +31,12 @@ class WorkshopInfo with ChangeNotifier {
     this.workshopName = '',
     this.email,
     this.phone,
-    this.location = '',
+    this.address = '',
     this.description = '',
     this.openingHours = '',
     this.website = '',
     this.ratingStars = 0,
+    this.location = const LatLng(31.447101066394143, 74.2682959730143),
     this.serviceHistory = const [],
     electricalRepairs,
     mechanicalRepairs,
@@ -148,7 +151,11 @@ class WorkshopInfo with ChangeNotifier {
       workshopName: data['workshopName'],
       email: data['email'],
       phone: data['phone'],
-      location: data['location'],
+      address: data['address'],
+      location: LatLng(
+        data['location']['latitude'],
+        data['location']['longitude'],
+      ),
       openingHours: data['openingHours'],
       website: data['website'],
       ratingStars: double.tryParse(data['ratingStars'] ?? 0) ?? 0,
@@ -170,7 +177,11 @@ class WorkshopInfo with ChangeNotifier {
       'workshopName': workshopName,
       'email': email,
       'phone': phone,
-      'location': location,
+      'address': address,
+      'location': {
+        'latitude': location!.latitude,
+        'longitude': location!.longitude
+      },
       'openingHours': openingHours,
       'website': website,
       'ratingStars': ratingStars,
@@ -194,7 +205,13 @@ class WorkshopInfo with ChangeNotifier {
 
   get getWorkshopName => workshopName;
 
+  get getAddress => address;
+
   get getLocation => location;
+
+  get getWebsite => website;
+
+  get getDescription => description;
 
   get getPhone => phone;
 
@@ -212,7 +229,8 @@ class WorkshopInfo with ChangeNotifier {
 
   Future<void> updateWorkshopInfo({
     required String workshopName,
-    required String location,
+    required String address,
+    required LatLng location,
     required String contact,
     required String website,
     required String openingHours,
@@ -221,13 +239,18 @@ class WorkshopInfo with ChangeNotifier {
     try {
       await _firestore.collection('workshops').doc(uid).update({
         'workshopName': workshopName,
-        'location': location,
+        'address': address,
+        'location': {
+          'latitude': location.latitude,
+          'longitude': location.longitude,
+        },
         'phone': contact,
         'website': website,
         'openingHours': openingHours,
         'description': description,
       });
       this.workshopName = workshopName;
+      this.address = address;
       this.location = location;
       phone = contact;
       this.website = website;

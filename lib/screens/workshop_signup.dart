@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../utils/figma_space_to_percentage.dart';
-import '../utils/image_constant.dart';
 import '../models/workshop_info.dart';
 import '../routes/app_routes.dart';
+import '../utils/figma_space_to_percentage.dart';
+import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
+import '../widgets/location_picker_dialog.dart';
 
 class WorkshopSignup extends StatefulWidget {
   const WorkshopSignup({super.key});
@@ -16,21 +19,35 @@ class WorkshopSignup extends StatefulWidget {
 
 class _WorkshopSignupState extends State<WorkshopSignup> {
   final TextEditingController _workshopnameController = TextEditingController();
-  final TextEditingController _locationController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
   final TextEditingController _contactController = TextEditingController();
   final TextEditingController _websiteController = TextEditingController();
   final TextEditingController _openinghoursController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+  LatLng? _selectedLocation;
 
   @override
   void dispose() {
     _workshopnameController.dispose();
-    _locationController.dispose();
+    _addressController.dispose();
     _contactController.dispose();
     _websiteController.dispose();
     _openinghoursController.dispose();
     _descriptionController.dispose();
     super.dispose();
+  }
+
+  void _showLocationPicker(BuildContext context) async {
+    LatLng? selectedLocation = await showDialog(
+      context: context,
+      builder: (ctx) => const LocationPickerDialog(),
+    );
+
+    if (selectedLocation != null) {
+      setState(() {
+        _selectedLocation = selectedLocation;
+      });
+    }
   }
 
   @override
@@ -45,7 +62,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: figmaSpaceToPercentage(55, context),
+                    height: figmaSpaceToPercentage(25, context),
                   ),
                   Center(
                     child: Image.asset(
@@ -56,7 +73,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ),
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(64, context),
+                    height: figmaSpaceToPercentage(25, context),
                   ),
                   Row(
                     children: [
@@ -86,8 +103,8 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.symmetric(
-                            horizontal:
-                                figmaSpaceToPercentageWidth(26, context)),
+                          horizontal: figmaSpaceToPercentageWidth(25, context),
+                        ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
                           borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -104,8 +121,8 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(
-                                    16, context)), // Adjust vertical padding
+                              vertical: figmaSpaceToPercentage(14, context),
+                            ), // Adjust vertical padding
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -152,7 +169,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.only(
-                          left: figmaSpaceToPercentageWidth(26, context),
+                          left: figmaSpaceToPercentageWidth(25, context),
                           top: figmaSpaceToPercentage(10, context),
                         ),
                         decoration: const BoxDecoration(
@@ -160,7 +177,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                           borderRadius: BorderRadius.all(Radius.circular(25)),
                         ),
                         child: TextField(
-                          controller: _locationController,
+                          controller: _addressController,
                           decoration: InputDecoration(
                             hintText: "123 Main Street, City",
                             hintStyle: TextStyle(
@@ -171,7 +188,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(16, context)),
+                                vertical: figmaSpaceToPercentage(14, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -217,7 +234,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.only(
-                          left: figmaSpaceToPercentage(26, context),
+                          left: figmaSpaceToPercentage(25, context),
                           top: figmaSpaceToPercentage(10, context),
                         ),
                         decoration: const BoxDecoration(
@@ -236,7 +253,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(16, context)),
+                                vertical: figmaSpaceToPercentage(14, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -282,7 +299,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(352, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.only(
-                          left: figmaSpaceToPercentage(26, context),
+                          left: figmaSpaceToPercentage(25, context),
                           top: figmaSpaceToPercentage(10, context),
                         ),
                         decoration: const BoxDecoration(
@@ -301,7 +318,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(16, context)),
+                                vertical: figmaSpaceToPercentage(14, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -347,7 +364,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(150, context),
                         height: figmaSpaceToPercentage(40, context),
                         padding: EdgeInsets.only(
-                          left: figmaSpaceToPercentage(26, context),
+                          left: figmaSpaceToPercentage(25, context),
                           top: figmaSpaceToPercentage(10, context),
                         ),
                         decoration: const BoxDecoration(
@@ -366,7 +383,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(16, context)),
+                                vertical: figmaSpaceToPercentage(14, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
@@ -377,6 +394,76 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                           textInputAction: TextInputAction.done,
                           keyboardType: TextInputType.text,
                           textAlignVertical: TextAlignVertical.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: figmaSpaceToPercentage(12, context),
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: figmaSpaceToPercentageWidth(30, context),
+                      ),
+                      Text(
+                        "Select Location:",
+                        style: TextStyle(
+                          color: const Color.fromRGBO(0, 0, 0, 1),
+                          fontSize: figmaSpaceToPercentage(14, context),
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: figmaSpaceToPercentage(4, context),
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: figmaSpaceToPercentageWidth(20, context),
+                      ),
+                      SizedBox(
+                        height: figmaSpaceToPercentage(40, context),
+                        width: figmaSpaceToPercentageWidth(150, context),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _showLocationPicker(context);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromRGBO(
+                              66,
+                              84,
+                              164,
+                              0.4,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Location",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: figmaSpaceToPercentage(14, context),
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Expanded(
+                                child: Icon(
+                                  Icons.location_on,
+                                  color: _selectedLocation != null
+                                      ? const Color.fromARGB(255, 130, 228, 85)
+                                      : Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -466,19 +553,40 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                       ),
                       ElevatedButton(
                         onPressed: () async {
+                          if (_workshopnameController.text.isEmpty ||
+                              _addressController.text.isEmpty ||
+                              _contactController.text.isEmpty ||
+                              _openinghoursController.text.isEmpty ||
+                              _descriptionController.text.isEmpty) {
+                            ToastMessage().toastmessage(
+                              "Please fill all the fields",
+                            );
+                            return;
+                          }
+
+                          if (_selectedLocation == null) {
+                            ToastMessage().toastmessage(
+                              "Please select a location",
+                            );
+                            return;
+                          }
+
                           await context.read<WorkshopInfo>().updateWorkshopInfo(
                                 workshopName:
                                     _workshopnameController.text.trim(),
-                                location: _locationController.text.trim(),
+                                address: _addressController.text.trim(),
                                 contact: _contactController.text.trim(),
+                                location: _selectedLocation!,
                                 website: _websiteController.text.trim(),
                                 openingHours:
                                     _openinghoursController.text.trim(),
                                 description: _descriptionController.text.trim(),
                               );
-                          Navigator.of(context).pushReplacementNamed(
-                            AppRoutes.workshopServices,
-                          );
+                          if (context.mounted) {
+                            Navigator.of(context).pushReplacementNamed(
+                              AppRoutes.workshopServices,
+                            );
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
