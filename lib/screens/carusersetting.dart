@@ -1,7 +1,19 @@
+import 'package:car_care/routes/app_routes.dart';
+import 'package:car_care/utils/toast_message.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({super.key});
+
+  Future<void> _logout(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      ToastMessage().toastmessage('Logged out');
+    } catch (error) {
+      ToastMessage().toastmessage('Error logging out: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +69,18 @@ class AccountSettingsScreen extends StatelessWidget {
               leading: Icon(Icons.info),
               title: Text('About'),
             ),
-            const ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Logout'),
+              onTap: () async {
+                await _logout(context);
+                if (context.mounted) {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    AppRoutes.selectUserScreen,
+                    (route) => false,
+                  );
+                }
+              },
             ),
             Container(
               margin: const EdgeInsets.all(20),

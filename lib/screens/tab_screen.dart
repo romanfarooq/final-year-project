@@ -22,6 +22,9 @@ class _BottomTabsState extends State<BottomTabs> {
       color: Colors.white,
     ),
     const UserHomeScreen(),
+    Container(
+      color: Colors.white,
+    ),
   ];
 
   @override
@@ -36,6 +39,10 @@ class _BottomTabsState extends State<BottomTabs> {
         onTap: (index) {
           if (index == 2) {
             Navigator.of(context).pushNamed(AppRoutes.carUserSignup);
+            return;
+          }
+          if (index == 4) {
+            Navigator.of(context).pushNamed(AppRoutes.accountSettings);
             return;
           }
           setState(() {
@@ -68,15 +75,18 @@ class _BottomTabsState extends State<BottomTabs> {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Container(
-              height: 30,
-              width: 30,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/profile.png'),
-                ),
-                shape: BoxShape.circle,
-              ),
+            icon: Icon(
+              _selectedIndex == 3 ? Icons.car_crash : Icons.car_crash_outlined,
+              size: 30,
+              color: const Color.fromARGB(150, 0, 0, 0),
+            ),
+            label: '',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(
+              size: 30,
+              color: Color.fromARGB(150, 0, 0, 0),
+              Icons.settings_outlined,
             ),
             label: '',
           ),

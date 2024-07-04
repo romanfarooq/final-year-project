@@ -451,37 +451,6 @@ class UserHomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: figmaSpaceToPercentage(18, context),
-                    ),
-                    Material(
-                      child: InkWell(
-                        onTap: () {
-                          _deleteCar(context, userInfo);
-                        },
-                        child: Container(
-                          height: figmaSpaceToPercentage(60, context),
-                          width: figmaSpaceToPercentageWidth(368, context),
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 208, 50, 50),
-                            borderRadius: BorderRadius.circular(
-                              38,
-                            ), // Set border radius for rounded corners
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Delete Car',
-                              style: TextStyle(
-                                  color: const Color.fromRGBO(217, 217, 217, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w500,
-                                  decoration: TextDecoration.none),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -498,7 +467,7 @@ class UserHomeScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                      left: figmaSpaceToPercentageWidth(33, context),
+                      left: figmaSpaceToPercentageWidth(30, context),
                     ),
                     child: Text(
                       userInfo.getName ?? '',
@@ -511,31 +480,61 @@ class UserHomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      right: figmaSpaceToPercentageWidth(33, context),
-                    ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {
-                          _uploadPicture(userInfo);
-                        },
-                        child: Container(
-                          height: figmaSpaceToPercentage(52, context),
-                          width: figmaSpaceToPercentageWidth(52, context),
-                          decoration: const BoxDecoration(
-                            color: Color.fromRGBO(217, 217, 217, 1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.file_upload_rounded,
-                            color: Colors.black,
-                            size: figmaSpaceToPercentage(40, context),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          right: figmaSpaceToPercentageWidth(15, context),
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              _uploadPicture(userInfo);
+                            },
+                            child: Container(
+                              height: figmaSpaceToPercentage(52, context),
+                              width: figmaSpaceToPercentageWidth(52, context),
+                              decoration: const BoxDecoration(
+                                color: Color.fromRGBO(217, 217, 217, 1),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.file_upload_rounded,
+                                color: Colors.black,
+                                size: figmaSpaceToPercentage(40, context),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          right: figmaSpaceToPercentageWidth(15, context),
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              _deleteCar(context, userInfo);
+                            },
+                            child: Container(
+                              height: figmaSpaceToPercentage(55, context),
+                              width: figmaSpaceToPercentageWidth(55, context),
+                              decoration: const BoxDecoration(
+                                color: Color.fromARGB(255, 208, 50, 50),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.delete_forever,
+                                color: Colors.white,
+                                size: figmaSpaceToPercentage(40, context),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
