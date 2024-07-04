@@ -26,7 +26,7 @@ class CarDisplay extends StatelessWidget {
           ),
         ],
         image: DecorationImage(
-          image: AssetImage(imgPath),
+          image: Image.network(imgPath).image,
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(10),

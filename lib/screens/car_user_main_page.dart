@@ -102,9 +102,7 @@ class CarUserMain extends StatelessWidget {
 }
 
 class OilChangeKM extends StatelessWidget {
-  const OilChangeKM({
-    super.key,
-  });
+  const OilChangeKM({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -265,30 +263,78 @@ class CarDetailes extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20.0),
       height: 200.0,
-      child: const ListviewWiget(),
+      child: const ListviewWidget(),
     );
   }
 }
 
-class ListviewWiget extends StatelessWidget {
-  const ListviewWiget({super.key});
+class ListviewWidget extends StatelessWidget {
+  const ListviewWidget({super.key});
   @override
   Widget build(BuildContext context) {
     final carinfo = context.read<UserCarsInfo>();
+    final cars = carinfo.getCars;
     return ListView(
       scrollDirection: Axis.horizontal,
-      children: carinfo.getCars
-          .map((item) => InkWell(
-                onTap: () {
-                  carinfo.changeSelectedCar(item.licensePlate);
-                  Navigator.of(context).pushNamed(AppRoutes.userHomeScreen);
-                },
-                child: CarDisplay(
-                  name: item.manufacturer,
-                  imgPath: item.imgPath,
-                ),
-              ))
-          .toList(),
+      children: cars.isEmpty
+          ? const [CardSaketon()]
+          : cars
+              .map((item) => InkWell(
+                    onTap: () {
+                      carinfo.changeSelectedCar(item.licensePlate);
+                      Navigator.of(context).pushNamed(AppRoutes.userHomeScreen);
+                    },
+                    child: CarDisplay(
+                      name: item.manufacturer,
+                      imgPath: item.imgPath,
+                    ),
+                  ))
+              .toList(),
+    );
+  }
+}
+
+class CardSaketon extends StatelessWidget {
+  const CardSaketon({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 170,
+      width: 290,
+      margin: const EdgeInsets.all(25),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 4,
+            blurRadius: 4,
+            offset: const Offset(0, 1),
+          ),
+        ],
+        borderRadius: BorderRadius.circular(10),
+        shape: BoxShape.rectangle,
+      ),
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.no_accounts,
+            size: 50,
+            color: Colors.black,
+          ),
+          Text(
+            'No Cars Added',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w400,
+              height: 0,
+              letterSpacing: -1,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

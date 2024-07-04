@@ -1,10 +1,15 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../models/car_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
-import '../models/car_info.dart';
+import '../utils/toast_message.dart';
 
 class CarUserSignup2 extends StatefulWidget {
   const CarUserSignup2({super.key});
@@ -20,6 +25,8 @@ class _CarUserSignupState extends State<CarUserSignup2> {
   final TextEditingController _vinController = TextEditingController();
   final TextEditingController _mileageController = TextEditingController();
   bool _isNewCar = true;
+  File? _file;
+  String? _uploadedFileURL;
 
   @override
   void dispose() {
@@ -35,6 +42,51 @@ class _CarUserSignupState extends State<CarUserSignup2> {
     _selectedFuelType = fuelTypes.first;
   }
 
+  Future<void> _uploadPicture() async {
+    try {
+      final picker = ImagePicker();
+      final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+      if (pickedFile == null) {
+        ToastMessage().toastmessage('No image selected');
+        return;
+      }
+
+      if (!mounted) {
+        return;
+      }
+
+      setState(() {
+        _file = File(pickedFile.path);
+      });
+    } catch (error) {
+      ToastMessage().toastmessage('Failed to upload image: $error');
+    }
+  }
+
+  Future<void> uploadPictureToFirebase(String licensePlate) async {
+    try {
+      if (_file == null) {
+        ToastMessage().toastmessage('No image to upload');
+        return;
+      }
+
+      final metaData = SettableMetadata(contentType: 'image/jpeg');
+
+      final ref = FirebaseStorage.instance.ref().child(
+            'car_images/$licensePlate',
+          );
+
+      final snapShot = await ref.putFile(_file!, metaData);
+
+      final url = await snapShot.ref.getDownloadURL();
+
+      _uploadedFileURL = url;
+    } catch (error) {
+      ToastMessage().toastmessage('Failed to upload image: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final carInfo = context.read<UserCarsInfo>();
@@ -43,7 +95,6 @@ class _CarUserSignupState extends State<CarUserSignup2> {
     final String model = args['model'];
     final int year = args['year'];
     final Color color = args['color'];
-    final String image = args['image'];
 
     return Scaffold(
       body: SafeArea(
@@ -318,6 +369,46 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   ),
                 ),
                 SizedBox(
+                  height: figmaSpaceToPercentage(30, context),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await _uploadPicture();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(66, 84, 164, 0.4),
+                    padding: EdgeInsets.symmetric(
+                      vertical: figmaSpaceToPercentage(10, context),
+                      horizontal: figmaSpaceToPercentageWidth(30, context),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    minimumSize: Size(
+                      figmaSpaceToPercentageWidth(93, context),
+                      figmaSpaceToPercentage(40, context),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        _file == null ? "Upload Car Image:" : "Image Uploaded",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const Icon(
+                        Icons.upload_file,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
                   height: figmaSpaceToPercentageWidth(5, context),
                 ),
                 SwitchListTile(
@@ -346,9 +437,23 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                   onPressed: () async {
                     if (_licensePlateController.text.isEmpty ||
                         _vinController.text.isEmpty ||
-                        _mileageController.text.isEmpty) {
+                        _mileageController.text.isEmpty ||
+                        _file == null) {
+                      ToastMessage().toastmessage(
+                        'Please fill all fields and upload an image',
+                      );
                       return;
                     }
+
+                    await uploadPictureToFirebase(
+                      _licensePlateController.text.trim(),
+                    );
+
+                    if (_uploadedFileURL == null) {
+                      ToastMessage().toastmessage('Image upload failed');
+                      return;
+                    }
+
                     await carInfo.addCar(
                       CarInfo(
                         manufacturer: manufacturer,
@@ -359,9 +464,10 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                         year: year,
                         mileage: double.parse(_mileageController.text.trim()),
                         vin: _vinController.text.trim(),
-                        imgPath: "assets/images/carlogo/Honda_CR-V.jpg",
+                        imgPath: _uploadedFileURL!,
                       ),
                     );
+
                     if (context.mounted) {
                       if (_isNewCar) {
                         Navigator.of(context).pushNamed(
@@ -399,15 +505,6 @@ class _CarUserSignupState extends State<CarUserSignup2> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: figmaSpaceToPercentage(10, context),
-                ),
-                Center(
-                  child: Image.asset(
-                    image,
-                    height: figmaSpaceToPercentage(170, context),
-                  ),
-                )
               ],
             ),
           ),

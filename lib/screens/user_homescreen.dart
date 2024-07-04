@@ -1,40 +1,160 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:image_picker/image_picker.dart';
-import '../utils/figma_space_to_percentage.dart';
-import '../utils/image_constant.dart';
-import '../routes/app_routes.dart';
-import '../models/car_info.dart';
 import 'dart:io';
 
-class UserHomeScreen extends StatefulWidget {
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
+import '../models/car_info.dart';
+import '../routes/app_routes.dart';
+import '../utils/figma_space_to_percentage.dart';
+import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
+
+class UserHomeScreen extends StatelessWidget {
   const UserHomeScreen({super.key});
 
-  @override
-  _UserHomeScreenState createState() => _UserHomeScreenState();
-}
+  Future<void> _uploadPicture(UserCarsInfo userInfo) async {
+    try {
+      final licensePlate = userInfo.getSelectedCarLicensePlate;
+      final picker = ImagePicker();
+      final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-class _UserHomeScreenState extends State<UserHomeScreen> {
-  File? _imageFile;
+      if (pickedFile == null) {
+        ToastMessage().toastmessage('No image selected');
+        return;
+      }
 
-  Future<void> _pickImage() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+      final file = File(pickedFile.path);
 
-    if (pickedFile != null) {
-      setState(() {
-        _imageFile = File(pickedFile.path);
-      });
+      final metaData = SettableMetadata(contentType: 'image/jpeg');
+
+      final storageRef = FirebaseStorage.instance.ref().child(
+            'car_images/$licensePlate',
+          );
+
+      // Upload the file
+      final snapshot = await storageRef.putFile(file, metaData);
+
+      // Get the download URL
+      final downloadUrl = await snapshot.ref.getDownloadURL();
+
+      // Update Firestore with the new image URL
+      await userInfo.updateCarImgPath(licensePlate, downloadUrl);
+
+      ToastMessage().toastmessage('Image uploaded successfully');
+    } catch (error) {
+      ToastMessage().toastmessage('Failed to upload image: $error');
     }
+  }
+
+  void _deleteCar(BuildContext context, UserCarsInfo userInfo) {
+    showDialog(
+      context: context,
+      builder: (ctx) {
+        return AlertDialog(
+          title: const Text(
+            'Delete Car',
+            style: TextStyle(
+                color: Color.fromRGBO(0, 0, 0, 1),
+                fontSize: 20,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600,
+                decoration: TextDecoration.none),
+          ),
+          content: const Text(
+            'Are you sure you want to delete this car?',
+            style: TextStyle(
+              color: Color.fromRGBO(0, 0, 0, 1),
+              fontSize: 16,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w300,
+              decoration: TextDecoration.none,
+            ),
+          ),
+          insetPadding: EdgeInsets.symmetric(
+            horizontal: figmaSpaceToPercentageWidth(20, context),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                'Cancel',
+                style: TextStyle(
+                  // color: Color.fromRGBO(0, 0, 0, 1),
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                  decoration: TextDecoration.none,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                await userInfo.deleteCar(userInfo.getSelectedCarLicensePlate);
+                if (context.mounted) {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    AppRoutes.bottomTab,
+                    (route) => false,
+                  );
+                }
+              },
+              child: const Text(
+                'Delete',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 202, 56, 45),
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                  decoration: TextDecoration.none,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final userInfo = context.read<UserCarsInfo>();
+    final userInfo = context.watch<UserCarsInfo>();
     final car = userInfo.getSelectedCar;
     return Scaffold(
+      appBar: AppBar(
+        title: Container(
+          alignment: Alignment.centerLeft,
+          child: Image.asset(ImageConstant.carcare1, height: 25),
+        ),
+        actions: [
+          Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: const Color.fromRGBO(217, 217, 217, 0.5),
+                  borderRadius: BorderRadius.circular(48),
+                  shape: BoxShape.rectangle,
+                ),
+                margin: const EdgeInsets.only(right: 5, top: 5, left: 10),
+                width: 60,
+                height: 38,
+                child: IconButton(
+                  icon: const Icon(Icons.settings),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      AppRoutes.accountSettings,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -43,55 +163,32 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               left: 0,
               right: 0,
               child: SizedBox(
-                height: figmaSpaceToPercentage(450, context),
+                height: figmaSpaceToPercentage(350, context),
                 width: double.infinity,
-                // child: Stack(
-                //   fit: StackFit.expand,
-                //   children: [
-                //     // Image.asset(
-                //     //   // 'assets/images/altis.png',
-                //     //   car.imgPath,
-                //     //   fit: BoxFit.cover,
-                //     // ),
-                //
-                //
-                //
-                //       _image == null
-                //           ? Image.asset(
-                //         car.imgPath,
-                //         fit: BoxFit.cover,
-                //       )
-                //           : Image.file(
-                //         _image!,
-                //         fit: BoxFit.cover,
-                //       ),
-                //
-                //   ],
-                // ),
-
-                child: GestureDetector(
-                  onTap: () {
-                    if (_imageFile == null) {
-                      _pickImage();
-                    }
-                  },
-                  child: Stack(fit: StackFit.expand, children: [
-                    _imageFile != null
-                        ? Image.file(
-                            _imageFile!,
-                            fit: BoxFit.cover,
-                          )
-                        : Image.asset(
-                            car.imgPath,
-                            fit: BoxFit.cover,
-                          ),
-                  ]),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(
+                          figmaSpaceToPercentage(30, context),
+                        ),
+                        topLeft: Radius.circular(
+                          figmaSpaceToPercentage(30, context),
+                        ),
+                      ),
+                      child: Image.network(
+                        car.imgPath,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
             Positioned(
               top: figmaSpaceToPercentage(
-                350,
+                300,
                 context,
               ), // This value should be less than the height of the first container to overlap
               left: 0,
@@ -143,7 +240,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                             ), // Set border radius for rounded corners
                           ),
                           child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
                                 height: figmaSpaceToPercentage(5, context),
@@ -355,13 +451,44 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: figmaSpaceToPercentage(18, context),
+                    ),
+                    Material(
+                      child: InkWell(
+                        onTap: () {
+                          _deleteCar(context, userInfo);
+                        },
+                        child: Container(
+                          height: figmaSpaceToPercentage(60, context),
+                          width: figmaSpaceToPercentageWidth(368, context),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 208, 50, 50),
+                            borderRadius: BorderRadius.circular(
+                              38,
+                            ), // Set border radius for rounded corners
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Delete Car',
+                              style: TextStyle(
+                                  color: const Color.fromRGBO(217, 217, 217, 1),
+                                  fontSize: figmaSpaceToPercentage(23, context),
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.none),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
             Positioned(
               top: figmaSpaceToPercentage(
-                280,
+                230,
                 context,
               ), // 250 (top of container 2) - 30 pixels
               left: 0,
@@ -376,11 +503,12 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                     child: Text(
                       userInfo.getName ?? '',
                       style: TextStyle(
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                          fontSize: figmaSpaceToPercentage(22, context),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          decoration: TextDecoration.none),
+                        color: const Color.fromRGBO(255, 255, 255, 1),
+                        fontSize: figmaSpaceToPercentage(25, context),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                        decoration: TextDecoration.none,
+                      ),
                     ),
                   ),
                   Padding(
@@ -391,7 +519,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         onTap: () {
-                          // print('hi');
+                          _uploadPicture(userInfo);
                         },
                         child: Container(
                           height: figmaSpaceToPercentage(52, context),
@@ -401,7 +529,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
-                            Icons.settings,
+                            Icons.file_upload_rounded,
                             color: Colors.black,
                             size: figmaSpaceToPercentage(40, context),
                           ),

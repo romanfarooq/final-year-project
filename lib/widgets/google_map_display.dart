@@ -1,8 +1,10 @@
-import 'dart:async'; // Add this import
-import 'package:car_care/utils/figma_space_to_percentage.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+
+import '../utils/figma_space_to_percentage.dart';
 
 class GoogleMapDisplay extends StatefulWidget {
   const GoogleMapDisplay({super.key});
@@ -12,13 +14,10 @@ class GoogleMapDisplay extends StatefulWidget {
 }
 
 class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-  final Location _location = Location();
-  final LatLng _initialPosition = const LatLng(
-    31.447101066394143,
-    74.2682959730143,
-  ); // UCP
+  final _controller = Completer<GoogleMapController>();
+  final _location = Location();
+  final _initialPosition = const LatLng(31.447101066394143, 74.2682959730143);
+
   LatLng? _currentPosition;
   Marker? _currentMarker;
 

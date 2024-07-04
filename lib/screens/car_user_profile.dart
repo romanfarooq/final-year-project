@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/service_history_data.dart';
+import '../utils/image_constant.dart';
 import '../widgets/custom_container_profile.dart';
 
 class CarOwnerProfile extends StatelessWidget {
@@ -105,7 +106,7 @@ class CarOwnerProfile extends StatelessWidget {
       title: Container(
         alignment: Alignment.centerLeft,
         margin: const EdgeInsets.all(10),
-        child: Image.asset('assets/images/carcare_1.png', height: 25),
+        child: Image.asset(ImageConstant.carcare1, height: 25),
       ),
       actions: [
         Column(

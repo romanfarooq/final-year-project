@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../utils/toast_message.dart';
 import './service_history.dart';
@@ -154,6 +158,8 @@ class UserCarsInfo with ChangeNotifier {
 
   CarInfo get getSelectedCar => _selectedCar;
 
+  String get getSelectedCarLicensePlate => _selectedCar.licensePlate;
+
   void changeSelectedCar(String licensePlate) {
     _selectedCar = _userCars.firstWhere(
       (element) => element.licensePlate == licensePlate,
@@ -182,40 +188,27 @@ class UserCarsInfo with ChangeNotifier {
     }
   }
 
-  Future<void> removeCar(CarInfo car) async {
+  Future<void> deleteCar(String licensePlate) async {
     try {
       await _firestore
           .collection('users')
           .doc(_uid)
           .collection('cars')
-          .doc(car.licensePlate)
+          .doc(licensePlate)
           .delete();
+
+      final storageRef = FirebaseStorage.instance.ref().child(
+            'car_images/$licensePlate',
+          );
+
+      await storageRef.delete();
+
       _userCars.removeWhere(
-        (element) => element.licensePlate == car.licensePlate,
+        (car) => car.licensePlate == licensePlate,
       );
       notifyListeners();
     } catch (error) {
-      ToastMessage().toastmessage('Error removing car: $error');
-    }
-  }
-
-  Future<void> updateCar(CarInfo car) async {
-    try {
-      await _firestore
-          .collection('users')
-          .doc(_uid)
-          .collection('cars')
-          .doc(car.licensePlate)
-          .update(car.toMap());
-      int index = _userCars.indexWhere(
-        (element) => element.licensePlate == car.licensePlate,
-      );
-      if (index != -1) {
-        _userCars[index] = car;
-        notifyListeners();
-      }
-    } catch (error) {
-      ToastMessage().toastmessage('Error updating car: $error');
+      ToastMessage().toastmessage('Error deleting car: $error');
     }
   }
 
@@ -270,6 +263,37 @@ class UserCarsInfo with ChangeNotifier {
       }
     } catch (error) {
       ToastMessage().toastmessage('Failed to update car features: $error');
+    }
+  }
+
+  Future<void> uploadPicture(String licensePlate) async {
+    try {
+      final picker = ImagePicker();
+      final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+      if (pickedFile == null) {
+        ToastMessage().toastmessage('No image selected');
+        return;
+      }
+
+      final file = File(pickedFile.path);
+      final metadata = SettableMetadata(contentType: 'image/jpeg');
+      final storageRef = FirebaseStorage.instance.ref().child(
+            'car_images/$licensePlate',
+          );
+
+      // Upload the file
+      final snapshot = await storageRef.putFile(file, metadata);
+
+      // Get the download URL
+      final downloadUrl = await snapshot.ref.getDownloadURL();
+
+      // Update Firestore with the new image URL
+      await updateCarImgPath(licensePlate, downloadUrl);
+
+      ToastMessage().toastmessage('Image uploaded successfully');
+    } catch (error) {
+      ToastMessage().toastmessage('Failed to upload image: $error');
     }
   }
 

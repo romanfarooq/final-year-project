@@ -421,7 +421,6 @@ class _CarUserSignupState extends State<CarUserSignup> {
                         'model': _selectedModel,
                         'year': _selectedYear,
                         'color': _selectedColor,
-                        'image': carManufacturersLogo[_selectedManufacturer],
                       },
                     );
                   },
