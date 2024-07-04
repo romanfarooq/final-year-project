@@ -158,10 +158,10 @@ class WorkshopInfo with ChangeNotifier {
       ),
       openingHours: data['openingHours'],
       website: data['website'],
-      ratingStars: double.tryParse(data['ratingStars'] ?? 0) ?? 0,
-      serviceHistory: (data['serviceHistory'] as List<dynamic>)
-          .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
-          .toList(),
+      ratingStars: double.tryParse(data['ratingStars'].toString()) ?? 0,
+      // serviceHistory: (data['serviceHistory'] as List<dynamic>)
+      //     .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
+      //     .toList(),
       electricalRepairs: Map<String, bool>.from(data['electricalRepairs']),
       mechanicalRepairs: Map<String, bool>.from(data['mechanicalRepairs']),
       dentingPaintingServices:
@@ -348,7 +348,7 @@ class Workshop with ChangeNotifier {
 
   List<WorkshopInfo> _workshops = [];
 
-  Future<void> fetchWorkshops(String uid) async {
+  Future<void> fetchWorkshops() async {
     try {
       final snapshot = await _firestore.collection('workshops').get();
       if (snapshot.docs.isNotEmpty) {

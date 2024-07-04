@@ -2,9 +2,41 @@ import 'dart:math';
 
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:provider/provider.dart';
 
+import '../models/car_info.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
+
+const oilBrands = [
+  OilBrandCard(oilBrand: 'Castrol', oilType: 'Edge 5W-30'),
+  OilBrandCard(oilBrand: 'Castrol', oilType: 'Magnatec 5W-30'),
+  OilBrandCard(oilBrand: 'Mobil 1', oilType: '5W-30'),
+  OilBrandCard(oilBrand: 'Shell', oilType: 'Helix 5W-30'),
+  OilBrandCard(oilBrand: 'Shell', oilType: 'Rotella T6 5W-40'),
+  OilBrandCard(oilBrand: 'Valvoline', oilType: 'SynPower 5W-30'),
+  OilBrandCard(oilBrand: 'Valvoline', oilType: 'MaxLife 5W-30'),
+  OilBrandCard(oilBrand: 'Pennzoil', oilType: 'Platinum 5W-30'),
+  OilBrandCard(oilBrand: 'Pennzoil', oilType: 'Ultra Platinum 5W-30'),
+  OilBrandCard(oilBrand: 'Royal Purple', oilType: 'API-Licensed SAE 5W-30'),
+  OilBrandCard(oilBrand: 'Royal Purple', oilType: 'HPS 5W-30'),
+  OilBrandCard(oilBrand: 'Liqui Moly', oilType: 'Molygen New Generation 5W-30'),
+  OilBrandCard(oilBrand: 'Liqui Moly', oilType: 'Leichtlauf High Tech 5W-40'),
+  OilBrandCard(oilBrand: 'Total', oilType: 'Quartz 9000 5W-30'),
+  OilBrandCard(oilBrand: 'Total', oilType: 'Quartz INEO MC3 5W-30'),
+  OilBrandCard(oilBrand: 'Amsoil', oilType: 'Signature Series 5W-30'),
+  OilBrandCard(oilBrand: 'Amsoil', oilType: 'XL 5W-30'),
+  OilBrandCard(oilBrand: 'Kendall', oilType: 'GT-1 Max 5W-30'),
+  OilBrandCard(oilBrand: 'Kendall', oilType: 'Full Synthetic 5W-30'),
+  OilBrandCard(oilBrand: 'Motul', oilType: '8100 X-cess 5W-30'),
+  OilBrandCard(oilBrand: 'Motul', oilType: 'Specific 5W-30'),
+  OilBrandCard(oilBrand: 'Red Line', oilType: 'High Performance 5W-30'),
+  OilBrandCard(oilBrand: 'Red Line', oilType: 'Euro Series 5W-30'),
+  OilBrandCard(oilBrand: 'Lucas', oilType: 'Synthetic 5W-30'),
+  OilBrandCard(oilBrand: 'Lucas', oilType: 'High Mileage 5W-30'),
+  OilBrandCard(oilBrand: 'Quaker State', oilType: 'Ultimate Durability 5W-30'),
+  OilBrandCard(oilBrand: 'Quaker State', oilType: 'Advanced Durability 5W-30'),
+];
 
 class OilChange extends StatelessWidget {
   const OilChange({super.key});
@@ -16,6 +48,8 @@ class OilChange extends StatelessWidget {
 
     double left = (screenWidth - semicircleWidth) / 2;
     double bottomMargin = 420; // Adjust the bottom margin as needed
+
+    final carInfo = context.read<UserCarsInfo>().getSelectedCar;
 
     return Scaffold(
       body: Stack(
@@ -42,10 +76,10 @@ class OilChange extends StatelessWidget {
                   SizedBox(width: figmaSpaceToPercentageWidth(27, context)),
                   Container(
                     height: figmaSpaceToPercentageWidth(50, context),
-                    width: figmaSpaceToPercentage(50, context),
+                    width: figmaSpaceToPercentage(55, context),
                     decoration: const BoxDecoration(
                       color: Color.fromRGBO(217, 217, 217, 1),
-                      borderRadius: BorderRadius.all(Radius.circular(50 / 2)),
+                      borderRadius: BorderRadius.all(Radius.circular(25)),
                     ),
                     child: Center(
                       child: IconButton(
@@ -55,7 +89,7 @@ class OilChange extends StatelessWidget {
                           size: 30,
                         ),
                         onPressed: () {
-                          //Navigator.of(context).pop();
+                          Navigator.of(context).pop();
                         },
                       ),
                     ),
@@ -95,7 +129,7 @@ class OilChange extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '24513',
+                    carInfo.lastOilChangeDistance.toInt().toString(),
                     style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentage(70, context),
@@ -134,41 +168,18 @@ class OilChange extends StatelessWidget {
                 ),
               ),
               SizedBox(height: figmaSpaceToPercentage(80, context)),
-              Column(
-                children: [
-                  Material(
-                    child: Flexible(
-                      flex: 1,
-                      child: Text(
-                        'Shell',
-                        style: TextStyle(
-                          color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(51, context),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          decoration: TextDecoration.none,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: figmaSpaceToPercentage(1, context),
-                  ),
-                  Text(
-                    '5W-30',
-                    style: TextStyle(
-                      color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(44, context),
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none,
-                      height: 0.5,
-                    ),
-                  ),
-                ],
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: oilBrands.length,
+                  itemBuilder: (context, index) {
+                    return oilBrands[index];
+                  },
+                ),
               ),
               SizedBox(
-                height: figmaSpaceToPercentage(70, context),
+                height: figmaSpaceToPercentage(50, context),
               ),
               Row(
                 children: [
@@ -197,8 +208,11 @@ class OilChange extends StatelessWidget {
                     ),
                     child: Center(
                       child: IconButton(
-                        icon: const Icon(Icons.search_sharp,
-                            color: Colors.black, size: 35),
+                        icon: const Icon(
+                          Icons.search_sharp,
+                          color: Colors.black,
+                          size: 35,
+                        ),
                         onPressed: () {
                           //Navigator.of(context).pop();
                         },
@@ -296,7 +310,7 @@ class BottomOvalBorderPainter extends CustomPainter {
 
     final double controlPointX = (size.width / 2);
     final double controlPointY =
-        (size.height * 0.3) - 80; // Adjust this value to control the curvature
+        (size.height * 0.3) - 300; // Adjust this value to control the curvature
 
     final Path path = Path();
 
@@ -317,5 +331,56 @@ class BottomOvalBorderPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return false;
+  }
+}
+
+class OilBrandCard extends StatelessWidget {
+  final String oilBrand;
+  final String oilType;
+
+  const OilBrandCard({
+    super.key,
+    required this.oilBrand,
+    required this.oilType,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.symmetric(
+        horizontal: figmaSpaceToPercentageWidth(30, context),
+      ),
+      child: Column(
+        children: [
+          Text(
+            oilBrand,
+            style: TextStyle(
+              color: const Color.fromRGBO(0, 0, 0, 1),
+              fontSize: figmaSpaceToPercentage(50, context),
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w400,
+              decoration: TextDecoration.none,
+            ),
+          ),
+          SizedBox(
+            height: figmaSpaceToPercentage(1, context),
+          ),
+          FittedBox(
+            child: Text(
+              oilType,
+              style: TextStyle(
+                color: const Color.fromRGBO(0, 0, 0, 1),
+                fontSize: figmaSpaceToPercentage(44, context),
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                decoration: TextDecoration.none,
+                height: 0.5,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

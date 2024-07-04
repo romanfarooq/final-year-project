@@ -29,8 +29,10 @@ class SplashScreen extends StatelessWidget {
           final data = user.data() as Map<String, dynamic>;
           if (context.mounted) {
             final userCarsInfo = context.read<UserCarsInfo>();
+            final workshop = context.read<Workshop>();
             userCarsInfo.setUserInfo(data);
             await userCarsInfo.fetchUserCars();
+            await workshop.fetchWorkshops();
             if (userCarsInfo.getCars.isNotEmpty) {
               Navigator.of(context).pushReplacementNamed(
                 AppRoutes.bottomTab,

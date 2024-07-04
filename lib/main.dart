@@ -19,6 +19,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => UserCarsInfo()),
         ChangeNotifierProvider(create: (_) => WorkshopInfo()),
+        ChangeNotifierProvider(create: (_) => Workshop()),
       ],
       child: const MyApp(),
     ),

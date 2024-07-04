@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 import '../models/car_info.dart';
+import '../models/workshop_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
 import '../utils/toast_message.dart';
@@ -50,9 +51,11 @@ class _LoginScreenState extends State<LoginScreen> {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
 
         final userCarsInfo = context.read<UserCarsInfo>();
+        final workshop = context.read<Workshop>();
         userCarsInfo.setUserInfo(data);
 
         await userCarsInfo.fetchUserCars();
+        await workshop.fetchWorkshops();
 
         if (userCarsInfo.getCars.isNotEmpty) {
           Navigator.of(context).pushReplacementNamed(
@@ -123,9 +126,11 @@ class _LoginScreenState extends State<LoginScreen> {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
 
         final userCarsInfo = context.read<UserCarsInfo>();
+        final workshop = context.read<Workshop>();
         userCarsInfo.setUserInfo(data);
 
         await userCarsInfo.fetchUserCars();
+        await workshop.fetchWorkshops();
 
         if (userCarsInfo.getCars.isNotEmpty) {
           Navigator.of(context).pushReplacementNamed(

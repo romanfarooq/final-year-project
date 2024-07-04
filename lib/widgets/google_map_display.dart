@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:provider/provider.dart';
 
+import '../models/workshop_info.dart';
 import '../utils/figma_space_to_percentage.dart';
 
 class GoogleMapDisplay extends StatefulWidget {
@@ -20,11 +22,13 @@ class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
 
   LatLng? _currentPosition;
   Marker? _currentMarker;
+  Set<Marker> _workshopMarkers = {};
 
   @override
   void initState() {
     super.initState();
     _requestLocationPermission();
+    _setWorkshopMarkers();
   }
 
   void _requestLocationPermission() async {
@@ -53,7 +57,7 @@ class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
           currentLocation.latitude!,
           currentLocation.longitude!,
         );
-        _updateMarker();
+        _updateCurrentMarker();
       });
       _animateToCurrentLocation();
     });
@@ -66,17 +70,18 @@ class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
     setState(() {
       _currentPosition =
           LatLng(locationData.latitude!, locationData.longitude!);
-      _updateMarker();
+      _updateCurrentMarker();
     });
   }
 
-  void _updateMarker() {
+  void _updateCurrentMarker() {
     setState(() {
       if (_currentPosition != null) {
         _currentMarker = Marker(
           markerId: const MarkerId('currentLocation'),
           position: _currentPosition!,
           infoWindow: const InfoWindow(title: 'You are here'),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
         );
       }
     });
@@ -87,6 +92,22 @@ class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
     if (_currentPosition != null) {
       controller.animateCamera(CameraUpdate.newLatLng(_currentPosition!));
     }
+  }
+
+  void _setWorkshopMarkers() {
+    final workshops = context.read<Workshop>().getWorkshops;
+    Set<Marker> markers = workshops.map((workshop) {
+      return Marker(
+        markerId: MarkerId(workshop.getWorkshopName),
+        position: workshop.getLocation,
+        infoWindow: InfoWindow(title: workshop.getWorkshopName),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+      );
+    }).toSet();
+
+    setState(() {
+      _workshopMarkers = markers;
+    });
   }
 
   @override
@@ -106,9 +127,15 @@ class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
               target: _initialPosition,
               zoom: 14,
             ),
-            markers: _currentMarker != null ? {_currentMarker!} : {},
+            markers: _currentMarker != null
+                ? {_currentMarker!, ..._workshopMarkers}
+                : _workshopMarkers,
             myLocationEnabled: true,
             myLocationButtonEnabled: true,
+            scrollGesturesEnabled: true,
+            zoomGesturesEnabled: true,
+            tiltGesturesEnabled: true,
+            rotateGesturesEnabled: true,
           ),
         ),
       ),
