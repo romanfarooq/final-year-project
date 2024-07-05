@@ -81,6 +81,7 @@ class BiddingInfo with ChangeNotifier {
           'serviceType': _serviceType,
           'serviceItem': _serviceItem,
           'serviceDate': _serviceDate,
+          'serviceDescription': _serviceDescription,
           'userLocation': {
             'latitude': _userLocation!.latitude,
             'longitude': _userLocation!.longitude,
