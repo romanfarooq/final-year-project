@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:provider/provider.dart';
-
+import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_textwithcheckbox.dart';
@@ -82,7 +82,9 @@ class ElectricalServiceVault extends StatelessWidget {
                     electricalServices,
                   );
                   if (context.mounted) {
-                    Navigator.pop(context);
+                    Navigator.of(context).pushReplacementNamed(
+                      AppRoutes.workhopBottomTab,
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(

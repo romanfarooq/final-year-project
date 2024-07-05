@@ -1,3 +1,5 @@
+import 'package:car_care/screens/car_care_requests.dart';
+import 'package:car_care/screens/vehicle_service_record.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,10 +19,10 @@ class _WorkshopBottomTabsState extends State<WorkshopBottomTabs> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
+    const WorkshopHomepage(),
+    const CarCareRequests(),
     const WorkshopServices(),
-   const WorkshopHomepage(),
-     const WorkshopClients(),
-    const AccountSettingsScreen(),
+    const VehicleServicRecord(),
   ];
 
   @override

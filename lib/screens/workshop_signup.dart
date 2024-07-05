@@ -24,7 +24,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
   final TextEditingController _websiteController = TextEditingController();
   final TextEditingController _openinghoursController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-  LatLng? _selectedLocation;
+  LatLng? _selectedLocation = LatLng(31.447101066394143, 74.2682959730143);
 
   @override
   void dispose() {

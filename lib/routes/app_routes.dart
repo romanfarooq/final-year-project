@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../screens/workshop_tab_screen.dart';
 import '../screens/billing_screen.dart';
 import '../screens/booking_service.dart';
 import '../screens/car_care_requests.dart';
@@ -34,7 +34,7 @@ import '../screens/workshop_clients.dart';
 import '../screens/workshop_homepage.dart';
 import '../screens/workshop_services.dart';
 import '../screens/workshop_signup.dart';
-import '../screens/workshop_tab_screen';
+//import '../screens/workshop_tab_screen';
 import '../screens/car_user_explor.dart';
 import '../screens/bidding_screen.dart';
 
@@ -75,7 +75,7 @@ class AppRoutes {
   static const String oldCarInformation = '/old_car_information';
   static const String bookingService = '/booking_service';
   static const String accountSettings = '/account_settings';
-  static const String workhopBottomTab = '/workshop_bottom_tab';
+  static const String workhopBottomTab = '/workshop_tab_screen';
   static const String carUserExplor = '/car_user_explor';
   static const String biddingScreen = '/bidding_screen';
 

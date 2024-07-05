@@ -89,33 +89,6 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
                     "Sign Up with",
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
-                  SizedBox(height: screenHeight * 0.01),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        ImageConstant.facebook,
-                        height: screenHeight * 0.03,
-                        width: screenWidth * 0.06,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: screenWidth * 0.12),
-                        child: SvgPicture.asset(
-                          ImageConstant.instagram,
-                          height: screenHeight * 0.03,
-                          width: screenWidth * 0.06,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: screenWidth * 0.12),
-                        child: SvgPicture.asset(
-                          ImageConstant.youtube,
-                          height: screenHeight * 0.025,
-                          width: screenWidth * 0.05,
-                        ),
-                      ),
-                    ],
-                  ),
                   SizedBox(height: screenHeight * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

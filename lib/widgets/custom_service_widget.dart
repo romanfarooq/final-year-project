@@ -26,6 +26,13 @@ class CustomServiceWidget extends StatefulWidget {
 
 class _CustomServiceWidgetState extends State<CustomServiceWidget> {
   Color _backgroundColor = const Color.fromRGBO(217, 217, 217, 1);
+  late TextEditingController _priceController;
+
+  @override
+  void initState() {
+    super.initState();
+    _priceController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +56,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(353, context),
-                  height: figmaSpaceToPercentageHeight(130, context),
+                  height: figmaSpaceToPercentageHeight(170, context),
                   padding: const EdgeInsets.only(left: 1),
                   margin: const EdgeInsets.only(left: 1),
                   decoration: BoxDecoration(
@@ -91,6 +98,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                     decoration: TextDecoration.none,
                                   ),
                                 ),
+
+
                                 SizedBox(
                                   width:
                                       figmaSpaceToPercentageWidth(70, context),
@@ -249,6 +258,22 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                   ),
                                 ),
                               ],
+                            ),
+
+
+                            SizedBox(
+                              height: figmaSpaceToPercentageHeight(10, context),
+                            ),
+                            Container(
+                              height: figmaSpaceToPercentageHeight(30, context),
+                              width: figmaSpaceToPercentageWidth(180, context),
+                              child: TextField(
+                                controller: _priceController,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  hintText: 'Enter Your Price',
+                                ),
+                              ),
                             ),
                           ],
                         ),
