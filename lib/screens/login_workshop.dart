@@ -52,7 +52,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
         final workshop = context.read<WorkshopInfo>();
         workshop.setWorkshopInfo(data!);
 
-        if (workshop.workshopName == '') {
+        if (data['workshopName'] == null || data['workshopName'] == '') {
           Navigator.of(context).pushReplacementNamed(
             AppRoutes.workshopSignupScreen,
           );
@@ -60,8 +60,9 @@ class _LoginScreenWState extends State<LoginScreenW> {
           Navigator.of(context).pushReplacementNamed(
             AppRoutes.workhopBottomTab,
           );
-          ToastMessage().toastmessage('Login Successful');
         }
+
+        ToastMessage().toastmessage('Login Successful');
       } else {
         Navigator.of(context).pushReplacementNamed(
           AppRoutes.workshopSignupScreen,

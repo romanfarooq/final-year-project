@@ -28,13 +28,13 @@ class WorkshopInfo with ChangeNotifier {
   WorkshopInfo({
     this.uid,
     this.fullname,
-    this.workshopName = '',
+    this.workshopName,
     this.email,
     this.phone,
-    this.address = '',
-    this.description = '',
-    this.openingHours = '',
-    this.website = '',
+    this.address,
+    this.description,
+    this.openingHours,
+    this.website,
     this.ratingStars = 0,
     this.location = const LatLng(31.447101066394143, 74.2682959730143),
     this.serviceHistory = const [],
@@ -159,9 +159,9 @@ class WorkshopInfo with ChangeNotifier {
       openingHours: data['openingHours'],
       website: data['website'],
       ratingStars: double.tryParse(data['ratingStars'].toString()) ?? 0,
-      // serviceHistory: (data['serviceHistory'] as List<dynamic>)
-      //     .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
-      //     .toList(),
+      serviceHistory: (data['serviceHistory'] as List<dynamic>)
+          .map((e) => Bidding.fromMap(e as Map<String, dynamic>))
+          .toList(),
       electricalRepairs: Map<String, bool>.from(data['electricalRepairs']),
       mechanicalRepairs: Map<String, bool>.from(data['mechanicalRepairs']),
       dentingPaintingServices:
@@ -194,10 +194,43 @@ class WorkshopInfo with ChangeNotifier {
   }
 
   void setWorkshopInfo(Map<String, dynamic> data) {
-    uid = data['uid'] ?? uid;
-    fullname = data['fullname'] ?? fullname;
-    email = data['email'] ?? email;
-    phone = data['phone'] ?? phone;
+    uid = data['uid'] ?? '';
+    fullname = data['fullname'] ?? '';
+    email = data['email'] ?? '';
+    phone = data['phone'] ?? '';
+    workshopName = data['workshopName'] ?? '';
+    address = data['address'] ?? '';
+    if (data['location'] == null) {
+      location = const LatLng(31.447101066394143, 74.2682959730143);
+    } else {
+      location = LatLng(
+        data['location']['latitude'],
+        data['location']['longitude'],
+      );
+    }
+    openingHours = data['openingHours'] ?? '';
+    website = data['website'] ?? '';
+    ratingStars = double.tryParse(data['ratingStars'].toString()) ?? 0.0;
+    description = data['description'] ?? '';
+    if (data['serviceHistory'] != null) {
+      serviceHistory = (data['serviceHistory'] as List<dynamic>)
+          .map((e) => Bidding.fromMap(e as Map<String, dynamic>))
+          .toList();
+    }
+    if (data['electricalRepairs'] != null) {
+      electricalRepairs = Map<String, bool>.from(data['electricalRepairs']);
+    }
+    if (data['mechanicalRepairs'] != null) {
+      mechanicalRepairs = Map<String, bool>.from(data['mechanicalRepairs']);
+    }
+    if (data['dentingPaintingServices'] != null) {
+      dentingPaintingServices =
+          Map<String, bool>.from(data['dentingPaintingServices']);
+    }
+    if (data['tireServices'] != null) {
+      tireServices = Map<String, bool>.from(data['tireServices']);
+    }
+
     notifyListeners();
   }
 

@@ -11,6 +11,7 @@ class Bidding {
   String serviceCenter;
   bool isAccepted = false;
   LatLng serviceLocation = const LatLng(0, 0);
+  int distance = 0;
 
   Bidding({
     required this.serviceCost,
@@ -19,6 +20,7 @@ class Bidding {
     required this.isAccepted,
     required this.serviceLocation,
     required this.serviceCenterId,
+    required this.distance,
   });
 
   factory Bidding.fromMap(Map<String, dynamic> data) {
@@ -27,6 +29,7 @@ class Bidding {
       serviceCost: data['serviceCost'],
       isAccepted: data['isAccepted'],
       partCost: data['partCost'],
+      distance: data['distance'],
       serviceCenter: data['serviceCenter'],
       serviceLocation: LatLng(data['serviceLocation']['latitude'],
           data['serviceLocation']['longitude']),
@@ -40,6 +43,7 @@ class Bidding {
       'partCost': partCost,
       'serviceCenter': serviceCenter,
       'isAccepted': isAccepted,
+      'distance': distance,
       'serviceLocation': {
         'latitude': serviceLocation.latitude,
         'longitude': serviceLocation.longitude,
@@ -86,7 +90,6 @@ class BiddingInfo with ChangeNotifier {
             'latitude': _userLocation!.latitude,
             'longitude': _userLocation!.longitude,
           },
-          'biddings': [],
         },
       );
     } catch (error) {

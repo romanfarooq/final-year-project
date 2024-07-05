@@ -1,8 +1,12 @@
+import 'package:car_care/utils/fetch_distance.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../models/bidding_info.dart';
+import '../models/car_info.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_elevated_button.dart';
@@ -16,42 +20,10 @@ class UserBiddingScreen extends StatefulWidget {
 }
 
 class _UserBiddingScreenState extends State<UserBiddingScreen> {
-  final bids = [
-    {
-      'name': 'Workshop 1',
-      'price': 1000.0,
-      'distance': 1000,
-    },
-    {
-      'name': 'Workshop 2',
-      'price': 2300.0,
-      'distance': 2300,
-    },
-    {
-      'name': 'Workshop 3',
-      'price': 3000.0,
-      'distance': 3000,
-    },
-    {
-      'name': 'Workshop 4',
-      'price': 3000.0,
-      'distance': 3000,
-    },
-    {
-      'name': 'Workshop 5',
-      'price': 3000.0,
-      'distance': 3000,
-    },
-    {
-      'name': 'Workshop 6',
-      'price': 3000.0,
-      'distance': 3000,
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
     final biddingInfo = context.read<BiddingInfo>();
+    final carUserInfo = context.read<UserCarsInfo>();
     return Scaffold(
       appBar: appBar(),
       body: Column(
@@ -81,30 +53,31 @@ class _UserBiddingScreenState extends State<UserBiddingScreen> {
           ),
           SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
           Expanded(
-            // child: StreamBuilder<QuerySnapshot>(
-            // stream: FirebaseFirestore.instance
-            //     .collection('bids')
-            //     .doc(carUserInfo.getUid)
-            //     .collection('cars')
-            //     .snapshots(),
-            // builder: (context, snapshot) {
-            //   if (!snapshot.hasData) {
-            //     return const Center(child: CircularProgressIndicator());
-            //   }
-
-            // final bids = snapshot.data!.docs;
-            child: ListView.builder(
-              itemCount: bids.length,
-              itemBuilder: (context, index) {
-                final bid = bids[index];
-                return BidTile(
-                  name: bid['name'] as String,
-                  distance: bid['distance'] as int,
-                  price: bid['price'] as double,
+            child: StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('biddings')
+                  .doc(carUserInfo.getUid)
+                  .collection('offers')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                final bids = snapshot.data!.docs;
+                return ListView.builder(
+                  itemCount: bids.length,
+                  itemBuilder: (context, index) {
+                    final bid = bids[index];
+                    return BidTile(
+                      name: bid['serviceCenter'] as String,
+                      distance: bid['distance'] as int,
+                      price: bid['serviceCost'] as double,
+                    );
+                  },
                 );
               },
-              //   );
-              // },
             ),
           ),
           Padding(

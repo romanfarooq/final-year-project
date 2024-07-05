@@ -48,7 +48,7 @@ class SplashScreen extends StatelessWidget {
           // if (context.mounted) {
           final workshopInfo = context.read<WorkshopInfo>();
           workshopInfo.setWorkshopInfo(data);
-          if (data['workshopName'] == null) {
+          if (data['workshopName'] == null || data['workshopName'] == '') {
             Navigator.of(context).pushReplacementNamed(
               AppRoutes.workshopSignupScreen,
             );

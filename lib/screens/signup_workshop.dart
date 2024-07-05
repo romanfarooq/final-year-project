@@ -333,7 +333,6 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
               password: _passwordController.text.trim(),
             );
 
-            Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
             ToastMessage().toastmessage('Signup Successfully');
             await _firestore
                 .collection('workshops')
@@ -357,6 +356,8 @@ class _SignUpScreenStateW extends State<SignUpScreenW> {
             setState(() {
               loading = false;
             });
+
+            Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreenW);
           } catch (error) {
             setState(() {
               loading = false;
