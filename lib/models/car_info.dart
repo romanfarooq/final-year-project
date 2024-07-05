@@ -165,7 +165,12 @@ class UserCarsInfo with ChangeNotifier {
 
   CarInfo get getSelectedCar => _selectedCar;
 
+  String get getSelectedName => _selectedCar.model;
+
   String get getSelectedCarLicensePlate => _selectedCar.licensePlate;
+
+  double get getSelectedCLastOilChangeDistance =>
+      _selectedCar.lastOilChangeDistance;
 
   void changeSelectedCar(String licensePlate) {
     _selectedCar = _userCars.firstWhere(

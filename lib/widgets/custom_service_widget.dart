@@ -98,8 +98,6 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                     decoration: TextDecoration.none,
                                   ),
                                 ),
-
-
                                 SizedBox(
                                   width:
                                       figmaSpaceToPercentageWidth(70, context),
@@ -259,19 +257,17 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                 ),
                               ],
                             ),
-
-
                             SizedBox(
                               height: figmaSpaceToPercentageHeight(10, context),
                             ),
-                            Container(
+                            SizedBox(
                               height: figmaSpaceToPercentageHeight(30, context),
                               width: figmaSpaceToPercentageWidth(180, context),
                               child: TextField(
                                 controller: _priceController,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
+                                decoration: const InputDecoration(
                                   hintText: 'Enter Your Price',
+                                  border: InputBorder.none,
                                 ),
                               ),
                             ),

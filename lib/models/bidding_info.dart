@@ -56,16 +56,19 @@ class BiddingInfo with ChangeNotifier {
   final _ref = FirebaseFirestore.instance;
 
   String? _userId;
+  String? _carName;
   String? _serviceType;
   String? _serviceItem;
   String? _serviceDescription;
   DateTime? _serviceDate;
   LatLng? _userLocation;
   final List<Bidding> _biddings = [];
+
   List<Bidding> get biddings => _biddings;
 
   Future<void> setBidding(
     String userId,
+    String carName,
     String serviceType,
     String serviceItem,
     String serviceDescription,
@@ -74,6 +77,7 @@ class BiddingInfo with ChangeNotifier {
   ) async {
     try {
       _userId = userId;
+      _carName = carName;
       _serviceType = serviceType;
       _serviceItem = serviceItem;
       _serviceDate = serviceDate;
@@ -84,6 +88,8 @@ class BiddingInfo with ChangeNotifier {
         {
           'serviceType': _serviceType,
           'serviceItem': _serviceItem,
+          'userId': _userId,
+          'carName': _carName,
           'serviceDate': _serviceDate,
           'serviceDescription': _serviceDescription,
           'userLocation': {
@@ -103,6 +109,7 @@ class BiddingInfo with ChangeNotifier {
       _userId = null;
       _serviceType = null;
       _serviceItem = null;
+      _carName = null;
       _serviceDescription = null;
       _serviceDate = null;
       _userLocation = null;
@@ -139,5 +146,25 @@ class BiddingInfo with ChangeNotifier {
     } catch (error) {
       ToastMessage().toastmessage('Error: $error');
     }
+  }
+
+  Stream<List<Map<String, dynamic>>> getBiddingsStream() {
+    return _ref.collection('biddings').snapshots().map((snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        final biddings = snapshot.docs as List;
+        return biddings
+            .map((e) => {
+                  'userId': e['userId'],
+                  'serviceType': e['serviceType'],
+                  'serviceItem': e['serviceItem'],
+                  'serviceDescription': e['serviceDescription'],
+                  'serviceDate': e['serviceDate'].toDate(),
+                  'userLocation': LatLng(e['userLocation']['latitude'],
+                      e['userLocation']['longitude']),
+                })
+            .toList();
+      }
+      return [];
+    });
   }
 }

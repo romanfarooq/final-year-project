@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:car_care/utils/toast_message.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -12,6 +11,7 @@ import '../models/car_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
 
 const List<Map<String, String>> oilBrands = [
   {'oilBrand': 'Shell', 'oilType': 'Helix 5W-30'},
@@ -61,7 +61,7 @@ class _OilChangeState extends State<OilChange> {
     double left = (screenWidth - semicircleWidth) / 2;
     double bottomMargin = 420; // Adjust the bottom margin as needed
 
-    final carInfo = context.read<UserCarsInfo>().getSelectedCar;
+    final userCarInfo = context.read<UserCarsInfo>();
 
     return Scaffold(
       body: Stack(
@@ -141,7 +141,9 @@ class _OilChangeState extends State<OilChange> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    carInfo.lastOilChangeDistance.toInt().toString(),
+                    userCarInfo.getSelectedCLastOilChangeDistance
+                        .toInt()
+                        .toString(),
                     style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
                         fontSize: figmaSpaceToPercentageHeight(70, context),
@@ -262,7 +264,8 @@ class _OilChangeState extends State<OilChange> {
                               final carUserInfo = context.read<UserCarsInfo>();
                               final biddingInfo = context.read<BiddingInfo>();
                               await biddingInfo.setBidding(
-                                carUserInfo.getUid!,
+                                userCarInfo.getUid!,
+                                userCarInfo.getSelectedName,
                                 'Oil Change',
                                 oilBrands[_selectedIndex]['oilBrand']!,
                                 oilBrands[_selectedIndex]['oilType']!,
