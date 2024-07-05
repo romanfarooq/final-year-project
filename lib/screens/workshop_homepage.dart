@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 
 import '../models/workshop_info.dart';
 import '../routes/app_routes.dart';
-import '../screens/vehicle_service_record_repaired.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../utils/toast_message.dart';
@@ -20,6 +19,7 @@ class WorkshopHomepage extends StatefulWidget {
 
 class _WorkshopHomepageState extends State<WorkshopHomepage> {
   double? _rating;
+
   Future<void> _logout(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signOut();
@@ -55,7 +55,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                 Row(
                   children: [
                     SizedBox(
-                      width: figmaSpaceToPercentageWidth(361, context),
+                      width: figmaSpaceToPercentageWidth(340, context),
                     ),
                     InkWell(
                       onTap: () async {

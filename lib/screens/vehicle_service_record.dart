@@ -91,7 +91,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                   alignment: Alignment.center,
                 ),
                 SizedBox(
-                  width: figmaSpaceToPercentageWidth(86, context),
+                  width: figmaSpaceToPercentageWidth(60, context),
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(60, context),
