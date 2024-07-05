@@ -10,6 +10,7 @@ class CarCareRequests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,7 +26,7 @@ class CarCareRequests extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: figmaSpaceToPercentageHeight(90, context),
+            height: figmaSpaceToPercentageHeight(40, context),
           ),
           const Expanded(
             child: SingleChildScrollView(

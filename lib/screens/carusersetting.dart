@@ -33,30 +33,30 @@ class AccountSettingsScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const ListTile(
-                      leading: Icon(Icons.person),
-                      title: Text('Profile'),
-                    ),
-                    const ListTile(
-                      leading: Icon(Icons.add),
-                      title: Text('Add Account'),
-                    ),
-                    const ListTile(
-                      leading: Icon(Icons.notifications),
-                      title: Text('Notifications'),
-                    ),
-                    const ListTile(
-                      leading: Icon(Icons.edit),
-                      title: Text('Profile Edit'),
-                    ),
-                    const ListTile(
-                      leading: Icon(Icons.help),
-                      title: Text('Help'),
-                    ),
-                    const ListTile(
-                      leading: Icon(Icons.info),
-                      title: Text('About'),
-                    ),
+                    // const ListTile(
+                    //   leading: Icon(Icons.person),
+                    //   title: Text('Profile'),
+                    // ),
+                    // const ListTile(
+                    //   leading: Icon(Icons.add),
+                    //   title: Text('Add Account'),
+                    // ),
+                    // const ListTile(
+                    //   leading: Icon(Icons.notifications),
+                    //   title: Text('Notifications'),
+                    // ),
+                    // const ListTile(
+                    //   leading: Icon(Icons.edit),
+                    //   title: Text('Profile Edit'),
+                    // ),
+                    // const ListTile(
+                    //   leading: Icon(Icons.help),
+                    //   title: Text('Help'),
+                    // ),
+                    // const ListTile(
+                    //   leading: Icon(Icons.info),
+                    //   title: Text('About'),
+                    // ),
                     ListTile(
                       leading: const Icon(Icons.logout),
                       title: const Text('Logout'),
