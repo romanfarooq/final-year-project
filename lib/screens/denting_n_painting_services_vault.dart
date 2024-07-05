@@ -80,13 +80,7 @@ class DentingNpaintingServiceVault extends StatelessWidget {
                     dentingNpaintingServices,
                   );
                   if (context.mounted) {
-                    Navigator.of(context).pushReplacementNamed(
-                      AppRoutes.workshopHomepage,
-                    );
-                  }if (context.mounted) {
-                    Navigator.of(context).pushReplacementNamed(
-                      AppRoutes.workhopBottomTab,
-                    );
+                    Navigator.of(context).pop();
                   }
                 },
                 style: ElevatedButton.styleFrom(

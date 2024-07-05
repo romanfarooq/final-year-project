@@ -1,13 +1,10 @@
-import 'package:car_care/screens/car_care_requests.dart';
-import 'package:car_care/screens/vehicle_service_record.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import './workshop_clients.dart';
+import '../screens/car_care_requests.dart';
+import '../screens/vehicle_service_record.dart';
 import './workshop_homepage.dart';
 import './workshop_services.dart';
-import './carusersetting.dart';
-
 
 class WorkshopBottomTabs extends StatefulWidget {
   const WorkshopBottomTabs({super.key});
@@ -35,14 +32,6 @@ class _WorkshopBottomTabsState extends State<WorkshopBottomTabs> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: (index) {
-          // if (index == 2) {
-          //   Navigator.of(context).pushNamed(AppRoutes.carUserSignup);
-          //   return;
-          // }
-          // if (index == 4) {
-          //   Navigator.of(context).pushNamed(AppRoutes.accountSettings);
-          //   return;
-          // }
           setState(() {
             _selectedIndex = index;
           });
@@ -80,14 +69,6 @@ class _WorkshopBottomTabsState extends State<WorkshopBottomTabs> {
             ),
             label: '',
           ),
-          // const BottomNavigationBarItem(
-          //   icon: Icon(
-          //     size: 30,
-          //     color: Color.fromARGB(150, 0, 0, 0),
-          //     Icons.settings_outlined,
-          //   ),
-          //   label: '',
-          // ),
         ],
       ),
     );

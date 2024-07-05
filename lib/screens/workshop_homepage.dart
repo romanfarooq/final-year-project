@@ -1,20 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-import 'workshop_tab_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
+import '../models/workshop_info.dart';
 import '../routes/app_routes.dart';
 import '../screens/vehicle_service_record_repaired.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
-import '../models/workshop_info.dart';
 import '../utils/toast_message.dart';
 
 class WorkshopHomepage extends StatefulWidget {
   const WorkshopHomepage({super.key});
-
-
 
   @override
   State<WorkshopHomepage> createState() => _WorkshopHomepageState();
@@ -30,6 +28,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
       ToastMessage().toastmessage('Error logging out: $error');
     }
   }
+
   @override
   Widget build(BuildContext context) {
     final workshopInfo = context.read<WorkshopInfo>();
@@ -58,26 +57,26 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                     SizedBox(
                       width: figmaSpaceToPercentageWidth(361, context),
                     ),
-                    InkWell (
+                    InkWell(
                       onTap: () async {
-    await _logout(context);
-    if (context.mounted) {
-    Navigator.of(context).pushNamedAndRemoveUntil(
-    AppRoutes.selectUserScreen,
-    (route) => false,
-    );}
+                        await _logout(context);
+                        if (context.mounted) {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                            AppRoutes.selectUserScreen,
+                            (route) => false,
+                          );
+                        }
                       },
                       child: Container(
-                        width: figmaSpaceToPercentageWidth(60, context),
-                        height: figmaSpaceToPercentageHeight(40, context),
-                        padding: const EdgeInsets.only(left: 1),
-                        margin: const EdgeInsets.only(left: 1),
-                        decoration: const BoxDecoration(
-                          color: Color.fromRGBO(217, 217, 217, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                        ),
-                        child: Icon(Icons.logout)
-                      ),
+                          width: figmaSpaceToPercentageWidth(60, context),
+                          height: figmaSpaceToPercentageHeight(40, context),
+                          padding: const EdgeInsets.only(left: 1),
+                          margin: const EdgeInsets.only(left: 1),
+                          decoration: const BoxDecoration(
+                            color: Color.fromRGBO(217, 217, 217, 1),
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                          ),
+                          child: const Icon(Icons.logout)),
                     ),
                   ],
                 ),
@@ -244,12 +243,8 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   Material(
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const VehicleServiceRecordRepaired(),
-                          ),
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.vehicleServiceRecordRepaired,
                         );
                       },
                       child: Container(
@@ -301,7 +296,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).pushReplacementNamed(
+                        Navigator.of(context).pushNamed(
                           AppRoutes.electricalServicesVault,
                         );
                       },
@@ -336,9 +331,11 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       width: figmaSpaceToPercentageWidth(20, context),
                     ),
                     InkWell(
-                      onTap: () { Navigator.of(context).pushReplacementNamed(
-                        AppRoutes.mechanicalServicesVault,
-                      );},
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.mechanicalServicesVault,
+                        );
+                      },
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
                         height: figmaSpaceToPercentageHeight(150, context),
@@ -378,7 +375,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).pushReplacementNamed(
+                        Navigator.of(context).pushNamed(
                           AppRoutes.dentingPaintingServicesVault,
                         );
                       },
@@ -413,9 +410,11 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       width: figmaSpaceToPercentageWidth(20, context),
                     ),
                     InkWell(
-                      onTap: () { Navigator.of(context).pushReplacementNamed(
-                        AppRoutes.tireServicesVault,
-                      );},
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.tireServicesVault,
+                        );
+                      },
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
                         height: figmaSpaceToPercentageHeight(150, context),

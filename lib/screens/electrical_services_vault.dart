@@ -82,9 +82,7 @@ class ElectricalServiceVault extends StatelessWidget {
                     electricalServices,
                   );
                   if (context.mounted) {
-                    Navigator.of(context).pushReplacementNamed(
-                      AppRoutes.workhopBottomTab,
-                    );
+                    Navigator.of(context).pop();
                   }
                 },
                 style: ElevatedButton.styleFrom(

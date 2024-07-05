@@ -45,7 +45,7 @@ class _LoginScreenWState extends State<LoginScreenW> {
           .collection('workshops')
           .doc(userCredential.user!.uid)
           .get();
-     print(doc.data());
+
       if (doc.exists) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
 
