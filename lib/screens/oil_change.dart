@@ -83,20 +83,22 @@ class _OilChangeState extends State<OilChange> {
                   SizedBox(width: figmaSpaceToPercentageWidth(27, context)),
                   Container(
                     height: figmaSpaceToPercentageHeight(50, context),
-                    width: figmaSpaceToPercentageWidth(50, context),
+                    width: figmaSpaceToPercentageWidth(55, context),
                     decoration: const BoxDecoration(
                       color: Color.fromRGBO(217, 217, 217, 1),
                       borderRadius: BorderRadius.all(Radius.circular(25)),
                     ),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios_sharp,
-                        color: Colors.black,
-                        size: figmaSpaceToPercentageHeight(30, context),
+                    child: Center(
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_ios_sharp,
+                          color: Colors.black,
+                          size: figmaSpaceToPercentageHeight(30, context),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
                     ),
                   ),
                   SizedBox(

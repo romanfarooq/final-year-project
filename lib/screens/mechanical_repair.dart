@@ -22,20 +22,20 @@ class MechanicalRepair extends StatelessWidget {
                 SizedBox(width: figmaSpaceToPercentageWidth(27, context)),
                 Container(
                   height: figmaSpaceToPercentageHeight(50, context),
-                  width: figmaSpaceToPercentageWidth(50, context),
+                  width: figmaSpaceToPercentageWidth(55, context),
                   decoration: const BoxDecoration(
                     color: Color.fromRGBO(217, 217, 217, 1),
-                    borderRadius: BorderRadius.all(Radius.circular(50 / 2)),
+                    borderRadius: BorderRadius.all(Radius.circular(25)),
                   ),
                   child: Center(
                     child: IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_ios_sharp,
                         color: Colors.black,
-                        size: 30,
+                        size: figmaSpaceToPercentageHeight(30, context),
                       ),
                       onPressed: () {
-                        //Navigator.of(context).pop();
+                        Navigator.of(context).pop();
                       },
                     ),
                   ),
