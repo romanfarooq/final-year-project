@@ -1,4 +1,6 @@
-import 'package:car_care/screens/splash_screen.dart';
+import 'package:car_care/screens/billing.dart';
+import 'package:car_care/screens/billing_screen.dart';
+import 'package:car_care/screens/car_emergency.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +21,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => UserCarsInfo()),
         ChangeNotifierProvider(create: (_) => WorkshopInfo()),
-        ChangeNotifierProvider(create: (_) => Workshop()),
+        ChangeNotifierProvider(create: (_) => Workshops()),
       ],
       child: const MyApp(),
     ),
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
       title: 'Car Care Pro',
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      home: const SplashScreen(),
+      home: const Billing(),
       routes: AppRoutes.routes,
     );
   }

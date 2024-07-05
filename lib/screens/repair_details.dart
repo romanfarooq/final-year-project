@@ -1,5 +1,8 @@
+import 'package:car_care/models/car_info.dart';
+import 'package:car_care/models/service_history.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 
@@ -255,8 +258,21 @@ class _RepairDetailsState extends State<RepairDetails> {
                             color: Colors.black,
                             size: 35,
                           ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
+                          onPressed: () async {
+                            // Navigator.of(context).pop();
+                            final carUserInfo = context.read<UserCarsInfo>();
+                            await carUserInfo.addOrderHistory(
+                              ServiceHistory(
+                                serviceType: widget.repairType,
+                                serviceItem: widget.repairType,
+                                serviceCost: 0,
+                                partCost: 0,
+                                serviceCenter: '',
+                                serviceNote: _descriptionController.text,
+                                serviceDate: carUserInfo.getBookingDate ??
+                                    DateTime.now(),
+                              ),
+                            );
                           },
                         ),
                       ),

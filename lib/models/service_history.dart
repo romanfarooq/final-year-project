@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ServiceHistory {
   String serviceType;
+  String serviceItem;
   DateTime serviceDate;
   double serviceCost;
   double partCost;
@@ -10,16 +11,18 @@ class ServiceHistory {
 
   ServiceHistory({
     required this.serviceType,
+    required this.serviceItem,
     required this.serviceCost,
     required this.partCost,
     required this.serviceCenter,
     required this.serviceNote,
-    serviceDate,
-  }) : serviceDate = serviceDate ?? DateTime.now();
+    required this.serviceDate,
+  });
 
   factory ServiceHistory.fromMap(Map<String, dynamic> data) {
     return ServiceHistory(
       serviceType: data['serviceType'],
+      serviceItem: data['serviceItem'],
       serviceCost: data['serviceCost'],
       partCost: data['partCost'],
       serviceCenter: data['serviceCenter'],
@@ -31,6 +34,7 @@ class ServiceHistory {
   Map<String, dynamic> toMap() {
     return {
       'serviceType': serviceType,
+      'serviceItem': serviceItem,
       'serviceCost': serviceCost,
       'partCost': partCost,
       'serviceCenter': serviceCenter,

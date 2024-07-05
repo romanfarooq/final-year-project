@@ -3,19 +3,13 @@ import 'package:flutter/material.dart';
 import '../screens/service_history.dart';
 import '../utils/figma_space_to_percentage.dart';
 
-class ServiceHistoryDetail extends StatelessWidget {
-  final String date;
-  final String month;
-  final String year;
-  final String serviceType;
+class Billing extends StatelessWidget {
+  const Billing({super.key});
 
-  const ServiceHistoryDetail({
-    super.key,
-    required this.date,
-    required this.month,
-    required this.year,
-    required this.serviceType,
-  });
+  final String date = '15';
+  final String month = 'June';
+  final String year = '2021';
+  final String serviceType = 'Mechanical';
 
   @override
   Widget build(BuildContext context) {
@@ -38,143 +32,33 @@ class ServiceHistoryDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        shadowColor: Colors.white,
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
       ),
       body: Column(
         children: [
           SizedBox(
             height: figmaSpaceToPercentageHeight(15, context),
           ),
-
-          Column(children: [
-            Center(
-              child: Text(
-                'Service History',
-                style: TextStyle(
-                    color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentageHeight(26, context),
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.none),
+          Column(
+            children: [
+              Center(
+                child: Text(
+                  'Billing',
+                  style: TextStyle(
+                      color: const Color.fromRGBO(0, 0, 0, 1),
+                      fontSize: figmaSpaceToPercentageHeight(26, context),
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.none),
+                ),
               ),
-            ),
-          ]),
-
+            ],
+          ),
           SizedBox(
             height: figmaSpaceToPercentageHeight(25, context),
           ),
-          //wa
-          InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const ServiceHistory()),
-              );
-            },
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(30, context),
-                    ),
-                    Text(
-                      month,
-                      style: TextStyle(
-                        color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentageHeight(23, context),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(5, context),
-                    ),
-                    Text(
-                      year,
-                      style: TextStyle(
-                        color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentageHeight(23, context),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: figmaSpaceToPercentageHeight(15, context),
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(44, context),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          date,
-                          style: TextStyle(
-                            color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentageHeight(96, context),
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 0),
-                            Text(
-                              'Th',
-                              style: TextStyle(
-                                color: const Color.fromRGBO(0, 0, 0, 1),
-                                fontSize:
-                                    figmaSpaceToPercentageHeight(43, context),
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                                decoration: TextDecoration.none,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: figmaSpaceToPercentageWidth(4, context),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        height: figmaSpaceToPercentageHeight(142, context),
-                        width: figmaSpaceToPercentageWidth(213, context),
-                        decoration: const BoxDecoration(
-                          color: Color.fromRGBO(217, 217, 217, 1),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(71),
-                            bottomLeft: Radius.circular(71),
-                          ),
-                        ),
-                        child: Center(
-                          child: Image.asset(
-                            getImagePath(serviceType),
-                            height: figmaSpaceToPercentageHeight(140, context),
-                            width: figmaSpaceToPercentageWidth(160, context),
-                            alignment: Alignment.center,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-
-          SizedBox(height: figmaSpaceToPercentageHeight(4, context)),
-
           Row(
             children: [
               SizedBox(
@@ -191,53 +75,9 @@ class ServiceHistoryDetail extends StatelessWidget {
               ),
             ],
           ),
-
-          SizedBox(
-            height: figmaSpaceToPercentageHeight(10, context),
-          ),
-
-          Row(
-            children: [
-              SizedBox(
-                width: figmaSpaceToPercentageWidth(30, context),
-              ),
-              Text(
-                "$serviceType Service ",
-                style: TextStyle(
-                    color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentageHeight(23, context),
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.none),
-              ),
-            ],
-          ),
-
-          SizedBox(
-            height: figmaSpaceToPercentageHeight(5, context),
-          ),
-
-          Row(
-            children: [
-              SizedBox(
-                width: figmaSpaceToPercentageWidth(30, context),
-              ),
-              Text(
-                "Gujjar Automobiles",
-                style: TextStyle(
-                    color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentageHeight(23, context),
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                    decoration: TextDecoration.none),
-              ),
-            ],
-          ),
-
           SizedBox(
             height: figmaSpaceToPercentageHeight(2, context),
           ),
-
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -247,25 +87,12 @@ class ServiceHistoryDetail extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 15,
+                            horizontal: 20,
                           ), // Add equal horizontal padding of 1 pixel
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment
+                                .start, // Align text to the start
                             children: [
-                              const Row(
-                                children: [
-                                  Expanded(
-                                    child: Divider(
-                                      color: Colors.black,
-                                      thickness: 1.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height:
-                                    figmaSpaceToPercentageHeight(1, context),
-                              ),
                               Text(
                                 """The Toyota Altis 1.6 stands as a testament to reliability and practicality in the sedan market. Powered by a 1.6-liter engine, it strikes a balance between performance and fuel efficiency. Its sleek design, coupled with modern amenities like touchscreen infotainment systems and advanced safety features, offers both style and convenience. Inside, passengers enjoy ample space and comfort, while the sedan's smooth ride quality ensures an enjoyable driving experience. With Toyota's reputation for durability and low maintenance costs, the Altis 1.6 emerges as a compelling choice for those seeking a dependable and economical sedan. """,
                                 textAlign: TextAlign.justify,
@@ -415,6 +242,75 @@ class ServiceHistoryDetail extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+
+                  // two buttons pending color blue and then green Satisfied button
+
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromRGBO(76, 93, 169, 1),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: figmaSpaceToPercentageWidth(20, context),
+                        vertical: figmaSpaceToPercentageHeight(10, context),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: figmaSpaceToPercentageWidth(100, context),
+                        vertical: figmaSpaceToPercentageHeight(10, context),
+                      ),
+                      child: Text(
+                        'Pending',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: figmaSpaceToPercentageHeight(20, context),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: figmaSpaceToPercentageHeight(30, context),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: figmaSpaceToPercentageWidth(20, context),
+                        vertical: figmaSpaceToPercentageHeight(10, context),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: figmaSpaceToPercentageWidth(100, context),
+                        vertical: figmaSpaceToPercentageHeight(10, context),
+                      ),
+                      child: Text(
+                        'Satisfied',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: figmaSpaceToPercentageHeight(20, context),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -182,6 +182,8 @@ class UserCarsInfo with ChangeNotifier {
 
   String? get getName => _fullname;
 
+  String? get getUid => _uid;
+
   String? get getEmail => _email;
 
   String? get getPhone => _phone;
@@ -410,6 +412,33 @@ class UserCarsInfo with ChangeNotifier {
       } catch (error) {
         ToastMessage().toastmessage(
           'Failed to add service history: $error',
+        );
+      }
+    }
+  }
+
+  Future<void> addOrderHistory(
+    ServiceHistory orderHistory,
+  ) async {
+    int index = _userCars.indexWhere(
+      (element) => element.licensePlate == _selectedCar.licensePlate,
+    );
+    if (index != -1) {
+      _userCars[index].orderHistory.add(orderHistory);
+
+      try {
+        final carRef = _firestore
+            .collection('bids')
+            .doc(_uid)
+            .collection('cars')
+            .doc(_selectedCar.licensePlate);
+        await carRef.update({
+          'bids': _userCars[index].orderHistory.map((e) => e.toMap()).toList(),
+        });
+        notifyListeners();
+      } catch (error) {
+        ToastMessage().toastmessage(
+          'Failed to add order history: $error',
         );
       }
     }

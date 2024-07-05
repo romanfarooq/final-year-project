@@ -51,11 +51,11 @@ class _LoginScreenState extends State<LoginScreen> {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
 
         final userCarsInfo = context.read<UserCarsInfo>();
-        final workshop = context.read<Workshop>();
+        final workshopsInfo = context.read<Workshops>();
         userCarsInfo.setUserInfo(data);
 
         await userCarsInfo.fetchUserCars();
-        await workshop.fetchWorkshops();
+        await workshopsInfo.fetchWorkshops();
 
         if (userCarsInfo.getCars.isNotEmpty) {
           Navigator.of(context).pushReplacementNamed(
@@ -126,11 +126,11 @@ class _LoginScreenState extends State<LoginScreen> {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
 
         final userCarsInfo = context.read<UserCarsInfo>();
-        final workshop = context.read<Workshop>();
+        final workshopsInfo = context.read<Workshops>();
         userCarsInfo.setUserInfo(data);
 
         await userCarsInfo.fetchUserCars();
-        await workshop.fetchWorkshops();
+        await workshopsInfo.fetchWorkshops();
 
         if (userCarsInfo.getCars.isNotEmpty) {
           Navigator.of(context).pushReplacementNamed(

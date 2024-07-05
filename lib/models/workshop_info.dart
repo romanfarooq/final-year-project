@@ -343,7 +343,7 @@ class WorkshopInfo with ChangeNotifier {
   }
 }
 
-class Workshop with ChangeNotifier {
+class Workshops with ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   List<WorkshopInfo> _workshops = [];

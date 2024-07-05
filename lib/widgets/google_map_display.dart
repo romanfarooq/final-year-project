@@ -95,7 +95,7 @@ class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
   }
 
   void _setWorkshopMarkers() {
-    final workshops = context.read<Workshop>().getWorkshops;
+    final workshops = context.read<Workshops>().getWorkshops;
     Set<Marker> markers = workshops.map((workshop) {
       return Marker(
         markerId: MarkerId(workshop.getWorkshopName),
