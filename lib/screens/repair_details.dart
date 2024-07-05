@@ -277,7 +277,9 @@ class _RepairDetailsState extends State<RepairDetails> {
                                 final biddingInfo = context.read<BiddingInfo>();
                                 await biddingInfo.setBidding(
                                   carUserInfo.getUid!,
+                                  carUserInfo.getSelectedCarName,
                                   carUserInfo.getName!,
+                                  carUserInfo.getSelectedCarModel,
                                   widget.repairType,
                                   widget.text,
                                   _descriptionController.text.trim(),

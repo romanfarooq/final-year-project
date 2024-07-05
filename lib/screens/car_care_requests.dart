@@ -42,12 +42,11 @@ class CarCareRequests extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final bidding = biddings[index];
                       return CustomServiceWidget(
-                        carName: biddings[index]['carName'],
-                        ownerName: 'Owner Name', // Use actual data from bidding
-                        carModel: 'Car Model', // Use actual data from bidding
-                        issueType: 'Issue Type', // Use actual data from bidding
-                        issueDescription:
-                            'Issue Description', // Use actual data from bidding
+                        carName: bidding['carName'],
+                        ownerName: bidding['ownerName'],
+                        carModel: bidding['carModel'],
+                        issueType: bidding['serviceType'],
+                        issueDescription: bidding['serviceDescription'],
                       );
                     },
                   );

@@ -57,6 +57,8 @@ class BiddingInfo with ChangeNotifier {
 
   String? _userId;
   String? _carName;
+  String? _ownerName;
+  String? _carModel;
   String? _serviceType;
   String? _serviceItem;
   String? _serviceDescription;
@@ -69,6 +71,8 @@ class BiddingInfo with ChangeNotifier {
   Future<void> setBidding(
     String userId,
     String carName,
+    String ownerName,
+    String carModel,
     String serviceType,
     String serviceItem,
     String serviceDescription,
@@ -78,6 +82,8 @@ class BiddingInfo with ChangeNotifier {
     try {
       _userId = userId;
       _carName = carName;
+      _ownerName = ownerName;
+      _carModel = carModel;
       _serviceType = serviceType;
       _serviceItem = serviceItem;
       _serviceDate = serviceDate;
@@ -90,6 +96,8 @@ class BiddingInfo with ChangeNotifier {
           'serviceItem': _serviceItem,
           'userId': _userId,
           'carName': _carName,
+          'ownerName': _ownerName,
+          'carModel': _carModel,
           'serviceDate': _serviceDate,
           'serviceDescription': _serviceDescription,
           'userLocation': {
@@ -109,7 +117,9 @@ class BiddingInfo with ChangeNotifier {
       _userId = null;
       _serviceType = null;
       _serviceItem = null;
+      _ownerName = null;
       _carName = null;
+      _carModel = null;
       _serviceDescription = null;
       _serviceDate = null;
       _userLocation = null;
@@ -157,6 +167,9 @@ class BiddingInfo with ChangeNotifier {
                   'userId': e['userId'],
                   'serviceType': e['serviceType'],
                   'serviceItem': e['serviceItem'],
+                  'carName': e['carName'],
+                  'carModel': e['carModel'],
+                  'ownerName': e['ownerName'],
                   'serviceDescription': e['serviceDescription'],
                   'serviceDate': e['serviceDate'].toDate(),
                   'userLocation': LatLng(e['userLocation']['latitude'],

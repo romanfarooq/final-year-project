@@ -165,7 +165,9 @@ class UserCarsInfo with ChangeNotifier {
 
   CarInfo get getSelectedCar => _selectedCar;
 
-  String get getSelectedName => _selectedCar.model;
+  String get getSelectedCarName => _selectedCar.manufacturer;
+
+  String get getSelectedCarModel => _selectedCar.model;
 
   String get getSelectedCarLicensePlate => _selectedCar.licensePlate;
 

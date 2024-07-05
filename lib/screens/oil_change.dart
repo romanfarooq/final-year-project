@@ -265,7 +265,9 @@ class _OilChangeState extends State<OilChange> {
                               final biddingInfo = context.read<BiddingInfo>();
                               await biddingInfo.setBidding(
                                 userCarInfo.getUid!,
-                                userCarInfo.getSelectedName,
+                                carUserInfo.getSelectedCarName,
+                                carUserInfo.getName!,
+                                carUserInfo.getSelectedCarModel,
                                 'Oil Change',
                                 oilBrands[_selectedIndex]['oilBrand']!,
                                 oilBrands[_selectedIndex]['oilType']!,
