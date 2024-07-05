@@ -20,7 +20,7 @@ class WorkshopServices extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: figmaSpaceToPercentage(30, context),
+                    height: figmaSpaceToPercentageHeight(30, context),
                   ),
                   Center(
                     child: Image.asset(
@@ -31,7 +31,7 @@ class WorkshopServices extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(50, context),
+                    height: figmaSpaceToPercentageHeight(50, context),
                   ),
                   InkWell(
                     onTap: () {
@@ -46,7 +46,7 @@ class WorkshopServices extends StatelessWidget {
                         ),
                         Container(
                           width: figmaSpaceToPercentageWidth(159, context),
-                          height: figmaSpaceToPercentage(150, context),
+                          height: figmaSpaceToPercentageHeight(150, context),
                           padding: const EdgeInsets.only(left: 1),
                           margin: const EdgeInsets.only(left: 1),
                           decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class WorkshopServices extends StatelessWidget {
                           ),
                           child: Image.asset(
                             ImageConstant.electricalrepairs,
-                            height: figmaSpaceToPercentage(150, context),
+                            height: figmaSpaceToPercentageHeight(150, context),
                             width: figmaSpaceToPercentageWidth(159, context),
                           ),
                         ),
@@ -77,7 +77,7 @@ class WorkshopServices extends StatelessWidget {
                           "Electrical\nRepairs",
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(23, context),
+                            fontSize: figmaSpaceToPercentageHeight(23, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             height: 1.5, // Set line height multiplier
@@ -87,7 +87,7 @@ class WorkshopServices extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(25, context),
+                    height: figmaSpaceToPercentageHeight(25, context),
                   ),
                   InkWell(
                     onTap: () {
@@ -102,7 +102,7 @@ class WorkshopServices extends StatelessWidget {
                         ),
                         Container(
                           width: figmaSpaceToPercentageWidth(159, context),
-                          height: figmaSpaceToPercentage(150, context),
+                          height: figmaSpaceToPercentageHeight(150, context),
                           padding: const EdgeInsets.only(left: 1),
                           margin: const EdgeInsets.only(left: 1),
                           decoration: BoxDecoration(
@@ -122,7 +122,7 @@ class WorkshopServices extends StatelessWidget {
                           ),
                           child: Image.asset(
                             ImageConstant.mechanical,
-                            height: figmaSpaceToPercentage(150, context),
+                            height: figmaSpaceToPercentageHeight(150, context),
                             width: figmaSpaceToPercentageWidth(159, context),
                           ),
                         ),
@@ -133,7 +133,7 @@ class WorkshopServices extends StatelessWidget {
                           "Mechanical\nRepairs",
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(23, context),
+                            fontSize: figmaSpaceToPercentageHeight(23, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             height: 1.5, // Set line height multiplier
@@ -143,7 +143,7 @@ class WorkshopServices extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(25, context),
+                    height: figmaSpaceToPercentageHeight(25, context),
                   ),
                   InkWell(
                     onTap: () {
@@ -158,7 +158,7 @@ class WorkshopServices extends StatelessWidget {
                         ),
                         Container(
                           width: figmaSpaceToPercentageWidth(159, context),
-                          height: figmaSpaceToPercentage(150, context),
+                          height: figmaSpaceToPercentageHeight(150, context),
                           padding: const EdgeInsets.only(left: 1),
                           margin: const EdgeInsets.only(left: 1),
                           decoration: BoxDecoration(
@@ -178,7 +178,7 @@ class WorkshopServices extends StatelessWidget {
                           ),
                           child: Image.asset(
                             ImageConstant.dentingNpainting,
-                            height: figmaSpaceToPercentage(150, context),
+                            height: figmaSpaceToPercentageHeight(150, context),
                             width: figmaSpaceToPercentageWidth(159, context),
                           ),
                         ),
@@ -189,7 +189,7 @@ class WorkshopServices extends StatelessWidget {
                           "Denting &\nPainting",
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(23, context),
+                            fontSize: figmaSpaceToPercentageHeight(23, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             height: 1.5, // Set line height multiplier
@@ -199,7 +199,7 @@ class WorkshopServices extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(25, context),
+                    height: figmaSpaceToPercentageHeight(25, context),
                   ),
                   InkWell(
                     onTap: () {
@@ -214,7 +214,7 @@ class WorkshopServices extends StatelessWidget {
                         ),
                         Container(
                           width: figmaSpaceToPercentageWidth(159, context),
-                          height: figmaSpaceToPercentage(150, context),
+                          height: figmaSpaceToPercentageHeight(150, context),
                           padding: const EdgeInsets.only(left: 1),
                           margin: const EdgeInsets.only(left: 1),
                           decoration: BoxDecoration(
@@ -234,7 +234,7 @@ class WorkshopServices extends StatelessWidget {
                           ),
                           child: Image.asset(
                             ImageConstant.tireservices,
-                            height: figmaSpaceToPercentage(150, context),
+                            height: figmaSpaceToPercentageHeight(150, context),
                             width: figmaSpaceToPercentageWidth(159, context),
                           ),
                         ),
@@ -245,7 +245,7 @@ class WorkshopServices extends StatelessWidget {
                           "Tire\nServices",
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(23, context),
+                            fontSize: figmaSpaceToPercentageHeight(23, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             height: 1.5, // Set line height multiplier
@@ -255,7 +255,7 @@ class WorkshopServices extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(40, context),
+                    height: figmaSpaceToPercentageHeight(40, context),
                   ),
                   Row(
                     children: [
@@ -277,7 +277,7 @@ class WorkshopServices extends StatelessWidget {
                           ),
                           minimumSize: Size(
                             figmaSpaceToPercentageWidth(93, context),
-                            figmaSpaceToPercentage(40, context),
+                            figmaSpaceToPercentageHeight(40, context),
                           ), // Set the button's width and height
                         ),
                         child: const Text(
@@ -300,7 +300,7 @@ class WorkshopServices extends StatelessWidget {
               right: 0,
               child: Image.asset(
                 ImageConstant.wrenchtool,
-                height: figmaSpaceToPercentage(240, context),
+                height: figmaSpaceToPercentageHeight(240, context),
                 width: figmaSpaceToPercentageWidth(300, context),
                 fit: BoxFit.cover,
               ),

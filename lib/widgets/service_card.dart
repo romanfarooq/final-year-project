@@ -36,7 +36,7 @@ class ServiceRecordWidget extends StatelessWidget {
                   },
                   child: Container(
                     width: double.infinity,
-                    height: figmaSpaceToPercentage(49, context),
+                    height: figmaSpaceToPercentageHeight(49, context),
                     padding: const EdgeInsets.only(left: 1),
                     margin: const EdgeInsets.only(left: 1),
                     decoration: BoxDecoration(
@@ -61,12 +61,13 @@ class ServiceRecordWidget extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.only(
-                                left: figmaSpaceToPercentage(21, context)),
+                                left: figmaSpaceToPercentageWidth(21, context)),
                             child: Text(
                               text,
                               style: TextStyle(
                                 color: const Color.fromRGBO(0, 0, 0, 1),
-                                fontSize: figmaSpaceToPercentage(17, context),
+                                fontSize:
+                                    figmaSpaceToPercentageHeight(17, context),
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
                               ),
@@ -99,7 +100,7 @@ class ServiceRecordWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: figmaSpaceToPercentage(
+                height: figmaSpaceToPercentageHeight(
                   20,
                   context,
                 ), // Adjust the height as needed

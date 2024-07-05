@@ -49,14 +49,14 @@ class _RepairDetailsState extends State<RepairDetails> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: figmaSpaceToPercentage(39, context),
+            height: figmaSpaceToPercentageHeight(39, context),
           ),
           Row(
             children: [
               SizedBox(width: figmaSpaceToPercentageWidth(27, context)),
               Container(
-                height: figmaSpaceToPercentageWidth(50, context),
-                width: figmaSpaceToPercentage(50, context),
+                height: figmaSpaceToPercentageHeight(50, context),
+                width: figmaSpaceToPercentageWidth(50, context),
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(217, 217, 217, 1),
                   borderRadius: BorderRadius.all(Radius.circular(50 / 2)),
@@ -77,7 +77,7 @@ class _RepairDetailsState extends State<RepairDetails> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(30, context),
+            height: figmaSpaceToPercentageHeight(30, context),
           ),
           Row(
             children: [
@@ -88,7 +88,7 @@ class _RepairDetailsState extends State<RepairDetails> {
                 '${widget.repairType} Service',
                 style: TextStyle(
                   color: const Color.fromRGBO(0, 0, 0, 1),
-                  fontSize: figmaSpaceToPercentage(22, context),
+                  fontSize: figmaSpaceToPercentageHeight(22, context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
@@ -97,7 +97,7 @@ class _RepairDetailsState extends State<RepairDetails> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(2, context),
+            height: figmaSpaceToPercentageHeight(2, context),
           ),
           Row(
             children: [
@@ -108,7 +108,7 @@ class _RepairDetailsState extends State<RepairDetails> {
                 "What are you looking for ?",
                 style: TextStyle(
                   color: const Color.fromRGBO(0, 0, 0, 1),
-                  fontSize: figmaSpaceToPercentage(19, context),
+                  fontSize: figmaSpaceToPercentageHeight(19, context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w400,
                   decoration: TextDecoration.none,
@@ -117,7 +117,7 @@ class _RepairDetailsState extends State<RepairDetails> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(10, context),
+            height: figmaSpaceToPercentageHeight(10, context),
           ),
           Row(
             children: [
@@ -130,7 +130,7 @@ class _RepairDetailsState extends State<RepairDetails> {
                   widget.text,
                   style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(21, context),
+                    fontSize: figmaSpaceToPercentageHeight(21, context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,
@@ -161,7 +161,7 @@ class _RepairDetailsState extends State<RepairDetails> {
                 child: Expanded(
                   child: Container(
                     width: figmaSpaceToPercentageWidth(373, context),
-                    height: figmaSpaceToPercentage(311, context),
+                    height: figmaSpaceToPercentageHeight(311, context),
                     padding: const EdgeInsets.only(left: 1),
                     margin: const EdgeInsets.only(left: 1),
                     decoration: BoxDecoration(
@@ -189,7 +189,8 @@ class _RepairDetailsState extends State<RepairDetails> {
                             hintText: "Describe your issue here",
                             hintStyle: TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(17, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(17, context),
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
                             ),
@@ -200,7 +201,7 @@ class _RepairDetailsState extends State<RepairDetails> {
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(17, context),
+                            fontSize: figmaSpaceToPercentageHeight(17, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w400,
                           ),
@@ -214,7 +215,7 @@ class _RepairDetailsState extends State<RepairDetails> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(35, context),
+            height: figmaSpaceToPercentageHeight(35, context),
           ),
           Row(
             children: [
@@ -225,7 +226,7 @@ class _RepairDetailsState extends State<RepairDetails> {
                 "Start Looking..",
                 style: TextStyle(
                   color: const Color.fromRGBO(0, 0, 0, 1),
-                  fontSize: figmaSpaceToPercentage(21, context),
+                  fontSize: figmaSpaceToPercentageHeight(21, context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
                   decoration: TextDecoration.none,
@@ -235,8 +236,8 @@ class _RepairDetailsState extends State<RepairDetails> {
                 width: figmaSpaceToPercentageWidth(160, context),
               ),
               Container(
-                height: figmaSpaceToPercentageWidth(60, context),
-                width: figmaSpaceToPercentage(60, context),
+                height: figmaSpaceToPercentageHeight(60, context),
+                width: figmaSpaceToPercentageWidth(60, context),
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(217, 217, 217, 1),
                   borderRadius: BorderRadius.all(Radius.circular(60 / 2)),
@@ -257,7 +258,7 @@ class _RepairDetailsState extends State<RepairDetails> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(15, context),
+            height: figmaSpaceToPercentageHeight(15, context),
           ),
           Row(
             children: [
@@ -266,7 +267,7 @@ class _RepairDetailsState extends State<RepairDetails> {
               ),
               Container(
                 width: figmaSpaceToPercentageWidth(159, context),
-                height: figmaSpaceToPercentage(150, context),
+                height: figmaSpaceToPercentageHeight(150, context),
                 padding: const EdgeInsets.only(left: 1),
                 margin: const EdgeInsets.only(left: 1),
                 decoration: BoxDecoration(
@@ -295,11 +296,11 @@ class _RepairDetailsState extends State<RepairDetails> {
               Column(
                 children: [
                   SizedBox(
-                    height: figmaSpaceToPercentage(100, context),
+                    height: figmaSpaceToPercentageHeight(100, context),
                   ),
                   Container(
                     width: figmaSpaceToPercentageWidth(111, context),
-                    height: figmaSpaceToPercentage(105, context),
+                    height: figmaSpaceToPercentageHeight(105, context),
                     padding: const EdgeInsets.only(left: 1),
                     margin: const EdgeInsets.only(left: 1),
                     decoration: BoxDecoration(

@@ -47,7 +47,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 SizedBox(
-                  height: figmaSpaceToPercentage(55, context),
+                  height: figmaSpaceToPercentageHeight(55, context),
                 ),
                 Center(
                   child: Image.asset(
@@ -58,7 +58,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(50, context),
+                  height: figmaSpaceToPercentageHeight(50, context),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -68,21 +68,21 @@ class _CarUserSignupState extends State<OldCarInformation> {
                     "Distance Travelled:",
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontSize: figmaSpaceToPercentageHeight(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(5, context),
+                  height: figmaSpaceToPercentageHeight(5, context),
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(352, context),
-                  height: figmaSpaceToPercentage(65, context),
+                  height: figmaSpaceToPercentageHeight(65, context),
                   padding: EdgeInsets.only(
                     left: figmaSpaceToPercentageWidth(26, context),
-                    top: figmaSpaceToPercentage(2, context),
+                    top: figmaSpaceToPercentageHeight(2, context),
                   ),
                   decoration: const BoxDecoration(
                     color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -94,7 +94,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                       hintText: "13464 km",
                       hintStyle: TextStyle(
                         color: const Color.fromRGBO(50, 50, 50, 0.6),
-                        fontSize: figmaSpaceToPercentage(20, context),
+                        fontSize: figmaSpaceToPercentageHeight(20, context),
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                       ),
@@ -102,7 +102,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                     ),
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontSize: figmaSpaceToPercentageHeight(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                     ),
@@ -111,7 +111,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(15, context),
+                  height: figmaSpaceToPercentageHeight(15, context),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -121,21 +121,21 @@ class _CarUserSignupState extends State<OldCarInformation> {
                     "Last Oil Change Distance:",
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontSize: figmaSpaceToPercentageHeight(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(5, context),
+                  height: figmaSpaceToPercentageHeight(5, context),
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(352, context),
-                  height: figmaSpaceToPercentage(65, context),
+                  height: figmaSpaceToPercentageHeight(65, context),
                   padding: EdgeInsets.only(
                     left: figmaSpaceToPercentageWidth(26, context),
-                    top: figmaSpaceToPercentage(2, context),
+                    top: figmaSpaceToPercentageHeight(2, context),
                   ),
                   decoration: const BoxDecoration(
                     color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -147,7 +147,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                       hintText: "145 km",
                       hintStyle: TextStyle(
                         color: const Color.fromRGBO(50, 50, 50, 0.6),
-                        fontSize: figmaSpaceToPercentage(20, context),
+                        fontSize: figmaSpaceToPercentageHeight(20, context),
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                       ),
@@ -155,7 +155,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                     ),
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontSize: figmaSpaceToPercentageHeight(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                     ),
@@ -164,7 +164,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(20, context),
+                  height: figmaSpaceToPercentageHeight(20, context),
                 ),
                 ElevatedButton(
                   onPressed: () async {
@@ -191,7 +191,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
                     padding: EdgeInsets.symmetric(
-                      vertical: figmaSpaceToPercentage(10, context),
+                      vertical: figmaSpaceToPercentageHeight(10, context),
                       horizontal: figmaSpaceToPercentageWidth(30, context),
                     ),
                     shape: RoundedRectangleBorder(
@@ -199,7 +199,7 @@ class _CarUserSignupState extends State<OldCarInformation> {
                     ),
                     minimumSize: Size(
                       figmaSpaceToPercentageWidth(93, context),
-                      figmaSpaceToPercentage(40, context),
+                      figmaSpaceToPercentageHeight(40, context),
                     ),
                   ),
                   child: const Text(
@@ -212,18 +212,18 @@ class _CarUserSignupState extends State<OldCarInformation> {
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(10, context),
+                  height: figmaSpaceToPercentageHeight(10, context),
                 ),
                 Expanded(
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: EdgeInsets.only(
-                        bottom: figmaSpaceToPercentage(20, context),
+                        bottom: figmaSpaceToPercentageHeight(20, context),
                       ),
                       child: Image.asset(
                         logo,
-                        height: figmaSpaceToPercentage(170, context),
+                        height: figmaSpaceToPercentageHeight(170, context),
                       ),
                     ),
                   ),

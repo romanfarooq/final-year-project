@@ -1,10 +1,13 @@
-import '../widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
+import '../routes/app_routes.dart';
+import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../utils/toast_message.dart';
-import '../utils/figma_space_to_percentage.dart';
+import '../widgets/custom_elevated_button.dart';
+import '../models/car_info.dart';
 
 class BookingService extends StatefulWidget {
   const BookingService({super.key});
@@ -17,13 +20,6 @@ class _BookingServiceState extends State<BookingService> {
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
   ToastMessage toast = ToastMessage();
-
-  final selectedService = [
-    'Oil Change',
-    'Tire Change',
-    'Engine Checkup',
-    'Car Wash',
-  ];
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -82,10 +78,13 @@ class _BookingServiceState extends State<BookingService> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+                  SizedBox(
+                    height: figmaSpaceToPercentageHeight(50, context),
+                  ),
                   Container(
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(
-                      top: figmaSpaceToPercentage(10, context),
+                      top: figmaSpaceToPercentageHeight(10, context),
                     ),
                     child: const Text(
                       'Select Date:',
@@ -99,26 +98,39 @@ class _BookingServiceState extends State<BookingService> {
                     onTap: () => _selectDate(context),
                     child: Container(
                       margin: EdgeInsets.symmetric(
-                        vertical: figmaSpaceToPercentage(20, context),
+                        vertical: figmaSpaceToPercentageHeight(20, context),
                       ),
                       padding: EdgeInsets.symmetric(
-                        vertical: figmaSpaceToPercentage(20, context),
-                        horizontal: figmaSpaceToPercentage(15, context),
+                        vertical: figmaSpaceToPercentageHeight(20, context),
+                        horizontal: figmaSpaceToPercentageWidth(15, context),
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.blue),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Center(
-                        child: Text(
-                          DateFormat('yyyy-MM-dd').format(selectedDate),
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                          ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              DateFormat('yyyy-MM-dd').format(selectedDate),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.blue,
+                              ),
+                            ),
+                            const Icon(
+                              Icons.calendar_today,
+                              color: Colors.blue,
+                            ),
+                          ],
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: figmaSpaceToPercentageHeight(50, context),
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
@@ -134,98 +146,40 @@ class _BookingServiceState extends State<BookingService> {
                     onTap: () => _selectTime(context),
                     child: Container(
                       margin: EdgeInsets.symmetric(
-                        vertical: figmaSpaceToPercentage(20, context),
+                        vertical: figmaSpaceToPercentageHeight(20, context),
                       ),
                       padding: EdgeInsets.symmetric(
-                        vertical: figmaSpaceToPercentage(20, context),
-                        horizontal: figmaSpaceToPercentage(15, context),
+                        vertical: figmaSpaceToPercentageHeight(20, context),
+                        horizontal: figmaSpaceToPercentageWidth(15, context),
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.blue),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Center(
-                        child: Text(
-                          selectedTime.format(context),
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Row(
-                    children: [
-                      Text(
-                        'Location:',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        'Wapda Town, Lahore',
-                        style: TextStyle(
-                          fontSize: 18,
-                          // fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                  // const SizedBox(height: 10),
-                  const Row(
-                    children: [
-                      Text(
-                        'Workshop:',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        'Gujjar Auto Workshop',
-                        style: TextStyle(
-                          fontSize: 18,
-                          // fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(
-                    color: Colors.black,
-                    thickness: 1,
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: const Text(
-                      'Service Details:',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                  // it should be a scrollable list
-                  Expanded(
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: selectedService
-                          .map(
-                            (service) => Text(
-                              '- $service',
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              selectedTime.format(context),
                               style: const TextStyle(
-                                fontSize: 15,
-                                // fontWeight: FontWeight.w500,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.blue,
                               ),
                             ),
-                          )
-                          .toList(),
+                            const Icon(
+                              Icons.access_time,
+                              color: Colors.blue,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: figmaSpaceToPercentageHeight(50, context),
+                  ),
                 ],
               ),
             ),
@@ -234,7 +188,7 @@ class _BookingServiceState extends State<BookingService> {
               buttonStyle: ButtonStyle(
                 padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                   EdgeInsets.symmetric(
-                    vertical: figmaSpaceToPercentage(20, context),
+                    vertical: figmaSpaceToPercentageHeight(20, context),
                   ),
                 ),
                 backgroundColor: WidgetStateProperty.all<Color>(
@@ -244,7 +198,7 @@ class _BookingServiceState extends State<BookingService> {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
-                  figmaSpaceToPercentage(5, context),
+                  figmaSpaceToPercentageHeight(5, context),
                 ),
                 gradient: LinearGradient(
                   begin: const Alignment(0.5, 0),
@@ -255,7 +209,19 @@ class _BookingServiceState extends State<BookingService> {
                   ],
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                DateTime selectedDateTime = DateTime(
+                  selectedDate.year,
+                  selectedDate.month,
+                  selectedDate.day,
+                  selectedTime.hour,
+                  selectedTime.minute,
+                );
+                context.read<UserCarsInfo>().setBookingDate(selectedDateTime);
+                Navigator.of(context).pushNamed(
+                  AppRoutes.carUserExplor,
+                );
+              },
             ),
           ],
         ),
@@ -266,6 +232,7 @@ class _BookingServiceState extends State<BookingService> {
 
 AppBar appBar() {
   return AppBar(
+    backgroundColor: Colors.white,
     title: Container(
       alignment: Alignment.centerLeft,
       margin: const EdgeInsets.all(10),

@@ -4,14 +4,9 @@ import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_service_widget.dart';
 
-class CarCareRequests extends StatefulWidget {
+class CarCareRequests extends StatelessWidget {
   const CarCareRequests({super.key});
 
-  @override
-  State<CarCareRequests> createState() => _CarCareRequestsState();
-}
-
-class _CarCareRequestsState extends State<CarCareRequests> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,7 +14,7 @@ class _CarCareRequestsState extends State<CarCareRequests> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: figmaSpaceToPercentage(55, context),
+            height: figmaSpaceToPercentageHeight(55, context),
           ),
           Center(
             child: Image.asset(
@@ -30,7 +25,7 @@ class _CarCareRequestsState extends State<CarCareRequests> {
             ),
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(90, context),
+            height: figmaSpaceToPercentageHeight(90, context),
           ),
           const Expanded(
             child: SingleChildScrollView(

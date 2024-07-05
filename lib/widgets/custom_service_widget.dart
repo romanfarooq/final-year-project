@@ -49,7 +49,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(353, context),
-                  height: figmaSpaceToPercentage(130, context),
+                  height: figmaSpaceToPercentageHeight(130, context),
                   padding: const EdgeInsets.only(left: 1),
                   margin: const EdgeInsets.only(left: 1),
                   decoration: BoxDecoration(
@@ -75,7 +75,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: figmaSpaceToPercentage(20, context),
+                              height: figmaSpaceToPercentageHeight(20, context),
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.min,
@@ -84,8 +84,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                   '${widget.carName} (${widget.issueType}):',
                                   style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(15, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        15, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w400,
                                     decoration: TextDecoration.none,
@@ -104,8 +104,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                     child: Container(
                                       width: figmaSpaceToPercentageWidth(
                                           44, context),
-                                      height:
-                                          figmaSpaceToPercentage(26, context),
+                                      height: figmaSpaceToPercentageHeight(
+                                          26, context),
                                       decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(25),
@@ -120,7 +120,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                       child: Center(
                                         child: Image.asset(
                                           ImageConstant.actions,
-                                          height: figmaSpaceToPercentage(
+                                          height: figmaSpaceToPercentageHeight(
                                               20, context),
                                           width: figmaSpaceToPercentageWidth(
                                               20, context),
@@ -143,8 +143,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                     child: Container(
                                       width: figmaSpaceToPercentageWidth(
                                           44, context),
-                                      height:
-                                          figmaSpaceToPercentage(26, context),
+                                      height: figmaSpaceToPercentageHeight(
+                                          26, context),
                                       decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(25),
@@ -154,7 +154,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                       child: Center(
                                         child: Image.asset(
                                           ImageConstant.cross,
-                                          height: figmaSpaceToPercentage(
+                                          height: figmaSpaceToPercentageHeight(
                                               20, context),
                                           width: figmaSpaceToPercentageWidth(
                                               20, context),
@@ -167,20 +167,21 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                               ],
                             ),
                             SizedBox(
-                              height: figmaSpaceToPercentage(1, context),
+                              height: figmaSpaceToPercentageHeight(1, context),
                             ),
                             Text(
                               widget.ownerName,
                               style: TextStyle(
                                 color: const Color.fromRGBO(0, 0, 0, 1),
-                                fontSize: figmaSpaceToPercentage(12, context),
+                                fontSize:
+                                    figmaSpaceToPercentageHeight(12, context),
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
                                 decoration: TextDecoration.none,
                               ),
                             ),
                             SizedBox(
-                              height: figmaSpaceToPercentage(1, context),
+                              height: figmaSpaceToPercentageHeight(1, context),
                             ),
                             Row(
                               children: [
@@ -188,8 +189,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                   'Car Model:',
                                   style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(12, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        12, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.none,
@@ -203,8 +204,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                   widget.carModel,
                                   style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(12, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        12, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w400,
                                     decoration: TextDecoration.none,
@@ -213,7 +214,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                               ],
                             ),
                             SizedBox(
-                              height: figmaSpaceToPercentage(1, context),
+                              height: figmaSpaceToPercentageHeight(1, context),
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,8 +223,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                   'Issue:',
                                   style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(12, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        12, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.none,
@@ -238,8 +239,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                     widget.issueDescription,
                                     style: TextStyle(
                                       color: const Color.fromRGBO(0, 0, 0, 1),
-                                      fontSize:
-                                          figmaSpaceToPercentage(12, context),
+                                      fontSize: figmaSpaceToPercentageHeight(
+                                          12, context),
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w400,
                                       decoration: TextDecoration.none,
@@ -258,7 +259,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
               ],
             ),
             SizedBox(
-              height: figmaSpaceToPercentage(18, context),
+              height: figmaSpaceToPercentageHeight(18, context),
             ),
           ],
         ),

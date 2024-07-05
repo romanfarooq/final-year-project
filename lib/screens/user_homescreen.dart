@@ -1,8 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -163,7 +162,7 @@ class UserHomeScreen extends StatelessWidget {
               left: 0,
               right: 0,
               child: SizedBox(
-                height: figmaSpaceToPercentage(350, context),
+                height: figmaSpaceToPercentageHeight(350, context),
                 width: double.infinity,
                 child: Stack(
                   fit: StackFit.expand,
@@ -171,10 +170,10 @@ class UserHomeScreen extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(
-                          figmaSpaceToPercentage(30, context),
+                          figmaSpaceToPercentageHeight(30, context),
                         ),
                         topLeft: Radius.circular(
-                          figmaSpaceToPercentage(30, context),
+                          figmaSpaceToPercentageHeight(30, context),
                         ),
                       ),
                       child: Image.network(
@@ -187,14 +186,14 @@ class UserHomeScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: figmaSpaceToPercentage(
+              top: figmaSpaceToPercentageHeight(
                 300,
                 context,
               ), // This value should be less than the height of the first container to overlap
               left: 0,
               right: 0,
               child: Container(
-                height: figmaSpaceToPercentage(510, context),
+                height: figmaSpaceToPercentageHeight(510, context),
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(243, 243, 243, 1),
                   borderRadius: BorderRadius.circular(
@@ -204,7 +203,7 @@ class UserHomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: figmaSpaceToPercentage(30, context),
+                      height: figmaSpaceToPercentageHeight(30, context),
                     ),
                     Row(
                       children: [
@@ -215,7 +214,8 @@ class UserHomeScreen extends StatelessWidget {
                           car.model,
                           style: TextStyle(
                               color: const Color.fromRGBO(0, 0, 0, 1),
-                              fontSize: figmaSpaceToPercentage(24, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(24, context),
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.none),
@@ -223,7 +223,7 @@ class UserHomeScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: figmaSpaceToPercentage(30, context),
+                      height: figmaSpaceToPercentageHeight(30, context),
                     ),
                     Row(
                       children: [
@@ -231,7 +231,7 @@ class UserHomeScreen extends StatelessWidget {
                           width: figmaSpaceToPercentageWidth(33, context),
                         ),
                         Container(
-                          height: figmaSpaceToPercentage(142, context),
+                          height: figmaSpaceToPercentageHeight(142, context),
                           width: figmaSpaceToPercentageWidth(118, context),
                           decoration: BoxDecoration(
                             color: const Color.fromRGBO(217, 217, 217, 1),
@@ -242,17 +242,20 @@ class UserHomeScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               SizedBox(
-                                height: figmaSpaceToPercentage(5, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(5, context),
                               ),
                               Image.asset(
                                 ImageConstant.carwheel,
-                                height: figmaSpaceToPercentage(70, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(70, context),
                                 width:
                                     figmaSpaceToPercentageWidth(100, context),
                                 alignment: Alignment.center,
                               ),
                               SizedBox(
-                                height: figmaSpaceToPercentage(0.1, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(0.1, context),
                               ),
                               Text(
                                 NumberFormat.decimalPattern().format(
@@ -260,8 +263,8 @@ class UserHomeScreen extends StatelessWidget {
                                 ),
                                 style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(19, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        19, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
                                     decoration: TextDecoration.none),
@@ -270,8 +273,8 @@ class UserHomeScreen extends StatelessWidget {
                                 'KM Driven',
                                 style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(14, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        14, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w500,
                                     decoration: TextDecoration.none),
@@ -283,7 +286,7 @@ class UserHomeScreen extends StatelessWidget {
                           width: figmaSpaceToPercentageWidth(10, context),
                         ),
                         Container(
-                          height: figmaSpaceToPercentage(142, context),
+                          height: figmaSpaceToPercentageHeight(142, context),
                           width: figmaSpaceToPercentageWidth(118, context),
                           decoration: BoxDecoration(
                             color: const Color.fromRGBO(217, 217, 217, 1),
@@ -295,17 +298,20 @@ class UserHomeScreen extends StatelessWidget {
                             // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                height: figmaSpaceToPercentage(5, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(5, context),
                               ),
                               Image.asset(
                                 ImageConstant.oilchange,
-                                height: figmaSpaceToPercentage(70, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(70, context),
                                 width:
                                     figmaSpaceToPercentageWidth(100, context),
                                 alignment: Alignment.center,
                               ),
                               SizedBox(
-                                height: figmaSpaceToPercentage(0.1, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(0.1, context),
                               ),
                               Text(
                                 NumberFormat.decimalPattern().format(
@@ -313,8 +319,8 @@ class UserHomeScreen extends StatelessWidget {
                                 ),
                                 style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(19, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        19, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
                                     decoration: TextDecoration.none),
@@ -323,8 +329,8 @@ class UserHomeScreen extends StatelessWidget {
                                 'Last Oil Change',
                                 style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(13, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        13, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w500,
                                     decoration: TextDecoration.none),
@@ -336,7 +342,7 @@ class UserHomeScreen extends StatelessWidget {
                           width: figmaSpaceToPercentageWidth(10, context),
                         ),
                         Container(
-                          height: figmaSpaceToPercentage(142, context),
+                          height: figmaSpaceToPercentageHeight(142, context),
                           width: figmaSpaceToPercentageWidth(118, context),
                           decoration: BoxDecoration(
                             color: const Color.fromRGBO(217, 217, 217, 1),
@@ -348,24 +354,27 @@ class UserHomeScreen extends StatelessWidget {
                             // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                height: figmaSpaceToPercentage(5, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(5, context),
                               ),
                               Image.asset(
                                 ImageConstant.caruser,
-                                height: figmaSpaceToPercentage(70, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(70, context),
                                 width:
                                     figmaSpaceToPercentageWidth(100, context),
                                 alignment: Alignment.center,
                               ),
                               SizedBox(
-                                height: figmaSpaceToPercentage(0.1, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(0.1, context),
                               ),
                               Text(
                                 car.year.toString(),
                                 style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(19, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        19, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
                                     decoration: TextDecoration.none),
@@ -374,8 +383,8 @@ class UserHomeScreen extends StatelessWidget {
                                 'Year',
                                 style: TextStyle(
                                     color: const Color.fromRGBO(0, 0, 0, 1),
-                                    fontSize:
-                                        figmaSpaceToPercentage(13, context),
+                                    fontSize: figmaSpaceToPercentageHeight(
+                                        13, context),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w500,
                                     decoration: TextDecoration.none),
@@ -386,7 +395,7 @@ class UserHomeScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: figmaSpaceToPercentage(45, context),
+                      height: figmaSpaceToPercentageHeight(55, context),
                     ),
                     Material(
                       child: InkWell(
@@ -396,7 +405,7 @@ class UserHomeScreen extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          height: figmaSpaceToPercentage(60, context),
+                          height: figmaSpaceToPercentageHeight(60, context),
                           width: figmaSpaceToPercentageWidth(368, context),
                           decoration: BoxDecoration(
                             color: const Color.fromRGBO(217, 217, 217, 1),
@@ -409,7 +418,8 @@ class UserHomeScreen extends StatelessWidget {
                               'Service History',
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(23, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
@@ -419,7 +429,7 @@ class UserHomeScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: figmaSpaceToPercentage(18, context),
+                      height: figmaSpaceToPercentageHeight(18, context),
                     ),
                     Material(
                       child: InkWell(
@@ -429,7 +439,7 @@ class UserHomeScreen extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          height: figmaSpaceToPercentage(60, context),
+                          height: figmaSpaceToPercentageHeight(60, context),
                           width: figmaSpaceToPercentageWidth(368, context),
                           decoration: BoxDecoration(
                             color: const Color.fromRGBO(217, 217, 217, 1),
@@ -442,7 +452,42 @@ class UserHomeScreen extends StatelessWidget {
                               'Book A Service',
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(23, context),
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.none),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: figmaSpaceToPercentageHeight(18, context),
+                    ),
+                    Material(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            AppRoutes.carUserExplor,
+                          );
+                        },
+                        child: Container(
+                          height: figmaSpaceToPercentageHeight(60, context),
+                          width: figmaSpaceToPercentageWidth(368, context),
+                          decoration: BoxDecoration(
+                            color: const Color.fromRGBO(217, 217, 217, 1),
+                            borderRadius: BorderRadius.circular(
+                              38,
+                            ), // Set border radius for rounded corners
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Service Now',
+                              style: TextStyle(
+                                  color: const Color.fromRGBO(0, 0, 0, 1),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(23, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
@@ -456,7 +501,7 @@ class UserHomeScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: figmaSpaceToPercentage(
+              top: figmaSpaceToPercentageHeight(
                 230,
                 context,
               ), // 250 (top of container 2) - 30 pixels
@@ -473,7 +518,7 @@ class UserHomeScreen extends StatelessWidget {
                       userInfo.getName ?? '',
                       style: TextStyle(
                         color: const Color.fromRGBO(255, 255, 255, 1),
-                        fontSize: figmaSpaceToPercentage(25, context),
+                        fontSize: figmaSpaceToPercentageHeight(25, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
                         decoration: TextDecoration.none,
@@ -493,7 +538,7 @@ class UserHomeScreen extends StatelessWidget {
                               _uploadPicture(userInfo);
                             },
                             child: Container(
-                              height: figmaSpaceToPercentage(52, context),
+                              height: figmaSpaceToPercentageHeight(52, context),
                               width: figmaSpaceToPercentageWidth(52, context),
                               decoration: const BoxDecoration(
                                 color: Color.fromRGBO(217, 217, 217, 1),
@@ -502,7 +547,7 @@ class UserHomeScreen extends StatelessWidget {
                               child: Icon(
                                 Icons.file_upload_rounded,
                                 color: Colors.black,
-                                size: figmaSpaceToPercentage(40, context),
+                                size: figmaSpaceToPercentageHeight(40, context),
                               ),
                             ),
                           ),
@@ -519,7 +564,7 @@ class UserHomeScreen extends StatelessWidget {
                               _deleteCar(context, userInfo);
                             },
                             child: Container(
-                              height: figmaSpaceToPercentage(55, context),
+                              height: figmaSpaceToPercentageHeight(55, context),
                               width: figmaSpaceToPercentageWidth(55, context),
                               decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 208, 50, 50),
@@ -528,7 +573,7 @@ class UserHomeScreen extends StatelessWidget {
                               child: Icon(
                                 Icons.delete_forever,
                                 color: Colors.white,
-                                size: figmaSpaceToPercentage(40, context),
+                                size: figmaSpaceToPercentageHeight(40, context),
                               ),
                             ),
                           ),

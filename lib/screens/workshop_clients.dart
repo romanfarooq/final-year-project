@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter/material.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
@@ -22,7 +21,7 @@ class _WorkshopClientsState extends State<WorkshopClients> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: figmaSpaceToPercentage(55, context),
+            height: figmaSpaceToPercentageHeight(55, context),
           ),
           Center(
             child: Image.asset(
@@ -33,14 +32,14 @@ class _WorkshopClientsState extends State<WorkshopClients> {
             ),
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(30, context),
+            height: figmaSpaceToPercentageHeight(30, context),
           ),
           Row(children: [
             SizedBox(width: figmaSpaceToPercentageWidth(5, context)),
             Material(
               child: Container(
                 width: figmaSpaceToPercentageWidth(419, context),
-                height: figmaSpaceToPercentage(36, context),
+                height: figmaSpaceToPercentageHeight(36, context),
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(
@@ -60,7 +59,7 @@ class _WorkshopClientsState extends State<WorkshopClients> {
             ),
           ]),
           SizedBox(
-            height: figmaSpaceToPercentage(45, context),
+            height: figmaSpaceToPercentageHeight(45, context),
           ),
           const Divider(
             thickness: 1, // Adjust the thickness of the line as needed
@@ -72,7 +71,7 @@ class _WorkshopClientsState extends State<WorkshopClients> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: figmaSpaceToPercentage(10, context),
+                    height: figmaSpaceToPercentageHeight(10, context),
                   ),
                   CustomProfileWidget(
                     imageUrl:

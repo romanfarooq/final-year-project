@@ -31,7 +31,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: figmaSpaceToPercentage(55, context),
+                  height: figmaSpaceToPercentageHeight(55, context),
                 ),
                 Center(
                   child: Image.asset(
@@ -48,7 +48,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                     ),
                     Container(
                       width: figmaSpaceToPercentageWidth(60, context),
-                      height: figmaSpaceToPercentage(40, context),
+                      height: figmaSpaceToPercentageHeight(40, context),
                       padding: const EdgeInsets.only(left: 1),
                       margin: const EdgeInsets.only(left: 1),
                       decoration: const BoxDecoration(
@@ -57,7 +57,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       ),
                       child: Image.asset(
                         ImageConstant.setting,
-                        height: figmaSpaceToPercentage(23, context),
+                        height: figmaSpaceToPercentageHeight(23, context),
                         width: figmaSpaceToPercentageWidth(25, context),
                         alignment: Alignment.center,
                       ),
@@ -65,7 +65,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   ],
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(6, context),
+                  height: figmaSpaceToPercentageHeight(6, context),
                 ),
                 Row(
                   children: [
@@ -76,7 +76,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       workshopInfo.getWorkshopName,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentageHeight(14, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                       ),
@@ -84,7 +84,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   ],
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(7, context),
+                  height: figmaSpaceToPercentageHeight(7, context),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +96,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       "Address:",
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentageHeight(14, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
                       ),
@@ -115,7 +115,8 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             workshopInfo.getAddress,
                             style: TextStyle(
                               color: const Color.fromRGBO(0, 0, 0, 1),
-                              fontSize: figmaSpaceToPercentage(14, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(14, context),
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
                             ),
@@ -127,7 +128,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   ],
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(7, context),
+                  height: figmaSpaceToPercentageHeight(7, context),
                 ),
                 Row(
                   children: [
@@ -138,7 +139,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       "Contact:",
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentageHeight(14, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
                       ),
@@ -150,7 +151,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       workshopInfo.getPhone,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentageHeight(14, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                       ),
@@ -158,7 +159,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   ],
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(4, context),
+                  height: figmaSpaceToPercentageHeight(4, context),
                 ),
                 Row(
                   children: [
@@ -169,7 +170,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       "Opening Hours:",
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentageHeight(14, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
                       ),
@@ -181,7 +182,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       workshopInfo.getOpeningHours,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentageHeight(14, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                       ),
@@ -189,7 +190,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   ],
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(5, context),
+                  height: figmaSpaceToPercentageHeight(5, context),
                 ),
                 Row(
                   children: [
@@ -202,7 +203,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       direction: Axis.horizontal,
                       allowHalfRating: true,
                       itemCount: 5,
-                      itemSize: figmaSpaceToPercentage(20, context),
+                      itemSize: figmaSpaceToPercentageHeight(20, context),
                       itemBuilder: (context, _) => const Icon(
                         Icons.star,
                         color: Colors.amber,
@@ -217,7 +218,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   ],
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(15, context),
+                  height: figmaSpaceToPercentageHeight(15, context),
                 ),
                 Row(children: [
                   SizedBox(
@@ -236,7 +237,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       },
                       child: Container(
                         width: figmaSpaceToPercentageWidth(121, context),
-                        height: figmaSpaceToPercentage(40, context),
+                        height: figmaSpaceToPercentageHeight(40, context),
                         decoration: ShapeDecoration(
                           color: const Color(0xFFD9D9D9),
                           shape: RoundedRectangleBorder(
@@ -248,7 +249,8 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                             "History",
                             style: TextStyle(
                               color: const Color.fromRGBO(0, 0, 0, 1),
-                              fontSize: figmaSpaceToPercentage(18, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(18, context),
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
                             ),
@@ -259,21 +261,21 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   ),
                 ]),
                 SizedBox(
-                  height: figmaSpaceToPercentage(20, context),
+                  height: figmaSpaceToPercentageHeight(20, context),
                 ),
                 Center(
                   child: Text(
                     "SERVICES",
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(18, context),
+                      fontSize: figmaSpaceToPercentageHeight(18, context),
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(10, context),
+                  height: figmaSpaceToPercentageHeight(10, context),
                 ),
                 Row(
                   children: [
@@ -284,7 +286,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       onTap: () {},
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
-                        height: figmaSpaceToPercentage(150, context),
+                        height: figmaSpaceToPercentageHeight(150, context),
                         padding: const EdgeInsets.only(left: 1),
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
@@ -304,7 +306,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         ),
                         child: Image.asset(
                           ImageConstant.electricalrepairs,
-                          height: figmaSpaceToPercentage(150, context),
+                          height: figmaSpaceToPercentageHeight(150, context),
                           width: figmaSpaceToPercentageWidth(159, context),
                         ),
                       ),
@@ -316,7 +318,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       onTap: () {},
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
-                        height: figmaSpaceToPercentage(150, context),
+                        height: figmaSpaceToPercentageHeight(150, context),
                         padding: const EdgeInsets.only(left: 1),
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
@@ -336,7 +338,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         ),
                         child: Image.asset(
                           ImageConstant.mechanical,
-                          height: figmaSpaceToPercentage(150, context),
+                          height: figmaSpaceToPercentageHeight(150, context),
                           width: figmaSpaceToPercentageWidth(159, context),
                         ),
                       ),
@@ -344,7 +346,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                   ],
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(30, context),
+                  height: figmaSpaceToPercentageHeight(30, context),
                 ),
                 Row(
                   children: [
@@ -355,7 +357,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       onTap: () {},
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
-                        height: figmaSpaceToPercentage(150, context),
+                        height: figmaSpaceToPercentageHeight(150, context),
                         padding: const EdgeInsets.only(left: 1),
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
@@ -375,7 +377,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         ),
                         child: Image.asset(
                           ImageConstant.dentingNpainting,
-                          height: figmaSpaceToPercentage(150, context),
+                          height: figmaSpaceToPercentageHeight(150, context),
                           width: figmaSpaceToPercentageWidth(159, context),
                         ),
                       ),
@@ -387,7 +389,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                       onTap: () {},
                       child: Container(
                         width: figmaSpaceToPercentageWidth(159, context),
-                        height: figmaSpaceToPercentage(150, context),
+                        height: figmaSpaceToPercentageHeight(150, context),
                         padding: const EdgeInsets.only(left: 1),
                         margin: const EdgeInsets.only(left: 1),
                         decoration: BoxDecoration(
@@ -407,7 +409,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
                         ),
                         child: Image.asset(
                           ImageConstant.tireservices,
-                          height: figmaSpaceToPercentage(150, context),
+                          height: figmaSpaceToPercentageHeight(150, context),
                           width: figmaSpaceToPercentageWidth(159, context),
                         ),
                       ),
@@ -421,7 +423,7 @@ class _WorkshopHomepageState extends State<WorkshopHomepage> {
               right: 0,
               child: Image.asset(
                 ImageConstant.wrenchtool,
-                height: figmaSpaceToPercentage(240, context),
+                height: figmaSpaceToPercentageHeight(240, context),
                 width: figmaSpaceToPercentageWidth(300, context),
                 fit: BoxFit.cover,
               ),

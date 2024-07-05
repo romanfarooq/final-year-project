@@ -1,18 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-enum ServiceType {
-  mchanicalRepair,
-  electricalRepair,
-  dentingPainting,
-  wheelRepair,
-  oilChange,
-  tireReplace,
-  wheelBalancing,
-  carWash,
-}
-
 class ServiceHistory {
-  ServiceType serviceType;
+  String serviceType;
   DateTime serviceDate;
   double serviceCost;
   double partCost;
@@ -30,7 +19,7 @@ class ServiceHistory {
 
   factory ServiceHistory.fromMap(Map<String, dynamic> data) {
     return ServiceHistory(
-      serviceType: ServiceType.values[data['serviceType']],
+      serviceType: data['serviceType'],
       serviceCost: data['serviceCost'],
       partCost: data['partCost'],
       serviceCenter: data['serviceCenter'],
@@ -41,7 +30,7 @@ class ServiceHistory {
 
   Map<String, dynamic> toMap() {
     return {
-      'serviceType': serviceType.index,
+      'serviceType': serviceType,
       'serviceCost': serviceCost,
       'partCost': partCost,
       'serviceCenter': serviceCenter,

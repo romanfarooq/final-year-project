@@ -12,7 +12,7 @@ class GoogleMapDisplay extends StatefulWidget {
   const GoogleMapDisplay({super.key});
 
   @override
-  State<StatefulWidget> createState() => _GoogleMapDisplayState();
+  State<GoogleMapDisplay> createState() => _GoogleMapDisplayState();
 }
 
 class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
@@ -117,7 +117,7 @@ class _GoogleMapDisplayState extends State<GoogleMapDisplay> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
         child: SizedBox(
-          height: figmaSpaceToPercentage(300, context),
+          height: figmaSpaceToPercentageHeight(300, context),
           child: GoogleMap(
             onMapCreated: (controller) {
               _controller.complete(controller);

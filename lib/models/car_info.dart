@@ -22,6 +22,7 @@ class CarInfo {
   DateTime? lastOilChangeDate;
   double lastOilChangeDistance;
   List<ServiceHistory> serviceHistory;
+  List<ServiceHistory> orderHistory;
   String location;
   Map<String, bool> carFeatures;
   String imgPath;
@@ -42,6 +43,7 @@ class CarInfo {
     this.lastOilChangeDistance = 0,
     this.location = "Lahore, Pakistan",
     this.serviceHistory = const [],
+    this.orderHistory = const [],
     carFeatures,
     lastOilChangeDate,
   })  : carFeatures = carFeatures ??
@@ -85,6 +87,9 @@ class CarInfo {
       serviceHistory: (data['serviceHistory'] as List<dynamic>)
           .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
           .toList(),
+      orderHistory: (data['orderHistory'] as List<dynamic>)
+          .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
+          .toList(),
       location: data['location'],
       carFeatures: Map<String, bool>.from(data['carFeatures']),
     );
@@ -106,6 +111,7 @@ class CarInfo {
       'lastOilChangeDistance': lastOilChangeDistance,
       'lastOilChangeDate': lastOilChangeDate,
       'serviceHistory': serviceHistory.map((e) => e.toMap()).toList(),
+      'orderHistory': orderHistory.map((e) => e.toMap()).toList(),
       'location': location,
       'carFeatures': carFeatures,
     };
@@ -119,6 +125,7 @@ class UserCarsInfo with ChangeNotifier {
   String? _uid;
   String? _email;
   String? _phone;
+  DateTime? _bookingDate;
   List<CarInfo> _userCars = [];
 
   late CarInfo _selectedCar;
@@ -129,6 +136,12 @@ class UserCarsInfo with ChangeNotifier {
     _email = data?['email'];
     _phone = data?['phone'];
   }
+
+  void setBookingDate(DateTime date) {
+    _bookingDate = date;
+  }
+
+  DateTime? get getBookingDate => _bookingDate;
 
   Future<void> fetchUserCars() async {
     try {
@@ -369,6 +382,34 @@ class UserCarsInfo with ChangeNotifier {
       } catch (error) {
         ToastMessage().toastmessage(
           'Failed to update car distance and oil change: $error',
+        );
+      }
+    }
+  }
+
+  Future<void> addServiceHistory(
+    ServiceHistory serviceHistory,
+  ) async {
+    int index = _userCars.indexWhere(
+      (element) => element.licensePlate == _selectedCar.licensePlate,
+    );
+    if (index != -1) {
+      _userCars[index].serviceHistory.add(serviceHistory);
+
+      try {
+        final carRef = _firestore
+            .collection('users')
+            .doc(_uid)
+            .collection('cars')
+            .doc(_selectedCar.licensePlate);
+        await carRef.update({
+          'serviceHistory':
+              _userCars[index].serviceHistory.map((e) => e.toMap()).toList(),
+        });
+        notifyListeners();
+      } catch (error) {
+        ToastMessage().toastmessage(
+          'Failed to add service history: $error',
         );
       }
     }

@@ -23,7 +23,7 @@ class CarFeatures extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: figmaSpaceToPercentage(55, context),
+            height: figmaSpaceToPercentageHeight(55, context),
           ),
           Center(
             child: Image.asset(
@@ -34,7 +34,7 @@ class CarFeatures extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(80, context),
+            height: figmaSpaceToPercentageHeight(80, context),
           ),
           Row(
             children: [
@@ -45,7 +45,7 @@ class CarFeatures extends StatelessWidget {
                 'Car Features',
                 style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(22, context),
+                    fontSize: figmaSpaceToPercentageHeight(22, context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none),
@@ -53,7 +53,7 @@ class CarFeatures extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(15, context),
+            height: figmaSpaceToPercentageHeight(15, context),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -72,7 +72,7 @@ class CarFeatures extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(44, context),
+            height: figmaSpaceToPercentageHeight(44, context),
           ),
           Row(
             children: [
@@ -91,7 +91,7 @@ class CarFeatures extends StatelessWidget {
                   ),
                   minimumSize: Size(
                     figmaSpaceToPercentageWidth(93, context),
-                    figmaSpaceToPercentage(40, context),
+                    figmaSpaceToPercentageHeight(40, context),
                   ), // Set the button's width and height
                 ),
                 child: const Text(
@@ -121,7 +121,7 @@ class CarFeatures extends StatelessWidget {
                   ),
                   minimumSize: Size(
                     figmaSpaceToPercentageWidth(93, context),
-                    figmaSpaceToPercentage(40, context),
+                    figmaSpaceToPercentageHeight(40, context),
                   ), // Set the button's width and height
                 ),
                 child: const Text(

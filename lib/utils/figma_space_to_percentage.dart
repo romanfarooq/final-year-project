@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-double figmaSpaceToPercentage(double figmaSpace, BuildContext context) {
+double figmaSpaceToPercentageHeight(double figmaSpace, BuildContext context) {
   // Measure the height of the device screen
   double screenHeight = MediaQuery.of(context).size.height;
 

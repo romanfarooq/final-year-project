@@ -30,7 +30,7 @@ class CustomProfileWidget extends StatelessWidget {
                 ),
                 SizedBox(
                   width: figmaSpaceToPercentageWidth(76.09, context),
-                  height: figmaSpaceToPercentage(76.09, context),
+                  height: figmaSpaceToPercentageHeight(76.09, context),
                   child: GradientBorder(
                     colors: const [
                       Color.fromRGBO(250, 240, 6, 1),
@@ -43,7 +43,7 @@ class CustomProfileWidget extends StatelessWidget {
                       child: ClipOval(
                         child: Image.asset(
                           imageUrl,
-                          height: figmaSpaceToPercentage(70, context),
+                          height: figmaSpaceToPercentageHeight(70, context),
                           width: figmaSpaceToPercentageWidth(70, context),
                           alignment: Alignment.center,
                         ),
@@ -61,20 +61,20 @@ class CustomProfileWidget extends StatelessWidget {
                       name,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentageHeight(14, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         decoration: TextDecoration.none,
                       ),
                     ),
                     SizedBox(
-                      height: figmaSpaceToPercentage(2, context),
+                      height: figmaSpaceToPercentageHeight(2, context),
                     ),
                     Text(
                       id,
                       style: TextStyle(
                         color: const Color.fromRGBO(125, 125, 125, 1),
-                        fontSize: figmaSpaceToPercentage(14, context),
+                        fontSize: figmaSpaceToPercentageHeight(14, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         decoration: TextDecoration.none,
@@ -87,7 +87,8 @@ class CustomProfileWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: figmaSpaceToPercentage(12, context), // Height of the SizedBox
+          height: figmaSpaceToPercentageHeight(
+              12, context), // Height of the SizedBox
         ),
       ],
     );

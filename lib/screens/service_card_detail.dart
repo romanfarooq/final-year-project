@@ -40,7 +40,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
       child: Column(
         children: [
           SizedBox(
-            height: figmaSpaceToPercentage(55, context),
+            height: figmaSpaceToPercentageHeight(55, context),
           ),
           Row(
             children: [
@@ -58,7 +58,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
               ),
               Container(
                 width: figmaSpaceToPercentageWidth(60, context),
-                height: figmaSpaceToPercentage(40, context),
+                height: figmaSpaceToPercentageHeight(40, context),
                 padding: const EdgeInsets.only(left: 1),
                 margin: const EdgeInsets.only(left: 1),
                 decoration: const BoxDecoration(
@@ -72,7 +72,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                 ),
                 child: Image.asset(
                   ImageConstant.actions,
-                  height: figmaSpaceToPercentage(20, context),
+                  height: figmaSpaceToPercentageHeight(20, context),
                   width: figmaSpaceToPercentageWidth(20, context),
                   alignment: Alignment.center,
                 ),
@@ -80,7 +80,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(55, context),
+            height: figmaSpaceToPercentageHeight(55, context),
           ),
           Row(
             children: [
@@ -91,7 +91,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                 '${widget.categoryName} Service',
                 style: TextStyle(
                   color: const Color.fromRGBO(0, 0, 0, 1),
-                  fontSize: figmaSpaceToPercentage(21, context),
+                  fontSize: figmaSpaceToPercentageHeight(21, context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
@@ -100,7 +100,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(24, context),
+            height: figmaSpaceToPercentageHeight(24, context),
           ),
           Row(
             children: [
@@ -117,7 +117,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                     },
                     child: Container(
                       width: double.infinity,
-                      height: figmaSpaceToPercentage(49, context),
+                      height: figmaSpaceToPercentageHeight(49, context),
                       padding: const EdgeInsets.only(left: 1),
                       margin: const EdgeInsets.only(left: 1),
                       decoration: BoxDecoration(
@@ -140,12 +140,13 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: EdgeInsets.only(
-                              left: figmaSpaceToPercentage(21, context)),
+                              left: figmaSpaceToPercentageWidth(21, context)),
                           child: Text(
                             widget.text,
                             style: TextStyle(
                               color: const Color.fromRGBO(0, 0, 0, 1),
-                              fontSize: figmaSpaceToPercentage(17, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(17, context),
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
                             ),
@@ -159,14 +160,14 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(35, context),
+            height: figmaSpaceToPercentageHeight(35, context),
           ),
           Expanded(
             child: Material(
               child: Expanded(
                 child: Container(
                   width: double.infinity,
-                  //height: figmaSpaceToPercentage(580, context),
+                  //height: figmaSpaceToPercentageHeight(580, context),
                   padding: const EdgeInsets.only(left: 1),
                   margin: const EdgeInsets.only(left: 1),
                   decoration: BoxDecoration(
@@ -193,7 +194,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                           child: Column(
                             children: [
                               SizedBox(
-                                height: figmaSpaceToPercentage(20, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(20, context),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -202,8 +204,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                     'Details:',
                                     style: TextStyle(
                                       color: const Color.fromRGBO(0, 0, 0, 1),
-                                      fontSize:
-                                          figmaSpaceToPercentage(21, context),
+                                      fontSize: figmaSpaceToPercentageHeight(
+                                          21, context),
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w500,
                                       decoration: TextDecoration.none,
@@ -223,8 +225,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                       },
                                       child: Image.asset(
                                         ImageConstant.edit,
-                                        height:
-                                            figmaSpaceToPercentage(28, context),
+                                        height: figmaSpaceToPercentageHeight(
+                                            28, context),
                                         width: figmaSpaceToPercentageWidth(
                                             28, context),
                                         alignment: Alignment.center,
@@ -253,8 +255,9 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                               50,
                                               0.6,
                                             ),
-                                            fontSize: figmaSpaceToPercentage(
-                                                17, context),
+                                            fontSize:
+                                                figmaSpaceToPercentageHeight(
+                                                    17, context),
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.w400,
                                           ),
@@ -268,7 +271,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                         style: TextStyle(
                                           color:
                                               const Color.fromRGBO(0, 0, 0, 1),
-                                          fontSize: figmaSpaceToPercentage(
+                                          fontSize:
+                                              figmaSpaceToPercentageHeight(
                                             17,
                                             context,
                                           ),
@@ -278,7 +282,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                         textInputAction: TextInputAction.done,
                                       ),
                                       SizedBox(
-                                        height: figmaSpaceToPercentage(
+                                        height: figmaSpaceToPercentageHeight(
                                           15,
                                           context,
                                         ),
@@ -298,7 +302,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                         children: [
                                           //SizedBox(width: figmaSpaceToPercentageWidth(30, context)),
                                           Container(
-                                            height: figmaSpaceToPercentage(
+                                            height:
+                                                figmaSpaceToPercentageHeight(
                                               150,
                                               context,
                                             ),
@@ -315,7 +320,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                               children: [
                                                 SizedBox(
                                                   height:
-                                                      figmaSpaceToPercentage(
+                                                      figmaSpaceToPercentageHeight(
                                                     15,
                                                     context,
                                                   ),
@@ -331,7 +336,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                         1,
                                                       ),
                                                       fontSize:
-                                                          figmaSpaceToPercentage(
+                                                          figmaSpaceToPercentageHeight(
                                                         23,
                                                         context,
                                                       ),
@@ -343,7 +348,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                 ),
                                                 SizedBox(
                                                   height:
-                                                      figmaSpaceToPercentage(
+                                                      figmaSpaceToPercentageHeight(
                                                     1,
                                                     context,
                                                   ),
@@ -358,7 +363,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                       1,
                                                     ),
                                                     fontSize:
-                                                        figmaSpaceToPercentage(
+                                                        figmaSpaceToPercentageHeight(
                                                       23,
                                                       context,
                                                     ),
@@ -370,7 +375,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                 ),
                                                 SizedBox(
                                                   height:
-                                                      figmaSpaceToPercentage(
+                                                      figmaSpaceToPercentageHeight(
                                                     1,
                                                     context,
                                                   ),
@@ -385,7 +390,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                       1,
                                                     ),
                                                     fontSize:
-                                                        figmaSpaceToPercentage(
+                                                        figmaSpaceToPercentageHeight(
                                                       24,
                                                       context,
                                                     ),
@@ -407,7 +412,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                           Container(
                                             width:
                                                 1, // Width of the vertical line
-                                            height: figmaSpaceToPercentage(
+                                            height:
+                                                figmaSpaceToPercentageHeight(
                                               120,
                                               context,
                                             ), // Height of the vertical line
@@ -421,7 +427,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                             ),
                                           ),
                                           Container(
-                                            height: figmaSpaceToPercentage(
+                                            height:
+                                                figmaSpaceToPercentageHeight(
                                               150,
                                               context,
                                             ),
@@ -438,7 +445,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                               children: [
                                                 SizedBox(
                                                   height:
-                                                      figmaSpaceToPercentage(
+                                                      figmaSpaceToPercentageHeight(
                                                     15,
                                                     context,
                                                   ),
@@ -453,7 +460,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                       1,
                                                     ),
                                                     fontSize:
-                                                        figmaSpaceToPercentage(
+                                                        figmaSpaceToPercentageHeight(
                                                       23,
                                                       context,
                                                     ),
@@ -465,7 +472,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                 ),
                                                 SizedBox(
                                                   height:
-                                                      figmaSpaceToPercentage(
+                                                      figmaSpaceToPercentageHeight(
                                                     1,
                                                     context,
                                                   ),
@@ -477,7 +484,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                           const Color.fromRGBO(
                                                               0, 0, 0, 1),
                                                       fontSize:
-                                                          figmaSpaceToPercentage(
+                                                          figmaSpaceToPercentageHeight(
                                                         23,
                                                         context,
                                                       ),
@@ -489,7 +496,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                 ),
                                                 SizedBox(
                                                   height:
-                                                      figmaSpaceToPercentage(
+                                                      figmaSpaceToPercentageHeight(
                                                     1,
                                                     context,
                                                   ),
@@ -504,7 +511,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                       1,
                                                     ),
                                                     fontSize:
-                                                        figmaSpaceToPercentage(
+                                                        figmaSpaceToPercentageHeight(
                                                       24,
                                                       context,
                                                     ),
@@ -520,7 +527,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                         ],
                                       ),
                                       SizedBox(
-                                        height: figmaSpaceToPercentage(
+                                        height: figmaSpaceToPercentageHeight(
                                           20,
                                           context,
                                         ),
@@ -562,7 +569,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                   366,
                                                   context,
                                                 ),
-                                                height: figmaSpaceToPercentage(
+                                                height:
+                                                    figmaSpaceToPercentageHeight(
                                                   40,
                                                   context,
                                                 ),
@@ -583,7 +591,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                           ],
                                         ),
                                       SizedBox(
-                                        height: figmaSpaceToPercentage(
+                                        height: figmaSpaceToPercentageHeight(
                                           10,
                                           context,
                                         ),
@@ -628,7 +636,8 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                                 366,
                                                 context,
                                               ),
-                                              height: figmaSpaceToPercentage(
+                                              height:
+                                                  figmaSpaceToPercentageHeight(
                                                 40,
                                                 context,
                                               ),
@@ -647,7 +656,7 @@ class _ServiceCardDetailState extends State<ServiceCardDetail> {
                                           ),
                                         ]),
                                       SizedBox(
-                                        height: figmaSpaceToPercentage(
+                                        height: figmaSpaceToPercentageHeight(
                                           10,
                                           context,
                                         ),

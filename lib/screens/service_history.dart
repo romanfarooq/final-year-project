@@ -14,7 +14,7 @@ class ServiceHistory extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: figmaSpaceToPercentage(69, context),
+                height: figmaSpaceToPercentageHeight(69, context),
               ),
 
               Column(
@@ -24,7 +24,7 @@ class ServiceHistory extends StatelessWidget {
                       'Service History',
                       style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(26, context),
+                          fontSize: figmaSpaceToPercentageHeight(26, context),
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.none),
@@ -34,7 +34,7 @@ class ServiceHistory extends StatelessWidget {
               ),
 
               SizedBox(
-                height: figmaSpaceToPercentage(25, context),
+                height: figmaSpaceToPercentageHeight(25, context),
               ),
               //wa
 

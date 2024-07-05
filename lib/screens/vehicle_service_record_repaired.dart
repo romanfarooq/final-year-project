@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter/material.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
@@ -80,13 +79,13 @@ class _VehicleServiceRecordRepairedState
       child: Column(
         children: [
           SizedBox(
-            height: figmaSpaceToPercentage(55, context),
+            height: figmaSpaceToPercentageHeight(55, context),
           ),
           Row(children: [
             SizedBox(width: figmaSpaceToPercentageWidth(27, context)),
             Container(
-              height: figmaSpaceToPercentageWidth(50, context),
-              width: figmaSpaceToPercentage(50, context),
+              height: figmaSpaceToPercentageHeight(50, context),
+              width: figmaSpaceToPercentageWidth(50, context),
               decoration: const BoxDecoration(
                 color: Color.fromRGBO(217, 217, 217, 1),
                 borderRadius: BorderRadius.all(Radius.circular(50 / 2)),
@@ -115,20 +114,20 @@ class _VehicleServiceRecordRepairedState
             ),
           ]),
           SizedBox(
-            height: figmaSpaceToPercentage(25, context),
+            height: figmaSpaceToPercentageHeight(25, context),
           ),
           Row(children: [
             Expanded(
               child: Container(
                 width: double.infinity,
-                height: figmaSpaceToPercentage(49, context),
+                height: figmaSpaceToPercentageHeight(49, context),
                 color: const Color.fromRGBO(217, 217, 217, 1),
                 child: Center(
                   child: Text(
                     "Repaired",
                     style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(23, context),
+                        fontSize: figmaSpaceToPercentageHeight(23, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.none),
@@ -138,7 +137,7 @@ class _VehicleServiceRecordRepairedState
             ),
           ]),
           SizedBox(
-            height: figmaSpaceToPercentage(25, context),
+            height: figmaSpaceToPercentageHeight(25, context),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -146,7 +145,7 @@ class _VehicleServiceRecordRepairedState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: figmaSpaceToPercentage(5, context),
+                    height: figmaSpaceToPercentageHeight(5, context),
                   ),
                   // Your other widgets...
 
@@ -160,16 +159,16 @@ class _VehicleServiceRecordRepairedState
                         "Mechanical Service",
                         style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(21, context),
+                            fontSize: figmaSpaceToPercentageHeight(21, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.none),
                       ),
                     ],
                   ),
-                  SizedBox(height: figmaSpaceToPercentage(24, context)),
+                  SizedBox(height: figmaSpaceToPercentageHeight(24, context)),
                   SizedBox(
-                    height: figmaSpaceToPercentage(200, context),
+                    height: figmaSpaceToPercentageHeight(200, context),
                     // Adjust the height as needed
                     child: ListView.builder(
                       itemCount: mechanicalItems.length,
@@ -182,7 +181,7 @@ class _VehicleServiceRecordRepairedState
                       controller: _mechanicalController,
                     ),
                   ),
-                  SizedBox(height: figmaSpaceToPercentage(20, context)),
+                  SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
 
                   // Electrical Repairs Section
                   Row(
@@ -194,16 +193,16 @@ class _VehicleServiceRecordRepairedState
                         "Electrical Service",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(21, context),
+                          fontSize: figmaSpaceToPercentageHeight(21, context),
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: figmaSpaceToPercentage(24, context)),
+                  SizedBox(height: figmaSpaceToPercentageHeight(24, context)),
                   SizedBox(
-                    height: figmaSpaceToPercentage(200, context),
+                    height: figmaSpaceToPercentageHeight(200, context),
                     // Adjust the height as needed
                     child: ListView.builder(
                       itemCount: electricalItems.length,
@@ -216,7 +215,7 @@ class _VehicleServiceRecordRepairedState
                       controller: _electricalController,
                     ),
                   ),
-                  SizedBox(height: figmaSpaceToPercentage(20, context)),
+                  SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
 
                   // Denting & Painting Section
                   Row(
@@ -228,16 +227,16 @@ class _VehicleServiceRecordRepairedState
                         "Denting & Painting Service",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(21, context),
+                          fontSize: figmaSpaceToPercentageHeight(21, context),
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: figmaSpaceToPercentage(24, context)),
+                  SizedBox(height: figmaSpaceToPercentageHeight(24, context)),
                   SizedBox(
-                    height: figmaSpaceToPercentage(200, context),
+                    height: figmaSpaceToPercentageHeight(200, context),
                     // Adjust the height as needed
                     child: ListView.builder(
                       itemCount: dentingItems.length,
@@ -249,7 +248,7 @@ class _VehicleServiceRecordRepairedState
                       controller: _dentingController,
                     ),
                   ),
-                  SizedBox(height: figmaSpaceToPercentage(20, context)),
+                  SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
 
                   // Tires Services Section
                   Row(
@@ -261,16 +260,16 @@ class _VehicleServiceRecordRepairedState
                         "Tire Service",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(21, context),
+                          fontSize: figmaSpaceToPercentageHeight(21, context),
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: figmaSpaceToPercentage(24, context)),
+                  SizedBox(height: figmaSpaceToPercentageHeight(24, context)),
                   SizedBox(
-                    height: figmaSpaceToPercentage(200, context),
+                    height: figmaSpaceToPercentageHeight(200, context),
                     // Adjust the height as needed
                     child: ListView.builder(
                       itemCount: tiresItems.length,
@@ -281,7 +280,7 @@ class _VehicleServiceRecordRepairedState
                       controller: _tiresController,
                     ),
                   ),
-                  SizedBox(height: figmaSpaceToPercentage(20, context)),
+                  SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
 
                   // Your other widgets...
                 ],

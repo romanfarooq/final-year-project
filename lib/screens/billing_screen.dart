@@ -121,7 +121,8 @@ class _BillingScreenState extends State<BillingScreen> {
                                 ),
                               ),
                               SizedBox(
-                                height: figmaSpaceToPercentage(15, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(15, context),
                               ),
                               TextField(
                                 controller: chargesList[index]['serviceName'],
@@ -190,7 +191,8 @@ class _BillingScreenState extends State<BillingScreen> {
                                 },
                               ),
                               SizedBox(
-                                height: figmaSpaceToPercentage(15, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(15, context),
                               ),
                               TextField(
                                 controller: chargesList[index]['servicePrice'],

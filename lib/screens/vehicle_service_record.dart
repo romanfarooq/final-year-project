@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter/material.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
@@ -78,7 +77,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
         child: Column(
           children: [
             SizedBox(
-              height: figmaSpaceToPercentage(55, context),
+              height: figmaSpaceToPercentageHeight(55, context),
             ),
             Row(
               children: [
@@ -96,7 +95,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                 ),
                 Container(
                   width: figmaSpaceToPercentageWidth(60, context),
-                  height: figmaSpaceToPercentage(40, context),
+                  height: figmaSpaceToPercentageHeight(40, context),
                   padding: const EdgeInsets.only(left: 1),
                   margin: const EdgeInsets.only(left: 1),
                   decoration: const BoxDecoration(
@@ -110,7 +109,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                   ),
                   child: Image.asset(
                     ImageConstant.actions,
-                    height: figmaSpaceToPercentage(20, context),
+                    height: figmaSpaceToPercentageHeight(20, context),
                     width: figmaSpaceToPercentageWidth(20, context),
                     alignment: Alignment.center,
                   ),
@@ -123,7 +122,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: figmaSpaceToPercentage(55, context),
+                      height: figmaSpaceToPercentageHeight(55, context),
                     ),
                     // Your other widgets...
 
@@ -137,16 +136,17 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                           "Mechanical Service",
                           style: TextStyle(
                               color: const Color.fromRGBO(0, 0, 0, 1),
-                              fontSize: figmaSpaceToPercentage(21, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(21, context),
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
                               decoration: TextDecoration.none),
                         ),
                       ],
                     ),
-                    SizedBox(height: figmaSpaceToPercentage(24, context)),
+                    SizedBox(height: figmaSpaceToPercentageHeight(24, context)),
                     SizedBox(
-                      height: figmaSpaceToPercentage(200, context),
+                      height: figmaSpaceToPercentageHeight(200, context),
                       // Adjust the height as needed
                       child: ListView.builder(
                         itemCount: mechanicalItems.length,
@@ -159,7 +159,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                         controller: _mechanicalController,
                       ),
                     ),
-                    SizedBox(height: figmaSpaceToPercentage(20, context)),
+                    SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
 
                     // Electrical Repairs Section
                     Row(
@@ -171,16 +171,16 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                           "Electrical Service",
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(21, context),
+                            fontSize: figmaSpaceToPercentageHeight(21, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: figmaSpaceToPercentage(24, context)),
+                    SizedBox(height: figmaSpaceToPercentageHeight(24, context)),
                     SizedBox(
-                      height: figmaSpaceToPercentage(200, context),
+                      height: figmaSpaceToPercentageHeight(200, context),
                       // Adjust the height as needed
                       child: ListView.builder(
                         itemCount: electricalItems.length,
@@ -193,7 +193,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                         controller: _electricalController,
                       ),
                     ),
-                    SizedBox(height: figmaSpaceToPercentage(20, context)),
+                    SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
 
                     // Denting & Painting Section
                     Row(
@@ -205,16 +205,16 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                           "Denting & Painting Service",
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(21, context),
+                            fontSize: figmaSpaceToPercentageHeight(21, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: figmaSpaceToPercentage(24, context)),
+                    SizedBox(height: figmaSpaceToPercentageHeight(24, context)),
                     SizedBox(
-                      height: figmaSpaceToPercentage(200, context),
+                      height: figmaSpaceToPercentageHeight(200, context),
                       // Adjust the height as needed
                       child: ListView.builder(
                         itemCount: dentingItems.length,
@@ -226,7 +226,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                         controller: _dentingController,
                       ),
                     ),
-                    SizedBox(height: figmaSpaceToPercentage(20, context)),
+                    SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
 
                     // Tires Services Section
                     Row(
@@ -238,16 +238,16 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                           "Tire Service",
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(21, context),
+                            fontSize: figmaSpaceToPercentageHeight(21, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: figmaSpaceToPercentage(24, context)),
+                    SizedBox(height: figmaSpaceToPercentageHeight(24, context)),
                     SizedBox(
-                      height: figmaSpaceToPercentage(200, context),
+                      height: figmaSpaceToPercentageHeight(200, context),
                       // Adjust the height as needed
                       child: ListView.builder(
                         itemCount: tiresItems.length,
@@ -258,7 +258,7 @@ class _VehicleServicRecordState extends State<VehicleServicRecord> {
                         controller: _tiresController,
                       ),
                     ),
-                    SizedBox(height: figmaSpaceToPercentage(20, context)),
+                    SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
 
                     // Your other widgets...
                   ],

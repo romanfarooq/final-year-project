@@ -62,7 +62,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: figmaSpaceToPercentage(25, context),
+                    height: figmaSpaceToPercentageHeight(25, context),
                   ),
                   Center(
                     child: Image.asset(
@@ -73,7 +73,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ),
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(25, context),
+                    height: figmaSpaceToPercentageHeight(25, context),
                   ),
                   Row(
                     children: [
@@ -84,7 +84,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         "Workshop Name:",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(14, context),
+                          fontSize: figmaSpaceToPercentageHeight(14, context),
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600,
                         ),
@@ -92,7 +92,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(5, context),
+                    height: figmaSpaceToPercentageHeight(5, context),
                   ),
                   Row(
                     children: [
@@ -101,7 +101,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                       ),
                       Container(
                         width: figmaSpaceToPercentageWidth(352, context),
-                        height: figmaSpaceToPercentage(40, context),
+                        height: figmaSpaceToPercentageHeight(40, context),
                         padding: EdgeInsets.symmetric(
                           horizontal: figmaSpaceToPercentageWidth(25, context),
                         ),
@@ -115,18 +115,20 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             hintText: "Abc Auto Care",
                             hintStyle: TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(14, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(14, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                              vertical: figmaSpaceToPercentage(14, context),
+                              vertical:
+                                  figmaSpaceToPercentageHeight(14, context),
                             ), // Adjust vertical padding
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(14, context),
+                            fontSize: figmaSpaceToPercentageHeight(14, context),
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w500,
                           ),
@@ -139,7 +141,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(12, context),
+                    height: figmaSpaceToPercentageHeight(12, context),
                   ),
                   Row(
                     children: [
@@ -150,7 +152,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         "Location:",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(14, context),
+                          fontSize: figmaSpaceToPercentageHeight(14, context),
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600,
                         ),
@@ -158,7 +160,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(4, context),
+                    height: figmaSpaceToPercentageHeight(4, context),
                   ),
                   Row(
                     children: [
@@ -167,10 +169,10 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                       ),
                       Container(
                         width: figmaSpaceToPercentageWidth(352, context),
-                        height: figmaSpaceToPercentage(40, context),
+                        height: figmaSpaceToPercentageHeight(40, context),
                         padding: EdgeInsets.only(
                           left: figmaSpaceToPercentageWidth(25, context),
-                          top: figmaSpaceToPercentage(10, context),
+                          top: figmaSpaceToPercentageHeight(10, context),
                         ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -182,17 +184,19 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             hintText: "123 Main Street, City",
                             hintStyle: TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(14, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(14, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(14, context)),
+                                vertical:
+                                    figmaSpaceToPercentageHeight(14, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(14, context),
+                            fontSize: figmaSpaceToPercentageHeight(14, context),
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w500,
                           ),
@@ -204,7 +208,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(12, context),
+                    height: figmaSpaceToPercentageHeight(12, context),
                   ),
                   Row(
                     children: [
@@ -215,7 +219,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         "Contact Information:",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(14, context),
+                          fontSize: figmaSpaceToPercentageHeight(14, context),
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600,
                         ),
@@ -223,7 +227,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(4, context),
+                    height: figmaSpaceToPercentageHeight(4, context),
                   ),
                   Row(
                     children: [
@@ -232,10 +236,10 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                       ),
                       Container(
                         width: figmaSpaceToPercentageWidth(352, context),
-                        height: figmaSpaceToPercentage(40, context),
+                        height: figmaSpaceToPercentageHeight(40, context),
                         padding: EdgeInsets.only(
-                          left: figmaSpaceToPercentage(25, context),
-                          top: figmaSpaceToPercentage(10, context),
+                          left: figmaSpaceToPercentageWidth(25, context),
+                          top: figmaSpaceToPercentageHeight(10, context),
                         ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -247,17 +251,19 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             hintText: "(+92) 123-6957495",
                             hintStyle: TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(14, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(14, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(14, context)),
+                                vertical:
+                                    figmaSpaceToPercentageHeight(14, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(14, context),
+                            fontSize: figmaSpaceToPercentageHeight(14, context),
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w500,
                           ),
@@ -269,7 +275,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(12, context),
+                    height: figmaSpaceToPercentageHeight(12, context),
                   ),
                   Row(
                     children: [
@@ -280,7 +286,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         "Website: (optional)",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(14, context),
+                          fontSize: figmaSpaceToPercentageHeight(14, context),
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600,
                         ),
@@ -288,7 +294,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(4, context),
+                    height: figmaSpaceToPercentageHeight(4, context),
                   ),
                   Row(
                     children: [
@@ -297,10 +303,10 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                       ),
                       Container(
                         width: figmaSpaceToPercentageWidth(352, context),
-                        height: figmaSpaceToPercentage(40, context),
+                        height: figmaSpaceToPercentageHeight(40, context),
                         padding: EdgeInsets.only(
-                          left: figmaSpaceToPercentage(25, context),
-                          top: figmaSpaceToPercentage(10, context),
+                          left: figmaSpaceToPercentageWidth(25, context),
+                          top: figmaSpaceToPercentageHeight(10, context),
                         ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -312,17 +318,19 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             hintText: "www.carecarepro.com",
                             hintStyle: TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(14, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(14, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(14, context)),
+                                vertical:
+                                    figmaSpaceToPercentageHeight(14, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(14, context),
+                            fontSize: figmaSpaceToPercentageHeight(14, context),
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w500,
                           ),
@@ -334,7 +342,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(12, context),
+                    height: figmaSpaceToPercentageHeight(12, context),
                   ),
                   Row(
                     children: [
@@ -345,7 +353,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         "Opening Hours:",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(14, context),
+                          fontSize: figmaSpaceToPercentageHeight(14, context),
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600,
                         ),
@@ -353,7 +361,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(4, context),
+                    height: figmaSpaceToPercentageHeight(4, context),
                   ),
                   Row(
                     children: [
@@ -362,10 +370,10 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                       ),
                       Container(
                         width: figmaSpaceToPercentageWidth(150, context),
-                        height: figmaSpaceToPercentage(40, context),
+                        height: figmaSpaceToPercentageHeight(40, context),
                         padding: EdgeInsets.only(
-                          left: figmaSpaceToPercentage(25, context),
-                          top: figmaSpaceToPercentage(10, context),
+                          left: figmaSpaceToPercentageWidth(25, context),
+                          top: figmaSpaceToPercentageHeight(10, context),
                         ),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(66, 84, 164, 0.49),
@@ -377,17 +385,19 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             hintText: "10 am - 10 pm",
                             hintStyle: TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(14, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(14, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: figmaSpaceToPercentage(14, context)),
+                                vertical:
+                                    figmaSpaceToPercentageHeight(14, context)),
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(14, context),
+                            fontSize: figmaSpaceToPercentageHeight(14, context),
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w500,
                           ),
@@ -399,7 +409,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(12, context),
+                    height: figmaSpaceToPercentageHeight(12, context),
                   ),
                   Row(
                     children: [
@@ -410,7 +420,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         "Select Location:",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(14, context),
+                          fontSize: figmaSpaceToPercentageHeight(14, context),
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600,
                         ),
@@ -418,7 +428,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(4, context),
+                    height: figmaSpaceToPercentageHeight(4, context),
                   ),
                   Row(
                     children: [
@@ -426,7 +436,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         width: figmaSpaceToPercentageWidth(20, context),
                       ),
                       SizedBox(
-                        height: figmaSpaceToPercentage(40, context),
+                        height: figmaSpaceToPercentageHeight(40, context),
                         width: figmaSpaceToPercentageWidth(150, context),
                         child: ElevatedButton(
                           onPressed: () {
@@ -450,7 +460,8 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                                 "Location",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: figmaSpaceToPercentage(14, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(14, context),
                                   color: Colors.white,
                                 ),
                               ),
@@ -469,7 +480,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(12, context),
+                    height: figmaSpaceToPercentageHeight(12, context),
                   ),
                   Row(
                     children: [
@@ -480,7 +491,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                         "Additional Notes: (optional)",
                         style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(14, context),
+                          fontSize: figmaSpaceToPercentageHeight(14, context),
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600,
                         ),
@@ -488,7 +499,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(10, context),
+                    height: figmaSpaceToPercentageHeight(10, context),
                   ),
                   Row(
                     children: [
@@ -524,7 +535,8 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                             hintText: "Enter your description here",
                             hintStyle: TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(14, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(14, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
@@ -534,7 +546,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                           ),
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(14, context),
+                            fontSize: figmaSpaceToPercentageHeight(14, context),
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w500,
                           ),
@@ -544,7 +556,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                     ],
                   ),
                   SizedBox(
-                    height: figmaSpaceToPercentage(70, context),
+                    height: figmaSpaceToPercentageHeight(70, context),
                   ),
                   Row(
                     children: [
@@ -597,7 +609,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                           ),
                           minimumSize: Size(
                             figmaSpaceToPercentageWidth(93, context),
-                            figmaSpaceToPercentage(40, context),
+                            figmaSpaceToPercentageHeight(40, context),
                           ), // Set the button's width and height
                         ),
                         child: const Text(
@@ -619,7 +631,7 @@ class _WorkshopSignupState extends State<WorkshopSignup> {
                 right: 0,
                 child: Image.asset(
                   ImageConstant.wrenchtool,
-                  height: figmaSpaceToPercentage(240, context),
+                  height: figmaSpaceToPercentageHeight(240, context),
                   width: figmaSpaceToPercentageWidth(240, context),
                   fit: BoxFit.cover,
                 ),

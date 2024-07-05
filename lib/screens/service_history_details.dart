@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter/material.dart';
 
 import '../screens/service_history.dart';
 import '../utils/figma_space_to_percentage.dart';
 
-class ServiceHistoryDetail extends StatefulWidget {
+class ServiceHistoryDetail extends StatelessWidget {
   final String date;
   final String month;
   final String year;
@@ -18,11 +17,6 @@ class ServiceHistoryDetail extends StatefulWidget {
     required this.serviceType,
   });
 
-  @override
-  State<ServiceHistoryDetail> createState() => _ServiceHistoryDetailState();
-}
-
-class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
   @override
   Widget build(BuildContext context) {
     String getImagePath(String serviceType) {
@@ -48,7 +42,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
       body: Column(
         children: [
           SizedBox(
-            height: figmaSpaceToPercentage(15, context),
+            height: figmaSpaceToPercentageHeight(15, context),
           ),
 
           Column(children: [
@@ -57,7 +51,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                 'Service History',
                 style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(26, context),
+                    fontSize: figmaSpaceToPercentageHeight(26, context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none),
@@ -66,7 +60,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
           ]),
 
           SizedBox(
-            height: figmaSpaceToPercentage(25, context),
+            height: figmaSpaceToPercentageHeight(25, context),
           ),
           //wa
           InkWell(
@@ -83,10 +77,10 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                       width: figmaSpaceToPercentageWidth(30, context),
                     ),
                     Text(
-                      widget.month,
+                      month,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(23, context),
+                        fontSize: figmaSpaceToPercentageHeight(23, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.none,
@@ -96,10 +90,10 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                       width: figmaSpaceToPercentageWidth(5, context),
                     ),
                     Text(
-                      widget.year,
+                      year,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(23, context),
+                        fontSize: figmaSpaceToPercentageHeight(23, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.none,
@@ -108,7 +102,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                   ],
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(15, context),
+                  height: figmaSpaceToPercentageHeight(15, context),
                 ),
                 Row(
                   children: [
@@ -120,10 +114,10 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.date,
+                          date,
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(96, context),
+                            fontSize: figmaSpaceToPercentageHeight(96, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.none,
@@ -137,7 +131,8 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                               'Th',
                               style: TextStyle(
                                 color: const Color.fromRGBO(0, 0, 0, 1),
-                                fontSize: figmaSpaceToPercentage(43, context),
+                                fontSize:
+                                    figmaSpaceToPercentageHeight(43, context),
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w500,
                                 decoration: TextDecoration.none,
@@ -153,7 +148,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                     Flexible(
                       flex: 1,
                       child: Container(
-                        height: figmaSpaceToPercentage(142, context),
+                        height: figmaSpaceToPercentageHeight(142, context),
                         width: figmaSpaceToPercentageWidth(213, context),
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(217, 217, 217, 1),
@@ -164,8 +159,8 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                         ),
                         child: Center(
                           child: Image.asset(
-                            getImagePath(widget.serviceType),
-                            height: figmaSpaceToPercentage(140, context),
+                            getImagePath(serviceType),
+                            height: figmaSpaceToPercentageHeight(140, context),
                             width: figmaSpaceToPercentageWidth(160, context),
                             alignment: Alignment.center,
                           ),
@@ -178,7 +173,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
             ),
           ),
 
-          SizedBox(height: figmaSpaceToPercentage(4, context)),
+          SizedBox(height: figmaSpaceToPercentageHeight(4, context)),
 
           Row(
             children: [
@@ -189,7 +184,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                 'Details:',
                 style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(23, context),
+                    fontSize: figmaSpaceToPercentageHeight(23, context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     decoration: TextDecoration.none),
@@ -198,7 +193,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
           ),
 
           SizedBox(
-            height: figmaSpaceToPercentage(10, context),
+            height: figmaSpaceToPercentageHeight(10, context),
           ),
 
           Row(
@@ -207,10 +202,10 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                 width: figmaSpaceToPercentageWidth(30, context),
               ),
               Text(
-                "${widget.serviceType} Service ",
+                "$serviceType Service ",
                 style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(23, context),
+                    fontSize: figmaSpaceToPercentageHeight(23, context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none),
@@ -219,7 +214,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
           ),
 
           SizedBox(
-            height: figmaSpaceToPercentage(5, context),
+            height: figmaSpaceToPercentageHeight(5, context),
           ),
 
           Row(
@@ -231,7 +226,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                 "Gujjar Automobiles",
                 style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(23, context),
+                    fontSize: figmaSpaceToPercentageHeight(23, context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     decoration: TextDecoration.none),
@@ -240,7 +235,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
           ),
 
           SizedBox(
-            height: figmaSpaceToPercentage(2, context),
+            height: figmaSpaceToPercentageHeight(2, context),
           ),
 
           const Row(
@@ -255,7 +250,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
           ),
 
           SizedBox(
-            height: figmaSpaceToPercentage(1, context),
+            height: figmaSpaceToPercentageHeight(1, context),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -276,7 +271,8 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                                 """The Toyota Altis 1.6 stands as a testament to reliability and practicality in the sedan market. Powered by a 1.6-liter engine, it strikes a balance between performance and fuel efficiency. Its sleek design, coupled with modern amenities like touchscreen infotainment systems and advanced safety features, offers both style and convenience. Inside, passengers enjoy ample space and comfort, while the sedan's smooth ride quality ensures an enjoyable driving experience. With Toyota's reputation for durability and low maintenance costs, the Altis 1.6 emerges as a compelling choice for those seeking a dependable and economical sedan. """,
                                 style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(20, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(20, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w400,
                                   decoration: TextDecoration.none,
@@ -308,7 +304,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                     children: [
                       SizedBox(width: figmaSpaceToPercentageWidth(30, context)),
                       Container(
-                        height: figmaSpaceToPercentage(150, context),
+                        height: figmaSpaceToPercentageHeight(150, context),
                         width: figmaSpaceToPercentageWidth(200, context),
                         color: Colors.transparent,
                         child: Column(
@@ -316,35 +312,40 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                                height: figmaSpaceToPercentage(15, context)),
+                                height:
+                                    figmaSpaceToPercentageHeight(15, context)),
                             Text(
                               "XyZ Part",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(23, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
                             ),
                             SizedBox(
-                                height: figmaSpaceToPercentage(1, context)),
+                                height:
+                                    figmaSpaceToPercentageHeight(1, context)),
                             Text(
                               "Service Charges",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(23, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
                             ),
                             SizedBox(
-                              height: figmaSpaceToPercentage(1, context),
+                              height: figmaSpaceToPercentageHeight(1, context),
                             ), // Adjust space between '|' and 'rs50' as needed
                             Text(
                               "Total",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(24, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(24, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
                                   decoration: TextDecoration.none),
@@ -357,7 +358,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                       ),
                       Container(
                         width: 1, // Width of the vertical line
-                        height: figmaSpaceToPercentage(
+                        height: figmaSpaceToPercentageHeight(
                           120,
                           context,
                         ), // Height of the vertical line
@@ -367,7 +368,7 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                         width: figmaSpaceToPercentageWidth(20, context),
                       ),
                       Container(
-                        height: figmaSpaceToPercentage(150, context),
+                        height: figmaSpaceToPercentageHeight(150, context),
                         width: figmaSpaceToPercentageWidth(150, context),
                         color: Colors.transparent,
                         child: Column(
@@ -375,37 +376,40 @@ class _ServiceHistoryDetailState extends State<ServiceHistoryDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: figmaSpaceToPercentage(15, context),
+                              height: figmaSpaceToPercentageHeight(15, context),
                             ),
                             Text(
                               "Rs. 9500",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(23, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
                             ),
                             SizedBox(
-                              height: figmaSpaceToPercentage(1, context),
+                              height: figmaSpaceToPercentageHeight(1, context),
                             ),
                             Text(
                               "Rs. 1500",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(23, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(23, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.none),
                             ),
                             SizedBox(
-                              height: figmaSpaceToPercentage(1, context),
+                              height: figmaSpaceToPercentageHeight(1, context),
                             ), // Adjust space between '|' and 'rs50' as needed
                             Text(
                               "Rs. 11000",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
-                                  fontSize: figmaSpaceToPercentage(24, context),
+                                  fontSize:
+                                      figmaSpaceToPercentageHeight(24, context),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
                                   decoration: TextDecoration.none),

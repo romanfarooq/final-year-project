@@ -1,18 +1,13 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter/material.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../widgets/repair_type_widget.dart';
 
-class ElectricalRepair extends StatefulWidget {
+class ElectricalRepair extends StatelessWidget {
   const ElectricalRepair({super.key});
 
-  @override
-  State<ElectricalRepair> createState() => _ElectricalRepairState();
-}
-
-class _ElectricalRepairState extends State<ElectricalRepair> {
   final String repairType = 'Electrical';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,35 +15,33 @@ class _ElectricalRepairState extends State<ElectricalRepair> {
         child: Column(
           children: [
             SizedBox(
-              height: figmaSpaceToPercentage(39, context),
+              height: figmaSpaceToPercentageHeight(39, context),
             ),
             Row(
               children: [
                 SizedBox(width: figmaSpaceToPercentageWidth(27, context)),
                 Container(
-                  height: figmaSpaceToPercentageWidth(50, context),
-                  width: figmaSpaceToPercentage(50, context),
+                  height: figmaSpaceToPercentageHeight(50, context),
+                  width: figmaSpaceToPercentageWidth(50, context),
                   decoration: const BoxDecoration(
                     color: Color.fromRGBO(217, 217, 217, 1),
-                    borderRadius: BorderRadius.all(Radius.circular(50 / 2)),
+                    borderRadius: BorderRadius.all(Radius.circular(25)),
                   ),
-                  child: Center(
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back_ios_sharp,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                      onPressed: () {
-                        //Navigator.of(context).pop();
-                      },
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back_ios_sharp,
+                      color: Colors.black,
+                      size: 30,
                     ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: figmaSpaceToPercentage(30, context),
+              height: figmaSpaceToPercentageHeight(30, context),
             ),
             Row(
               children: [
@@ -59,7 +52,7 @@ class _ElectricalRepairState extends State<ElectricalRepair> {
                   '$repairType Service',
                   style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(22, context),
+                      fontSize: figmaSpaceToPercentageHeight(22, context),
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.none),
@@ -67,7 +60,7 @@ class _ElectricalRepairState extends State<ElectricalRepair> {
               ],
             ),
             SizedBox(
-              height: figmaSpaceToPercentage(2, context),
+              height: figmaSpaceToPercentageHeight(2, context),
             ),
             Row(
               children: [
@@ -78,7 +71,7 @@ class _ElectricalRepairState extends State<ElectricalRepair> {
                   "What are you looking for ?",
                   style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(19, context),
+                      fontSize: figmaSpaceToPercentageHeight(19, context),
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                       decoration: TextDecoration.none),
@@ -86,14 +79,14 @@ class _ElectricalRepairState extends State<ElectricalRepair> {
               ],
             ),
             SizedBox(
-              height: figmaSpaceToPercentage(8, context),
+              height: figmaSpaceToPercentageHeight(8, context),
             ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     SizedBox(
-                      height: figmaSpaceToPercentage(10, context),
+                      height: figmaSpaceToPercentageHeight(10, context),
                     ),
                     RepairTypeWidget(
                       text: "Lights",

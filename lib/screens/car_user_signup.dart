@@ -33,7 +33,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: figmaSpaceToPercentage(55, context),
+                  height: figmaSpaceToPercentageHeight(55, context),
                 ),
                 Center(
                   child: Image.asset(
@@ -44,7 +44,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(64, context),
+                  height: figmaSpaceToPercentageHeight(64, context),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -54,21 +54,21 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     "Manufacturer:",
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontSize: figmaSpaceToPercentageHeight(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(5, context),
+                  height: figmaSpaceToPercentageHeight(5, context),
                 ),
                 DropdownMenu<String>(
                   width: figmaSpaceToPercentageWidth(352, context),
                   initialSelection: carManufacturers.first,
                   textStyle: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(20, context),
+                    fontSize: figmaSpaceToPercentageHeight(20, context),
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
                   ),
@@ -97,7 +97,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     filled: true,
                     isDense: true,
                     constraints: BoxConstraints.tight(
-                      Size.fromHeight(figmaSpaceToPercentage(65, context)),
+                      Size.fromHeight(
+                          figmaSpaceToPercentageHeight(65, context)),
                     ),
                     focusColor: const Color.fromRGBO(66, 84, 164, 1),
                     enabledBorder: OutlineInputBorder(
@@ -115,7 +116,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                           textStyle: WidgetStateProperty.all<TextStyle>(
                             TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(15, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(15, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
@@ -137,7 +139,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   },
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(15, context),
+                  height: figmaSpaceToPercentageHeight(15, context),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -147,21 +149,21 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     "Car Model:",
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontSize: figmaSpaceToPercentageHeight(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(5, context),
+                  height: figmaSpaceToPercentageHeight(5, context),
                 ),
                 DropdownMenu<String>(
                   width: figmaSpaceToPercentageWidth(352, context),
                   initialSelection: _modelNames.first,
                   textStyle: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(20, context),
+                    fontSize: figmaSpaceToPercentageHeight(20, context),
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
                   ),
@@ -190,7 +192,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     filled: true,
                     isDense: true,
                     constraints: BoxConstraints.tight(
-                      Size.fromHeight(figmaSpaceToPercentage(65, context)),
+                      Size.fromHeight(
+                          figmaSpaceToPercentageHeight(65, context)),
                     ),
                     focusColor: const Color.fromRGBO(66, 84, 164, 1),
                     enabledBorder: OutlineInputBorder(
@@ -208,7 +211,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                           textStyle: WidgetStateProperty.all<TextStyle>(
                             TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(15, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(15, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
@@ -229,7 +233,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   },
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(15, context),
+                  height: figmaSpaceToPercentageHeight(15, context),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -239,20 +243,20 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     "Year of Manufacture:",
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontSize: figmaSpaceToPercentageHeight(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(5, context),
+                  height: figmaSpaceToPercentageHeight(5, context),
                 ),
                 DropdownMenu<int>(
                   width: figmaSpaceToPercentageWidth(150, context),
                   textStyle: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(20, context),
+                    fontSize: figmaSpaceToPercentageHeight(20, context),
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
                   ),
@@ -282,7 +286,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     filled: true,
                     isDense: true,
                     constraints: BoxConstraints.tight(
-                      Size.fromHeight(figmaSpaceToPercentage(65, context)),
+                      Size.fromHeight(
+                          figmaSpaceToPercentageHeight(65, context)),
                     ),
                     focusColor: const Color.fromRGBO(66, 84, 164, 1),
                     enabledBorder: OutlineInputBorder(
@@ -300,7 +305,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                           textStyle: WidgetStateProperty.all<TextStyle>(
                             TextStyle(
                               color: const Color.fromRGBO(50, 50, 50, 0.6),
-                              fontSize: figmaSpaceToPercentage(15, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(15, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
@@ -321,7 +327,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   },
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(15, context),
+                  height: figmaSpaceToPercentageHeight(15, context),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -331,21 +337,21 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     "Color:",
                     style: TextStyle(
                       color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontSize: figmaSpaceToPercentage(20, context),
+                      fontSize: figmaSpaceToPercentageHeight(20, context),
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(5, context),
+                  height: figmaSpaceToPercentageHeight(5, context),
                 ),
                 DropdownMenu<Color>(
                   width: figmaSpaceToPercentageWidth(352, context),
                   initialSelection: carColrs['Black'],
                   textStyle: TextStyle(
                     color: Colors.white,
-                    fontSize: figmaSpaceToPercentage(20, context),
+                    fontSize: figmaSpaceToPercentageHeight(20, context),
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
                   ),
@@ -373,7 +379,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     filled: true,
                     isDense: true,
                     constraints: BoxConstraints.tight(
-                      Size.fromHeight(figmaSpaceToPercentage(65, context)),
+                      Size.fromHeight(
+                          figmaSpaceToPercentageHeight(65, context)),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -389,7 +396,8 @@ class _CarUserSignupState extends State<CarUserSignup> {
                           textStyle: WidgetStateProperty.all<TextStyle>(
                             TextStyle(
                               color: Colors.white,
-                              fontSize: figmaSpaceToPercentage(15, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(15, context),
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w500,
                             ),
@@ -427,7 +435,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
                     padding: EdgeInsets.symmetric(
-                      vertical: figmaSpaceToPercentage(10, context),
+                      vertical: figmaSpaceToPercentageHeight(10, context),
                       horizontal: figmaSpaceToPercentageWidth(30, context),
                     ),
                     shape: RoundedRectangleBorder(
@@ -435,7 +443,7 @@ class _CarUserSignupState extends State<CarUserSignup> {
                     ),
                     minimumSize: Size(
                       figmaSpaceToPercentageWidth(93, context),
-                      figmaSpaceToPercentage(40, context),
+                      figmaSpaceToPercentageHeight(40, context),
                     ),
                   ),
                   child: const Text(
@@ -448,12 +456,12 @@ class _CarUserSignupState extends State<CarUserSignup> {
                   ),
                 ),
                 SizedBox(
-                  height: figmaSpaceToPercentage(10, context),
+                  height: figmaSpaceToPercentageHeight(10, context),
                 ),
                 Center(
                   child: Image.asset(
                     carManufacturersLogo[_selectedManufacturer]!,
-                    height: figmaSpaceToPercentage(200, context),
+                    height: figmaSpaceToPercentageHeight(200, context),
                   ),
                 )
               ],

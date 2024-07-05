@@ -61,7 +61,7 @@ class ServiceHistoryWidget extends StatelessWidget {
                   month,
                   style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(23, context),
+                    fontSize: figmaSpaceToPercentageHeight(23, context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,
@@ -74,7 +74,7 @@ class ServiceHistoryWidget extends StatelessWidget {
                   year,
                   style: TextStyle(
                     color: const Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: figmaSpaceToPercentage(23, context),
+                    fontSize: figmaSpaceToPercentageHeight(23, context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,
@@ -83,7 +83,7 @@ class ServiceHistoryWidget extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: figmaSpaceToPercentage(15, context),
+              height: figmaSpaceToPercentageHeight(15, context),
             ),
             Row(
               // mainAxisAlignment: MainAxisAlignment.start,
@@ -99,7 +99,7 @@ class ServiceHistoryWidget extends StatelessWidget {
                       date,
                       style: TextStyle(
                         color: const Color.fromRGBO(0, 0, 0, 1),
-                        fontSize: figmaSpaceToPercentage(96, context),
+                        fontSize: figmaSpaceToPercentageHeight(96, context),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.none,
@@ -113,7 +113,7 @@ class ServiceHistoryWidget extends StatelessWidget {
                           'Th',
                           style: TextStyle(
                             color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: figmaSpaceToPercentage(43, context),
+                            fontSize: figmaSpaceToPercentageHeight(43, context),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.none,
@@ -130,7 +130,7 @@ class ServiceHistoryWidget extends StatelessWidget {
                   // flex: 1,
                   // fit: FlexFit.tight,
                   child: Container(
-                    height: figmaSpaceToPercentage(142, context),
+                    height: figmaSpaceToPercentageHeight(142, context),
                     width: figmaSpaceToPercentageWidth(213, context),
                     decoration: const BoxDecoration(
                       color: Color.fromRGBO(217, 217, 217, 1),
@@ -142,7 +142,7 @@ class ServiceHistoryWidget extends StatelessWidget {
                     child: Center(
                       child: Image.asset(
                         getImagePath(serviceType),
-                        height: figmaSpaceToPercentage(140, context),
+                        height: figmaSpaceToPercentageHeight(140, context),
                         width: figmaSpaceToPercentageWidth(160, context),
                         alignment: Alignment.center,
                       ),

@@ -41,7 +41,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
       child: Column(
         children: [
           SizedBox(
-            height: figmaSpaceToPercentage(55, context),
+            height: figmaSpaceToPercentageHeight(55, context),
           ),
           Row(
             children: [
@@ -59,7 +59,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
               ),
               // Container(
               //   width: figmaSpaceToPercentageWidth(60, context),
-              //   height: figmaSpaceToPercentage(40, context),
+              //   height: figmaSpaceToPercentageHeight(40, context),
               //   padding: const EdgeInsets.only(left: 1),
               //   margin: const EdgeInsets.only(left: 1),
               //   decoration: BoxDecoration(
@@ -73,7 +73,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
               //   ),
               //   child: Image.asset(
               //     ImageConstant.Actions,
-              //     height: figmaSpaceToPercentage(20, context),
+              //     height: figmaSpaceToPercentageHeight(20, context),
               //     width: figmaSpaceToPercentageWidth(20, context),
               //     alignment: Alignment.center,
               //   ),
@@ -81,7 +81,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(55, context),
+            height: figmaSpaceToPercentageHeight(55, context),
           ),
           Row(
             children: [
@@ -92,7 +92,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                 '${widget.categoryName} Service',
                 style: TextStyle(
                   color: const Color.fromRGBO(0, 0, 0, 1),
-                  fontSize: figmaSpaceToPercentage(21, context),
+                  fontSize: figmaSpaceToPercentageHeight(21, context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
@@ -101,7 +101,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(24, context),
+            height: figmaSpaceToPercentageHeight(24, context),
           ),
           Row(
             children: [
@@ -118,7 +118,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                     },
                     child: Container(
                       width: double.infinity,
-                      height: figmaSpaceToPercentage(49, context),
+                      height: figmaSpaceToPercentageHeight(49, context),
                       padding: const EdgeInsets.only(left: 1),
                       margin: const EdgeInsets.only(left: 1),
                       decoration: BoxDecoration(
@@ -141,12 +141,13 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: EdgeInsets.only(
-                              left: figmaSpaceToPercentage(21, context)),
+                              left: figmaSpaceToPercentageWidth(21, context)),
                           child: Text(
                             widget.text,
                             style: TextStyle(
                               color: const Color.fromRGBO(255, 255, 255, 1),
-                              fontSize: figmaSpaceToPercentage(17, context),
+                              fontSize:
+                                  figmaSpaceToPercentageHeight(17, context),
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
                             ),
@@ -160,14 +161,14 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
             ],
           ),
           SizedBox(
-            height: figmaSpaceToPercentage(35, context),
+            height: figmaSpaceToPercentageHeight(35, context),
           ),
           Expanded(
             child: Material(
               child: Expanded(
                 child: Container(
                   width: double.infinity,
-                  //height: figmaSpaceToPercentage(580, context),
+                  //height: figmaSpaceToPercentageHeight(580, context),
                   padding: const EdgeInsets.only(left: 1),
                   margin: const EdgeInsets.only(left: 1),
                   decoration: BoxDecoration(
@@ -194,7 +195,8 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                           child: Column(
                             children: [
                               SizedBox(
-                                height: figmaSpaceToPercentage(20, context),
+                                height:
+                                    figmaSpaceToPercentageHeight(20, context),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -203,8 +205,8 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                     'Details:',
                                     style: TextStyle(
                                       color: const Color.fromRGBO(0, 0, 0, 1),
-                                      fontSize:
-                                          figmaSpaceToPercentage(21, context),
+                                      fontSize: figmaSpaceToPercentageHeight(
+                                          21, context),
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w500,
                                       decoration: TextDecoration.none,
@@ -224,8 +226,8 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                       },
                                       child: Image.asset(
                                         ImageConstant.edit,
-                                        height:
-                                            figmaSpaceToPercentage(28, context),
+                                        height: figmaSpaceToPercentageHeight(
+                                            28, context),
                                         width: figmaSpaceToPercentageWidth(
                                             28, context),
                                         alignment: Alignment.center,
@@ -254,8 +256,9 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                               50,
                                               0.6,
                                             ),
-                                            fontSize: figmaSpaceToPercentage(
-                                                17, context),
+                                            fontSize:
+                                                figmaSpaceToPercentageHeight(
+                                                    17, context),
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.w400,
                                           ),
@@ -269,7 +272,8 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                         style: TextStyle(
                                           color:
                                               const Color.fromRGBO(0, 0, 0, 1),
-                                          fontSize: figmaSpaceToPercentage(
+                                          fontSize:
+                                              figmaSpaceToPercentageHeight(
                                             17,
                                             context,
                                           ),
@@ -279,7 +283,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                         textInputAction: TextInputAction.done,
                                       ),
                                       SizedBox(
-                                        height: figmaSpaceToPercentage(
+                                        height: figmaSpaceToPercentageHeight(
                                           15,
                                           context,
                                         ),
@@ -299,8 +303,9 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                         children: [
                                           //SizedBox(width: figmaSpaceToPercentageWidth(30, context)),
                                           Container(
-                                            height: figmaSpaceToPercentage(
-                                                150, context),
+                                            height:
+                                                figmaSpaceToPercentageHeight(
+                                                    150, context),
                                             width: figmaSpaceToPercentageWidth(
                                                 200, context),
                                             color: Colors.transparent,
@@ -312,7 +317,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                               children: [
                                                 SizedBox(
                                                     height:
-                                                        figmaSpaceToPercentage(
+                                                        figmaSpaceToPercentageHeight(
                                                             15, context)),
                                                 Text(
                                                   "XyZ Part",
@@ -321,7 +326,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                           const Color.fromRGBO(
                                                               0, 0, 0, 1),
                                                       fontSize:
-                                                          figmaSpaceToPercentage(
+                                                          figmaSpaceToPercentageHeight(
                                                               23, context),
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -331,7 +336,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                 ),
                                                 SizedBox(
                                                     height:
-                                                        figmaSpaceToPercentage(
+                                                        figmaSpaceToPercentageHeight(
                                                             1, context)),
                                                 Text(
                                                   "Service Charges",
@@ -340,7 +345,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                           const Color.fromRGBO(
                                                               0, 0, 0, 1),
                                                       fontSize:
-                                                          figmaSpaceToPercentage(
+                                                          figmaSpaceToPercentageHeight(
                                                               23, context),
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -349,7 +354,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                           TextDecoration.none),
                                                 ),
                                                 SizedBox(
-                                                    height: figmaSpaceToPercentage(
+                                                    height: figmaSpaceToPercentageHeight(
                                                         1,
                                                         context)), // Adjust space between '|' and 'rs50' as needed
                                                 Text(
@@ -359,7 +364,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                           const Color.fromRGBO(
                                                               0, 0, 0, 1),
                                                       fontSize:
-                                                          figmaSpaceToPercentage(
+                                                          figmaSpaceToPercentageHeight(
                                                               24, context),
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -377,7 +382,8 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                           Container(
                                             width:
                                                 1, // Width of the vertical line
-                                            height: figmaSpaceToPercentage(120,
+                                            height: figmaSpaceToPercentageHeight(
+                                                120,
                                                 context), // Height of the vertical line
                                             color: Colors
                                                 .black, // Color of the vertical line
@@ -388,8 +394,9 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                 20, context),
                                           ),
                                           Container(
-                                            height: figmaSpaceToPercentage(
-                                                150, context),
+                                            height:
+                                                figmaSpaceToPercentageHeight(
+                                                    150, context),
                                             width: figmaSpaceToPercentageWidth(
                                                 150, context),
                                             color: Colors.transparent,
@@ -401,7 +408,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                               children: [
                                                 SizedBox(
                                                     height:
-                                                        figmaSpaceToPercentage(
+                                                        figmaSpaceToPercentageHeight(
                                                             15, context)),
                                                 Text(
                                                   "Rs. 9500",
@@ -410,7 +417,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                           const Color.fromRGBO(
                                                               0, 0, 0, 1),
                                                       fontSize:
-                                                          figmaSpaceToPercentage(
+                                                          figmaSpaceToPercentageHeight(
                                                               23, context),
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -420,7 +427,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                 ),
                                                 SizedBox(
                                                     height:
-                                                        figmaSpaceToPercentage(
+                                                        figmaSpaceToPercentageHeight(
                                                             1, context)),
                                                 Text(
                                                   "Rs. 1500",
@@ -429,7 +436,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                           const Color.fromRGBO(
                                                               0, 0, 0, 1),
                                                       fontSize:
-                                                          figmaSpaceToPercentage(
+                                                          figmaSpaceToPercentageHeight(
                                                               23, context),
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -438,7 +445,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                           TextDecoration.none),
                                                 ),
                                                 SizedBox(
-                                                    height: figmaSpaceToPercentage(
+                                                    height: figmaSpaceToPercentageHeight(
                                                         1,
                                                         context)), // Adjust space between '|' and 'rs50' as needed
                                                 Text(
@@ -448,7 +455,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                                           const Color.fromRGBO(
                                                               0, 0, 0, 1),
                                                       fontSize:
-                                                          figmaSpaceToPercentage(
+                                                          figmaSpaceToPercentageHeight(
                                                               24, context),
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -462,8 +469,8 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                         ],
                                       ),
                                       SizedBox(
-                                        height:
-                                            figmaSpaceToPercentage(20, context),
+                                        height: figmaSpaceToPercentageHeight(
+                                            20, context),
                                       ),
                                       if (isEditing)
                                         Row(children: [
@@ -493,8 +500,9 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                               width:
                                                   figmaSpaceToPercentageWidth(
                                                       366, context),
-                                              height: figmaSpaceToPercentage(
-                                                  40, context),
+                                              height:
+                                                  figmaSpaceToPercentageHeight(
+                                                      40, context),
                                               child: const Center(
                                                 child: Text(
                                                   'Done',
@@ -510,7 +518,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                           ),
                                         ]),
                                       SizedBox(
-                                          height: figmaSpaceToPercentage(
+                                          height: figmaSpaceToPercentageHeight(
                                               10, context)),
                                       if (isEditing)
                                         Row(children: [
@@ -548,8 +556,9 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                               width:
                                                   figmaSpaceToPercentageWidth(
                                                       366, context),
-                                              height: figmaSpaceToPercentage(
-                                                  40, context),
+                                              height:
+                                                  figmaSpaceToPercentageHeight(
+                                                      40, context),
                                               child: const Center(
                                                 child: Text(
                                                   'PENDING',
@@ -565,7 +574,7 @@ class _ServiceCardDetailRepairState extends State<ServiceCardDetailRepair> {
                                           ),
                                         ]),
                                       SizedBox(
-                                        height: figmaSpaceToPercentage(
+                                        height: figmaSpaceToPercentageHeight(
                                           10,
                                           context,
                                         ),

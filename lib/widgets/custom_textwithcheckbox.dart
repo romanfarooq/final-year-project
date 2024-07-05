@@ -46,7 +46,7 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
                       widget.text,
                       style: TextStyle(
                           color: const Color.fromRGBO(0, 0, 0, 1),
-                          fontSize: figmaSpaceToPercentage(16, context),
+                          fontSize: figmaSpaceToPercentageHeight(16, context),
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           decoration: TextDecoration.none),
@@ -62,7 +62,7 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
                       },
                       child: Container(
                         width: figmaSpaceToPercentageWidth(18, context),
-                        height: figmaSpaceToPercentage(18, context),
+                        height: figmaSpaceToPercentageHeight(18, context),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -80,7 +80,7 @@ class _TextWithCheckboxState extends State<TextWithCheckbox> {
                 ],
               ),
               SizedBox(
-                height: figmaSpaceToPercentage(8, context),
+                height: figmaSpaceToPercentageHeight(8, context),
               ), // Add 10 pixels of height between widgets
             ],
           ),
