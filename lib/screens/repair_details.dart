@@ -1,9 +1,13 @@
-import 'package:car_care/models/car_info.dart';
-import 'package:car_care/models/service_history.dart';
+import 'package:car_care/utils/toast_message.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
+import '../models/bidding_info.dart';
+import '../models/car_info.dart';
+import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 
 class RepairDetails extends StatefulWidget {
@@ -259,20 +263,35 @@ class _RepairDetailsState extends State<RepairDetails> {
                             size: 35,
                           ),
                           onPressed: () async {
-                            // Navigator.of(context).pop();
-                            final carUserInfo = context.read<UserCarsInfo>();
-                            await carUserInfo.addOrderHistory(
-                              ServiceHistory(
-                                serviceType: widget.repairType,
-                                serviceItem: widget.repairType,
-                                serviceCost: 0,
-                                partCost: 0,
-                                serviceCenter: '',
-                                serviceNote: _descriptionController.text,
-                                serviceDate: carUserInfo.getBookingDate ??
-                                    DateTime.now(),
-                              ),
-                            );
+                            try {
+                              final Location location = Location();
+                              LocationData locationData =
+                                  await location.getLocation();
+                              final LatLng currentLocation = LatLng(
+                                locationData.latitude!,
+                                locationData.longitude!,
+                              );
+                              if (context.mounted) {
+                                final carUserInfo =
+                                    context.read<UserCarsInfo>();
+                                final biddingInfo = context.read<BiddingInfo>();
+                                await biddingInfo.setBidding(
+                                  carUserInfo.getUid!,
+                                  widget.repairType,
+                                  widget.text,
+                                  _descriptionController.text.trim(),
+                                  carUserInfo.getBookingDate ?? DateTime.now(),
+                                  currentLocation,
+                                );
+                              }
+                            } catch (error) {
+                              ToastMessage().toastmessage('Error: $error');
+                            }
+                            if (context.mounted) {
+                              Navigator.of(context).pushNamed(
+                                AppRoutes.biddingScreen,
+                              );
+                            }
                           },
                         ),
                       ),

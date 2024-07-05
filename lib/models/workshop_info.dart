@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import './service_history.dart';
 import '../utils/toast_message.dart';
+import './bidding_info.dart';
 
 class WorkshopInfo with ChangeNotifier {
   String? uid;
@@ -16,7 +16,7 @@ class WorkshopInfo with ChangeNotifier {
   String? description;
   String? openingHours;
   String? website;
-  List<ServiceHistory> serviceHistory;
+  List<Bidding> serviceHistory;
   LatLng? location;
 
   Map<String, bool> electricalRepairs;
@@ -272,19 +272,6 @@ class WorkshopInfo with ChangeNotifier {
       notifyListeners();
     } catch (error) {
       ToastMessage().toastmessage('Error updating rating: $error');
-    }
-  }
-
-  Future<void> updateServiceHistory(
-    List<ServiceHistory> newServiceHistory,
-  ) async {
-    try {
-      await _firestore.collection('workshops').doc(uid).update(
-          {'serviceHistory': newServiceHistory.map((e) => e.toMap()).toList()});
-      serviceHistory = newServiceHistory;
-      notifyListeners();
-    } catch (error) {
-      ToastMessage().toastmessage('Error updating service history: $error');
     }
   }
 

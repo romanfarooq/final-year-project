@@ -1,33 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../screens/service_history.dart';
 import '../utils/figma_space_to_percentage.dart';
 
 class Billing extends StatelessWidget {
   const Billing({super.key});
 
-  final String date = '15';
-  final String month = 'June';
-  final String year = '2021';
-  final String serviceType = 'Mechanical';
-
   @override
   Widget build(BuildContext context) {
-    String getImagePath(String serviceType) {
-      switch (serviceType) {
-        case 'Mechanical':
-          return 'assets/images/mechanical1.png';
-        case 'Electrical':
-          return 'assets/images/power1.png';
-        case 'DentingNpainting':
-          return 'assets/images/dentingNpainting1.png';
-        case 'Tire':
-          return 'assets/images/tireservices1.png';
-        default:
-          return 'assets/images/setting.png';
-      }
-    }
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -246,9 +225,6 @@ class Billing extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-
-                  // two buttons pending color blue and then green Satisfied button
-
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
@@ -278,11 +254,9 @@ class Billing extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   SizedBox(
                     height: figmaSpaceToPercentageHeight(30, context),
                   ),
-
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(

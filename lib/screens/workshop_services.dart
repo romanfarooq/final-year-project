@@ -1,7 +1,7 @@
-import 'package:car_care/routes/app_routes.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
+import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 

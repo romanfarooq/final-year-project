@@ -1,7 +1,8 @@
-import 'package:car_care/routes/app_routes.dart';
-import 'package:car_care/utils/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../routes/app_routes.dart';
+import '../utils/toast_message.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({super.key});

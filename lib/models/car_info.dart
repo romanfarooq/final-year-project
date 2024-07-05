@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../utils/toast_message.dart';
-import './service_history.dart';
+import './bidding_info.dart';
 
 class CarInfo {
   String manufacturer;
@@ -21,8 +21,7 @@ class CarInfo {
   String vin;
   DateTime? lastOilChangeDate;
   double lastOilChangeDistance;
-  List<ServiceHistory> serviceHistory;
-  List<ServiceHistory> orderHistory;
+  List<Bidding> serviceHistory;
   String location;
   Map<String, bool> carFeatures;
   String imgPath;
@@ -43,7 +42,6 @@ class CarInfo {
     this.lastOilChangeDistance = 0,
     this.location = "Lahore, Pakistan",
     this.serviceHistory = const [],
-    this.orderHistory = const [],
     carFeatures,
     lastOilChangeDate,
   })  : carFeatures = carFeatures ??
@@ -85,10 +83,7 @@ class CarInfo {
       lastOilChangeDistance: data['lastOilChangeDistance'],
       lastOilChangeDate: (data['lastOilChangeDate'] as Timestamp).toDate(),
       serviceHistory: (data['serviceHistory'] as List<dynamic>)
-          .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
-          .toList(),
-      orderHistory: (data['orderHistory'] as List<dynamic>)
-          .map((e) => ServiceHistory.fromMap(e as Map<String, dynamic>))
+          .map((e) => Bidding.fromMap(e as Map<String, dynamic>))
           .toList(),
       location: data['location'],
       carFeatures: Map<String, bool>.from(data['carFeatures']),
@@ -111,7 +106,6 @@ class CarInfo {
       'lastOilChangeDistance': lastOilChangeDistance,
       'lastOilChangeDate': lastOilChangeDate,
       'serviceHistory': serviceHistory.map((e) => e.toMap()).toList(),
-      'orderHistory': orderHistory.map((e) => e.toMap()).toList(),
       'location': location,
       'carFeatures': carFeatures,
     };
@@ -229,7 +223,7 @@ class UserCarsInfo with ChangeNotifier {
 
   Future<void> updateServiceHistory(
     String licensePlate,
-    List<ServiceHistory> serviceHistory,
+    List<Bidding> serviceHistory,
   ) async {
     try {
       final carRef = _firestore
@@ -390,7 +384,7 @@ class UserCarsInfo with ChangeNotifier {
   }
 
   Future<void> addServiceHistory(
-    ServiceHistory serviceHistory,
+    Bidding serviceHistory,
   ) async {
     int index = _userCars.indexWhere(
       (element) => element.licensePlate == _selectedCar.licensePlate,
@@ -412,33 +406,6 @@ class UserCarsInfo with ChangeNotifier {
       } catch (error) {
         ToastMessage().toastmessage(
           'Failed to add service history: $error',
-        );
-      }
-    }
-  }
-
-  Future<void> addOrderHistory(
-    ServiceHistory orderHistory,
-  ) async {
-    int index = _userCars.indexWhere(
-      (element) => element.licensePlate == _selectedCar.licensePlate,
-    );
-    if (index != -1) {
-      _userCars[index].orderHistory.add(orderHistory);
-
-      try {
-        final carRef = _firestore
-            .collection('bids')
-            .doc(_uid)
-            .collection('cars')
-            .doc(_selectedCar.licensePlate);
-        await carRef.update({
-          'bids': _userCars[index].orderHistory.map((e) => e.toMap()).toList(),
-        });
-        notifyListeners();
-      } catch (error) {
-        ToastMessage().toastmessage(
-          'Failed to add order history: $error',
         );
       }
     }

@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
-// import '../models/car_info.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:provider/provider.dart';
-
+import '../models/bidding_info.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/google_map_display.dart';
 
-class BiddingScreen extends StatefulWidget {
-  const BiddingScreen({super.key});
+class UserBiddingScreen extends StatefulWidget {
+  const UserBiddingScreen({super.key});
 
   @override
-  State<BiddingScreen> createState() => _BiddingScreenState();
+  State<UserBiddingScreen> createState() => _UserBiddingScreenState();
 }
 
-class _BiddingScreenState extends State<BiddingScreen> {
+class _UserBiddingScreenState extends State<UserBiddingScreen> {
   final bids = [
     {
       'name': 'Workshop 1',
@@ -53,7 +51,7 @@ class _BiddingScreenState extends State<BiddingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final carUserInfo = context.read<UserCarsInfo>();
+    final biddingInfo = context.read<BiddingInfo>();
     return Scaffold(
       appBar: appBar(),
       body: Column(
@@ -131,7 +129,12 @@ class _BiddingScreenState extends State<BiddingScreen> {
                   ],
                 ),
               ),
-              onPressed: () {},
+              onPressed: () async {
+                await biddingInfo.deleteBidding();
+                if (context.mounted) {
+                  Navigator.pop(context);
+                }
+              },
             ),
           ),
         ],
@@ -211,7 +214,7 @@ class BidTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
       ),
       color: Colors.lightBlue[100],
-      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Expanded(
@@ -257,12 +260,12 @@ class BidTile extends StatelessWidget {
                       '${price.toInt()}',
                     ),
                     IconButton(
-                      icon: Icon(Icons.cancel),
+                      icon: const Icon(Icons.cancel),
                       onPressed: () {},
                       color: Colors.red,
                     ),
                     IconButton(
-                      icon: Icon(Icons.check_circle),
+                      icon: const Icon(Icons.check_circle),
                       onPressed: () {},
                       color: Colors.green,
                     ),

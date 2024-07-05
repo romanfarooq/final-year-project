@@ -1,10 +1,15 @@
 import 'dart:math';
 
+import 'package:car_care/utils/toast_message.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
+import '../models/bidding_info.dart';
 import '../models/car_info.dart';
+import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 
@@ -244,8 +249,35 @@ class _OilChangeState extends State<OilChange> {
                           color: Colors.black,
                           size: 35,
                         ),
-                        onPressed: () {
-                          print('Selected Oil ${oilBrands[_selectedIndex]}');
+                        onPressed: () async {
+                          try {
+                            final Location location = Location();
+                            LocationData locationData =
+                                await location.getLocation();
+                            final LatLng currentLocation = LatLng(
+                              locationData.latitude!,
+                              locationData.longitude!,
+                            );
+                            if (context.mounted) {
+                              final carUserInfo = context.read<UserCarsInfo>();
+                              final biddingInfo = context.read<BiddingInfo>();
+                              await biddingInfo.setBidding(
+                                carUserInfo.getUid!,
+                                'Oil Change',
+                                oilBrands[_selectedIndex]['oilBrand']!,
+                                oilBrands[_selectedIndex]['oilType']!,
+                                carUserInfo.getBookingDate ?? DateTime.now(),
+                                currentLocation,
+                              );
+                            }
+                          } catch (error) {
+                            ToastMessage().toastmessage('Error: $error');
+                          }
+                          if (context.mounted) {
+                            Navigator.of(context).pushNamed(
+                              AppRoutes.biddingScreen,
+                            );
+                          }
                         },
                       ),
                     ),
