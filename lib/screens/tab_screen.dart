@@ -22,9 +22,9 @@ class _BottomTabsState extends State<BottomTabs> {
       color: Colors.white,
     ),
     const UserHomeScreen(),
-    Container(
-      color: Colors.white,
-    ),
+    // Container(
+    //   color: Colors.white,
+    // ),
   ];
 
   @override
@@ -42,10 +42,10 @@ class _BottomTabsState extends State<BottomTabs> {
             Navigator.of(context).pushNamed(AppRoutes.carUserSignup);
             return;
           }
-          if (index == 4) {
-            Navigator.of(context).pushNamed(AppRoutes.accountSettings);
-            return;
-          }
+          // if (index == 4) {
+          //   Navigator.of(context).pushNamed(AppRoutes.accountSettings);
+          //   return;
+          // }
           setState(() {
             _selectedIndex = index;
           });
@@ -83,14 +83,14 @@ class _BottomTabsState extends State<BottomTabs> {
             ),
             label: '',
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(
-              size: 30,
-              color: Color.fromARGB(150, 0, 0, 0),
-              Icons.settings_outlined,
-            ),
-            label: '',
-          ),
+          // const BottomNavigationBarItem(
+          //   icon: Icon(
+          //     size: 30,
+          //     color: Color.fromARGB(150, 0, 0, 0),
+          //     Icons.settings_outlined,
+          //   ),
+          //   label: '',
+          // ),
         ],
       ),
     );
