@@ -1,3 +1,4 @@
+import 'package:car_care/utils/toast_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -50,7 +51,7 @@ class _UserBiddingScreenState extends State<UserBiddingScreen> {
           ),
           SizedBox(height: figmaSpaceToPercentageHeight(20, context)),
           Expanded(
-            child: StreamBuilder<QuerySnapshot>(
+            child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
               stream: FirebaseFirestore.instance
                   .collection('biddings')
                   .doc(carUserInfo.getUid)
@@ -69,7 +70,7 @@ class _UserBiddingScreenState extends State<UserBiddingScreen> {
                     final bid = bids[index];
                     return BidTile(
                       name: bid['serviceCenter'] as String,
-                      price: bid['serviceCost'] as double,
+                      price: double.parse(bid['serviceCost'].toString()),
                       workshopId: bid['serviceCenterId'] as String,
                       userId: carUserInfo.getUid!,
                     );
@@ -227,39 +228,49 @@ class BidTile extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.cancel),
                       onPressed: () async {
-                        await FirebaseFirestore.instance
-                            .collection('biddings')
-                            .doc(userId)
-                            .collection('offers')
-                            .doc(workshopId)
-                            .delete();
+                        try {
+                          print('userId: $userId');
+                          print('workshopId: $workshopId');
+                          await FirebaseFirestore.instance
+                              .collection('biddings')
+                              .doc(userId)
+                              .collection('offers')
+                              .doc(workshopId)
+                              .delete();
+                        } catch (error) {
+                          ToastMessage().toastmessage('Error $error');
+                        }
                       },
                       color: Colors.red,
                     ),
                     IconButton(
                       icon: const Icon(Icons.check_circle),
                       onPressed: () async {
-                        await FirebaseFirestore.instance
-                            .collection('biddings')
-                            .doc(userId)
-                            .collection('offers')
-                            .doc(workshopId)
-                            .update({'isAccepted': true});
-                        final user = context.read<UserCarsInfo>();
-                        final lincense = user.getSelectedCarLicensePlate;
-                        final data = await FirebaseFirestore.instance
-                            .collection('users')
-                            .doc(userId)
-                            .collection('cars')
-                            .doc(lincense)
-                            .get();
-                        final cars = data.data() as Map<String, dynamic>;
-                        final serviceHistory = cars['serviceHistory'];
-                        await user.updateServiceHistory(
-                          lincense,
-                          serviceHistory,
-                        );
-                        await context.read<BiddingInfo>().deleteBidding();
+                        try {
+                          await FirebaseFirestore.instance
+                              .collection('biddings')
+                              .doc(userId)
+                              .collection('offers')
+                              .doc(workshopId)
+                              .update({'isAccepted': true});
+                          final user = context.read<UserCarsInfo>();
+                          final lincense = user.getSelectedCarLicensePlate;
+                          final data = await FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(userId)
+                              .collection('cars')
+                              .doc(lincense)
+                              .get();
+                          final cars = data.data() as Map<String, dynamic>;
+                          final serviceHistory = cars['serviceHistory'];
+                          await user.updateServiceHistory(
+                            lincense,
+                            serviceHistory,
+                          );
+                          await context.read<BiddingInfo>().deleteBidding();
+                        } catch (error) {
+                          ToastMessage().toastmessage('Error $error');
+                        }
 
                         Navigator.pop(context);
                       },

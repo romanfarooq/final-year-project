@@ -137,7 +137,8 @@ class BiddingInfo with ChangeNotifier {
           .collection('biddings')
           .doc(userId)
           .collection('offers')
-          .add(bidding.toMap());
+          .doc(workshopId)
+          .set(bidding.toMap());
       _biddings.add(bidding);
       notifyListeners();
     } catch (error) {
