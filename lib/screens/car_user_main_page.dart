@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../utils/toast_message.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../models/car_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/image_constant.dart';
@@ -10,11 +11,21 @@ import '../widgets/graph_km_driven.dart';
 import '../widgets/text_container_carusermain.dart';
 
 class CarUserMain extends StatelessWidget {
+
   const CarUserMain({super.key});
+  Future<void> _logout(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      ToastMessage().toastmessage('Logged out');
+    } catch (error) {
+      ToastMessage().toastmessage('Error logging out: $error');
+    }
+  }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       body: const SingleChildScrollView(
         child: Column(
           children: [
@@ -45,7 +56,7 @@ class CarUserMain extends StatelessWidget {
     );
   }
 
-  AppBar appBar() {
+  AppBar appBar(BuildContext context) {
     return AppBar(
       title: Container(
         alignment: Alignment.centerLeft,
@@ -53,24 +64,7 @@ class CarUserMain extends StatelessWidget {
         child: Image.asset(ImageConstant.carcare1, height: 25),
       ),
       actions: [
-        Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: const Color.fromRGBO(217, 217, 217, 0.5),
-                borderRadius: BorderRadius.circular(48),
-                shape: BoxShape.rectangle,
-              ),
-              margin: const EdgeInsets.only(right: 5, top: 5, left: 10),
-              width: 60,
-              height: 38,
-              child: IconButton(
-                icon: const Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-            ),
-          ],
-        ),
+
         Column(
           children: [
             Container(
@@ -87,8 +81,17 @@ class CarUserMain extends StatelessWidget {
               width: 60,
               height: 38,
               child: IconButton(
-                icon: const Icon(Icons.messenger_rounded),
-                onPressed: () {},
+                icon: const Icon(Icons.logout),
+                onPressed: () async{
+                    await _logout(context);
+                    if (context.mounted) {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        AppRoutes.selectUserScreen,
+                            (route) => false,
+                      );
+
+                  }
+                },
               ),
             ),
           ],
