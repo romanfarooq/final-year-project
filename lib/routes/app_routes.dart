@@ -36,6 +36,7 @@ import '../screens/workshop_services.dart';
 import '../screens/workshop_signup.dart';
 import '../screens/car_user_explor.dart';
 import '../screens/bidding_screen.dart';
+import '../screens/car_emergency.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -77,6 +78,7 @@ class AppRoutes {
   static const String workhopBottomTab = '/workshop_tab_screen';
   static const String carUserExplor = '/car_user_explor';
   static const String biddingScreen = '/bidding_screen';
+  static const String carEmergency = '/car_emergency';
 
   static Map<String, WidgetBuilder> routes = {
     forgetScreen: (ctx) => const ForgetScreen(),
@@ -116,5 +118,6 @@ class AppRoutes {
     workhopBottomTab: (ctx) => const WorkshopBottomTabs(),
     carUserExplor: (ctx) => const Explore(),
     biddingScreen: (ctx) => const UserBiddingScreen(),
+    carEmergency: (ctx) => const CarEmergency(),
   };
 }

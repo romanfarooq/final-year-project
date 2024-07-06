@@ -1,3 +1,5 @@
+import 'package:car_care/routes/app_routes.dart';
+import 'package:car_care/screens/billing.dart';
 import 'package:car_care/utils/toast_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +75,7 @@ class _UserBiddingScreenState extends State<UserBiddingScreen> {
                       price: double.parse(bid['serviceCost'].toString()),
                       workshopId: bid['serviceCenterId'] as String,
                       userId: carUserInfo.getUid!,
+                      serviceCost: bid['serviceCost'] as int,
                     );
                   },
                 );
@@ -172,6 +175,7 @@ class BidTile extends StatelessWidget {
   final double price;
   final String workshopId;
   final String userId;
+  final int serviceCost;
 
   const BidTile({
     super.key,
@@ -179,6 +183,7 @@ class BidTile extends StatelessWidget {
     required this.price,
     required this.workshopId,
     required this.userId,
+    required this.serviceCost,
   });
 
   @override
@@ -247,32 +252,33 @@ class BidTile extends StatelessWidget {
                       icon: const Icon(Icons.check_circle),
                       onPressed: () async {
                         try {
-                          await FirebaseFirestore.instance
-                              .collection('biddings')
-                              .doc(userId)
-                              .collection('offers')
-                              .doc(workshopId)
-                              .update({'isAccepted': true});
-                          final user = context.read<UserCarsInfo>();
-                          final lincense = user.getSelectedCarLicensePlate;
-                          final data = await FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(userId)
-                              .collection('cars')
-                              .doc(lincense)
-                              .get();
-                          final cars = data.data() as Map<String, dynamic>;
-                          final serviceHistory = cars['serviceHistory'];
-                          await user.updateServiceHistory(
-                            lincense,
-                            serviceHistory,
-                          );
+                          // await FirebaseFirestore.instance
+                          //     .collection('biddings')
+                          //     .doc(userId)
+                          //     .collection('offers')
+                          //     .doc(workshopId)
+                          //     .update({'isAccepted': true});
+                          // final data = await FirebaseFirestore.instance
+                          //     .doc(userId)
+                          //     .collection('offers')
+                          //     .doc(workshopId)
+                          //     .get();
+                          // final user = context.read<UserCarsInfo>();
+
+                          // final serviceHistory = data.data() as Bidding;
+
+                          // print('serviceHistory: $serviceHistory');
+                          // await user.addServiceHistory(serviceHistory);
                           await context.read<BiddingInfo>().deleteBidding();
                         } catch (error) {
                           ToastMessage().toastmessage('Error $error');
                         }
 
-                        Navigator.pop(context);
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const Billing(),
+                          ),
+                        );
                       },
                       color: Colors.green,
                     ),

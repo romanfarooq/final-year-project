@@ -11,7 +11,6 @@ import '../widgets/graph_km_driven.dart';
 import '../widgets/text_container_carusermain.dart';
 
 class CarUserMain extends StatelessWidget {
-
   const CarUserMain({super.key});
   Future<void> _logout(BuildContext context) async {
     try {
@@ -21,9 +20,9 @@ class CarUserMain extends StatelessWidget {
       ToastMessage().toastmessage('Error logging out: $error');
     }
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: appBar(context),
       body: const SingleChildScrollView(
@@ -64,7 +63,6 @@ class CarUserMain extends StatelessWidget {
         child: Image.asset(ImageConstant.carcare1, height: 25),
       ),
       actions: [
-
         Column(
           children: [
             Container(
@@ -82,14 +80,13 @@ class CarUserMain extends StatelessWidget {
               height: 38,
               child: IconButton(
                 icon: const Icon(Icons.logout),
-                onPressed: () async{
-                    await _logout(context);
-                    if (context.mounted) {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        AppRoutes.selectUserScreen,
-                            (route) => false,
-                      );
-
+                onPressed: () async {
+                  await _logout(context);
+                  if (context.mounted) {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      AppRoutes.selectUserScreen,
+                      (route) => false,
+                    );
                   }
                 },
               ),
@@ -224,8 +221,7 @@ class EmergencyRoadsideAssistanceButton extends StatelessWidget {
         fixedSize: const Size(146, 98), // Button size
       ),
       onPressed: () {
-        // Define the action when the button is pressed
-        //print('Wifi Tethering Button Pressed');
+        Navigator.of(context).pushNamed(AppRoutes.carEmergency);
       },
       child: const Icon(
         Icons.wifi_tethering, // Wifi tethering icon

@@ -1,9 +1,77 @@
+import 'package:car_care/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 
-class Billing extends StatelessWidget {
+class Billing extends StatefulWidget {
   const Billing({super.key});
+
+  @override
+  State<Billing> createState() => _BillingState();
+}
+
+class _BillingState extends State<Billing> {
+  void _showRatingDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        double _rating = 0.0;
+        TextEditingController _descriptionController = TextEditingController();
+
+        return AlertDialog(
+          title: Text('Rate the Service'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FittedBox(
+                child: RatingBar.builder(
+                  initialRating: 0,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                  itemBuilder: (context, _) => Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) {
+                    _rating = rating;
+                  },
+                ),
+              ),
+              SizedBox(height: 16.0),
+              TextField(
+                controller: _descriptionController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Description',
+                ),
+                maxLines: 3,
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Handle the submission of the rating and description
+                Navigator.pushNamed(context, AppRoutes.bottomTab);
+                ;
+              },
+              child: Text('Submit'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +250,7 @@ class Billing extends StatelessWidget {
                               height: figmaSpaceToPercentageHeight(15, context),
                             ),
                             Text(
-                              "Rs. 9500",
+                              "Rs. 0",
                               style: TextStyle(
                                   color: const Color.fromRGBO(0, 0, 0, 1),
                                   fontSize:
@@ -226,7 +294,9 @@ class Billing extends StatelessWidget {
                     height: 10,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.bottomTab);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(76, 93, 169, 1),
                       padding: EdgeInsets.symmetric(
@@ -258,7 +328,9 @@ class Billing extends StatelessWidget {
                     height: figmaSpaceToPercentageHeight(30, context),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _showRatingDialog();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(96, 189, 52, 1),
                       padding: EdgeInsets.symmetric(
