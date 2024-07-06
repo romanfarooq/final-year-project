@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../models/bidding_info.dart';
@@ -257,7 +255,11 @@ class BidTile extends StatelessWidget {
                             .get();
                         final cars = data.data() as Map<String, dynamic>;
                         final serviceHistory = cars['serviceHistory'];
-                        user.updateServiceHistory(lincense, serviceHistory);
+                        await user.updateServiceHistory(
+                          lincense,
+                          serviceHistory,
+                        );
+                        await context.read<BiddingInfo>().deleteBidding();
 
                         Navigator.pop(context);
                       },
