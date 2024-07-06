@@ -6,8 +6,16 @@ import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 import '../widgets/custom_service_widget.dart';
 
-class CarCareRequests extends StatelessWidget {
+class CarCareRequests extends StatefulWidget {
   const CarCareRequests({super.key});
+
+  @override
+  State<CarCareRequests> createState() => _CarCareRequestsState();
+}
+
+class _CarCareRequestsState extends State<CarCareRequests> {
+  final Set<int> _hiddenItems = {};
+
   @override
   Widget build(BuildContext context) {
     final biddingInfo = context.watch<BiddingInfo>();
@@ -40,13 +48,24 @@ class CarCareRequests extends StatelessWidget {
                   return ListView.builder(
                     itemCount: biddings.length,
                     itemBuilder: (context, index) {
+                      if (_hiddenItems.contains(index)) {
+                        return const SizedBox
+                            .shrink(); // Return an empty widget if the item is hidden
+                      }
                       final bidding = biddings[index];
                       return CustomServiceWidget(
+                        userId: bidding['userId'],
+                        userLocation: bidding['userLocation'],
                         carName: bidding['carName'],
                         ownerName: bidding['ownerName'],
                         carModel: bidding['carModel'],
                         issueType: bidding['serviceType'],
                         issueDescription: bidding['serviceDescription'],
+                        onDismiss: () {
+                          setState(() {
+                            _hiddenItems.add(index);
+                          });
+                        },
                       );
                     },
                   );

@@ -1,7 +1,6 @@
-import 'package:car_care/utils/fetch_distance.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -72,8 +71,9 @@ class _UserBiddingScreenState extends State<UserBiddingScreen> {
                     final bid = bids[index];
                     return BidTile(
                       name: bid['serviceCenter'] as String,
-                      distance: bid['distance'] as int,
                       price: bid['serviceCost'] as double,
+                      workshopId: bid['serviceCenterId'] as String,
+                      userId: carUserInfo.getUid!,
                     );
                   },
                 );
@@ -170,14 +170,16 @@ AppBar appBar() {
 
 class BidTile extends StatelessWidget {
   final String name;
-  final int distance;
   final double price;
+  final String workshopId;
+  final String userId;
 
   const BidTile({
     super.key,
     required this.name,
-    required this.distance,
     required this.price,
+    required this.workshopId,
+    required this.userId,
   });
 
   @override
@@ -199,20 +201,12 @@ class BidTile extends StatelessWidget {
                   width: figmaSpaceToPercentageWidth(130, context),
                   alignment: Alignment.centerLeft,
                   child: FittedBox(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          name,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Inter',
-                          ),
-                        ),
-                        Text(
-                          'Distance: ${NumberFormat.compact().format(distance)} km',
-                        ),
-                      ],
+                    child: Text(
+                      name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Inter',
+                      ),
                     ),
                   ),
                 ),
@@ -234,12 +228,39 @@ class BidTile extends StatelessWidget {
                     ),
                     IconButton(
                       icon: const Icon(Icons.cancel),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await FirebaseFirestore.instance
+                            .collection('biddings')
+                            .doc(userId)
+                            .collection('offers')
+                            .doc(workshopId)
+                            .delete();
+                      },
                       color: Colors.red,
                     ),
                     IconButton(
                       icon: const Icon(Icons.check_circle),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await FirebaseFirestore.instance
+                            .collection('biddings')
+                            .doc(userId)
+                            .collection('offers')
+                            .doc(workshopId)
+                            .update({'isAccepted': true});
+                        final user = context.read<UserCarsInfo>();
+                        final lincense = user.getSelectedCarLicensePlate;
+                        final data = await FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(userId)
+                            .collection('cars')
+                            .doc(lincense)
+                            .get();
+                        final cars = data.data() as Map<String, dynamic>;
+                        final serviceHistory = cars['serviceHistory'];
+                        user.updateServiceHistory(lincense, serviceHistory);
+
+                        Navigator.pop(context);
+                      },
                       color: Colors.green,
                     ),
                   ],

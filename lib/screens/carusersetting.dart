@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../models/bidding_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/toast_message.dart';
 
@@ -61,6 +63,7 @@ class AccountSettingsScreen extends StatelessWidget {
                       leading: const Icon(Icons.logout),
                       title: const Text('Logout'),
                       onTap: () async {
+                        await context.read<BiddingInfo>().deleteBidding();
                         await _logout(context);
                         if (context.mounted) {
                           Navigator.of(context).pushNamedAndRemoveUntil(

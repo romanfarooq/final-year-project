@@ -11,7 +11,6 @@ class Bidding {
   String serviceCenter;
   bool isAccepted = false;
   LatLng serviceLocation = const LatLng(0, 0);
-  int distance = 0;
 
   Bidding({
     required this.serviceCost,
@@ -20,7 +19,6 @@ class Bidding {
     required this.isAccepted,
     required this.serviceLocation,
     required this.serviceCenterId,
-    required this.distance,
   });
 
   factory Bidding.fromMap(Map<String, dynamic> data) {
@@ -29,7 +27,6 @@ class Bidding {
       serviceCost: data['serviceCost'],
       isAccepted: data['isAccepted'],
       partCost: data['partCost'],
-      distance: data['distance'],
       serviceCenter: data['serviceCenter'],
       serviceLocation: LatLng(data['serviceLocation']['latitude'],
           data['serviceLocation']['longitude']),
@@ -43,7 +40,6 @@ class Bidding {
       'partCost': partCost,
       'serviceCenter': serviceCenter,
       'isAccepted': isAccepted,
-      'distance': distance,
       'serviceLocation': {
         'latitude': serviceLocation.latitude,
         'longitude': serviceLocation.longitude,
@@ -130,12 +126,34 @@ class BiddingInfo with ChangeNotifier {
     }
   }
 
-  Future<void> addBidding(Bidding bidding) async {
+  Future<void> addBidding(
+    Bidding bidding,
+    String userId,
+    String workshopId,
+  ) async {
     try {
       _biddings.add(bidding);
-      await _ref.collection('biddings').doc(_userId).update({
-        'biddings': _biddings.map((e) => e.toMap()).toList(),
-      });
+      await _ref
+          .collection('biddings')
+          .doc(userId)
+          .collection('offers')
+          .add(bidding.toMap());
+      _biddings.add(bidding);
+      notifyListeners();
+    } catch (error) {
+      ToastMessage().toastmessage('Error: $error');
+    }
+  }
+
+  Future<void> deleteBiddingFromUser(String userId, String workshopId) async {
+    try {
+      await _ref
+          .collection('biddings')
+          .doc(userId)
+          .collection('offers')
+          .doc(workshopId)
+          .delete();
+      _biddings.removeWhere((element) => element.serviceCenterId == workshopId);
       notifyListeners();
     } catch (error) {
       ToastMessage().toastmessage('Error: $error');
@@ -179,5 +197,18 @@ class BiddingInfo with ChangeNotifier {
       }
       return [];
     });
+  }
+
+  Future<void> addBiddingToUser(Bidding bidding, String workshopId) async {
+    try {
+      await _ref
+          .collection('biddings')
+          .doc(_userId)
+          .collection('offers')
+          .doc(workshopId)
+          .set(bidding.toMap());
+    } catch (error) {
+      ToastMessage().toastmessage('Error: $error');
+    }
   }
 }

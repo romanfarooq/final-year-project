@@ -1,23 +1,36 @@
+import 'package:car_care/utils/fetch_distance.dart';
+import 'package:car_care/utils/toast_message.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../models/workshop_info.dart';
+import '../models/bidding_info.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
 
 class CustomServiceWidget extends StatefulWidget {
+  final String userId;
   final String carName;
   final String ownerName;
   final String carModel;
   final String issueType;
   final String issueDescription;
+  final VoidCallback onDismiss;
+  final LatLng userLocation;
 
   const CustomServiceWidget({
     super.key,
+    required this.userId,
     required this.carName,
     required this.ownerName,
     required this.carModel,
     required this.issueType,
     required this.issueDescription,
+    required this.onDismiss,
+    required this.userLocation,
   });
 
   @override
@@ -36,6 +49,8 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final workshop = context.read<WorkshopInfo>();
+    final biddingInfo = context.read<BiddingInfo>();
     return Material(
       child: InkWell(
         onTap: () {
@@ -105,8 +120,32 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                 Material(
                                   color: Colors.transparent,
                                   child: InkWell(
-                                    onTap: () {
-                                      // print('Actions');
+                                    onTap: () async {
+                                      final price = double.tryParse(
+                                          _priceController.text);
+                                      if (price == null) {
+                                        ToastMessage().toastmessage(
+                                          'Please enter a valid price',
+                                        );
+                                        return;
+                                      }
+
+                                      final bidding = Bidding(
+                                        serviceCenterId: workshop.uid!,
+                                        serviceCost: price,
+                                        partCost: 0,
+                                        serviceCenter: workshop.workshopName!,
+                                        isAccepted: false,
+                                        serviceLocation: workshop.location!,
+                                      );
+
+                                      await biddingInfo.addBidding(
+                                        bidding,
+                                        widget.userId,
+                                        workshop.uid!,
+                                      );
+
+                                      widget.onDismiss();
                                     },
                                     child: Container(
                                       width: figmaSpaceToPercentageWidth(
@@ -144,9 +183,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                 Material(
                                   color: Colors.transparent,
                                   child: InkWell(
-                                    onTap: () {
-                                      // print(' Cross');
-                                    },
+                                    onTap: widget.onDismiss,
                                     child: Container(
                                       width: figmaSpaceToPercentageWidth(
                                           44, context),
@@ -269,6 +306,7 @@ class _CustomServiceWidgetState extends State<CustomServiceWidget> {
                                   hintText: 'Enter Your Price',
                                   border: InputBorder.none,
                                 ),
+                                keyboardType: TextInputType.number,
                               ),
                             ),
                           ],
