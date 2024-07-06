@@ -7,7 +7,7 @@ class ToastMessage {
         msg: message,
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 20,
+        timeInSecForIosWeb: 5,
         backgroundColor: Colors.red,
         textColor: Colors.white,
         fontSize: 16.0);
