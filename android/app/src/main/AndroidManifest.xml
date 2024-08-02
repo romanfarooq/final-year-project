@@ -8,7 +8,7 @@
 
 
     <application
-        android:label="car_care"
+        android:label="car_care_pro"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
 

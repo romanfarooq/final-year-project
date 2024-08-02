@@ -1,4 +1,3 @@
-import 'package:car_care/utils/toast_message.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -9,6 +8,7 @@ import '../models/bidding_info.dart';
 import '../models/car_info.dart';
 import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
+import '../utils/toast_message.dart';
 
 class RepairDetails extends StatefulWidget {
   final String text;

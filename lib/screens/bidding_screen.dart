@@ -1,14 +1,13 @@
-import 'package:car_care/routes/app_routes.dart';
-import 'package:car_care/screens/billing.dart';
-import 'package:car_care/utils/toast_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/bidding_info.dart';
 import '../models/car_info.dart';
+import '../screens/billing.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/google_map_display.dart';
 

@@ -1,7 +1,7 @@
-import 'package:car_care/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../routes/app_routes.dart';
 import '../utils/figma_space_to_percentage.dart';
 
 class Billing extends StatefulWidget {

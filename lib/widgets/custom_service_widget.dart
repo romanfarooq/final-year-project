@@ -1,15 +1,13 @@
-import 'package:car_care/utils/fetch_distance.dart';
-import 'package:car_care/utils/toast_message.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import '../models/workshop_info.dart';
-import '../models/bidding_info.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../models/bidding_info.dart';
+import '../models/workshop_info.dart';
 import '../utils/figma_space_to_percentage.dart';
 import '../utils/image_constant.dart';
+import '../utils/toast_message.dart';
 
 class CustomServiceWidget extends StatefulWidget {
   final String userId;
