@@ -22,7 +22,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  mapbox_maps_flutter: ^2.0.0
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.10+1
   flutter_inset_box_shadow: ^1.0.8
@@ -41,7 +40,6 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   image_picker: ^1.1.2
   location: ^7.0.0
-  http: ^1.2.1
 
 
 dev_dependencies:
